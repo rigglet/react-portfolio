@@ -1,7 +1,13 @@
+import Nav from "./components/Nav";
+import Splash from "./pages/Splash";
+import { BrowserRouter } from "react-router-dom";
 function App() {
   return (
     <div className="App">
-      <h1>portfolio</h1>
+      <BrowserRouter>
+        <Nav />
+        <Splash />
+      </BrowserRouter>
     </div>
   );
 }
