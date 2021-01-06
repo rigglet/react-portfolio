@@ -26,6 +26,7 @@ body{
 
 button{
     //font-weight: bold;
+    font-family: 'Inter', sans-serif;
     font-size: 1.2rem;
     cursor: pointer;
     padding: 1rem 3rem;
@@ -33,10 +34,14 @@ button{
     background: transparent;
     color: #689ed0;
     transition: all 0.5s ease;
-    font-family: 'Inter', sans-serif;
     &:hover{
         background-color: #689ed0;
-        color: white;
+        color: black;
+    }
+    &:active,
+    &:focus {
+      outline-style: none;
+      -moz-outline-style: none;
     }
 }
 h1{

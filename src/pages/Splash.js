@@ -3,8 +3,9 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 //images
 import splashImage from "../img/me-bw-blue-tie.png";
+//components
+import ContactIconBar from "../components/ContactIconBar";
 
-import {} from "module";
 const Splash = () => {
   return (
     <SplashLayout>
@@ -16,10 +17,12 @@ const Splash = () => {
           </h1>
         </StyledHeader>
         <StyledSubHeader>
-          <h2>I make all the things</h2>
+          <h2>Passionate about web development</h2>
+          <h2>With a focus on React</h2>
           <h2>Hire me today</h2>
         </StyledSubHeader>
         <button>View Portfolio</button>
+        <ContactIconBar />
       </StyledInfo>
       <StyledImage>
         <img src={splashImage} alt="Me" />
@@ -33,12 +36,17 @@ const SplashLayout = styled(motion.div)`
   justify-content: space-between;
   overflow-y: hidden;
 `;
+
 const StyledInfo = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 4rem 0rem 2rem 6rem;
+  padding: 4rem 0rem 2rem 8rem;
+  button {
+    width: 20vw;
+  }
 `;
+
 const StyledHeader = styled(motion.div)`
   display: flex;
   flex-direction: column;
@@ -66,7 +74,7 @@ const StyledSubHeader = styled(motion.div)`
 const StyledImage = styled(motion.div)`
   padding-right: 6rem;
   img {
-    width: 100%;
+    min-width: 100%;
     height: 100%;
   }
 `;

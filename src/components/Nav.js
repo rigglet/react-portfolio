@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 const Nav = () => {
   return (
     <StyledNav>
-      <StyledName>
-        <h1>Neil Rigg</h1>
-      </StyledName>
+      <StyledLink to="/">
+        <h1 className="logo">Neil Rigg</h1>
+      </StyledLink>
       <StyledMenu>
         <StyledLink to="/about">
           <h1>About</h1>
@@ -34,21 +34,20 @@ const Nav = () => {
 };
 
 const StyledNav = styled(motion.nav)`
+  .logo {
+    padding: 1rem 3rem;
+    font-family: "Lobster", cursive;
+    color: white;
+    font-size: 2rem;
+    font-weight: lighter;
+  }
   display: flex;
   justify-content: space-between;
   background-color: #666666;
   min-height: 10vh;
-  border-bottom: solid 3px #689ed0;
+  border-bottom: solid 0.25rem #689ed0;
 `;
 
-const StyledName = styled(motion.nav)`
-  padding: 1rem 3rem;
-  h1 {
-    font-family: "Lobster", cursive;
-    color: white;
-    font-size: 2rem;
-  }
-`;
 const StyledMenu = styled(motion.nav)`
   display: flex;
   justify-content: space-between;
