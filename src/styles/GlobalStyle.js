@@ -49,6 +49,12 @@ button{
 h1{
     color:white;
 }
+.icon {
+    color: white;
+    padding: 0.25rem;
+    height: 50px;
+    width: 50px;
+  }
 /*
     h2{
         font-weight: lighter;

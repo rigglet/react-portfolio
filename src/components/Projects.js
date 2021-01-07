@@ -13,67 +13,6 @@ const Projects = () => {
   console.log(data);
   return (
     <StyledProjects>
-      {/* <StyledCard>
-        <div className="preview">
-          <img src={sudoku} alt="project" />
-        </div>
-        <div className="blurb">
-          <h3>{data[0].projectName}</h3>
-          <p>{data[0].projectDescription}</p>
-        </div>
-        <Line />
-        <p>HTML</p>
-        <p>HTML</p>
-      </StyledCard>
-      <StyledCard>
-        <div className="preview">
-          <img src={sudoku} alt="project" />
-        </div>
-        <div className="blurb">
-          <h3>{data[0].projectName}</h3>
-          <p>{data[0].projectDescription}</p>
-        </div>
-        <Line />
-        <p>HTML</p>
-        <p>HTML</p>
-      </StyledCard>
-      <StyledCard>
-        <div className="preview">
-          <img src={sudoku} alt="project" />
-        </div>
-        <div className="blurb">
-          <h3>{data[0].projectName}</h3>
-          <p>{data[0].projectDescription}</p>
-        </div>
-        <Line />
-        <p>HTML</p>
-        <p>HTML</p>
-      </StyledCard>
-      <StyledCard>
-        <div className="preview">
-          <img src={sudoku} alt="project" />
-        </div>
-        <div className="blurb">
-          <h3>{data[0].projectName}</h3>
-          <p>{data[0].projectDescription}</p>
-        </div>
-        <Line />
-        <p>HTML</p>
-        <p>HTML</p>
-      </StyledCard>
-      <StyledCard>
-        <div className="preview">
-          <img src={sudoku} alt="project" />
-        </div>
-        <div className="blurb">
-          <h3>{data[0].projectName}</h3>
-          <p>{data[0].projectDescription}</p>
-        </div>
-        <Line />
-        <p>HTML</p>
-        <p>HTML</p>
-      </StyledCard> */}
-
       {data.map((project) => (
         <Project
           key={project.id}

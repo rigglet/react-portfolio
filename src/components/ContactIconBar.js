@@ -26,12 +26,6 @@ const StyledBar = styled(motion.div)`
   a {
     text-decoration: none;
   }
-  .icon {
-    color: white;
-    padding: 0.25rem;
-    height: 50px;
-    width: 50px;
-  }
 `;
 
 // const StyledLink = styled(Link)`
