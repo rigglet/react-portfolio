@@ -1,6 +1,8 @@
 //font-family: 'Inter', sans-serif;
 //font-family: 'Lobster', cursive;
 //font-family: 'Montserrat', sans-serif;
+//gradient colors - #34CE93
+//#59ADEB
 
 import { createGlobalStyle } from "styled-components";
 

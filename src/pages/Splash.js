@@ -32,6 +32,9 @@ const Splash = () => {
 };
 
 const SplashLayout = styled(motion.div)`
+  /* position: absolute;
+  top: 7%;
+  left: 0; */
   display: flex;
   justify-content: space-between;
   overflow-y: hidden;

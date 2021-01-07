@@ -2,18 +2,22 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
+import Projects from "../components/Projects";
+
 const Portfolio = () => {
   return (
     <PortfolioLayout>
-      <h1>Portfolio</h1>
+      <h1>Projects</h1>
+      <Projects />
     </PortfolioLayout>
   );
 };
 
 const PortfolioLayout = styled(motion.div)`
-  display: flex;
-  justify-content: space-between;
-  overflow-y: hidden;
+  padding: 2rem;
+  position: absolute;
+  top: 7%;
+  left: 0;
 `;
 
 export default Portfolio;

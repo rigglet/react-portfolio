@@ -35,16 +35,19 @@ const Nav = () => {
 
 const StyledNav = styled(motion.nav)`
   .logo {
-    padding: 1rem 3rem;
+    padding: 0.5rem 2rem;
     font-family: "Lobster", cursive;
     color: white;
     font-size: 2rem;
     font-weight: lighter;
   }
+  z-index: 10;
+  /* position: fixed;
+  width: 100vw;
+  height: 8%; */
   display: flex;
   justify-content: space-between;
   background-color: #666666;
-  min-height: 10vh;
   border-bottom: solid 0.25rem #689ed0;
 `;
 
@@ -56,10 +59,10 @@ const StyledMenu = styled(motion.nav)`
 const StyledLink = styled(Link)`
   text-decoration: none;
   h1 {
-    padding: 1.5rem 3rem 0.5rem 3rem;
+    padding: 0.75rem 3rem 0.25rem 1.5rem;
     font-weight: lighter;
     font-family: "Inter", sans-serif;
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 `;
 
