@@ -28,44 +28,16 @@ const Projects = () => {
 };
 
 const StyledProjects = styled(motion.div)`
+  width: 100vw;
   margin-top: 3rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  /* display: flex;
+flex-wrap: wrap;
+justify-content: center; */
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  column-gap: 0.5rem;
+  row-gap: 4rem;
 `;
 
-const StyledCard = styled(motion.div)`
-  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
-  margin-bottom: 3rem;
-  min-width: 15vw;
-  max-width: 20vw;
-  min-height: 30vh;
-  border: 0.05rem white solid;
-  text-align: center;
-  border-radius: 1rem;
-  cursor: pointer;
-  overflow: hidden;
-  background-color: transparent;
-  img {
-    width: 100%;
-    height: 20vh;
-    object-fit: cover;
-    object-position: top;
-  }
-  h3 {
-    color: white;
-    padding: 1rem;
-  }
-  p {
-    color: #c6c6c6;
-    padding: 1rem;
-  }
-`;
-
-const Line = styled(motion.div)`
-  width: 100%;
-  height: 1px;
-
-  background: white;
-`;
 export default Projects;

@@ -15,9 +15,9 @@ const Portfolio = () => {
 
 const PortfolioLayout = styled(motion.div)`
   padding: 2rem;
-  position: absolute;
+  /* position: absolute;
   top: 7%;
-  left: 0;
+  left: 0; */
 `;
 
 export default Portfolio;

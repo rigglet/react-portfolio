@@ -26,9 +26,9 @@ const Project = ({ name, shortDescription, id, mainImg, technologies }) => {
 };
 
 const StyledCard = styled(motion.div)`
-  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
-  margin: 0rem 1rem 3rem 1rem;
-  width: 20vw;
+  box-shadow: 0px 5px 20px rgba(255, 255, 255, 0.2);
+  //margin: 0rem 1rem 3rem 1rem;
+  width: 300px;
   border: 0.05rem white solid;
   text-align: center;
   border-radius: 1rem;
