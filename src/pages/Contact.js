@@ -9,7 +9,7 @@ import ContactIconBar from "../components/ContactIconBar";
 const Contact = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log("submit");
+    //console.log("submit");
   };
   return (
     <ContactLayout>

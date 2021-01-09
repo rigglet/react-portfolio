@@ -18,7 +18,7 @@ const Project = ({ name, shortDescription, id, mainImg, technologies }) => {
       <Line />
       <StyledIcons>
         {technologies.map((tech) => (
-          <p>{getIcon(tech)}</p>
+          <p key={tech}>{getIcon(tech)}</p>
         ))}
       </StyledIcons>
     </StyledCard>

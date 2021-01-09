@@ -16,7 +16,7 @@ import sudoku from "./img/sudoku.png";
 import placeholder from "./img/portfolio.png";
 
 export const getIcon = (iconName) => {
-  console.log(iconName);
+  //console.log(iconName);
   switch (iconName) {
     case "HTML":
       return (
@@ -56,7 +56,7 @@ export const getIcon = (iconName) => {
 };
 
 export const getImage = (imageName) => {
-  console.log(imageName);
+  //console.log(imageName);
   switch (imageName) {
     case "sudoku.png":
       return sudoku;

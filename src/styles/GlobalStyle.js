@@ -51,9 +51,24 @@ h1{
 }
 .icon {
     color: white;
-    padding: 0.25rem;
-    height: 50px;
-    width: 50px;
+    padding: 0.15rem;
+    height: 45px;
+    width: 45px;
+  }
+.filter {
+    color: white;
+    padding: 0rem;
+    height: 30px;
+    width: 30px;
+  }
+  select {
+    outline-style: none;
+    -moz-outline-style: none;
+    padding: 0.5rem;
+    margin-left: 2rem;
+    font-size: 1rem;
+    background-color: #666666;
+    color: white;
   }
 /*
     h2{

@@ -6,10 +6,16 @@ export const TwitterLink = "https://twitter.com/r1gglet";
 //Portfolio link
 export const GithubLink = "https://github.com/rigglet";
 
+export const technologies = () => {
+  const t = ["HTML", "CSS", "JS", "REACT", "SASS", "NODE"];
+  return t;
+};
+
 export const projectData = () => {
   const data = [
     {
       id: 1,
+      featured: true,
       projectName: "Sudoku",
       shortDescription:
         "A simple Sudoku game for storing and completing Sudoku puzzles",
@@ -26,6 +32,7 @@ export const projectData = () => {
     },
     {
       id: 2,
+      featured: true,
       projectName: "Color Picker",
       shortDescription: "A color picker",
       projectDescription: "A color picker",
@@ -40,6 +47,7 @@ export const projectData = () => {
     },
     {
       id: 3,
+      featured: true,
       projectName: "Portfolio",
       shortDescription: "Personal portfolio",
       projectDescription: "Personal portfolio",
@@ -54,13 +62,14 @@ export const projectData = () => {
     },
     {
       id: 4,
+      featured: false,
       projectName: "Color Picker",
       shortDescription: "A color picker",
       projectDescription: "A color picker",
       author: "Neil Rigg",
       mainImg: "",
       screenshots: [],
-      technologies: ["HTML", "CSS", "JS"],
+      technologies: ["HTML", "CSS", "JS", "NODE"],
       githubLink: "",
       addedDate: "06/01/2021",
       startedDate: "",
@@ -68,13 +77,14 @@ export const projectData = () => {
     },
     {
       id: 5,
+      featured: false,
       projectName: "Color Picker",
       shortDescription: "A color picker",
       projectDescription: "A color picker",
       author: "Neil Rigg",
       mainImg: "",
       screenshots: [],
-      technologies: ["HTML", "CSS", "JS"],
+      technologies: ["HTML", "CSS", "JS", "REACT"],
       githubLink: "",
       addedDate: "06/01/2021",
       startedDate: "",
@@ -82,6 +92,7 @@ export const projectData = () => {
     },
     {
       id: 6,
+      featured: false,
       projectName: "Color Picker",
       shortDescription: "A color picker",
       projectDescription: "A color picker",
@@ -96,6 +107,7 @@ export const projectData = () => {
     },
     {
       id: 7,
+      featured: false,
       projectName: "Color Picker",
       shortDescription: "A color picker",
       projectDescription: "A color picker",
