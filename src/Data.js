@@ -11,6 +11,14 @@ export const technologies = () => {
   return t;
 };
 
+//return a specific project given the id
+export const getProject = (id) => {
+  const projects = projectData();
+  //console.log(typeof p.id);
+  //console.log(typeof id);
+  return projects.filter((p) => String(p.id) === id)[0];
+};
+
 export const projectData = () => {
   const data = [
     {
@@ -62,15 +70,25 @@ export const projectData = () => {
     },
     {
       id: 4,
-      featured: false,
+      featured: true,
       projectName: "Color Picker",
-      shortDescription: "A color picker",
-      projectDescription: "A color picker",
+      shortDescription:
+        "A color picker Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis rerum architecto odit, ut alias delectus optio. Maiores id ipsam deleniti.",
+      projectDescription:
+        "A color picker Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor animi, a explicabo inventore modi laboriosam assumenda, velit nulla amet natus molestiae at necessitatibus error odit quidem magni accusantium libero asperiores facilis. Assumenda sit aperiam numquam minima esse, alias, voluptate fuga perferendis consequatur consequuntur ipsa explicabo vero id soluta impedit dolorum. ",
       author: "Neil Rigg",
-      mainImg: "",
-      screenshots: [],
+      mainImg: "sudoku.png",
+      screenshots: [
+        "sudoku.png",
+        "sudoku.png",
+        "sudoku.png",
+        "sudoku.png",
+        "sudoku.png",
+        "sudoku.png",
+      ],
       technologies: ["HTML", "CSS", "JS", "NODE"],
-      githubLink: "",
+      githubLink: "https://github.com/rigglet/react-portfolio",
+      www: "https://github.com/rigglet/react-portfolio",
       addedDate: "06/01/2021",
       startedDate: "",
       completedDate: "",

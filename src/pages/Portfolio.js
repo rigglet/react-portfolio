@@ -7,11 +7,11 @@ import styled from "styled-components";
 import Projects from "../components/Projects";
 //data
 import { technologies, projectData } from "../Data";
-import { FaFilter } from "react-icons/fa";
+//import { FaFilter } from "react-icons/fa";
 
 const Portfolio = () => {
   //state
-  const [projects, setProjects] = useState(projectData());
+  const projects = projectData();
   const [type, setType] = useState("All");
   const [tech, setTech] = useState("ALL");
   const allTech = technologies();
@@ -43,15 +43,6 @@ const Portfolio = () => {
     } else {
       return p.filter((proj) => proj.technologies.includes(tech));
     }
-    // switch (tech) {
-    //   case "REACT":
-    //
-    //   //console.log("JS");
-    //   case "ALL":
-    //     return [...p];
-    //   default:
-    //     return [...p];
-    // }
   };
 
   return (
@@ -59,7 +50,12 @@ const Portfolio = () => {
       <div className="titleBar">
         <h1>Projects</h1>
         <div className="options">
-          <FaFilter className="filter" />
+          <p>Total displayed: {filterProjects().length} </p>
+          {/* <FaFilter className="filter" /> */}
+          {/* <label class="switch">
+          <input type="checkbox" onChange={handleTypeChange} />
+          <span class="slider round"></span>
+        </label> */}
           <select onChange={handleTypeChange} value={type}>
             <option key="all" value="all">
               All
@@ -84,11 +80,18 @@ const Portfolio = () => {
 };
 
 const PortfolioLayout = styled(motion.div)`
-  padding: 2rem;
-  overflow-y: hidden;
+  overflow-x: hidden;
   .titleBar {
     display: flex;
     justify-content: space-between;
+    padding: 2rem 2rem 0rem 2rem;
+    h1 {
+      font-weight: lighter;
+      font-size: 2rem;
+    }
+  }
+  .options {
+    display: flex;
   }
 `;
 

@@ -2,15 +2,24 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
+//Link
+import { Link } from "react-router-dom";
+
 //functions
 import { getIcon, getImage } from "../util";
 
 const Project = ({ name, shortDescription, id, mainImg, technologies }) => {
   return (
-    <StyledCard>
-      <div className="preview">
-        <img src={getImage(mainImg)} alt="project" />
-      </div>
+    <StyledCard
+      initial={{ scale: 0.8 }}
+      animate={{ scale: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      <Link to={`/portfolio/${id}`}>
+        <div className="preview">
+          <img src={getImage(mainImg)} alt="project" />
+        </div>
+      </Link>
       <div className="blurb">
         <h4>{name}</h4>
         <p>{shortDescription}</p>
@@ -26,13 +35,14 @@ const Project = ({ name, shortDescription, id, mainImg, technologies }) => {
 };
 
 const StyledCard = styled(motion.div)`
+  justify-self: center;
   box-shadow: 0px 5px 20px rgba(255, 255, 255, 0.2);
   //margin: 0rem 1rem 3rem 1rem;
   width: 300px;
   border: 0.05rem white solid;
   text-align: center;
   border-radius: 1rem;
-  cursor: pointer;
+  /* cursor: pointer; */
   overflow: hidden;
   background-color: transparent;
 
@@ -49,6 +59,9 @@ const StyledCard = styled(motion.div)`
   p {
     color: #c6c6c6;
     padding: 1rem;
+  }
+  .preview {
+    cursor: pointer;
   }
 `;
 

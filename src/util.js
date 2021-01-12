@@ -1,13 +1,17 @@
 //icons
 import {
-  FaGithubSquare,
   FaHtml5,
   FaCss3Alt,
-  FaGit,
   FaReact,
   FaJsSquare,
   FaSass,
   FaGalacticSenate,
+  FaNode,
+  FaGithub,
+  FaExternalLinkAlt,
+  FaStar,
+  FaRegStar,
+  FaWindowClose,
 } from "react-icons/fa";
 import { IconContext } from "react-icons";
 
@@ -22,6 +26,12 @@ export const getIcon = (iconName) => {
       return (
         <IconContext.Provider value={{ color: "#e44d26" }}>
           <FaHtml5 className="icon" />
+        </IconContext.Provider>
+      );
+    case "NODE":
+      return (
+        <IconContext.Provider value={{ color: "#026e00" }}>
+          <FaNode className="icon" />
         </IconContext.Provider>
       );
     case "CSS":
@@ -49,7 +59,27 @@ export const getIcon = (iconName) => {
         </IconContext.Provider>
       );
     case "GIT":
-      return <FaGit className="icon" />;
+      return <FaGithub className="icon" />;
+    case "WEB":
+      return <FaExternalLinkAlt className="icon" />;
+    case "CLOSE":
+      return <FaWindowClose className="close" />;
+    case "STAR":
+      return (
+        <IconContext.Provider value={{ color: "#fffb00" }}>
+          <FaStar className="icon" />
+        </IconContext.Provider>
+      );
+    case "ESTAR":
+      return (
+        <IconContext.Provider
+          value={{
+            color: "rgba(256, 256, 256, 0.5)",
+          }}
+        >
+          <FaRegStar className="icon" />
+        </IconContext.Provider>
+      );
     default:
       return <FaGalacticSenate className="icon" />;
   }
