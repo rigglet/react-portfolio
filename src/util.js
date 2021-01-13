@@ -17,6 +17,9 @@ import { IconContext } from "react-icons";
 
 //images
 import sudoku from "./img/sudoku.png";
+import me from "./img/me.png";
+import tie from "./img/me-bw-blue-tie.png";
+
 import placeholder from "./img/portfolio.png";
 
 export const getIcon = (iconName) => {
@@ -90,6 +93,10 @@ export const getImage = (imageName) => {
   switch (imageName) {
     case "sudoku.png":
       return sudoku;
+    case "me.png":
+      return me;
+    case "me-bw-blue-tie.png":
+      return tie;
     default:
       return placeholder;
   }

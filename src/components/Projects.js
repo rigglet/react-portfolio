@@ -57,7 +57,7 @@ const StyledProjects = styled(motion.div)`
   margin-top: 3rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  //column-gap: 0.5rem;
+  column-gap: 2rem;
   row-gap: 4rem;
 `;
 

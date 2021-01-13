@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 //framer motion and styled components
 import { motion } from "framer-motion";
 import styled from "styled-components";
@@ -9,11 +11,13 @@ import { getProject } from "../Data";
 
 const ProjectDetails = ({ projectClose, skipProject, pathId, arrSize }) => {
   const project = getProject(pathId);
+  //state
+  const [currentImage, setCurrentImage] = useState(getImage(project.mainImg));
 
   const handleClose = () => {
     projectClose();
   };
-  console.log(arrSize);
+
   return (
     <StyledDetail>
       <StyledCard>
@@ -39,22 +43,27 @@ const ProjectDetails = ({ projectClose, skipProject, pathId, arrSize }) => {
 
         <StyledMain>
           <div className="left">
-            <StyledDescription>
-              <p>{project.projectDescription}</p>
-            </StyledDescription>
+            <p>{project.projectDescription}</p>
+
             <StyledIcons>
               {project.technologies.map((tech) => (
                 <p key={tech}>{getIcon(tech)}</p>
               ))}
             </StyledIcons>
           </div>
+
+          <div className="middle">
+            {project.screenshots.map((shot) => (
+              <img
+                src={getImage(shot)}
+                alt="screenshot"
+                onClick={() => setCurrentImage(getImage(shot))}
+              />
+            ))}
+          </div>
+
           <div className="right">
-            <StyledGallery>
-              <img src={getImage(project.mainImg)} alt="project" />
-              {project.screenshots.map((shot) => (
-                <img src={getImage(shot)} alt="screenshot" />
-              ))}
-            </StyledGallery>
+            <img src={currentImage} alt="project" />
           </div>
         </StyledMain>
 
@@ -110,9 +119,10 @@ const StyledCard = styled(motion.div)`
     "left-side main right-side";
 
   box-shadow: 0px 5px 20px rgba(255, 255, 255, 0.2);
-  z-index: 99;
+  z-index: 10;
   width: 90vw;
-  height: 85vh;
+  min-height: 85vh;
+  max-height: 85vh;
   border: 0.05rem #689ed0 solid;
   border-radius: 1rem;
   //padding: 1rem 2rem;
@@ -141,17 +151,35 @@ const StyledMain = styled(motion.div)`
   display: flex;
   .left {
     padding: 1rem;
-    flex: 1;
+    flex: 2;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
+  .middle {
+    flex: 1;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    img {
+      min-width: 10vw;
+      max-height: 12vh;
+      object-fit: cover;
+      object-position: top;
+      padding: 0rem 1rem 1rem 1rem;
+    }
+  }
   .right {
     padding: 1rem;
-    flex: 2;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: space-between; */
+    flex: 4;
+    img {
+      width: 100%;
+      max-height: 60vh;
+      object-fit: scale-down;
+      object-position: top;
+      padding: 0rem 1rem 1rem 1rem;
+    }
   }
 `;
 
@@ -162,6 +190,10 @@ const StyledDescription = styled(motion.div)`
 const StyledHeaderIcons = styled(motion.div)`
   display: flex;
   justify-content: space-between;
+  .icon {
+    height: 30px;
+    width: 30px;
+  }
 `;
 const StyledIcons = styled(motion.div)`
   display: flex;
@@ -180,10 +212,6 @@ const StyledLinks = styled(motion.div)`
       color: white;
       text-decoration: none;
     }
-  }
-  .icon {
-    height: 30px;
-    width: 30px;
   }
 `;
 
@@ -219,19 +247,19 @@ const StyledRightSection = styled(motion.div)`
   }
 `;
 
-const StyledGallery = styled(motion.div)`
-  display: flex;
-  flex-wrap: wrap;
-  //height: 100%;
-  //padding-left: 1rem;
+// const StyledGallery = styled(motion.div)`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: flex-end;
+//   padding: 1rem 0rem;
 
-  img {
-    width: 30%;
-    height: 30%;
+/* img {
+    //width: 50%;
+    height: 10vh;
     object-fit: cover;
-    object-position: top;
-    padding: 0rem 1rem 1rem 1rem;
-  }
-`;
+    object-position: center;
+    padding: 0rem 0rem 0.5rem 0.5rem;
+  } */
+//`;
 
 export default ProjectDetails;
