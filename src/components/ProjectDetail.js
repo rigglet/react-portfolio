@@ -1,5 +1,4 @@
-import { useState } from "react";
-
+import { useEffect } from "react";
 //framer motion and styled components
 import { motion } from "framer-motion";
 import styled from "styled-components";
@@ -9,14 +8,25 @@ import { getIcon, getImage } from "../util";
 import { FaWindowClose, FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { getProject } from "../Data";
 
-const ProjectDetails = ({ projectClose, skipProject, pathId, arrSize }) => {
+const ProjectDetails = ({
+  projectClose,
+  skipProject,
+  pathId,
+  arrSize,
+  handleImageChange,
+  currentImage,
+}) => {
   const project = getProject(pathId);
-  //state
-  const [currentImage, setCurrentImage] = useState(getImage(project.mainImg));
 
   const handleClose = () => {
     projectClose();
   };
+
+  useEffect(() => {
+    console.log("useEffect");
+    handleImageChange(getImage(project.mainImg));
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  //displays warning without the above line
 
   return (
     <StyledDetail>
@@ -57,7 +67,7 @@ const ProjectDetails = ({ projectClose, skipProject, pathId, arrSize }) => {
               <img
                 src={getImage(shot)}
                 alt="screenshot"
-                onClick={() => setCurrentImage(getImage(shot))}
+                onClick={() => handleImageChange(getImage(shot))}
               />
             ))}
           </div>
@@ -181,10 +191,6 @@ const StyledMain = styled(motion.div)`
       padding: 0rem 1rem 1rem 1rem;
     }
   }
-`;
-
-const StyledDescription = styled(motion.div)`
-  //padding: 1rem;
 `;
 
 const StyledHeaderIcons = styled(motion.div)`
