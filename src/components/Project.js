@@ -9,6 +9,10 @@ import { Link } from "react-router-dom";
 import { getIcon, getImage } from "../util";
 
 const Project = ({ name, shortDescription, id, mainImg, technologies }) => {
+  const enterDetails = () => {
+    document.body.style.overflowY = "hidden";
+  };
+
   return (
     <StyledCard
       initial={{ scale: 0.8 }}
@@ -16,7 +20,11 @@ const Project = ({ name, shortDescription, id, mainImg, technologies }) => {
       transition={{ duration: 0.5 }}
     >
       <Link to={`/portfolio/${id}`}>
-        <img src={getImage(mainImg)} alt="project" />
+        <img
+          src={getImage(mainImg)}
+          alt="project"
+          onClick={() => enterDetails()}
+        />
       </Link>
 
       <div className="blurb">

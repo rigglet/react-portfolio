@@ -21,6 +21,7 @@ const Projects = ({ projects }) => {
   };
 
   const projectClose = () => {
+    document.body.style.overflowY = "auto";
     history.push("/portfolio");
   };
 

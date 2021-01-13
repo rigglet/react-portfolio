@@ -23,7 +23,7 @@ const ProjectDetails = ({
   };
 
   useEffect(() => {
-    console.log("useEffect");
+    //console.log("useEffect");
     handleImageChange(getImage(project.mainImg));
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
   //displays warning without the above line
@@ -160,7 +160,7 @@ const StyledMain = styled(motion.div)`
   grid-area: main;
   display: flex;
   .left {
-    padding: 1rem;
+    padding: 0rem 1rem 1rem 1rem;
     flex: 2;
     display: flex;
     flex-direction: column;
