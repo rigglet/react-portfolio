@@ -178,6 +178,7 @@ const StyledMain = styled(motion.div)`
       object-fit: cover;
       object-position: top;
       padding: 0rem 1rem 1rem 1rem;
+      cursor: pointer;
     }
   }
   .right {

@@ -6,6 +6,11 @@ const Experience = () => {
   return (
     <ExperienceLayout>
       <h1>Experience</h1>
+      <h3>Code Challendes</h3>
+      <p>Codewars API</p>
+      <p>Hacker Rank</p>
+      <p>Freecode Camp</p>
+      <p>Others - DevEd - Udemy</p>
     </ExperienceLayout>
   );
 };

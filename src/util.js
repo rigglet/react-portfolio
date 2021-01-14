@@ -19,6 +19,10 @@ import { IconContext } from "react-icons";
 import sudoku from "./img/sudoku.png";
 import me from "./img/me.png";
 import tie from "./img/me-bw-blue-tie.png";
+import portMain from "./img/portfolioMain.png";
+import port1 from "./img/portfolio1.png";
+import port2 from "./img/portfolio2.png";
+import port3 from "./img/portfolio3.png";
 
 import placeholder from "./img/portfolio.png";
 
@@ -91,6 +95,14 @@ export const getIcon = (iconName) => {
 export const getImage = (imageName) => {
   //console.log(imageName);
   switch (imageName) {
+    case "portfolioMain.png":
+      return portMain;
+    case "portfolio1.png":
+      return port1;
+    case "portfolio2.png":
+      return port2;
+    case "portfolio3.png":
+      return port3;
     case "sudoku.png":
       return sudoku;
     case "me.png":

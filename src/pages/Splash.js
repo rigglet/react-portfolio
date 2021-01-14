@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 //framer motion and styled components
 import { motion } from "framer-motion";
 import styled from "styled-components";
@@ -21,7 +22,9 @@ const Splash = () => {
           <h2>With a focus on React</h2>
           <h2>Hire me today</h2>
         </StyledSubHeader>
-        <button>View Portfolio</button>
+        <Link to="/portfolio/">
+          <button>View Portfolio</button>
+        </Link>
         <ContactIconBar />
       </StyledInfo>
       <StyledImage>

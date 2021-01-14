@@ -55,7 +55,7 @@ body{
   border: 1px solid white;
 }
 
-button{
+button, input[type='submit']{
     //font-weight: bold;
     font-family: 'Inter', sans-serif;
     font-size: 1.2rem;
@@ -75,6 +75,8 @@ button{
       -moz-outline-style: none;
     }
 }
+
+
 h1{
     color:white;
 }
@@ -138,6 +140,24 @@ h1{
         font-size: 1.4rem;
         line-height: 150%;
     } */
+    
+//React-toastify - Toast close button
+.toastClose{
+    color: #689ed0;
+    cursor: pointer;
+    height: 25px;
+    width: 25px;
+    &:hover{
+        color: transparent;
+        color: grey;
+    }
+    &:active,
+    &:focus {
+      outline-style: none;
+      -moz-outline-style: none;
+      transform: translateY(1px);
+    }
+}
     
     //SLIDER
     /* The switch - the box around the slider */

@@ -81,6 +81,7 @@ const Portfolio = () => {
 
 const PortfolioLayout = styled(motion.div)`
   overflow-x: hidden;
+  padding-bottom: 2rem;
   .titleBar {
     display: flex;
     justify-content: space-between;
