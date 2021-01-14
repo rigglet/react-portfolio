@@ -17,8 +17,9 @@ const Experience = () => {
 
 const ExperienceLayout = styled(motion.div)`
   display: flex;
-  justify-content: space-between;
-  overflow-y: hidden;
+  flex-direction: column;
+  //justify-content: space-between;
+  //overflow-y: hidden;
 `;
 
 export default Experience;

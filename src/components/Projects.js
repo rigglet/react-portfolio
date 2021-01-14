@@ -71,11 +71,12 @@ const Projects = ({ projects }) => {
 
 const StyledProjects = styled(motion.div)`
   width: 100vw;
-  margin-top: 3rem;
+  //margin-top: 3rem;
+  padding: 4rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  column-gap: 2rem;
-  row-gap: 4rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  column-gap: 1.5rem;
+  row-gap: 3rem;
 `;
 
 export default Projects;

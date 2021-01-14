@@ -87,8 +87,7 @@ export const projectData = () => {
       id: 4,
       featured: true,
       projectName: "Color Picker",
-      shortDescription:
-        "A color picker Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis rerum architecto odit, ut alias delectus optio. Maiores id ipsam deleniti.",
+      shortDescription: "A color picker game built in Vanilla JS",
       projectDescription:
         "A color picker Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor animi, a explicabo inventore modi laboriosam assumenda, velit nulla amet natus molestiae at necessitatibus error odit quidem magni accusantium libero asperiores facilis. Assumenda sit aperiam numquam minima esse, alias, voluptate fuga perferendis consequatur consequuntur ipsa explicabo vero id soluta impedit dolorum. ",
       author: "Neil Rigg",

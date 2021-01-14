@@ -45,7 +45,7 @@ const StyledCard = styled(motion.div)`
   justify-self: center;
   box-shadow: 0px 5px 20px rgba(255, 255, 255, 0.2);
   //margin: 0rem 1rem 3rem 1rem;
-  max-width: 85%;
+  max-width: 300px;
   border: 0.05rem white solid;
   text-align: center;
   border-radius: 1rem;
@@ -54,29 +54,32 @@ const StyledCard = styled(motion.div)`
   background-color: transparent;
 
   img {
+    //padding: 0.5rem;
     width: 100%;
-    height: 30vh;
-    object-fit: cover;
+    min-height: 25vh;
+    object-fit: scale-down;
     object-position: top;
   }
+
   .blurb {
     h4 {
       color: white;
-      padding: 1rem;
+      padding: 0.5rem;
       text-decoration: none;
       &:visited,
       &:active {
         text-decoration: none;
       }
     }
-  }
-  p {
-    color: #c6c6c6;
-    padding: 1rem;
-    text-decoration: none;
-    &:visited,
-    &:active {
+    p {
+      color: #c6c6c6;
+      padding: 1rem;
+      min-height: 20vh;
       text-decoration: none;
+      &:visited,
+      &:active {
+        text-decoration: none;
+      }
     }
   }
 `;
@@ -91,6 +94,7 @@ const StyledIcons = styled(motion.div)`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding: 1rem;
 `;
 
 export default Project;
