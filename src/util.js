@@ -1,3 +1,6 @@
+//get Data
+import { technologies, projectData } from "./Data";
+
 //icons
 import {
   FaHtml5,
@@ -14,6 +17,7 @@ import {
   FaWindowClose,
   FaBootstrap,
 } from "react-icons/fa";
+
 import { IconContext } from "react-icons";
 
 //images
@@ -131,4 +135,18 @@ export const getImage = (imageName) => {
     default:
       return placeholder;
   }
+};
+
+//return a specific project given the id
+export const getTechAddress = (techName) => {
+  const allTech = technologies();
+  //console.log(allTech);
+  //console.log(allTech.filter((t) => t.name === techName)[0].link);
+  return allTech.filter((t) => t.name === techName)[0].link;
+};
+
+//return a specific project given the id
+export const getProject = (id) => {
+  const projects = projectData();
+  return projects.filter((p) => String(p.id) === id)[0];
 };

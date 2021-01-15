@@ -6,7 +6,7 @@ import styled from "styled-components";
 //functions
 import { getIcon, getImage } from "../util";
 import { FaWindowClose, FaAngleLeft, FaAngleRight } from "react-icons/fa";
-import { getProject } from "../Data";
+import { getProject } from "../util";
 
 const ProjectDetails = ({
   projectClose,

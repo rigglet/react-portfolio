@@ -13,7 +13,7 @@ import ContactIconBar from "../components/ContactIconBar";
 //icon
 import { FaWindowClose } from "react-icons/fa";
 //plane svg
-import plane from "../img/plane.svg";
+import plane from "../img/swoop.svg";
 
 const Contact = () => {
   const [formData, setFormData] = useState({});
@@ -143,7 +143,7 @@ const Contact = () => {
         </form>
       </ContactForm>
       <ContactInfo>
-        <img src={plane} alt="Me" />
+        <img src={plane} alt="Send message" />
         <ContactIconBar />
       </ContactInfo>
     </ContactLayout>
@@ -198,12 +198,13 @@ const ContactForm = styled(motion.div)`
 const ContactInfo = styled(motion.div)`
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: 4rem 8rem 2rem 0rem;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 8rem 8rem 2rem 0rem;
 
   img {
-    width: 200px;
-    height: 200px;
+    width: 40vw;
+    height: 40vh;
   }
 `;
 

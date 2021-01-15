@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 //functions
-import { getIcon, getImage } from "../util";
+import { getIcon, getImage, getTechAddress } from "../util";
 
 const Project = ({ name, shortDescription, id, mainImg, technologies }) => {
   const enterDetails = () => {
@@ -34,7 +34,14 @@ const Project = ({ name, shortDescription, id, mainImg, technologies }) => {
       <Line />
       <StyledIcons>
         {technologies.map((tech) => (
-          <p key={tech}>{getIcon(tech)}</p>
+          <a
+            key={tech}
+            href={getTechAddress(tech)}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <p key={tech}>{getIcon(tech)}</p>
+          </a>
         ))}
       </StyledIcons>
     </StyledCard>

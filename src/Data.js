@@ -24,16 +24,8 @@ export const technologies = () => {
   ];
 };
 
-//return a specific project given the id
-export const getProject = (id) => {
-  const projects = projectData();
-  //console.log(typeof p.id);
-  //console.log(typeof id);
-  return projects.filter((p) => String(p.id) === id)[0];
-};
-
 export const projectData = () => {
-  const data = [
+  return [
     {
       id: 1,
       featured: true,
@@ -120,5 +112,4 @@ export const projectData = () => {
       completedDate: "",
     },
   ];
-  return data;
 };
