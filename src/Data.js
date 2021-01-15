@@ -7,8 +7,21 @@ export const TwitterLink = "https://twitter.com/r1gglet";
 export const GithubLink = "https://github.com/rigglet";
 
 export const technologies = () => {
-  const t = ["HTML", "CSS", "JS", "REACT", "SASS", "NODE"];
-  return t;
+  //const t = ["HTML", "CSS", "JS", "REACT", "SASS", "NODE"];
+  return [
+    { name: "HTML", link: "https://html.spec.whatwg.org/" },
+    { name: "CSS", link: "https://www.w3.org/Style/CSS/Overview.en.html" },
+    {
+      name: "JS",
+      link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+    },
+    { name: "REACT", link: "https://reactjs.org/" },
+    { name: "SASS", link: "https://sass-lang.com/" },
+    { name: "NODE", link: "https://nodejs.dev/" },
+    { name: "EXPRESS", link: "https://expressjs.com/" },
+    { name: "MONGODB", link: "https://www.mongodb.com/1" },
+    { name: "BOOTSTRAP", link: "https://getbootstrap.com/" },
+  ];
 };
 
 //return a specific project given the id
@@ -32,7 +45,7 @@ export const projectData = () => {
       author: "Neil Rigg",
       mainImg: "sudoku.png",
       screenshots: [],
-      technologies: ["HTML", "CSS", "JS"],
+      technologies: ["HTML", "CSS", "JS", "BOOTSTRAP"],
       githubLink: "https://github.com/rigglet/sudoku",
       addedDate: "06/01/2021",
       startedDate: "",
@@ -47,7 +60,7 @@ export const projectData = () => {
       author: "Neil Rigg",
       mainImg: "",
       screenshots: [],
-      technologies: ["HTML", "CSS", "JS"],
+      technologies: ["HTML", "CSS", "JS", "BOOTSTRAP"],
       githubLink: "",
       addedDate: "06/01/2021",
       startedDate: "",
@@ -102,51 +115,6 @@ export const projectData = () => {
       technologies: ["HTML", "CSS", "JS", "NODE"],
       githubLink: "https://github.com/rigglet/react-portfolio",
       www: "https://github.com/rigglet/react-portfolio",
-      addedDate: "06/01/2021",
-      startedDate: "",
-      completedDate: "",
-    },
-    {
-      id: 5,
-      featured: false,
-      projectName: "Color Picker",
-      shortDescription: "A color picker",
-      projectDescription: "A color picker",
-      author: "Neil Rigg",
-      mainImg: "",
-      screenshots: [],
-      technologies: ["HTML", "CSS", "JS", "REACT"],
-      githubLink: "",
-      addedDate: "06/01/2021",
-      startedDate: "",
-      completedDate: "",
-    },
-    {
-      id: 6,
-      featured: false,
-      projectName: "Color Picker",
-      shortDescription: "A color picker",
-      projectDescription: "A color picker",
-      author: "Neil Rigg",
-      mainImg: "",
-      screenshots: [],
-      technologies: ["HTML", "CSS", "JS"],
-      githubLink: "",
-      addedDate: "06/01/2021",
-      startedDate: "",
-      completedDate: "",
-    },
-    {
-      id: 7,
-      featured: false,
-      projectName: "Color Picker",
-      shortDescription: "A color picker",
-      projectDescription: "A color picker",
-      author: "Neil Rigg",
-      mainImg: "",
-      screenshots: [],
-      technologies: ["HTML", "CSS", "JS"],
-      githubLink: "",
       addedDate: "06/01/2021",
       startedDate: "",
       completedDate: "",

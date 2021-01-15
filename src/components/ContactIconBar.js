@@ -5,8 +5,10 @@ import styled from "styled-components";
 import { FaFacebookSquare, FaTwitterSquare, FaLinkedin } from "react-icons/fa";
 //link addresses
 import { LinkedInLink, FacebookLink, TwitterLink } from "../Data";
+import { IconContext } from "react-icons";
 
 const ContactIconBar = () => {
+  //console.log(size);
   return (
     <StyledBar>
       <a target="_blank" rel="noreferrer" href={FacebookLink}>
@@ -23,6 +25,10 @@ const ContactIconBar = () => {
 };
 
 const StyledBar = styled(motion.div)`
+  /* .icon {
+    height: 100px;
+    width: 100px;
+  } */
   a {
     text-decoration: none;
   }

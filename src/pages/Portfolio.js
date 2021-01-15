@@ -38,13 +38,14 @@ const Portfolio = () => {
 
   const filterProjects = () => {
     const p = filterByType();
+    //console.log(tech);
     if (tech === "ALL") {
       return [...p];
     } else {
       return p.filter((proj) => proj.technologies.includes(tech));
     }
   };
-
+  //console.log(allTech);
   return (
     <PortfolioLayout>
       <div className="titleBar">
@@ -67,14 +68,18 @@ const Portfolio = () => {
           <select onChange={handleTechChange} value={tech}>
             <option value="ALL">ALL</option>
             {allTech.map((tech) => (
-              <option value={tech} key={tech}>
-                {tech}
+              <option value={tech.name} key={tech.name}>
+                {tech.name}
               </option>
             ))}
           </select>
         </div>
       </div>
-      <Projects projects={filterProjects()} />
+      {filterProjects().length > 0 ? (
+        <Projects projects={filterProjects()} />
+      ) : (
+        <h1 className="nores">No results to show.</h1>
+      )}
     </PortfolioLayout>
   );
 };
@@ -93,6 +98,12 @@ const PortfolioLayout = styled(motion.div)`
   }
   .options {
     display: flex;
+  }
+  .nores {
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+    font-weight: lighter;
   }
 `;
 

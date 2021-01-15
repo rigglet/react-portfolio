@@ -83,8 +83,8 @@ h1{
 .icon {
     color: white;
     padding: 0.15rem;
-    height: 40px;
-    width: 40px;
+    height: 50px;
+    width: 50px;
   }
   .close {
     cursor: pointer;

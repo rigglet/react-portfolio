@@ -63,8 +63,9 @@ const StyledCard = styled(motion.div)`
 
   .blurb {
     h4 {
-      color: white;
+      color: #689ed0;
       padding: 0.5rem;
+      font-weight: lighter;
       text-decoration: none;
       &:visited,
       &:active {
@@ -72,7 +73,7 @@ const StyledCard = styled(motion.div)`
       }
     }
     p {
-      color: #c6c6c6;
+      color: white;
       padding: 1rem;
       min-height: 20vh;
       text-decoration: none;

@@ -12,6 +12,7 @@ import {
   FaStar,
   FaRegStar,
   FaWindowClose,
+  FaBootstrap,
 } from "react-icons/fa";
 import { IconContext } from "react-icons";
 
@@ -63,6 +64,24 @@ export const getIcon = (iconName) => {
       return (
         <IconContext.Provider value={{ color: "#c76494" }}>
           <FaSass className="icon" />
+        </IconContext.Provider>
+      );
+    case "EXPRESS":
+      return (
+        <IconContext.Provider value={{ color: "#61dafb" }}>
+          <FaSass className="icon" />
+        </IconContext.Provider>
+      );
+    case "MONGODB":
+      return (
+        <IconContext.Provider value={{ color: "#13aa52" }}>
+          <FaSass className="icon" />
+        </IconContext.Provider>
+      );
+    case "BOOTSTRAP":
+      return (
+        <IconContext.Provider value={{ color: "#7952b3" }}>
+          <FaBootstrap className="icon" />
         </IconContext.Provider>
       );
     case "GIT":

@@ -12,6 +12,8 @@ import "react-toastify/dist/ReactToastify.css";
 import ContactIconBar from "../components/ContactIconBar";
 //icon
 import { FaWindowClose } from "react-icons/fa";
+//plane svg
+import plane from "../img/plane.svg";
 
 const Contact = () => {
   const [formData, setFormData] = useState({});
@@ -141,7 +143,7 @@ const Contact = () => {
         </form>
       </ContactForm>
       <ContactInfo>
-        {/* <img src={splashImage} alt="Me" /> */}
+        <img src={plane} alt="Me" />
         <ContactIconBar />
       </ContactInfo>
     </ContactLayout>
@@ -198,6 +200,11 @@ const ContactInfo = styled(motion.div)`
   flex-direction: column;
   justify-content: flex-end;
   padding: 4rem 8rem 2rem 0rem;
+
+  img {
+    width: 200px;
+    height: 200px;
+  }
 `;
 
 // const StyledImage = styled(motion.div)`
