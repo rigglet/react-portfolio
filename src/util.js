@@ -31,6 +31,11 @@ import port3 from "./img/portfolio3.png";
 
 import placeholder from "./img/portfolio.png";
 
+import budgetHome from "./img/budgetApp/budgetAppHome.png";
+import budgetBudget from "./img/budgetApp/budgetAppBudget.png";
+import budgetTracker from "./img/budgetApp/budgetAppTracker.png";
+import budgetDash from "./img/budgetApp/budgetAppDash.png";
+
 export const getIcon = (iconName) => {
   //console.log(iconName);
   switch (iconName) {
@@ -132,6 +137,14 @@ export const getImage = (imageName) => {
       return me;
     case "me-bw-blue-tie.png":
       return tie;
+    case "budgetApp/budgetAppHome.png":
+      return budgetHome;
+    case "budgetApp/budgetAppBudget.png":
+      return budgetBudget;
+    case "budgetApp/budgetAppTracker.png":
+      return budgetTracker;
+    case "budgetApp/budgetAppDash.png":
+      return budgetDash;
     default:
       return placeholder;
   }

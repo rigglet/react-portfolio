@@ -51,7 +51,7 @@ const Portfolio = () => {
       <div className="titleBar">
         <h1>Projects</h1>
         <div className="options">
-          <p>Total displayed: {filterProjects().length} </p>
+          <h4>Total displayed: {filterProjects().length} </h4>
           {/* <FaFilter className="filter" /> */}
           {/* <label class="switch">
           <input type="checkbox" onChange={handleTypeChange} />
@@ -98,6 +98,10 @@ const PortfolioLayout = styled(motion.div)`
   }
   .options {
     display: flex;
+    align-items: center;
+    h4 {
+      font-weight: lighter;
+    }
   }
   .nores {
     text-align: center;
