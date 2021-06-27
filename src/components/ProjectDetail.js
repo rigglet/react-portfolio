@@ -1,12 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 //framer motion and styled components
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
 //functions
-import { getIcon, getImage } from "../util";
+import { getIcon } from "../util";
 import { FaWindowClose, FaAngleLeft, FaAngleRight } from "react-icons/fa";
-import { getProject } from "../util";
+import { getDocumentByID } from "../api/api";
 
 const ProjectDetails = ({
   projectClose,
@@ -16,17 +16,30 @@ const ProjectDetails = ({
   handleImageChange,
   currentImage,
 }) => {
-  const project = getProject(pathId);
+  //const project = getProject(pathId);
+  const [project, setProject] = useState({});
+
+  useEffect(() => {
+    async function getProject() {
+      return await getDocumentByID("projects", pathId);
+    }
+
+    getProject().then((results) => {
+      console.log(results);
+      if (results.status === 200) {
+        setProject(results.data);
+      }
+    });
+  }, []);
 
   const handleClose = () => {
     projectClose();
   };
 
-  useEffect(() => {
-    //console.log("useEffect");
-    handleImageChange(getImage(project.mainImg));
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-  //displays warning without the above line
+  // useEffect(() => {
+  //   //console.log("useEffect");
+  //   handleImageChange(getImage(project.screenshots[0].address));
+  // }, []);
 
   return (
     <StyledDetail>
@@ -65,9 +78,9 @@ const ProjectDetails = ({
           <div className="middle">
             {project.screenshots.map((shot) => (
               <img
-                src={getImage(shot)}
+                src={shot.address}
                 alt="screenshot"
-                onClick={() => handleImageChange(getImage(shot))}
+                onClick={() => handleImageChange(shot.address)}
               />
             ))}
           </div>

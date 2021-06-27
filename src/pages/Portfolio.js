@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 //framer motion and styled components
 import { motion } from "framer-motion";
@@ -6,15 +6,41 @@ import styled from "styled-components";
 //components
 import Projects from "../components/Projects";
 //data
-import { technologies, projectData } from "../Data";
+import { getCollection } from "../api/api";
 //import { FaFilter } from "react-icons/fa";
 
 const Portfolio = () => {
   //state
-  const projects = projectData();
+  //const projects = projectData();
+  //const allTech = technologies();
+
+  const [allTech, setAllTech] = useState([]);
+  const [projects, setProjects] = useState([]);
   const [type, setType] = useState("All");
   const [tech, setTech] = useState("ALL");
-  const allTech = technologies();
+
+  useEffect(() => {
+    async function getProjects() {
+      return await getCollection("projects");
+    }
+    async function getTechnologies() {
+      return await getCollection("technologies");
+    }
+
+    getTechnologies().then((results) => {
+      console.log(results);
+      if (results.status === 200) {
+        setAllTech(results.data);
+      }
+    });
+
+    getProjects().then((results) => {
+      console.log(results);
+      if (results.status === 200) {
+        setProjects(results.data);
+      }
+    });
+  }, []);
 
   const handleTypeChange = (e) => {
     //console.log(e.target.value);

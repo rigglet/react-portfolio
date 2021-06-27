@@ -6,7 +6,6 @@ import styled from "styled-components";
 import Project from "./Project";
 import ProjectDetail from "./ProjectDetail";
 import { useLocation, useHistory } from "react-router-dom";
-import { getImage } from "../util";
 
 const Projects = ({ projects }) => {
   const location = useLocation();
@@ -26,20 +25,20 @@ const Projects = ({ projects }) => {
   };
 
   const skipProject = (direction) => {
-    const pos = projects.findIndex((project) => String(project.id) === pathId);
-    if (direction === "FORWARD") {
-      setCurrentImage(getImage(projects[(pos + 1) % projects.length].mainImg));
-      history.push(`/portfolio/${projects[(pos + 1) % projects.length].id}`);
-    }
-    if (direction === "BACK") {
-      if ((pos - 1) % projects.length === -1) {
-        setCurrentImage(getImage(projects[projects.length - 1].mainImg));
-        history.push(`/portfolio/${projects[projects.length - 1].id}`);
-        return;
-      }
-      setCurrentImage(getImage(projects[(pos - 1) % projects.length].mainImg));
-      history.push(`/portfolio/${projects[(pos - 1) % projects.length].id}`);
-    }
+    // const pos = projects.findIndex((project) => String(project.id) === pathId);
+    // if (direction === "FORWARD") {
+    //   setCurrentImage(getImage(projects[(pos + 1) % projects.length].mainImg));
+    //   history.push(`/portfolio/${projects[(pos + 1) % projects.length].id}`);
+    // }
+    // if (direction === "BACK") {
+    //   if ((pos - 1) % projects.length === -1) {
+    //     setCurrentImage(getImage(projects[projects.length - 1].mainImg));
+    //     history.push(`/portfolio/${projects[projects.length - 1].id}`);
+    //     return;
+    //   }
+    //   setCurrentImage(getImage(projects[(pos - 1) % projects.length].mainImg));
+    //   history.push(`/portfolio/${projects[(pos - 1) % projects.length].id}`);
+    // }
   };
 
   return (
@@ -55,6 +54,7 @@ const Projects = ({ projects }) => {
           setCurrentImage={setCurrentImage}
         />
       )}
+
       {projects.map((project) => (
         <Project
           key={project.id}
@@ -63,6 +63,7 @@ const Projects = ({ projects }) => {
           shortDescription={project.shortDescription}
           technologies={project.technologies}
           mainImg={project.mainImg}
+          screenshots={project.screenshots}
         />
       ))}
     </StyledProjects>

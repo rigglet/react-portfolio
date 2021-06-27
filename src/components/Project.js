@@ -6,9 +6,10 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 //functions
-import { getIcon, getImage, getTechAddress } from "../util";
+import { getIcon } from "../util";
+import { productionBaseURL as serverBaseURL } from "../config/config";
 
-const Project = ({ name, shortDescription, id, mainImg, technologies }) => {
+const Project = ({ name, shortDescription, id, screenshots, technologies }) => {
   const enterDetails = () => {
     document.body.style.overflowY = "hidden";
   };
@@ -21,7 +22,7 @@ const Project = ({ name, shortDescription, id, mainImg, technologies }) => {
     >
       <Link to={`/portfolio/${id}`}>
         <img
-          src={getImage(mainImg)}
+          src={`${serverBaseURL()}/public/uploads/${screenshots[0]?.fileName}`}
           alt="project"
           onClick={() => enterDetails()}
         />
@@ -34,12 +35,7 @@ const Project = ({ name, shortDescription, id, mainImg, technologies }) => {
       <Line />
       <StyledIcons>
         {technologies.map((tech) => (
-          <a
-            key={tech}
-            href={getTechAddress(tech)}
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a key={tech} href={tech.address} target="_blank" rel="noreferrer">
             <p key={tech}>{getIcon(tech)}</p>
           </a>
         ))}
