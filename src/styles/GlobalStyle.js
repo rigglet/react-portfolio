@@ -23,6 +23,7 @@ body{
     color: #FFFFFF;
     background: #1b1b1b;
     font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     overflow-x: hidden;
 }
 
@@ -80,12 +81,8 @@ button, input[type='submit']{
 h1{
     color:white;
 }
-.icon {
-    color: white;
-    padding: 0.15rem;
-    height: 50px;
-    width: 50px;
-  }
+
+
   .close {
     cursor: pointer;
     width: 25px;

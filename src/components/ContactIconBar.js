@@ -2,14 +2,13 @@ import { useState, useEffect } from "react";
 //framer motion and styled components
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
+import Icon from "./Icon";
 
-//icons
-import { FaFacebookSquare, FaTwitterSquare, FaLinkedin } from "react-icons/fa";
 //data
 import { getCollection } from "../api/api";
 
-const ContactIconBar = () => {
+const ContactIconBar = ({ size, color }) => {
   const [links, setLinks] = useState([]);
 
   useEffect(() => {
@@ -25,32 +24,21 @@ const ContactIconBar = () => {
     });
   }, []);
 
-  //TODO: add link icon to db and server
-  //TODO: add technology icon to db and server
-  //TODO: flag on images for mainImage
-  //console.log(size);
   return (
     <StyledBar>
       {links.map((link) => (
-        <a key={ uuidv4()}target="_blank" rel="noreferrer" href={link.address}>
-          <FaFacebookSquare className="icon" />
+        <a key={uuidv4()} target="_blank" rel="noreferrer" href={link.address}>
+          <Icon icon={link.icon} color={color} size={size} />
         </a>
       ))}
-      {/* <a target="_blank" rel="noreferrer" href={TwitterLink}>
-        <FaTwitterSquare className="icon" />
-      </a>
-      <a target="_blank" rel="noreferrer" href={LinkedInLink}>
-        <FaLinkedin className="icon" />
-      </a> */}
     </StyledBar>
   );
 };
 
 const StyledBar = styled(motion.div)`
-  /* .icon {
-    height: 100px;
-    width: 100px;
-  } */
+  display: flex;
+  column-gap: 1rem;
+
   a {
     text-decoration: none;
   }

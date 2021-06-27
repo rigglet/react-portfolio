@@ -25,7 +25,7 @@ const Splash = () => {
         <Link to="/portfolio/">
           <button>View Portfolio</button>
         </Link>
-        <ContactIconBar />
+        <ContactIconBar size="40px"/>
       </StyledInfo>
       <StyledImage>
         <img src={splashImage} alt="Me" />

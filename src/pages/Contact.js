@@ -144,7 +144,7 @@ const Contact = () => {
       </ContactForm>
       <ContactInfo>
         <img src={plane} alt="Send message" />
-        <ContactIconBar />
+        <ContactIconBar size="30px" color="whitesmoke"/>
       </ContactInfo>
     </ContactLayout>
   );
