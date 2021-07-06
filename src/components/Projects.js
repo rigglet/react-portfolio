@@ -2,6 +2,8 @@ import { useState } from "react";
 //framer motion and styled components
 import { motion } from "framer-motion";
 import styled from "styled-components";
+//uuid
+import { v4 as uuidv4 } from "uuid";
 //components
 import Project from "./Project";
 import ProjectDetail from "./ProjectDetail";
@@ -56,15 +58,7 @@ const Projects = ({ projects }) => {
       )}
 
       {projects.map((project) => (
-        <Project
-          key={project.id}
-          id={project.id}
-          name={project.projectName}
-          shortDescription={project.shortDescription}
-          technologies={project.technologies}
-          mainImg={project.mainImg}
-          screenshots={project.screenshots}
-        />
+        <Project key={uuidv4()} project={project} />
       ))}
     </StyledProjects>
   );
@@ -72,12 +66,8 @@ const Projects = ({ projects }) => {
 
 const StyledProjects = styled(motion.div)`
   width: 100vw;
-  //margin-top: 3rem;
-  padding: 4rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  column-gap: 1.5rem;
-  row-gap: 3rem;
+  display: flex;
+  justify-content: space-evenly;
 `;
 
 export default Projects;

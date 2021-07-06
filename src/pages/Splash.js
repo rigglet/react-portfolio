@@ -1,87 +1,172 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Redirect } from "react-router-dom";
 //framer motion and styled components
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import styled from "styled-components";
-//images
-import splashImage from "../img/me-bw-blue-tie.png";
-//components
-import ContactIconBar from "../components/ContactIconBar";
+import { splashVariants } from "../styles/animations";
+import Name from "../img/name";
+import Tagline from "../img/tagline";
 
 const Splash = () => {
+  const [finished, setfinished] = useState(false);
+
+  const change = async () => {
+    setTimeout(() => {
+      setfinished(true);
+    }, 8000);
+  };
+
+  useEffect(() => {
+    change();
+  }, [finished]);
+
   return (
-    <SplashLayout>
-      <StyledInfo>
-        <StyledHeader>
-          <h2>Front End</h2>
-          <h1>
-            Web <span>Developer</span>
-          </h1>
-        </StyledHeader>
-        <StyledSubHeader>
-          <h2>Passionate about web development</h2>
-          <h2>With a focus on React</h2>
-          <h2>Hire me today</h2>
-        </StyledSubHeader>
-        <Link to="/portfolio/">
-          <button>View Portfolio</button>
-        </Link>
-        <ContactIconBar size="40px"/>
-      </StyledInfo>
-      <StyledImage>
-        <img src={splashImage} alt="Me" />
-      </StyledImage>
-    </SplashLayout>
+    <AnimatePresence exitBeforeEnter>
+      <SplashLayout variants={splashVariants} exit="exit">
+        {finished ? (
+          <motion.div
+          // variants={splashVariants}
+          // initial="initial"
+          // animate="animate"
+          // exit="exit"
+          >
+            <Redirect to="/home" />
+          </motion.div>
+        ) : (
+          <>
+            <Name />
+            <Tagline />
+          </>
+        )}
+      </SplashLayout>
+    </AnimatePresence>
   );
 };
 
 const SplashLayout = styled(motion.div)`
-  /* position: absolute;
-  top: 7%;
-  left: 0; */
-  display: flex;
-  justify-content: space-between;
-  overflow-y: hidden;
-`;
+  background: #111111;
+  color: whitesmoke;
+  width: 100vw;
+  height: 100vh;
 
-const StyledInfo = styled(motion.div)`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 4rem 0rem 2rem 8rem;
-  button {
-    width: 20vw;
-  }
-`;
+  justify-content: space-evenly;
+  align-items: center;
 
-const StyledHeader = styled(motion.div)`
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  h1 {
-    font-size: 3rem;
-    color: #c6c6c6;
+  @keyframes path-animation {
+    to {
+      stroke-dashoffset: 0;
+    }
   }
-  h2 {
-    font-size: 2.5rem;
-    color: #c6c6c6;
+
+  #neilrigg path:nth-of-type(1) {
+    stroke-dasharray: 1211.67138671875;
+    stroke-dashoffset: 1211.67138671875;
+    animation: path-animation 2s ease-in forwards 0.5s;
   }
-  span {
-    color: #689ed0;
+
+  #neilrigg path:nth-of-type(2) {
+    stroke-dasharray: 524.2862548828125;
+    stroke-dashoffset: 524.2862548828125;
+    animation: path-animation 2s ease-in forwards 3s;
   }
-`;
-const StyledSubHeader = styled(motion.div)`
-  h2 {
-    font-size: 2rem;
-    color: #c6c6c6;
-    font-weight: lighter;
-    line-height: 3rem;
+
+  #neilrigg path:nth-of-type(3) {
+    stroke-dasharray: 491.8753356933594;
+    stroke-dashoffset: 491.8753356933594;
+    animation: path-animation 2s ease-in forwards 3s;
   }
-`;
-const StyledImage = styled(motion.div)`
-  padding-right: 6rem;
-  img {
-    min-width: 100%;
-    height: 100%;
+
+  #neilrigg path:nth-of-type(4) {
+    stroke-dasharray: 429.23455810546875;
+    stroke-dashoffset: 429.23455810546875;
+    animation: path-animation 2s ease-in forwards 3s;
+  }
+
+  #neilrigg path:nth-of-type(5) {
+    stroke-dasharray: 861.8509521484375;
+    stroke-dashoffset: 861.8509521484375;
+    animation: path-animation 2s ease-in forwards 0.5s;
+  }
+
+  #neilrigg path:nth-of-type(6) {
+    stroke-dasharray: 491.8754577636719;
+    stroke-dashoffset: 491.8754577636719;
+    animation: path-animation 2s ease-in forwards 3s;
+  }
+
+  #neilrigg path:nth-of-type(7) {
+    stroke-dasharray: 652.998046875;
+    stroke-dashoffset: 652.998046875;
+    animation: path-animation 2s ease-in forwards 3s;
+  }
+
+  #neilrigg path:nth-of-type(8) {
+    stroke-dasharray: 652.998046875;
+    stroke-dashoffset: 652.998046875;
+    animation: path-animation 2s ease-in forwards 3s;
+  }
+
+  #webdev path:nth-of-type(1) {
+    stroke-dasharray: 534.0951538085938;
+    stroke-dashoffset: 534.0951538085938;
+    animation: path-animation 2s ease-in forwards 5s;
+  }
+  #webdev path:nth-of-type(2) {
+    stroke-dasharray: 343.50872802734375;
+    stroke-dashoffset: 343.50872802734375;
+    animation: path-animation 2s ease-in forwards 5s;
+  }
+  #webdev path:nth-of-type(3) {
+    stroke-dasharray: 374.6701965332031;
+    stroke-dashoffset: 374.6701965332031;
+    animation: path-animation 2s ease-in forwards 5s;
+  }
+  #webdev path:nth-of-type(4) {
+    stroke-dasharray: 374.26702880859375;
+    stroke-dashoffset: 374.26702880859375;
+    animation: path-animation 2s ease-in forwards 5s;
+  }
+  #webdev path:nth-of-type(5) {
+    stroke-dasharray: 343.50927734375;
+    stroke-dashoffset: 343.50927734375;
+    animation: path-animation 2s ease-in forwards 5s;
+  }
+  #webdev path:nth-of-type(6) {
+    stroke-dasharray: 236.832275390625;
+    stroke-dashoffset: 236.832275390625;
+    animation: path-animation 2s ease-in forwards 5s;
+  }
+  #webdev path:nth-of-type(7) {
+    stroke-dasharray: 343.5094909667969;
+    stroke-dashoffset: 343.5094909667969;
+    animation: path-animation 2s ease-in forwards 5s;
+  }
+  #webdev path:nth-of-type(8) {
+    stroke-dasharray: 159.552001953125;
+    stroke-dashoffset: 159.552001953125;
+    animation: path-animation 2s ease-in forwards 5s;
+  }
+  #webdev path:nth-of-type(9) {
+    stroke-dasharray: 289.1817932128906;
+    stroke-dashoffset: 289.1817932128906;
+    animation: path-animation 2s ease-in forwards 5s;
+  }
+  #webdev path:nth-of-type(10) {
+    stroke-dasharray: 387.5021667480469;
+    stroke-dashoffset: 387.5021667480469;
+    animation: path-animation 2s ease-in forwards 5s;
+  }
+  #webdev path:nth-of-type(11) {
+    stroke-dasharray: 343.5091552734375;
+    stroke-dashoffset: 343.5091552734375;
+    animation: path-animation 2s ease-in forwards 5s;
+  }
+  #webdev path:nth-of-type(12) {
+    stroke-dasharray: 164.016357421875;
+    stroke-dashoffset: 164.016357421875;
+    animation: path-animation 2s ease-in forwards 5s;
   }
 `;
 

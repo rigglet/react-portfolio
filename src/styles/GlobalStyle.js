@@ -4,28 +4,125 @@
 //gradient colors - #34CE93
 //#59ADEB
 
+// #1c3b57 0%,
+//       #65617d 25%,
+//       #689ed0 50%,
+//       #c6c6c6 75%,
+//       #f5f5f5
+
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box
+    box-sizing: border-box;
 }
 
-/* html{
-    @media (max-width: 1700px){
-        font-size: 75%;
-    }   
-} */
+html{
+  scroll-behavior: smooth;
+}
 
 body{
-    color: #FFFFFF;
-    background: #1b1b1b;
-    font-family: 'Inter', sans-serif;
+    //color: whitesmoke;
+    background: #111111;
+    //font-family: 'Inter', sans-serif;
     font-family: 'Poppins', sans-serif;
-    overflow-x: hidden;
 }
+
+.app{
+  scroll-snap-type: y mandatory;
+  //scroll-padding: 100px;
+  overflow-y: scroll;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+//section
+.section{
+  scroll-snap-align: end;
+  padding: 1vh 1vw;
+}
+.extraheight{
+  height: 140vh;
+  margin-top: 10vh;
+}
+.fullheight{
+  height: 90vh;
+  margin-top: 10vh;
+}
+.halfheight{
+  height: 50vh;
+  scroll-snap-align: center;
+}
+.twothirdsheight{
+  height: 66vh;
+  scroll-snap-align: center;
+  padding: 0;
+}
+
+.section-dark{
+  background-color: #111111;
+  color: whitesmoke;
+}
+
+.section-light{
+  background-color: whitesmoke;
+  color: #111111;
+}
+
+.gradientLeft {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 20%;
+    background: linear-gradient(
+      90deg,
+      #1c3b57 0%,
+      #65617d 25%,
+      #689ed0 50%,
+      #c6c6c6 75%,
+      #f5f5f5 100%
+    );
+  }
+
+  .gradientRight {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 20%;
+    background: linear-gradient(
+      90deg,
+      #1c3b57 0%,
+      #65617d 25%,
+      #689ed0 50%,
+      #c6c6c6 75%,
+      #f5f5f5 100%
+    );
+    background: linear-gradient(
+      90deg,
+      #f5f5f5 0%,
+      #c6c6c6 25%,
+      #689ed0 50%,
+      #65617d 75%,
+      #1c3b57 100%
+    );
+  }
+
+//h1 heading on some sections
+.section-heading {
+  font-weight: 100;
+  font-size: 28pt;
+}
+
+//h2 sub-heading on some sections
+.section-subheading {
+  font-weight: 100;
+  font-size: 28pt;
+}
+
 
 //scrollbar styling
 /* ::-webkit-scrollbar — the entire scrollbar.
@@ -62,6 +159,46 @@ button, input[type='submit']{
     font-size: 1.2rem;
     cursor: pointer;
     padding: 1rem 3rem;
+    border: 2px solid #689ed0;
+    color: #689ed0;
+    background: transparent;
+    
+    //transition: all 0.5s ease;
+    border-radius: 20px;
+    
+    &:hover{
+      background: #689ed0;
+      background: linear-gradient(90deg, #1c3b57 0%, #65617d 33%, #689ed0 66%, #c6c6c6 100%);
+      color: black;
+      border: 2px solid #689ed0;
+      background-size: 400%;
+      background-position: center;
+      animation: gradient 2s linear infinite alternate;
+    }
+    
+    @keyframes gradient {
+  0% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: 0%;
+  }
+}
+    &:active{
+      transform: translateY(3px);
+      }
+    &:focus {
+      outline-style: none;
+      -moz-outline-style: none;
+    }
+}
+
+/* button, input[type='submit']{
+    //font-weight: bold;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 1rem 3rem;
     border: 3px solid #689ed0;
     background: transparent;
     color: #689ed0;
@@ -75,27 +212,22 @@ button, input[type='submit']{
       outline-style: none;
       -moz-outline-style: none;
     }
-}
+} */
 
-
-h1{
-    color:white;
-}
-
-
-  .close {
-    cursor: pointer;
-    width: 25px;
-    height: 25px;
-    color: white;
-    &:active {
-      transform: translateY(1px);
-      color: #689ed0;
-    }
-    &:hover {
-      color: #689ed0;
-    }
+.close {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  color: white;
+  &:active {
+    transform: translateY(1px);
+    color: #689ed0;
   }
+  &:hover {
+    color: #689ed0;
+  }
+}
+
 .filter {
     color: white;
     padding: 0rem;
@@ -111,32 +243,7 @@ h1{
     background-color: #666666;
     color: white;
   }
-/*
-    h2{
-        font-weight: lighter;
-        font-size: 4rem;
-    }
-    h3{
-        color: white;
-    }
-    h4{
-        font-weight: bold;
-        font-size: 2rem;
-       
-    }
-    a{
-        font-size: 1.1rem;
-    }
-    span{
-        font-weight: bold;
-        color:#23d997;
-    }
-    p{
-        padding: 3rem 0rem;
-        color: #ccc;
-        font-size: 1.4rem;
-        line-height: 150%;
-    } */
+
     
 //React-toastify - Toast close button
 .toastClose{

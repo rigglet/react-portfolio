@@ -1,18 +1,20 @@
 //framer motion and styled components
 import { motion } from "framer-motion";
 import styled from "styled-components";
-
+//uuid
+import { v4 as uuidv4 } from "uuid";
 //Link
 import { Link } from "react-router-dom";
 
 //functions
-import { getIcon } from "../util";
+import Icon from "../components/Icon";
 import { productionBaseURL as serverBaseURL } from "../config/config";
 
-const Project = ({ name, shortDescription, id, screenshots, technologies }) => {
-  const enterDetails = () => {
-    document.body.style.overflowY = "hidden";
-  };
+const Project = ({ project }) => {
+  console.log(project);
+  // const enterDetails = () => {
+  //   document.body.style.overflowY = "hidden";
+  // };
 
   return (
     <StyledCard
@@ -20,23 +22,59 @@ const Project = ({ name, shortDescription, id, screenshots, technologies }) => {
       animate={{ scale: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <Link to={`/portfolio/${id}`}>
+      <Link to={`/portfolio/${project._id}`}>
         <img
-          src={`${serverBaseURL()}/public/uploads/${screenshots[0]?.fileName}`}
+          src={`${serverBaseURL()}/images/${project.screenshots[0]?.fileName}`}
           alt="project"
-          onClick={() => enterDetails()}
+          //onClick={() => enterDetails()}
         />
       </Link>
 
-      <div className="blurb">
-        <h4>{name}</h4>
-        <p>{shortDescription}</p>
+      <div className="links">
+        <div className="icon">
+          <a
+            key={uuidv4()}
+            href={project.githubLink}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Icon
+              key={uuidv4()}
+              icon="FaGithubSquare"
+              color="whitesmoke"
+              size="30px"
+              className="cs"
+            />
+          </a>
+        </div>
+        <div className="icon">
+          <a
+            key={uuidv4()}
+            href={project.website}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Icon key={uuidv4()} icon="HiLink" color="whitesmoke" size="30px" />
+          </a>
+        </div>
       </div>
+
+      <div className="information">
+        <h4 className="project-name">{project.projectName}</h4>
+        <p className="project-description">{project.shortDescription}</p>
+      </div>
+
       <Line />
+
       <StyledIcons>
-        {technologies.map((tech) => (
-          <a key={tech} href={tech.address} target="_blank" rel="noreferrer">
-            <p key={tech}>{getIcon(tech)}</p>
+        {project.technologies.map((tech) => (
+          <a
+            key={uuidv4()}
+            href={tech.address}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Icon key={uuidv4()} icon={tech.icon} color="#313131" size="25px" />
           </a>
         ))}
       </StyledIcons>
@@ -45,40 +83,61 @@ const Project = ({ name, shortDescription, id, screenshots, technologies }) => {
 };
 
 const StyledCard = styled(motion.div)`
-  justify-self: center;
-  box-shadow: 0px 5px 20px rgba(255, 255, 255, 0.2);
-  //margin: 0rem 1rem 3rem 1rem;
   max-width: 300px;
-  border: 0.05rem white solid;
-  text-align: center;
-  border-radius: 1rem;
-  /* cursor: pointer; */
-  overflow: hidden;
-  background-color: transparent;
+  background-color: whitesmoke;
+  border-radius: 0 0 20px 20px;
 
   img {
-    //padding: 0.5rem;
+    cursor: pointer;
     width: 100%;
-    min-height: 25vh;
+    //min-height: 25vh;
     object-fit: scale-down;
     object-position: top;
   }
 
-  .blurb {
-    h4 {
-      color: #689ed0;
-      padding: 0.5rem;
-      font-weight: lighter;
-      text-decoration: none;
+  .links {
+    background-color: #313131;
+    background: #65617d;
+    display: flex;
+    border-bottom: 1px solid #313131;
+    border-top: 1px solid #313131;
+    border-bottom: 1px solid whitesmoke;
+    border-top: 1px solid whitesmoke;
+    align-items: center;
+    justify-content: space-evenly;
+
+    .icon {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      padding: 0.25rem;
+    }
+    .icon:hover {
+      color: #666666;
+    }
+    .icon:nth-of-type(1) {
+      //border-right: 1px solid whitesmoke;
+    }
+  }
+
+  .information {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    color: #313131;
+
+    .project-name {
+      font-size: 14pt;
+      font-weight: 500;
+      //text-decoration: none;
       &:visited,
       &:active {
         text-decoration: none;
       }
     }
-    p {
-      color: white;
-      padding: 1rem;
-      min-height: 20vh;
+    .project-description {
+      /* min-height: 20vh; */
       text-decoration: none;
       &:visited,
       &:active {
@@ -91,13 +150,13 @@ const StyledCard = styled(motion.div)`
 const Line = styled(motion.div)`
   width: 100%;
   height: 1px;
-  background: white;
+  background: #689ed0;
 `;
 
 const StyledIcons = styled(motion.div)`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
   padding: 1rem;
 `;
 

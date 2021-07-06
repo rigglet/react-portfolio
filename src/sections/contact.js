@@ -12,8 +12,9 @@ import "react-toastify/dist/ReactToastify.css";
 import ContactIconBar from "../components/ContactIconBar";
 //icon
 import { FaWindowClose } from "react-icons/fa";
-//plane svg
-import plane from "../img/swoop.svg";
+//SVGs
+import Plane from "../img/plane";
+import Trail from "../img/trail";
 
 const Contact = () => {
   const [formData, setFormData] = useState({});
@@ -39,6 +40,7 @@ const Contact = () => {
         toast.dark("Nothing to report", toastStyle);
     }
   };
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
@@ -49,26 +51,23 @@ const Contact = () => {
         e.target,
         process.env.REACT_APP_USER_ID
       )
-      .then(
-        (result) => {
-          if (result.status === 200) {
-            //sent message
-            //console.log("Message sent");
-            setFormData({
-              user_name: "",
-              user_email: "",
-              user_subject: "",
-              message: "",
-            });
-            notify("SUCCESS");
-          }
-        },
-        (error) => {
-          console.log(error.text);
-          //handle error
-          notify("FAILURE");
+      .then((result) => {
+        if (result.status === 200) {
+          //sent message
+          //console.log("Message sent");
+          setFormData({
+            user_name: "",
+            user_email: "",
+            user_subject: "",
+            message: "",
+          });
+          notify("SUCCESS");
         }
-      );
+      })
+      .catch((err) => {
+        console.log(err);
+        notify("FAILURE");
+      });
   };
 
   const CloseButton = ({ closeToast }) => (
@@ -83,7 +82,7 @@ const Contact = () => {
   };
 
   return (
-    <ContactLayout>
+    <ContactSection className="section fullheight section-dark" id="contact">
       <ContactForm>
         <ToastContainer
           closeButton={CloseButton}
@@ -99,96 +98,102 @@ const Contact = () => {
           draggable={false}
           pauseOnHover
         />
-        <h1>Contact Me</h1>
+        <h1 className="section-heading">Contact Me</h1>
 
         <form autoComplete="off" onSubmit={handleFormSubmit}>
-          <label>Name:</label>
-          <input
-            id="name"
-            autoComplete="off"
-            name="user_name"
-            type="text"
-            value={formData.user_name}
-            onChange={handleChange}
-          />
-          <label>Subject:</label>
-          <input
-            id="subject"
-            autoComplete="off"
-            name="user_subject"
-            type="text"
-            value={formData.user_subject}
-            onChange={handleChange}
-          />
-          <label>Email:</label>
-          <input
-            id="email"
-            autoComplete="off"
-            name="user_email"
-            type="email"
-            value={formData.user_email}
-            onChange={handleChange}
-          />
-          <label htmlFor="message">Message:</label>
-          <textarea
-            id="msg"
-            name="message"
-            autoComplete="off"
-            cols="10"
-            rows="5"
-            value={formData.message}
-            onChange={handleChange}
-          />
+          <div className="formitem">
+            <label>Name:</label>
+            <input
+              id="name"
+              autoComplete="off"
+              name="user_name"
+              type="text"
+              value={formData.user_name}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="formitem">
+            <label>Subject:</label>
+            <input
+              id="subject"
+              autoComplete="off"
+              name="user_subject"
+              type="text"
+              value={formData.user_subject}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="formitem">
+            <label>Email:</label>
+            <input
+              id="email"
+              autoComplete="off"
+              name="user_email"
+              type="email"
+              value={formData.user_email}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="formitem">
+            <label htmlFor="message">Message:</label>
+            <textarea
+              id="msg"
+              name="message"
+              autoComplete="off"
+              cols="15"
+              rows="3"
+              value={formData.message}
+              onChange={handleChange}
+            />
+          </div>
           <input type="submit" value="Send Message" />
         </form>
       </ContactForm>
       <ContactInfo>
-        <img src={plane} alt="Send message" />
-        <ContactIconBar size="30px" color="whitesmoke"/>
+        <div className="contact-images">
+          <Trail />
+          <Plane />
+        </div>
+        <ContactIconBar size="40px" color="whitesmoke" />
       </ContactInfo>
-    </ContactLayout>
+    </ContactSection>
   );
 };
 
-const ContactLayout = styled(motion.div)`
+const ContactSection = styled(motion.div)`
   display: flex;
-  justify-content: space-between;
-  h1 {
-    font-weight: lighter;
-    font-size: 2rem;
-  }
+  justify-content: space-around;
 `;
 
 const ContactForm = styled(motion.div)`
   display: flex;
   flex-direction: column;
-  padding: 4rem 0rem 2rem 8rem;
+  height: 100%;
+
   h1 {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
   form {
-    height: 60vh;
+    row-gap: 0.5rem;
+    height: 80%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    .formitem {
+      display: flex;
+      flex-direction: column;
+      row-gap: 1rem;
+    }
   }
   input,
   textarea {
     width: 30vw;
-    font-family: "inter", sans-serif;
+    font-family: "poppins", sans-serif;
     padding: 0.3rem;
     font-size: 1.3rem;
+    resize: none;
     &:active,
     &:focus {
-      outline-style: none;
-      -moz-outline-style: none;
-    }
-  }
-  button {
-    width: 20vw;
-    &:active,
-    &:focus {
-      outline: none;
       outline-style: none;
       -moz-outline-style: none;
     }
@@ -202,18 +207,14 @@ const ContactInfo = styled(motion.div)`
   align-items: flex-end;
   padding: 8rem 8rem 2rem 0rem;
 
-  img {
+  .contact-images {
+    height: 100%;
     width: 40vw;
-    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 2rem;
   }
 `;
-
-// const StyledImage = styled(motion.div)`
-//   padding-right: 6rem;
-//   img {
-//     min-width: 100%;
-//     height: 100%;
-//   }
-// `;
 
 export default Contact;

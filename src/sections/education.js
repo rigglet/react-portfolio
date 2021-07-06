@@ -4,16 +4,18 @@ import styled from "styled-components";
 
 const Education = () => {
   return (
-    <EducationLayout>
+    <EducationSection
+      className="section twothirdsheight section-dark"
+      id="education"
+    >
       <h1>Education</h1>
-    </EducationLayout>
+    </EducationSection>
   );
 };
 
-const EducationLayout = styled(motion.div)`
+const EducationSection = styled(motion.div)`
   display: flex;
   justify-content: space-between;
-  overflow-y: hidden;
 `;
 
 export default Education;

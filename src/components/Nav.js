@@ -1,68 +1,134 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { navVariants } from "../styles/animations";
+import { HashLink } from "react-router-hash-link";
 
 const Nav = () => {
+  const location = useLocation();
+  console.log(location);
   return (
-    <StyledNav>
-      <StyledLink to="/">
+    <StyledNav
+      variants={navVariants}
+      initial={location.hash === "" ? "initial" : false}
+      animate={location.hash === "" ? "animate" : false}
+    >
+      <Link to="/">
         <h1 className="logo">Neil Rigg</h1>
-      </StyledLink>
-      <StyledMenu>
-        <StyledLink to="/about">
+      </Link>
+      <div className="menu">
+        <HashLink smooth to="/home#home">
+          <h1>Home</h1>
+          {(location.hash === "#home" || location.hash === "") && (
+            <StyledLine />
+          )}
+        </HashLink>
+        <HashLink smooth to="/home#about">
           <h1>About</h1>
-          <StyledLine />
-        </StyledLink>
-        <StyledLink to="/portfolio">
+          {location.hash === "#about" && <StyledLine />}
+        </HashLink>
+        <HashLink smooth to="/home#portfolio">
           <h1>Portfolio</h1>
-        </StyledLink>
-        <StyledLink to="/skills">
+          {location.hash === "#portfolio" && <StyledLine />}
+        </HashLink>
+        <HashLink smooth to="/home#skills">
           <h1>Skills</h1>
-        </StyledLink>
-        <StyledLink to="/education">
+          {location.hash === "#skills" && <StyledLine />}
+        </HashLink>
+        <HashLink smooth to="/home#education">
           <h1>Education</h1>
-        </StyledLink>
-        <StyledLink to="/experience">
+          {location.hash === "#education" && <StyledLine />}
+        </HashLink>
+        <HashLink smooth to="/home#experience">
           <h1>Experience</h1>
-        </StyledLink>
-        <StyledLink to="/contact">
+          {location.hash === "#experience" && <StyledLine />}
+        </HashLink>
+        <HashLink smooth to="/home#contact">
           <h1>Contact</h1>
-        </StyledLink>
-      </StyledMenu>
+          {location.hash === "#contact" && <StyledLine />}
+        </HashLink>
+      </div>
     </StyledNav>
   );
 };
 
 const StyledNav = styled(motion.nav)`
+  position: fixed;
+  z-index: 11;
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #313131;
+  border-bottom: solid 2px #689ed0;
+
+  a {
+    text-decoration: none;
+  }
+
   .logo {
     padding: 0.5rem 2rem;
     font-family: "Lobster", cursive;
     color: white;
     font-size: 2rem;
     font-weight: lighter;
+    text-decoration: none;
   }
-  z-index: 10;
-  /* position: fixed;
-  width: 100vw;
-  height: 8%; */
-  display: flex;
-  justify-content: space-between;
-  background-color: #666666;
-  border-bottom: solid 0.25rem #689ed0;
-`;
 
-const StyledMenu = styled(motion.nav)`
-  display: flex;
-  justify-content: space-between;
-`;
+  .menu {
+    display: flex;
+    justify-content: space-between;
 
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  h1 {
-    padding: 0.75rem 3rem 0.25rem 1.5rem;
-    font-weight: lighter;
-    font-family: "Inter", sans-serif;
-    font-size: 1rem;
+    h1 {
+      color: whitesmoke;
+      padding: 0.75rem 3rem 0.25rem 1.5rem;
+      font-weight: lighter;
+      font-family: "Inter", sans-serif;
+      font-size: 1.2rem;
+      font-variant-caps: all-petite-caps;
+    }
+  }
+
+  //#### RESPONSIVE SECTION ####
+  //320px — 480px: Mobile PORTRAIT
+  @media screen and (max-width: 480px) and (orientation: portrait) {
+    position: static;
+    padding: 0.5rem;
+    display: flex;
+    width: 100vw;
+  }
+
+  //320px — 480px: Mobile LANDSCAPE
+  @media screen and (max-width: 850px) and (orientation: landscape) {
+    position: static;
+    padding: 0.5rem;
+    display: flex;
+    width: 100vw;
+  }
+
+  //481px — 768px: iPads, Tablets
+  @media screen and (min-width: 481px) and (max-width: 769px) and (orientation: portrait) {
+  }
+  //481px — 768px: iPads, Tablets
+  //@media screen and (min-width: 481px) and (max-width: 769px) and (orientation: landscape) {}
+  //769px — 1024px: Small screens, laptops
+  //@media screen and (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {}
+  //769px — 1024px: Small screens, laptops
+  //@media screen and (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {}
+  //1025px — 1200px: Desktops, large screens
+  @media screen and (min-width: 1024px) and (max-width: 1200px) and (orientation: portrait) {
+  }
+  //1025px — 1200px: Desktops, large screens
+  //@media screen and (min-width: 1024px) and (max-width: 1200px) and (orientation: landscape) {}
+  //1201px and more —  Extra large screens, TV
+  //@media screen and (min-width: 1201px) and (max-width: 1500px) and (orientation: portrait) {}
+  //1201px and more —  Extra large screens, TV
+  //@media screen and (min-width: 1201px) and (max-width: 1500px) and (orientation: landscape) {}
+  //1501px and more —  Extra large screens, TV
+  //@media screen and (min-width: 1501px) and (orientation: portrait) {}
+  //1501px and more —  Extra large screens, TV
+  @media screen and (min-width: 1921px) and (orientation: landscape) {
   }
 `;
 
