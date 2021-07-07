@@ -73,8 +73,8 @@ const StyledNav = styled(motion.nav)`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #313131;
-  border-bottom: solid 1px #689ed0;
+  background-color: var(--color-nav-background);
+  border-bottom: solid 1px var(--color-nav-hover);
 
   a {
     text-decoration: none;

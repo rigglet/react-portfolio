@@ -5,22 +5,26 @@ import StyledLine from "../styles/styledLine";
 
 const Education = () => {
   return (
-    <EducationSection
-      className="section fullheight section-dark"
-      id="education"
-    >
-      <div className="header">
-        <h1 className="section-heading light">Education</h1>
-        <StyledLine height="6px" width="100%" bgColor="#111111" />
+    <EducationSection className="section-dark fullheight" id="education">
+      <div className="container-dark">
+        <div className="content">
+          <div className="header">
+            <h1 className="section-heading heading-light">Education</h1>
+            <StyledLine height="6px" width="100%" bgColor="#111111" />
+          </div>
+        </div>
       </div>
     </EducationSection>
   );
 };
 
 const EducationSection = styled(motion.div)`
-  display: flex;
-  //flex-direction: column;
-  justify-content: space-around;
+  .content {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 93vh;
+  }
 `;
 
 export default Education;

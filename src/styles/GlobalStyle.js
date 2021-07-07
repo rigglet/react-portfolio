@@ -4,12 +4,6 @@
 //gradient colors - #34CE93
 //#59ADEB
 
-// #1c3b57 0%,
-//       #65617d 25%,
-//       #689ed0 50%,
-//       #c6c6c6 75%,
-//       #f5f5f5
-
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
@@ -20,6 +14,37 @@ const GlobalStyle = createGlobalStyle`
 }
 
 html{
+  --color-dark-background: #111111; 
+  --color-light-background: #f5f5f5;
+  --color-dark-text: #111111;
+  --color-light-text: #f5f5f5;
+
+  --color-nav-background: #313131;
+  --color-nav-hover: #689ed0;
+
+  --section-light-border: #689ed0;
+
+  --header-color-light: #f5f5f5;
+  --header-color-dark: #313131;
+
+  --gradient-ltr: linear-gradient(
+      90deg,
+      #1c3b57 0%,
+      #65617d 25%,
+      #689ed0 50%,
+      #c6c6c6 75%,
+      #f5f5f5 100%
+    );
+  
+  --gradient-rtl: linear-gradient(
+      90deg,
+      #f5f5f5 0%,
+      #c6c6c6 25%,
+      #689ed0 50%,
+      #65617d 75%,
+      #1c3b57 100%
+    );
+  
   scroll-behavior: smooth;
 }
 
@@ -39,10 +64,15 @@ body{
 }
 
 //section
-.section{
+.section-light {
   scroll-snap-align: end;
-  padding: 1vh 1vw;
+  display: flex;
+  align-items: center;
 }
+.section-dark {
+  scroll-snap-align: end;
+}
+
 .fullheight{
   height: 93vh;
   margin-top: 7vh;
@@ -57,14 +87,41 @@ body{
   padding: 0;
 }
 
-.section-dark{
-  background-color: #111111;
-  color: whitesmoke;
+.container-dark {
+  background-color: var(--color-dark-background);
+  color: var(--color-light-text);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100%;
+  padding: 2rem;
 }
 
-.section-light{
-  background-color: whitesmoke;
-  color: #111111;
+.container-light{
+  background-color: var(--color-light-background);
+  color: var(--color-dark-text);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: 90%;
+  border: 6px;
+  border-color: var(--section-light-border);
+  padding: 3rem;
+}
+.container-left {
+  border-style: solid solid solid none;
+  border-radius: 0 100px 100px 0;
+  justify-self: flex-start;
+}
+
+.container-right {
+  border-radius: 100px 0 0 100px;
+  border-style: solid none solid solid;
+  justify-self: flex-end;
 }
 
 .gradientLeft {
@@ -73,14 +130,7 @@ body{
     left: 0;
     height: 100%;
     width: 20%;
-    background: linear-gradient(
-      90deg,
-      #1c3b57 0%,
-      #65617d 25%,
-      #689ed0 50%,
-      #c6c6c6 75%,
-      #f5f5f5 100%
-    );
+    background: var(--gradient-ltr)
   }
 
   .gradientRight {
@@ -89,22 +139,7 @@ body{
     right: 0;
     height: 100%;
     width: 20%;
-    background: linear-gradient(
-      90deg,
-      #1c3b57 0%,
-      #65617d 25%,
-      #689ed0 50%,
-      #c6c6c6 75%,
-      #f5f5f5 100%
-    );
-    background: linear-gradient(
-      90deg,
-      #f5f5f5 0%,
-      #c6c6c6 25%,
-      #689ed0 50%,
-      #65617d 75%,
-      #1c3b57 100%
-    );
+    background: var(--gradient-rtl)
   }
 
 //h1 heading on some sections
@@ -115,11 +150,11 @@ body{
   padding: 0 1rem;
 }
 
-.light{
-  color: #f5f5f5;
+.heading-light{
+  color: var(--header-color-light);
 }
-.dark{
-  color: #313131;
+.heading-dark{
+  color: var(--header-color-dark);
 }
 
 //h2 sub-heading on some sections

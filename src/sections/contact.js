@@ -83,7 +83,7 @@ const Contact = () => {
   };
 
   return (
-    <ContactSection className="section fullheight section-dark" id="contact">
+    <ContactSection className="section-dark fullheight" id="contact">
       <ToastContainer
         closeButton={CloseButton}
         // closeButton={false}
@@ -99,71 +99,73 @@ const Contact = () => {
         pauseOnHover
       />
 
-      <div className="container">
-        <div className="header">
-          <h1 className="section-heading">Contact Me</h1>
-          <StyledLine height="6px" width="100%" bgColor="#111111" />
-        </div>
-
-        <ContactInfo>
-          <form autoComplete="off" onSubmit={handleFormSubmit}>
-            <div className="formitem">
-              <label>Name:</label>
-              <input
-                id="name"
-                autoComplete="off"
-                name="user_name"
-                type="text"
-                value={formData.user_name}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="formitem">
-              <label>Subject:</label>
-              <input
-                id="subject"
-                autoComplete="off"
-                name="user_subject"
-                type="text"
-                value={formData.user_subject}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="formitem">
-              <label>Email:</label>
-              <input
-                id="email"
-                autoComplete="off"
-                name="user_email"
-                type="email"
-                value={formData.user_email}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="formitem">
-              <label htmlFor="message">Message:</label>
-              <textarea
-                id="msg"
-                name="message"
-                autoComplete="off"
-                cols="15"
-                rows="3"
-                value={formData.message}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="button">
-              <input type="submit" value="Send Message" />
-            </div>
-          </form>
-
-          <div className="contact-images">
-            <Trail />
-            <Plane />
+      <div className="container-dark">
+        <div className="content">
+          <div className="header">
+            <h1 className="section-heading heading-light">Contact Me</h1>
+            <StyledLine height="6px" width="100%" bgColor="#111111" />
           </div>
-        </ContactInfo>
-        <div className="contactBar">
-          <ContactIconBar className="cib" size="40px" color="whitesmoke" />
+
+          <ContactInfo>
+            <form autoComplete="off" onSubmit={handleFormSubmit}>
+              <div className="formitem">
+                <label>Name:</label>
+                <input
+                  id="name"
+                  autoComplete="off"
+                  name="user_name"
+                  type="text"
+                  value={formData.user_name}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="formitem">
+                <label>Subject:</label>
+                <input
+                  id="subject"
+                  autoComplete="off"
+                  name="user_subject"
+                  type="text"
+                  value={formData.user_subject}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="formitem">
+                <label>Email:</label>
+                <input
+                  id="email"
+                  autoComplete="off"
+                  name="user_email"
+                  type="email"
+                  value={formData.user_email}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="formitem">
+                <label htmlFor="message">Message:</label>
+                <textarea
+                  id="msg"
+                  name="message"
+                  autoComplete="off"
+                  cols="15"
+                  rows="3"
+                  value={formData.message}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="button">
+                <input type="submit" value="Send Message" />
+              </div>
+            </form>
+
+            <div className="contact-images">
+              <Trail />
+              <Plane />
+            </div>
+          </ContactInfo>
+          <div className="contactBar">
+            <ContactIconBar className="cib" size="40px" color="whitesmoke" />
+          </div>
         </div>
       </div>
     </ContactSection>
@@ -171,22 +173,22 @@ const Contact = () => {
 };
 
 const ContactSection = styled(motion.div)`
-  .container {
-    padding: 2rem;
+  .content {
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    height: 100%;
-    .header {
-      align-self: flex-start;
-      margin-left: 5%;
-    }
-    .contactBar {
-      width: 90%;
-      display: flex;
-      justify-content: flex-end;
-    }
+    justify-content: space-around;
+  }
+  .header {
+    align-self: flex-start;
+    margin-left: 5%;
+  }
+  .contactBar {
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
   }
 `;
 
@@ -195,7 +197,6 @@ const ContactInfo = styled(motion.div)`
   justify-content: space-around;
   width: 100%;
   height: 60vh;
-
   form {
     display: flex;
     flex-direction: column;

@@ -21,65 +21,66 @@ const Home = () => {
   return (
     <HomeSection
       id="home"
-      className="section fullheight section-dark"
+      className="section-dark fullheight"
       variants={homeVariants}
       initial="initial"
       animate="animate"
       //exit="exit"
     >
-      <div className="container">
-        <StyledInfo>
-          <StyledHeader
-            variants={headerVariants}
-            initial="initial"
-            animate="animate"
-          >
-            <h2 className="lighter">I am a</h2>
-            <h2>Front End</h2>
-            <h1>
-              Web <span>Developer</span>
-            </h1>
-          </StyledHeader>
-          <StyledSubHeader
-            variants={subheaderVariants}
-            initial="initial"
-            animate="animate"
-          >
-            <h2>Passionate about web development</h2>
-            <h2>With a focus on React</h2>
-            <h2>Hire me today</h2>
-          </StyledSubHeader>
-          <Link to="/portfolio/">
-            <motion.button
-              variants={buttonVariants}
+      <div className="container-dark">
+        <div className="content">
+          <StyledInfo>
+            <StyledHeader
+              variants={headerVariants}
               initial="initial"
               animate="animate"
             >
-              View Portfolio
-            </motion.button>
-          </Link>
-          {/* <ContactIconBar
-          size="40px"
-        /> */}
-        </StyledInfo>
-        <StyledImage
-          variants={imageVariants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-        >
-          <img src={codingImage} alt="Coding" />
-        </StyledImage>
+              <h2 className="lighter">I am a</h2>
+              <h2>Front End</h2>
+              <h1>
+                Web <span>Developer</span>
+              </h1>
+            </StyledHeader>
+            <StyledSubHeader
+              variants={subheaderVariants}
+              initial="initial"
+              animate="animate"
+            >
+              <h2>Passionate about web development</h2>
+              <h2>With a focus on React</h2>
+              <h2>Hire me today</h2>
+            </StyledSubHeader>
+            <Link to="/portfolio/">
+              <motion.button
+                variants={buttonVariants}
+                initial="initial"
+                animate="animate"
+              >
+                View Portfolio
+              </motion.button>
+            </Link>
+          </StyledInfo>
+          <StyledImage
+            variants={imageVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+          >
+            <img src={codingImage} alt="Coding" />
+          </StyledImage>
+        </div>
       </div>
     </HomeSection>
   );
 };
 
 const HomeSection = styled(motion.div)`
-  .container {
+  .content {
     display: flex;
     justify-content: space-between;
     height: 100%;
+    width: 100%;
+    padding: 4rem;
   }
 `;
 
@@ -87,10 +88,6 @@ const StyledInfo = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 4rem 0rem 2rem 8rem;
-  button {
-    //width: 20vw;
-  }
 `;
 
 const StyledHeader = styled(motion.div)`
@@ -126,7 +123,6 @@ const StyledSubHeader = styled(motion.div)`
 `;
 
 const StyledImage = styled(motion.div)`
-  //border: 1px solid red;
   display: flex;
   align-items: center;
   justify-content: center;

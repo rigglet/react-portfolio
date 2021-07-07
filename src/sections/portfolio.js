@@ -35,55 +35,48 @@ const Portfolio = () => {
   });
 
   return (
-    <PortfolioSection
-      className="section fullheight section-dark"
-      id="portfolio"
-    >
-      {/* <div className="gradientLeft" /> */}
-
-      <div className="container">
-        <div className="header">
-          <h1 className="section-heading">Featured Projects</h1>
-          <StyledLine height="6px" width="100%" bgColor="#111111" />
+    <PortfolioSection className="section-dark fullheight" id="portfolio">
+      <div className="container-dark">
+        <div className="content">
+          <div className="header">
+            <h1 className="section-heading heading-light">Featured Projects</h1>
+            <StyledLine height="6px" width="100%" bgColor="#111111" />
+          </div>
+          <div className="projects">
+            {filteredProjects.length > 0 ? (
+              <Projects projects={filteredProjects} />
+            ) : (
+              <h1 className="noresult">Just working on it...</h1>
+            )}
+          </div>
+          <motion.button
+            variants={buttonVariants}
+            initial="initial"
+            animate="animate"
+          >
+            Explore Full Portfolio
+          </motion.button>
         </div>
-        <div className="projects">
-          {filteredProjects.length > 0 ? (
-            <Projects projects={filteredProjects} />
-          ) : (
-            <h1 className="noresult">Just working on it...</h1>
-          )}
-        </div>
-        <motion.button
-          variants={buttonVariants}
-          initial="initial"
-          animate="animate"
-        >
-          Explore Full Portfolio
-        </motion.button>
       </div>
     </PortfolioSection>
   );
 };
 
 const PortfolioSection = styled(motion.div)`
-  //display: flex;
-  //position: relative;
-  .container {
-    padding: 1rem;
+  .content {
     height: 100%;
-    background: #111111;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-
-    .projects {
-      width: 100%;
-    }
-    .noresult {
-      text-align: center;
-      font-weight: lighter;
-    }
+  }
+  .projects {
+    width: 100%;
+  }
+  .noresult {
+    text-align: center;
+    font-weight: lighter;
   }
 `;
 
