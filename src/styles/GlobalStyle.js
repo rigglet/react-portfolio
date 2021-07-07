@@ -43,13 +43,9 @@ body{
   scroll-snap-align: end;
   padding: 1vh 1vw;
 }
-.extraheight{
-  height: 140vh;
-  margin-top: 10vh;
-}
 .fullheight{
-  height: 90vh;
-  margin-top: 10vh;
+  height: 93vh;
+  margin-top: 7vh;
 }
 .halfheight{
   height: 50vh;
@@ -113,8 +109,17 @@ body{
 
 //h1 heading on some sections
 .section-heading {
-  font-weight: 100;
-  font-size: 28pt;
+  font-weight: 200;
+  font-size: 20pt;
+  cursor: default;
+  padding: 0 1rem;
+}
+
+.light{
+  color: #f5f5f5;
+}
+.dark{
+  color: #313131;
 }
 
 //h2 sub-heading on some sections
@@ -162,7 +167,6 @@ button, input[type='submit']{
     border: 2px solid #689ed0;
     color: #689ed0;
     background: transparent;
-    
     //transition: all 0.5s ease;
     border-radius: 20px;
     
@@ -174,16 +178,17 @@ button, input[type='submit']{
       background-size: 400%;
       background-position: center;
       animation: gradient 2s linear infinite alternate;
+      box-shadow: 0px 0px 20px rgba(101, 97, 125, 1); 
     }
     
     @keyframes gradient {
-  0% {
-    background-position: 100%;
-  }
-  100% {
-    background-position: 0%;
-  }
-}
+      0% {
+        background-position: 100%;
+      }
+      100% {
+        background-position: 0%;
+      }
+    }
     &:active{
       transform: translateY(3px);
       }
@@ -229,38 +234,38 @@ button, input[type='submit']{
 }
 
 .filter {
-    color: white;
-    padding: 0rem;
-    height: 30px;
-    width: 30px;
-  }
-  select {
-    outline-style: none;
-    -moz-outline-style: none;
-    padding: 0.3rem;
-    margin-left: 2rem;
-    font-size: 1rem;
-    background-color: #666666;
-    color: white;
-  }
+  color: white;
+  padding: 0rem;
+  height: 30px;
+  width: 30px;
+}
+select {
+  outline-style: none;
+  -moz-outline-style: none;
+  padding: 0.3rem;
+  margin-left: 2rem;
+  font-size: 1rem;
+  background-color: #666666;
+  color: white;
+}
 
     
 //React-toastify - Toast close button
 .toastClose{
-    color: #689ed0;
-    cursor: pointer;
-    height: 25px;
-    width: 25px;
-    &:hover{
-        color: transparent;
-        color: grey;
-    }
-    &:active,
-    &:focus {
-      outline-style: none;
-      -moz-outline-style: none;
-      transform: translateY(1px);
-    }
+  color: #689ed0;
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
+  &:hover{
+      color: transparent;
+      color: grey;
+  }
+  &:active,
+  &:focus {
+    outline-style: none;
+    -moz-outline-style: none;
+    transform: translateY(1px);
+  }
 }
     
     //SLIDER

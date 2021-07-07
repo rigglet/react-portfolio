@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import StyledLine from "../styles/styledLine";
 import { Link, useLocation } from "react-router-dom";
 import { navVariants } from "../styles/animations";
 import { HashLink } from "react-router-hash-link";
@@ -20,32 +21,44 @@ const Nav = () => {
         <HashLink smooth to="/home#home">
           <h1>Home</h1>
           {(location.hash === "#home" || location.hash === "") && (
-            <StyledLine />
+            <StyledLine height="4px" width="100%" bgColor="#313131" />
           )}
         </HashLink>
         <HashLink smooth to="/home#about">
           <h1>About</h1>
-          {location.hash === "#about" && <StyledLine />}
+          {location.hash === "#about" && (
+            <StyledLine height="4px" width="100%" bgColor="#313131" />
+          )}
         </HashLink>
         <HashLink smooth to="/home#portfolio">
           <h1>Portfolio</h1>
-          {location.hash === "#portfolio" && <StyledLine />}
+          {location.hash === "#portfolio" && (
+            <StyledLine height="4px" width="100%" bgColor="#313131" />
+          )}
         </HashLink>
         <HashLink smooth to="/home#skills">
           <h1>Skills</h1>
-          {location.hash === "#skills" && <StyledLine />}
+          {location.hash === "#skills" && (
+            <StyledLine height="4px" width="100%" bgColor="#313131" />
+          )}
         </HashLink>
         <HashLink smooth to="/home#education">
           <h1>Education</h1>
-          {location.hash === "#education" && <StyledLine />}
+          {location.hash === "#education" && (
+            <StyledLine height="4px" width="100%" bgColor="#313131" />
+          )}
         </HashLink>
         <HashLink smooth to="/home#experience">
           <h1>Experience</h1>
-          {location.hash === "#experience" && <StyledLine />}
+          {location.hash === "#experience" && (
+            <StyledLine height="4px" width="100%" bgColor="#313131" />
+          )}
         </HashLink>
         <HashLink smooth to="/home#contact">
           <h1>Contact</h1>
-          {location.hash === "#contact" && <StyledLine />}
+          {location.hash === "#contact" && (
+            <StyledLine height="4px" width="100%" bgColor="#313131" />
+          )}
         </HashLink>
       </div>
     </StyledNav>
@@ -56,12 +69,12 @@ const StyledNav = styled(motion.nav)`
   position: fixed;
   z-index: 11;
   width: 100vw;
-  height: 10vh;
+  height: 7vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #313131;
-  border-bottom: solid 2px #689ed0;
+  border-bottom: solid 1px #689ed0;
 
   a {
     text-decoration: none;
@@ -79,14 +92,21 @@ const StyledNav = styled(motion.nav)`
   .menu {
     display: flex;
     justify-content: space-between;
+    margin-right: 2rem;
 
     h1 {
       color: whitesmoke;
-      padding: 0.75rem 3rem 0.25rem 1.5rem;
+      //padding: 0.75rem 3rem 0.25rem 1.5rem;
+      padding: 0.15rem 1rem;
       font-weight: lighter;
       font-family: "Inter", sans-serif;
       font-size: 1.2rem;
       font-variant-caps: all-petite-caps;
+      text-align: center;
+
+      &:hover {
+        color: #689ed0;
+      }
     }
   }
 
@@ -130,12 +150,6 @@ const StyledNav = styled(motion.nav)`
   //1501px and more —  Extra large screens, TV
   @media screen and (min-width: 1921px) and (orientation: landscape) {
   }
-`;
-
-const StyledLine = styled.div`
-  background: #689ed0;
-  height: 3px;
-  width: 90%;
 `;
 
 export default Nav;

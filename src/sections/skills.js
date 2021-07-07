@@ -1,12 +1,16 @@
 //framer motion and styled components
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import StyledLine from "../styles/styledLine";
 
 const Skills = () => {
   return (
-    <SkillsSection className="section twothirdsheight" id="skills">
+    <SkillsSection className="section fullheight" id="skills">
       <div className="container section-light">
-        {/* <h1>Skills</h1> */}
+        <div className="header">
+          <h1 className="section-heading dark">Skills</h1>
+          <StyledLine height="6px" width="100%" bgColor="#f5f5f5" />
+        </div>
         <div className="content">
           <div className="gradientRight" />
           <article>Got the skills to pay the bills</article>
@@ -17,30 +21,25 @@ const Skills = () => {
 };
 
 const SkillsSection = styled(motion.div)`
-  background: #111111;
+  //background: #111111;
   display: flex;
   justify-content: flex-end;
-  z-index: 29;
+  align-items: center;
+
   .container {
     border: 6px;
     border-color: #689ed0;
     border-style: solid none solid solid;
     position: relative;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 90%;
-    height: 100%;
+    height: 90%;
     border-radius: 100px 0 0 100px;
+    padding: 2rem;
 
-    h1 {
-      z-index: 10;
-      position: absolute;
-      font-family: "Lato", sans-serif;
-      font-weight: 500;
-      font-size: 32pt;
-      text-transform: uppercase;
-    }
     .content {
       position: static;
       display: flex;

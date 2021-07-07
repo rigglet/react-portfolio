@@ -19,18 +19,18 @@ const ProjectDetails = ({
   //const project = getProject(pathId);
   const [project, setProject] = useState({});
 
-  useEffect(() => {
-    async function getProject() {
-      return await getDocumentByID("projects", pathId);
-    }
+  // useEffect(() => {
+  //   async function getProject() {
+  //     return await getDocumentByID("projects", pathId);
+  //   }
 
-    getProject().then((results) => {
-      console.log(results);
-      if (results.status === 200) {
-        setProject(results.data);
-      }
-    });
-  }, []);
+  //   getProject().then((results) => {
+  //     console.log(results);
+  //     if (results.status === 200) {
+  //       setProject(results.data);
+  //     }
+  //   });
+  // }, []);
 
   const handleClose = () => {
     projectClose();
@@ -43,7 +43,7 @@ const ProjectDetails = ({
 
   return (
     <StyledDetail>
-      <StyledCard>
+      {/* <StyledCard>
         <StyledHeaderSection>
           <div className="closediv">
             <FaWindowClose className="close" onClick={handleClose} />
@@ -115,12 +115,13 @@ const ProjectDetails = ({
             ""
           )}
         </StyledRightSection>
-      </StyledCard>
+      </StyledCard> */}
     </StyledDetail>
   );
 };
 
 const StyledDetail = styled(motion.div)`
+  z-index: 3;
   position: absolute;
   top: 0;
   left: 0;

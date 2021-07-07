@@ -7,14 +7,11 @@ import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
 
 //functions
-import Icon from "../components/Icon";
+import Icon from "./Icon";
 import { productionBaseURL as serverBaseURL } from "../config/config";
 
-const Project = ({ project }) => {
+const ProjectCard = ({ project, setShowProjectDetails }) => {
   console.log(project);
-  // const enterDetails = () => {
-  //   document.body.style.overflowY = "hidden";
-  // };
 
   return (
     <StyledCard
@@ -22,13 +19,28 @@ const Project = ({ project }) => {
       animate={{ scale: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <Link to={`/portfolio/${project._id}`}>
-        <img
-          src={`${serverBaseURL()}/images/${project.screenshots[0]?.fileName}`}
-          alt="project"
-          //onClick={() => enterDetails()}
-        />
-      </Link>
+      <div className="image-container">
+        <div className="overlay" onClick={() => setShowProjectDetails(true)}>
+          {/* <h2>More details...</h2> */}
+          <h2>Click for details...</h2>
+          <Icon
+            key={uuidv4()}
+            icon="MdUnfoldMore"
+            color="white"
+            size="100px"
+            className="cs"
+          />
+        </div>
+
+        <Link to={`/portfolio/${project._id}`}>
+          <img
+            src={`${serverBaseURL()}/images/${
+              project.screenshots[0]?.fileName
+            }`}
+            alt="project"
+          />
+        </Link>
+      </div>
 
       <div className="links">
         <div className="icon">
@@ -41,7 +53,7 @@ const Project = ({ project }) => {
             <Icon
               key={uuidv4()}
               icon="FaGithubSquare"
-              color="whitesmoke"
+              color="#65617d"
               size="30px"
               className="cs"
             />
@@ -54,7 +66,12 @@ const Project = ({ project }) => {
             target="_blank"
             rel="noreferrer"
           >
-            <Icon key={uuidv4()} icon="HiLink" color="whitesmoke" size="30px" />
+            <Icon
+              key={uuidv4()}
+              icon="HiLink"
+              color="rgb(101, 97, 125)"
+              size="30px"
+            />
           </a>
         </div>
       </div>
@@ -74,7 +91,12 @@ const Project = ({ project }) => {
             target="_blank"
             rel="noreferrer"
           >
-            <Icon key={uuidv4()} icon={tech.icon} color="#313131" size="25px" />
+            <Icon
+              key={uuidv4()}
+              icon={tech.icon}
+              color={tech.color}
+              size="25px"
+            />
           </a>
         ))}
       </StyledIcons>
@@ -83,21 +105,51 @@ const Project = ({ project }) => {
 };
 
 const StyledCard = styled(motion.div)`
-  max-width: 300px;
+  max-width: 400px;
+  margin: 2rem;
   background-color: whitesmoke;
   border-radius: 0 0 20px 20px;
+  //box-shadow: 0px 5px 20px rgba(101, 97, 125, 1);
+  //box-shadow: 0px 0px 150px rgba(101, 97, 125, 1);
 
-  img {
-    cursor: pointer;
-    width: 100%;
-    //min-height: 25vh;
-    object-fit: scale-down;
-    object-position: top;
+  .image-container {
+    position: relative;
+    max-height: 100%;
+
+    .overlay {
+      z-index: 1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(101, 97, 125, 75%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: 0.5s ease-in-out;
+    }
+    .overlay:hover {
+      opacity: 100;
+      transition: 0.5s ease-in-out;
+    }
+
+    img {
+      cursor: pointer;
+      width: 100%;
+      //min-height: 25vh;
+      object-fit: scale-down;
+      object-position: top;
+    }
   }
 
   .links {
     background-color: #313131;
     background: #65617d;
+    background: whitesmoke;
     display: flex;
     border-bottom: 1px solid #313131;
     border-top: 1px solid #313131;
@@ -128,21 +180,23 @@ const StyledCard = styled(motion.div)`
     color: #313131;
 
     .project-name {
+      padding: 0.5rem;
       font-size: 14pt;
       font-weight: 500;
       //text-decoration: none;
-      &:visited,
+      /* &:visited,
       &:active {
         text-decoration: none;
-      }
+      } */
     }
     .project-description {
+      padding: 1rem;
       /* min-height: 20vh; */
       text-decoration: none;
-      &:visited,
+      /* &:visited,
       &:active {
         text-decoration: none;
-      }
+      } */
     }
   }
 `;
@@ -160,4 +214,4 @@ const StyledIcons = styled(motion.div)`
   padding: 1rem;
 `;
 
-export default Project;
+export default ProjectCard;

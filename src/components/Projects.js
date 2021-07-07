@@ -5,7 +5,7 @@ import styled from "styled-components";
 //uuid
 import { v4 as uuidv4 } from "uuid";
 //components
-import Project from "./Project";
+import ProjectCard from "./ProjectCard";
 import ProjectDetail from "./ProjectDetail";
 import { useLocation, useHistory } from "react-router-dom";
 
@@ -16,6 +16,7 @@ const Projects = ({ projects }) => {
 
   //state
   const [currentImage, setCurrentImage] = useState();
+  const [showProjectDetails, setShowProjectDetails] = useState(false);
 
   const handleImageChange = (image) => {
     setCurrentImage(image);
@@ -45,7 +46,7 @@ const Projects = ({ projects }) => {
 
   return (
     <StyledProjects>
-      {pathId && (
+      {showProjectDetails && (
         <ProjectDetail
           projectClose={projectClose}
           skipProject={skipProject}
@@ -58,16 +59,22 @@ const Projects = ({ projects }) => {
       )}
 
       {projects.map((project) => (
-        <Project key={uuidv4()} project={project} />
+        <ProjectCard
+          key={uuidv4()}
+          project={project}
+          setShowProjectDetails={setShowProjectDetails}
+        />
       ))}
     </StyledProjects>
   );
 };
 
 const StyledProjects = styled(motion.div)`
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: space-evenly;
+  //overflow-x: scroll;
+  //flex-wrap: wrap;
 `;
 
 export default Projects;

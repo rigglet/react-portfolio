@@ -8,7 +8,7 @@ import { aboutVariants } from "../styles/animations";
 const About = () => {
   return (
     <AboutSection
-      className="section twothirdsheight"
+      className="section fullheight"
       id="about"
       variants={aboutVariants}
       initial="initial"
@@ -31,6 +31,7 @@ const AboutSection = styled(motion.div)`
   background: #111111;
   display: flex;
   justify-content: flex-start;
+  align-items: center;
 
   .container {
     border: 6px;
@@ -40,8 +41,8 @@ const AboutSection = styled(motion.div)`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 95%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
     border-radius: 0 100px 100px 0;
     h1 {
       z-index: 10;
