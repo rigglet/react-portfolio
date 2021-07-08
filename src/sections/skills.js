@@ -47,9 +47,15 @@ const Skills = () => {
   const frontend = technologies.filter((t) => t.type === "frontend");
   const backend = technologies.filter((t) => t.type === "backend");
   const database = technologies.filter((t) => t.type === "database");
+  const infrastructure = technologies.filter(
+    (t) => t.type === "infrastructure"
+  );
   const other = technologies.filter(
     (t) =>
-      t.type !== "frontend" && t.type !== "backend" && t.type !== "database"
+      t.type !== "frontend" &&
+      t.type !== "backend" &&
+      t.type !== "database" &&
+      t.type !== "infrastructure"
   );
 
   return (
@@ -114,6 +120,30 @@ const Skills = () => {
                 </div>
                 <div className="selection">
                   {database.map((technology) => {
+                    return (
+                      <div className="skill-item" key={uuidv4()}>
+                        <h4>{technology.name}</h4>
+                        <Icon
+                          icon={technology.icon}
+                          color={technology.color}
+                          size="70px"
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
+              </section>
+            )}
+            {infrastructure.length > 0 && (
+              <section>
+                <div className="header">
+                  <h2 className="section-subheading heading-dark">
+                    Infrastructure
+                  </h2>
+                  <StyledLine height="4px" width="100%" bgColor="#f5f5f5" />
+                </div>
+                <div className="selection">
+                  {infrastructure.map((technology) => {
                     return (
                       <div className="skill-item" key={uuidv4()}>
                         <h4>{technology.name}</h4>
