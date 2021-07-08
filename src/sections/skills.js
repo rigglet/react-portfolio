@@ -44,18 +44,18 @@ const Skills = () => {
       });
   }, []);
 
-  const frontend = technologies.filter((t) => t.type === "frontend");
-  const backend = technologies.filter((t) => t.type === "backend");
-  const database = technologies.filter((t) => t.type === "database");
+  const frontend = technologies.filter((t) => t.category === "frontend");
+  const backend = technologies.filter((t) => t.category === "backend");
+  const database = technologies.filter((t) => t.category === "database");
   const infrastructure = technologies.filter(
-    (t) => t.type === "infrastructure"
+    (t) => t.category === "infrastructure"
   );
   const other = technologies.filter(
     (t) =>
-      t.type !== "frontend" &&
-      t.type !== "backend" &&
-      t.type !== "database" &&
-      t.type !== "infrastructure"
+      t.category !== "frontend" &&
+      t.category !== "backend" &&
+      t.category !== "database" &&
+      t.category !== "infrastructure"
   );
 
   return (
