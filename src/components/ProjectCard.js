@@ -11,7 +11,7 @@ import Icon from "./Icon";
 import { productionBaseURL as serverBaseURL } from "../config/config";
 
 const ProjectCard = ({ project, setShowProjectDetails }) => {
-  console.log(project);
+  //console.log(project);
 
   return (
     <StyledCard
@@ -108,15 +108,16 @@ const StyledCard = styled(motion.div)`
   max-width: 400px;
   margin: 2rem;
   background-color: whitesmoke;
-  border-radius: 0 0 20px 20px;
+  border-radius: 0 0 8px 8px;
   //box-shadow: 0px 5px 20px rgba(101, 97, 125, 1);
   //box-shadow: 0px 0px 150px rgba(101, 97, 125, 1);
 
   .image-container {
+    border-radius: 8px 8px 0 0;
     position: relative;
     max-height: 100%;
-
     .overlay {
+      border-radius: 8px 8px 0 0;
       z-index: 1;
       position: absolute;
       top: 0;
@@ -138,6 +139,7 @@ const StyledCard = styled(motion.div)`
     }
 
     img {
+      border-radius: 8px 8px 0 0;
       cursor: pointer;
       width: 100%;
       //min-height: 25vh;

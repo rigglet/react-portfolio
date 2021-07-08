@@ -110,7 +110,7 @@ body{
   height: 90%;
   border: 6px;
   border-color: var(--section-light-border);
-  padding: 3rem;
+  padding: 1rem 5rem;
 }
 .container-left {
   border-style: solid solid solid none;
@@ -144,11 +144,19 @@ body{
 
 //h1 heading on some sections
 .section-heading {
-  font-weight: 200;
+  font-weight: 300;
   font-size: 20pt;
   cursor: default;
   padding: 0 1rem;
 }
+//h2 sub-heading on some sections
+.section-subheading {
+  font-weight: 300;
+  font-size: 15pt;
+  cursor: default;
+  padding: 0 1rem;
+}
+
 
 .heading-light{
   color: var(--header-color-light);
@@ -157,11 +165,6 @@ body{
   color: var(--header-color-dark);
 }
 
-//h2 sub-heading on some sections
-.section-subheading {
-  font-weight: 100;
-  font-size: 28pt;
-}
 
 
 //scrollbar styling

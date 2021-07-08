@@ -17,7 +17,7 @@ const ContactIconBar = ({ size, color }) => {
     }
 
     getLinks().then((results) => {
-      console.log(results);
+      //console.log(results);
       if (results.status === 200) {
         setLinks(results.data);
       }
