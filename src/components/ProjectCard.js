@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import Icon from "./Icon";
 import { productionBaseURL as serverBaseURL } from "../config/config";
 
-const ProjectCard = ({ project, setShowProjectDetails }) => {
+const ProjectCard = ({ project, handleProjectClick }) => {
   //console.log(project);
 
   return (
@@ -20,7 +20,10 @@ const ProjectCard = ({ project, setShowProjectDetails }) => {
       transition={{ duration: 0.5 }}
     >
       <div className="image-container">
-        <div className="overlay" onClick={() => setShowProjectDetails(true)}>
+        <div
+          className="overlay"
+          onClick={() => handleProjectClick(project._id)}
+        >
           {/* <h2>More details...</h2> */}
           <h2>Click for details...</h2>
           <Icon

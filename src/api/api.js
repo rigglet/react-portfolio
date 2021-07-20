@@ -65,7 +65,7 @@ export const getCollection = async (datatype) => {
   }
 };
 
-export const getDocumentByID = async (datatype, id) => {
+export const getDocumentById = async (datatype, id) => {
   try {
     const response = await axios.get(
       `${serverBaseURL()}/api/${datatype}/${id}`

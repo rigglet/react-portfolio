@@ -7,12 +7,14 @@ import StyledLine from "../styles/styledLine";
 
 //components
 import Projects from "../components/Projects";
+import Loader from "../components/Loader";
 //data
 import { getCollection } from "../api/api";
 import { buttonVariants } from "../styles/animations";
 
 const Portfolio = () => {
   const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function getProjects() {
@@ -23,6 +25,7 @@ const Portfolio = () => {
       .then((results) => {
         if (results.status === 200) {
           setProjects(results.data);
+          setLoading(false);
         }
       })
       .catch((err) => {
@@ -42,17 +45,23 @@ const Portfolio = () => {
             <h1 className="section-heading heading-light">Featured Projects</h1>
             <StyledLine height="6px" width="100%" bgColor="#111111" />
           </div>
-          <div className="projects">
-            {filteredProjects.length > 0 ? (
-              <Projects projects={filteredProjects} />
-            ) : (
-              <h1 className="noresult">Just working on it...</h1>
-            )}
-          </div>
+          {loading ? (
+            <Loader />
+          ) : (
+            <div className="projects">
+              {filteredProjects.length > 0 ? (
+                <Projects projects={filteredProjects} />
+              ) : (
+                <h1 className="noresult">No projects to show.</h1>
+              )}
+            </div>
+          )}
           <motion.button
             variants={buttonVariants}
             initial="initial"
             animate="animate"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             Explore Full Portfolio
           </motion.button>

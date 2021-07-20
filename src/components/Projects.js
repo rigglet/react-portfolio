@@ -15,16 +15,24 @@ const Projects = ({ projects }) => {
   let pathId = location.pathname.split("/")[2];
 
   //state
-  const [currentImage, setCurrentImage] = useState();
+  const [currentImage, setCurrentImage] = useState(null);
   const [showProjectDetails, setShowProjectDetails] = useState(false);
+  const [projectId, setProjectId] = useState(null);
+
+  const handleProjectClick = (projectId) => {
+    setProjectId(projectId);
+    setShowProjectDetails(true);
+    document.body.style.overflowY = "hidden";
+  };
 
   const handleImageChange = (image) => {
+    console.log(image);
     setCurrentImage(image);
   };
 
   const projectClose = () => {
-    document.body.style.overflowY = "auto";
-    history.push("/portfolio");
+    //document.body.style.overflowY = "auto";
+    history.push("/home#portfolio");
   };
 
   const skipProject = (direction) => {
@@ -48,9 +56,10 @@ const Projects = ({ projects }) => {
     <StyledProjects>
       {showProjectDetails && (
         <ProjectDetail
+          projectId={projectId}
           projectClose={projectClose}
           skipProject={skipProject}
-          pathId={pathId}
+          //pathId={pathId}
           arrSize={projects.length}
           currentImage={currentImage}
           handleImageChange={handleImageChange}
@@ -62,7 +71,7 @@ const Projects = ({ projects }) => {
         <ProjectCard
           key={uuidv4()}
           project={project}
-          setShowProjectDetails={setShowProjectDetails}
+          handleProjectClick={handleProjectClick}
         />
       ))}
     </StyledProjects>

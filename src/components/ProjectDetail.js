@@ -2,127 +2,167 @@ import { useEffect, useState } from "react";
 //framer motion and styled components
 import { motion } from "framer-motion";
 import styled from "styled-components";
-
+import { getDocumentById } from "../api/api";
+import Icon from "./Icon";
+//uuid
+import { v4 as uuidv4 } from "uuid";
+import { productionBaseURL as serverBaseURL } from "../config/config";
 //functions
-import { getIcon } from "../util";
-import { FaWindowClose, FaAngleLeft, FaAngleRight } from "react-icons/fa";
-import { getDocumentByID } from "../api/api";
+import CloseButton from "./closeButton";
 
 const ProjectDetails = ({
   projectClose,
   skipProject,
-  pathId,
   arrSize,
   handleImageChange,
   currentImage,
+  projectId,
 }) => {
-  //const project = getProject(pathId);
+  //const project = getProject(projectId);
   const [project, setProject] = useState({});
 
-  // useEffect(() => {
-  //   async function getProject() {
-  //     return await getDocumentByID("projects", pathId);
-  //   }
+  useEffect(() => {
+    async function getProject() {
+      return await getDocumentById("projects", projectId);
+    }
 
-  //   getProject().then((results) => {
-  //     console.log(results);
-  //     if (results.status === 200) {
-  //       setProject(results.data);
-  //     }
-  //   });
-  // }, []);
-
-  const handleClose = () => {
-    projectClose();
-  };
-
-  // useEffect(() => {
-  //   //console.log("useEffect");
-  //   handleImageChange(getImage(project.screenshots[0].address));
-  // }, []);
+    getProject().then((results) => {
+      console.log(results);
+      if (results.status === 200) {
+        setProject(results.data);
+        currentImage = results.data.screenshots.filter(
+          (image) => image._id === results.data.mainImage
+        )[0];
+        // if (
+        //   results.data.mainImage !== null &&
+        //   results.data.mainImage !== undefined
+        // ) {
+        //   // console.log(
+        //   //   results.data.screenshots.filter(
+        //   //     (image) => image._id === results.data.mainImage
+        //   //   )[0]
+        //   // );
+        // }
+      }
+    });
+  }, []);
 
   return (
     <StyledDetail>
-      {/* <StyledCard>
+      <StyledCard>
+        <CloseButton closeFunction={projectClose} />
         <StyledHeaderSection>
-          <div className="closediv">
-            <FaWindowClose className="close" onClick={handleClose} />
-          </div>
           <h2>{project.projectName}</h2>
           <StyledHeaderIcons>
             <StyledLinks>
-              <a href={project.www} target="_blank" rel="noreferrer">
-                {getIcon("WEB")}
+              <a href={project.website} target="_blank" rel="noreferrer">
+                {
+                  <Icon
+                    key={uuidv4()}
+                    icon="HiLink"
+                    color="#313131"
+                    size="25px"
+                  />
+                }
               </a>
               <a href={project.githubLink} target="_blank" rel="noreferrer">
-                {getIcon("GIT")}
+                {
+                  <Icon
+                    key={uuidv4()}
+                    icon="FaGithubSquare"
+                    color="#313131"
+                    size="25px"
+                  />
+                }
               </a>
             </StyledLinks>
-            {project.featured ? getIcon("STAR") : getIcon("ESTAR")}
+            {project.featured ? (
+              <Icon key={uuidv4()} icon="FaStar" color="#313131" size="25px" />
+            ) : (
+              <Icon
+                key={uuidv4()}
+                icon="FaRegStar"
+                color="#313131"
+                size="25px"
+              />
+            )}
           </StyledHeaderIcons>
         </StyledHeaderSection>
-
-        <HLine />
 
         <StyledMain>
           <div className="left">
             <p>{project.projectDescription}</p>
 
             <StyledIcons>
-              {project.technologies.map((tech) => (
-                <p key={tech}>{getIcon(tech)}</p>
+              {project.technologies?.map((tech) => (
+                <Icon
+                  key={uuidv4()}
+                  icon={tech.icon}
+                  color={tech.color}
+                  size="25px"
+                />
               ))}
             </StyledIcons>
           </div>
 
           <div className="middle">
-            {project.screenshots.map((shot) => (
+            {project.screenshots?.map((shot) => (
               <img
-                src={shot.address}
-                alt="screenshot"
-                onClick={() => handleImageChange(shot.address)}
+                key={uuidv4()}
+                src={`${serverBaseURL()}/images/${shot.fileName}`}
+                alt={shot.description}
+                onClick={() => handleImageChange(shot.fileName)}
               />
             ))}
           </div>
 
           <div className="right">
-            <img src={currentImage} alt="project" />
+            {/* {project?.mainImage && (
+              <img
+                src={`${serverBaseURL()}/images/${project?.mainImage}`}
+                alt="project"
+              />
+            )} */}
           </div>
         </StyledMain>
 
         <StyledLeftSection>
-          {arrSize > 1 ? (
-            <FaAngleLeft
+          {arrSize > 1 && (
+            <Icon
+              key={uuidv4()}
+              icon="FaAngleLeft"
+              color="#313131"
+              size="25px"
               className="arrow"
               onClick={() => {
                 skipProject("BACK");
               }}
             />
-          ) : (
-            ""
           )}
         </StyledLeftSection>
 
         <StyledRightSection>
-          {arrSize > 1 ? (
-            <FaAngleRight
+          {arrSize > 1 && (
+            <Icon
+              key={uuidv4()}
+              icon="FaAngleRight"
+              color="#313131"
+              size="25px"
               className="arrow"
               onClick={() => {
                 skipProject("FORWARD");
               }}
             />
-          ) : (
-            ""
           )}
         </StyledRightSection>
-      </StyledCard> */}
+      </StyledCard>
     </StyledDetail>
   );
 };
 
 const StyledDetail = styled(motion.div)`
-  z-index: 3;
-  position: absolute;
+  z-index: 12;
+  position: fixed;
   top: 0;
   left: 0;
   display: flex;
@@ -142,38 +182,44 @@ const StyledCard = styled(motion.div)`
     "left-side line right-side"
     "left-side main right-side";
 
-  box-shadow: 0px 5px 20px rgba(255, 255, 255, 0.2);
+  //box-shadow: 0px 5px 20px rgba(255, 255, 255, 0.2);
+  position: relative;
   z-index: 10;
-  width: 90vw;
-  min-height: 85vh;
-  max-height: 85vh;
+  width: 95vw;
+  min-height: 95vh;
+  height: auto;
   border: 0.05rem #689ed0 solid;
-  border-radius: 1rem;
-  //padding: 1rem 2rem;
-  /* overflow-x: hidden; */
-  background-color: black;
+  border-radius: 4px;
+  background-color: var(--color-light-background);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  //border: 1px solid red;
 
   h2 {
+    color: #313131;
     margin-bottom: 1rem;
     font-weight: lighter;
+  }
+  .arrow {
+    color: #313131;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
   }
 `;
 
 const StyledHeaderSection = styled(motion.div)`
   grid-area: header;
   padding: 1rem;
-  .closediv {
-    position: relative;
-    top: 0;
-    left: 100%;
-    padding: 0;
-  }
+  color: #313131;
 `;
 
 const StyledMain = styled(motion.div)`
   grid-area: main;
   display: flex;
   .left {
+    color: #313131;
+    border: 1px solid black;
     padding: 0rem 1rem 1rem 1rem;
     flex: 2;
     display: flex;
@@ -181,6 +227,8 @@ const StyledMain = styled(motion.div)`
     justify-content: space-between;
   }
   .middle {
+    color: #313131;
+    border: 1px solid black;
     flex: 1;
     padding: 1rem;
     display: flex;
@@ -196,6 +244,8 @@ const StyledMain = styled(motion.div)`
     }
   }
   .right {
+    color: #313131;
+    border: 1px solid black;
     padding: 1rem;
     flex: 4;
     img {
@@ -236,24 +286,10 @@ const StyledLinks = styled(motion.div)`
   }
 `;
 
-const HLine = styled(motion.div)`
-  grid-area: line;
-  width: 100%;
-  height: 2px;
-  margin: 1rem 0rem;
-  border-radius: 50%;
-  background: #689ed0;
-`;
-
 const StyledLeftSection = styled(motion.div)`
   grid-area: left-side;
   display: flex;
   align-items: center;
-  .arrow {
-    height: 40px;
-    width: 40px;
-    cursor: pointer;
-  }
 `;
 
 const StyledRightSection = styled(motion.div)`
@@ -261,26 +297,6 @@ const StyledRightSection = styled(motion.div)`
   justify-self: end;
   display: flex;
   align-items: center;
-  .arrow {
-    height: 40px;
-    width: 40px;
-    cursor: pointer;
-  }
 `;
-
-// const StyledGallery = styled(motion.div)`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: flex-end;
-//   padding: 1rem 0rem;
-
-/* img {
-    //width: 50%;
-    height: 10vh;
-    object-fit: cover;
-    object-position: center;
-    padding: 0rem 0rem 0.5rem 0.5rem;
-  } */
-//`;
 
 export default ProjectDetails;

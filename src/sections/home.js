@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 //framer motion and styled components
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import { HashLink } from "react-router-hash-link";
 //images
 //import splashImage from "../img/me-bw-blue-tie.png";
 import codingImage from "../img/coding_screens.svg";
@@ -50,15 +51,18 @@ const Home = () => {
               <h2>With a focus on React</h2>
               <h2>Hire me today</h2>
             </StyledSubHeader>
-            <Link to="/portfolio/">
+            <HashLink smooth to="/home#portfolio">
               <motion.button
                 variants={buttonVariants}
                 initial="initial"
                 animate="animate"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 View Portfolio
               </motion.button>
-            </Link>
+            </HashLink>
+            {/* <Link to="/home#portfolio"></Link> */}
           </StyledInfo>
           <StyledImage
             variants={imageVariants}

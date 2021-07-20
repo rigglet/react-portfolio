@@ -17,12 +17,14 @@ Icon.propTypes = {
   icon: PropTypes.string,
   color: PropTypes.string,
   size: PropTypes.string,
+  title: PropTypes.string,
 };
 
 Icon.defaultProps = {
   icon: "FaFlushed",
-  color: "white",
+  color: "blue",
   size: "30px",
+  title: "icon",
 };
 
 export default Icon;

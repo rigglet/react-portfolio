@@ -8,105 +8,106 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
 
 html{
   --color-dark-background: #111111; 
   --color-light-background: #f5f5f5;
   --color-dark-text: #111111;
   --color-light-text: #f5f5f5;
-
+  
   --color-nav-background: #313131;
   --color-nav-hover: #689ed0;
-
+  
   --section-light-border: #689ed0;
-
+  
   --header-color-light: #f5f5f5;
   --header-color-dark: #313131;
-
+  
   --gradient-ltr: linear-gradient(
-      90deg,
+    90deg,
       #1c3b57 0%,
       #65617d 25%,
       #689ed0 50%,
       #c6c6c6 75%,
       #f5f5f5 100%
-    );
-  
-  --gradient-rtl: linear-gradient(
-      90deg,
-      #f5f5f5 0%,
-      #c6c6c6 25%,
-      #689ed0 50%,
-      #65617d 75%,
-      #1c3b57 100%
-    );
-  
-  scroll-behavior: smooth;
-}
-
-body{
-    //color: whitesmoke;
-    background: #111111;
-    //font-family: 'Inter', sans-serif;
-    font-family: 'Poppins', sans-serif;
-}
-
-.app{
-  scroll-snap-type: y mandatory;
-  //scroll-padding: 100px;
-  overflow-y: scroll;
-  height: 100vh;
-  overflow-x: hidden;
-}
-
-//section
-.section-light {
-  scroll-snap-align: end;
-  display: flex;
-  align-items: center;
-}
-.section-dark {
-  scroll-snap-align: end;
-}
-
-.fullheight{
-  height: 93vh;
-  margin-top: 7vh;
-}
-.halfheight{
-  height: 50vh;
-  scroll-snap-align: center;
-}
-.twothirdsheight{
-  height: 66vh;
-  scroll-snap-align: center;
-  padding: 0;
-}
-
-.container-dark {
-  background-color: var(--color-dark-background);
-  color: var(--color-light-text);
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
-  height: 100%;
-  padding: 2rem;
-}
-
-.container-light{
-  background-color: var(--color-light-background);
-  color: var(--color-dark-text);
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 90%;
+      );
+      
+      --gradient-rtl: linear-gradient(
+        90deg,
+        #f5f5f5 0%,
+        #c6c6c6 25%,
+        #689ed0 50%,
+        #65617d 75%,
+        #1c3b57 100%
+        );
+        
+        scroll-behavior: smooth;
+      }
+      
+      body{
+        //color: whitesmoke;
+        background: #111111;
+        //font-family: 'Inter', sans-serif;
+        font-family: 'Poppins', sans-serif;
+      }
+      
+      .app{
+        scroll-snap-type: y mandatory;
+        //scroll-padding: 100px;
+        overflow-y: scroll;
+        height: 100vh;
+        overflow-x: hidden;
+      }
+      
+      //section
+      .section-light {
+        scroll-snap-align: end;
+        display: flex;
+        align-items: center;
+      }
+      .section-dark {
+        scroll-snap-align: end;
+      }
+      
+      .fullheight{
+        height: 93vh;
+        margin-top: 7vh;
+      }
+      .halfheight{
+        height: 50vh;
+        scroll-snap-align: center;
+      }
+      .twothirdsheight{
+        height: 66vh;
+        scroll-snap-align: center;
+        padding: 0;
+      }
+      
+      .container-dark {
+        background-color: var(--color-dark-background);
+        color: var(--color-light-text);
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100%;
+        padding: 2rem;
+      }
+      
+      .container-light{
+        background-color: var(--color-light-background);
+        color: var(--color-dark-text);
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 90%;
   height: 90%;
   border: 6px;
   border-color: var(--section-light-border);
@@ -125,8 +126,8 @@ body{
 }
 
 .gradientLeft {
-    position: absolute;
-    top: 0;
+  position: absolute;
+  top: 0;
     left: 0;
     height: 100%;
     width: 20%;
@@ -370,6 +371,7 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
 `;
 
 export default GlobalStyle;
