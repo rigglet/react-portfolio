@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 //framer motion and styled components
 import { motion } from "framer-motion";
 import styled from "styled-components";

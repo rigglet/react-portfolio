@@ -10,9 +10,9 @@ import ProjectDetail from "./ProjectDetail";
 import { useLocation, useHistory } from "react-router-dom";
 
 const Projects = ({ projects }) => {
-  const location = useLocation();
+  //const location = useLocation();
   const history = useHistory();
-  let pathId = location.pathname.split("/")[2];
+  //let pathId = location.pathname.split("/")[2];
 
   //state
   const [currentImage, setCurrentImage] = useState(null);
@@ -22,7 +22,7 @@ const Projects = ({ projects }) => {
   const handleProjectClick = (projectId) => {
     setProjectId(projectId);
     setShowProjectDetails(true);
-    document.body.style.overflowY = "hidden";
+    //document.body.style.overflowY = "hidden";
   };
 
   const handleImageChange = (image) => {

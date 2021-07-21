@@ -14,7 +14,10 @@ const Education = () => {
             <StyledLine height="6px" width="100%" bgColor="#111111" />
           </div>
           <div className="content">
-            <Loader />
+            <p>A-level</p>
+            <p>Degree</p>
+            <p>Online courses?</p>
+            {/* <Loader /> */}
           </div>
         </div>
       </div>

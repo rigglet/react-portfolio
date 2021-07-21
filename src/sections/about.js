@@ -1,7 +1,7 @@
 //framer motion and styled components
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import Loader from "../components/Loader";
+//import Loader from "../components/Loader";
 import profile from "../img/profile.png";
 import { aboutVariants } from "../styles/animations";
 
@@ -19,7 +19,14 @@ const About = () => {
         <div className="content">
           {/* <h1>About</h1> */}
           <img className="profile" src={profile} alt="Author of portfolio" />
-          <article>In west Philadelphia born and raised...</article>
+          <article>
+            I am a graduate with a
+            <span> BSc in Computer Systems and Networks</span> with
+            <span> over 5 years of relevant industry experience</span> in the
+            full software development life-cycle. From requirements gathering,
+            to designing and building systems in response to the needs of the
+            customer.
+          </article>
         </div>
       </div>
       {/* <Loader /> */}
@@ -39,7 +46,8 @@ const AboutSection = styled(motion.div)`
     width: 100%;
     height: 100%;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    column-gap: 3rem;
     article {
       z-index: 100;
       font-style: italic;
@@ -48,6 +56,9 @@ const AboutSection = styled(motion.div)`
       text-align: justify;
       text-indent: 2rem;
       font-variant: normal;
+      span {
+        font-weight: 700;
+      }
     }
     article:before,
     article:after {
@@ -59,7 +70,7 @@ const AboutSection = styled(motion.div)`
     }
     .profile {
       z-index: 10;
-      width: 400px;
+      min-width: 400px;
       height: 400px;
       border: 8px solid black;
       padding: 8px;

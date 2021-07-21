@@ -64,7 +64,7 @@ const Skills = () => {
         <div className="gradientRight" />
         <div className="inner-container">
           <div className="header">
-            <h1 className="section-heading heading-dark">Skills</h1>
+            <h1 className="section-heading heading-dark">Technical Skills</h1>
             <StyledLine height="6px" width="100%" bgColor="#f5f5f5" />
           </div>
           <div className="content">
@@ -78,12 +78,19 @@ const Skills = () => {
                   {frontend.map((technology) => {
                     return (
                       <div className="skill-item" key={uuidv4()}>
-                        <h4>{technology.name}</h4>
-                        <Icon
-                          icon={technology.icon}
-                          color={technology.color}
-                          size="70px"
-                        />
+                        <a
+                          key={uuidv4()}
+                          href={technology.address}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <h4>{technology.name}</h4>
+                          <Icon
+                            icon={technology.icon}
+                            color={technology.color}
+                            size="70px"
+                          />
+                        </a>
                       </div>
                     );
                   })}
@@ -100,12 +107,19 @@ const Skills = () => {
                   {backend.map((technology) => {
                     return (
                       <div className="skill-item" key={uuidv4()}>
-                        <h4>{technology.name}</h4>
-                        <Icon
-                          icon={technology.icon}
-                          color={technology.color}
-                          size="70px"
-                        />
+                        <a
+                          key={uuidv4()}
+                          href={technology.address}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <h4>{technology.name}</h4>
+                          <Icon
+                            icon={technology.icon}
+                            color={technology.color}
+                            size="70px"
+                          />
+                        </a>
                       </div>
                     );
                   })}
@@ -122,12 +136,19 @@ const Skills = () => {
                   {database.map((technology) => {
                     return (
                       <div className="skill-item" key={uuidv4()}>
-                        <h4>{technology.name}</h4>
-                        <Icon
-                          icon={technology.icon}
-                          color={technology.color}
-                          size="70px"
-                        />
+                        <a
+                          key={uuidv4()}
+                          href={technology.address}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <h4>{technology.name}</h4>
+                          <Icon
+                            icon={technology.icon}
+                            color={technology.color}
+                            size="70px"
+                          />
+                        </a>
                       </div>
                     );
                   })}
@@ -146,12 +167,19 @@ const Skills = () => {
                   {infrastructure.map((technology) => {
                     return (
                       <div className="skill-item" key={uuidv4()}>
-                        <h4>{technology.name}</h4>
-                        <Icon
-                          icon={technology.icon}
-                          color={technology.color}
-                          size="70px"
-                        />
+                        <a
+                          key={uuidv4()}
+                          href={technology.address}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <h4>{technology.name}</h4>
+                          <Icon
+                            icon={technology.icon}
+                            color={technology.color}
+                            size="70px"
+                          />
+                        </a>
                       </div>
                     );
                   })}
@@ -168,12 +196,19 @@ const Skills = () => {
                   {other.map((technology) => {
                     return (
                       <div className="skill-item" key={uuidv4()}>
-                        <h4>{technology.name}</h4>
-                        <Icon
-                          icon={technology.icon}
-                          color={technology.color}
-                          size="70px"
-                        />
+                        <a
+                          key={uuidv4()}
+                          href={technology.address}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <h4>{technology.name}</h4>
+                          <Icon
+                            icon={technology.icon}
+                            color={technology.color}
+                            size="70px"
+                          />
+                        </a>
                       </div>
                     );
                   })}
@@ -190,8 +225,19 @@ const Skills = () => {
                   {tools?.map((tool) => {
                     return (
                       <div className="skill-item" key={uuidv4()}>
-                        <h4>{tool.name}</h4>
-                        <Icon icon={tool.icon} color={tool.color} size="70px" />
+                        <a
+                          key={uuidv4()}
+                          href={tool.address}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <h4>{tool.name}</h4>
+                          <Icon
+                            icon={tool.icon}
+                            color={tool.color}
+                            size="70px"
+                          />
+                        </a>
                       </div>
                     );
                   })}
@@ -199,6 +245,12 @@ const Skills = () => {
               </section>
             )}
           </div>
+
+          <div className="header">
+            <h1 className="section-heading heading-dark">Soft Skills</h1>
+            <StyledLine height="6px" width="100%" bgColor="#f5f5f5" />
+          </div>
+          <div className="content">Effective communicator</div>
         </div>
       </div>
     </SkillsSection>
@@ -244,14 +296,17 @@ const SkillsSection = styled(motion.div)`
         column-gap: 2rem;
 
         .skill-item {
-          h4 {
-            color: #1c3b57;
+          a {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            column-gap: 3rem;
+            h4 {
+              color: #1c3b57;
+            }
           }
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          column-gap: 3rem;
         }
       }
     }
