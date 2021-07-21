@@ -3,32 +3,57 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 //import Loader from "../components/Loader";
 import profile from "../img/profile.png";
-import { aboutVariants } from "../styles/animations";
+import {
+  fadeInOut,
+  elementSlideInOut,
+  containerSlideInOutLeft,
+} from "../styles/animations";
+import useScroll from "../components/useScroll";
 
 const About = () => {
+  const [element, controls] = useScroll();
+
   return (
     <AboutSection
       className="section-light fullheight"
       id="about"
-      variants={aboutVariants}
-      initial="initial"
-      animate="animate"
+      ref={element}
+      // variants={aboutVariants}
+      // initial="initial"
+      // animate={controls}
+      // animate="animate"
     >
-      <div className="container container-light container-left">
+      <motion.div
+        className="container container-light container-left"
+        variants={containerSlideInOutLeft}
+        initial="initial"
+        animate={controls}
+      >
         <div className="gradientLeft" />
-        <div className="content">
+        <motion.div className="content">
           {/* <h1>About</h1> */}
-          <img className="profile" src={profile} alt="Author of portfolio" />
-          <article>
+          <motion.img
+            className="profile"
+            src={profile}
+            alt="Author of portfolio"
+            variants={elementSlideInOut}
+            initial="initial"
+            animate={controls}
+          />
+          <motion.article
+            variants={fadeInOut}
+            initial="initial"
+            animate={controls}
+          >
             I am a graduate with a
             <span> BSc in Computer Systems and Networks</span> with
             <span> over 5 years of relevant industry experience</span> in the
             full software development life-cycle. From requirements gathering,
             to designing and building systems in response to the needs of the
             customer.
-          </article>
-        </div>
-      </div>
+          </motion.article>
+        </motion.div>
+      </motion.div>
       {/* <Loader /> */}
     </AboutSection>
   );

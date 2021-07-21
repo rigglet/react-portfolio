@@ -1,3 +1,66 @@
+//GLOBAL VARIANTS
+export const fadeInOut = {
+  initial: {
+    opacity: 0,
+    transition: {
+      delay: 0.75,
+      duration: 0.75,
+    },
+  },
+  animate: {
+    opacity: 1,
+    transition: {
+      delay: 0.75,
+      duration: 0.75,
+    },
+  },
+};
+
+export const elementSlideInOut = {
+  initial: {
+    x: "-60vw",
+    transition: {
+      delay: 0.75,
+      duration: 1,
+    },
+  },
+  animate: {
+    x: "0vw",
+    transition: {
+      delay: 0.75,
+      duration: 1,
+    },
+  },
+};
+export const containerSlideInOutLeft = {
+  initial: {
+    x: "-100vw",
+    transition: {
+      duration: 0.75,
+    },
+  },
+  animate: {
+    x: "0vw",
+    transition: {
+      duration: 0.75,
+    },
+  },
+};
+export const containerSlideInOutRight = {
+  initial: {
+    x: "100vw",
+    transition: {
+      duration: 0.75,
+    },
+  },
+  animate: {
+    x: "0vw",
+    transition: {
+      duration: 0.75,
+    },
+  },
+};
+
 export const navVariants = {
   initial: { y: "-10vw", opacity: 0 },
   animate: {
@@ -104,11 +167,27 @@ export const buttonVariants = {
 
 //ABOUT PAGE VARIANTS
 export const aboutVariants = {
-  initial: { opacity: 1 },
+  // initial: { opacity: 0 },
+  // animate: {
+  //   opacity: 1,
+  //   transition: {
+  //     duration: 0.5,
+  //   },
+  // },
+  initial: {
+    x: "-50vw",
+    rotate: -45,
+    opacity: 0,
+    transition: {
+      duration: 0.75,
+    },
+  },
   animate: {
+    x: 0,
+    rotate: 0,
     opacity: 1,
     transition: {
-      duration: 0.5,
+      duration: 0.75,
     },
   },
 };
@@ -119,7 +198,7 @@ export const experienceVariants = {
   animate: {
     opacity: 1,
     transition: {
-      duration: 0.5,
+      duration: 2.5,
     },
   },
 };

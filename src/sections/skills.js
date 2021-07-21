@@ -6,12 +6,15 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 import StyledLine from "../styles/styledLine";
 import Icon from "../components/Icon";
+import useScroll from "../components/useScroll";
+import { containerSlideInOutRight } from "../styles/animations";
 //data
 import { getCollection } from "../api/api";
 
 const Skills = () => {
   const [technologies, setTechnologies] = useState([]);
   const [tools, setTools] = useState([]);
+  const [element, controls] = useScroll();
 
   useEffect(() => {
     async function getTechnologies() {
@@ -59,8 +62,17 @@ const Skills = () => {
   );
 
   return (
-    <SkillsSection className="section-light fullheight" id="skills">
-      <div className="container container-light container-right">
+    <SkillsSection
+      className="section-light fullheight"
+      id="skills"
+      ref={element}
+    >
+      <motion.div
+        className="container container-light container-right"
+        variants={containerSlideInOutRight}
+        initial="initial"
+        animate={controls}
+      >
         <div className="gradientRight" />
         <div className="inner-container">
           <div className="header">
@@ -252,7 +264,7 @@ const Skills = () => {
           </div>
           <div className="content">Effective communicator</div>
         </div>
-      </div>
+      </motion.div>
     </SkillsSection>
   );
 };

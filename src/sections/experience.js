@@ -10,17 +10,28 @@ import {
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 import Icon from "../components/Icon";
+import {
+  fadeInOut,
+  elementSlideInOut,
+  containerSlideInOutLeft,
+} from "../styles/animations";
+import useScroll from "../components/useScroll";
 
 const Experience = () => {
+  const [element, controls] = useScroll();
+
   return (
     <ExperienceSection
       className="section-light fullheight"
       id="experience"
-      variants={experienceVariants}
-      initial="initial"
-      animate="animate"
+      ref={element}
     >
-      <div className="container-light container-left">
+      <motion.div
+        className="container-light container-left"
+        variants={containerSlideInOutLeft}
+        initial="initial"
+        animate={controls}
+      >
         <div className="gradientLeft" />
         <div className="content">
           <div className="header">
@@ -105,7 +116,7 @@ const Experience = () => {
             </motion.button>
           </HashLink>
         </div>
-      </div>
+      </motion.div>
     </ExperienceSection>
   );
 };
