@@ -2,6 +2,8 @@ import { useState } from "react";
 //framer motion and styled components
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import { detailPopUp } from "../styles/animations";
+import useScroll from "../components/useScroll";
 //uuid
 import { v4 as uuidv4 } from "uuid";
 //components
@@ -10,9 +12,10 @@ import ProjectDetail from "./ProjectDetail";
 import { useLocation, useHistory } from "react-router-dom";
 
 const Projects = ({ projects }) => {
+  const [element, controls] = useScroll();
   //const location = useLocation();
-  const history = useHistory();
   //let pathId = location.pathname.split("/")[2];
+  const history = useHistory();
 
   //state
   const [currentImage, setCurrentImage] = useState(null);
@@ -64,6 +67,9 @@ const Projects = ({ projects }) => {
           currentImage={currentImage}
           handleImageChange={handleImageChange}
           setCurrentImage={setCurrentImage}
+          // variants={detailPopUp}
+          // initial="initial"
+          // animate="animate"
         />
       )}
 
@@ -80,10 +86,14 @@ const Projects = ({ projects }) => {
 
 const StyledProjects = styled(motion.div)`
   width: 100%;
+  padding: 2rem 1rem;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  row-gap: 4rem;
+  column-gap: 2rem;
+  //gap: 10rem;
+  flex-wrap: wrap;
   //overflow-x: scroll;
-  //flex-wrap: wrap;
 `;
 
 export default Projects;

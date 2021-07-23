@@ -4,57 +4,65 @@ import StyledLine from "../styles/styledLine";
 import { Link, useLocation } from "react-router-dom";
 import { navVariants } from "../styles/animations";
 import { HashLink } from "react-router-hash-link";
+import { useInView } from "react-intersection-observer";
 
 const Nav = () => {
   const location = useLocation();
-  console.log(location);
+  //console.log(location);
+  const { ref, inView, entry } = useInView({
+    /* Optional options */
+    threshold: 0,
+  });
+  console.log(entry);
   return (
     <StyledNav
       variants={navVariants}
       initial={location.hash === "" ? "initial" : false}
       animate={location.hash === "" ? "animate" : false}
+      ref={ref}
     >
+      <h2>{`Header inside viewport ${inView}.`}</h2>
       <Link to="/">
         <h1 className="logo">Neil Rigg</h1>
       </Link>
       <div className="menu">
-        <HashLink smooth to="/home#home">
+        <HashLink smooth to="/#home">
           <h1>Home</h1>
           {(location.hash === "#home" || location.hash === "") && (
             <StyledLine height="4px" width="100%" bgColor="#313131" />
           )}
         </HashLink>
-        <HashLink smooth to="/home#about">
+        <HashLink smooth to="/#about">
           <h1>About</h1>
           {location.hash === "#about" && (
             <StyledLine height="4px" width="100%" bgColor="#313131" />
           )}
         </HashLink>
-        <HashLink smooth to="/home#portfolio">
+        <HashLink smooth to="/#portfolio">
           <h1>Portfolio</h1>
           {location.hash === "#portfolio" && (
             <StyledLine height="4px" width="100%" bgColor="#313131" />
           )}
         </HashLink>
-        <HashLink smooth to="/home#skills">
+        <HashLink smooth to="/#skills">
           <h1>Skills</h1>
           {location.hash === "#skills" && (
             <StyledLine height="4px" width="100%" bgColor="#313131" />
           )}
         </HashLink>
-        <HashLink smooth to="/home#education">
+        <HashLink smooth to="/#education">
           <h1>Education</h1>
           {location.hash === "#education" && (
             <StyledLine height="4px" width="100%" bgColor="#313131" />
           )}
         </HashLink>
-        <HashLink smooth to="/home#experience">
+        <HashLink smooth to="/#experience">
           <h1>Experience</h1>
           {location.hash === "#experience" && (
             <StyledLine height="4px" width="100%" bgColor="#313131" />
           )}
         </HashLink>
-        <HashLink smooth to="/home#contact">
+        <HashLink smooth to="/#contact">
           <h1>Contact</h1>
           {location.hash === "#contact" && (
             <StyledLine height="4px" width="100%" bgColor="#313131" />

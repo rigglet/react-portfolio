@@ -17,6 +17,8 @@ const Education = () => {
             <p>A-level</p>
             <p>Degree</p>
             <p>Online courses?</p>
+            <p>Overview of content</p>
+            <p>timeline here too?</p>
             {/* <Loader /> */}
           </div>
         </div>

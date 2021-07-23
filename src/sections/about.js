@@ -37,6 +37,7 @@ const About = () => {
             src={profile}
             alt="Author of portfolio"
             variants={elementSlideInOut}
+            //variants={fadeInOut}
             initial="initial"
             animate={controls}
           />

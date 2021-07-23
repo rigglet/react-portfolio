@@ -57,8 +57,8 @@ body{
 }
 
 .app{
-  scroll-snap-type: y mandatory;
-  //scroll-padding: 100px;
+  scroll-snap-type: y proximity;
+  //scroll-padding: 200px;
   overflow-y: scroll;
   height: 100vh;
   overflow-x: hidden;
@@ -74,6 +74,11 @@ body{
   scroll-snap-align: end;
 }
 
+.autoheight{
+  min-height: 93vh;
+  height: auto;
+  margin-top: 7vh;
+}
 .fullheight{
   height: 93vh;
   margin-top: 7vh;
@@ -97,6 +102,7 @@ body{
   justify-content: center;
   width: 100vw;
   height: 100%;
+  //height: auto;
   padding: 2rem;
 }
 
@@ -109,6 +115,7 @@ body{
   justify-content: center;
   width: 90%;
   height: 90%;
+  //height: auto;
   border: 6px;
   border-color: var(--section-light-border);
   padding: 1rem 5rem;
@@ -199,9 +206,9 @@ body{
 }
 
 button, input[type='submit']{
-    //font-weight: bold;
+    font-weight: bold;
     font-family: 'Inter', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.0rem;
     cursor: pointer;
     padding: 1rem 3rem;
     border: 2px solid #689ed0;
@@ -209,15 +216,16 @@ button, input[type='submit']{
     background: transparent;
     //transition: all 0.5s ease;
     border-radius: 20px;
-    
+    text-transform: uppercase;    
+
     &:hover{
       background: #689ed0;
-      background: linear-gradient(90deg, #1c3b57 0%, #65617d 33%, #689ed0 66%, #c6c6c6 100%);
-      color: black;
+      background: linear-gradient(90deg,  #65617d 0%, #689ed0 50%, #c6c6c6 100%);
+      color: #1c3b57;
       border: 2px solid #689ed0;
-      background-size: 400%;
+      background-size: 300%;
       background-position: center;
-      animation: gradient 2s linear infinite alternate;
+      animation: gradient 1s linear infinite alternate;
       box-shadow: 0px 0px 20px rgba(101, 97, 125, 1); 
     }
     
@@ -238,26 +246,14 @@ button, input[type='submit']{
     }
 }
 
-/* button, input[type='submit']{
-    //font-weight: bold;
-    font-family: 'Inter', sans-serif;
-    font-size: 1.2rem;
-    cursor: pointer;
-    padding: 1rem 3rem;
-    border: 3px solid #689ed0;
-    background: transparent;
+.light-btn {
+    border: 2px solid #1c3b57;
+    color: #1c3b57;
+}
+.dark-btn {
+    border: 2px solid #689ed0;
     color: #689ed0;
-    transition: all 0.5s ease;
-    &:hover{
-        background-color: #689ed0;
-        color: black;
-    }
-    &:active,
-    &:focus {
-      outline-style: none;
-      -moz-outline-style: none;
-    }
-} */
+}
 
 .close {
   cursor: pointer;
@@ -397,6 +393,28 @@ input:checked + .slider:before {
   } */
 }
 
+
+//Vertical timeline custom colors
+/* CUSTOM LINE COLOR */
+/* The line */
+/* #f5f5f5
+      #c6c6c6
+      #689ed0
+      #65617d
+      #1c3b57 */
+.vertical-timeline.vertical-timeline-custom-line::before {
+  background: #65617d;
+}
+
+/* Icon container's border */
+.vertical-timeline.vertical-timeline-custom-line .vertical-timeline-element--work .vertical-timeline-element-icon {
+  box-shadow: 0 0 0 4px #65617d, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
+}
+
+
+.vertical-timeline.vertical-timeline-custom-line .vertical-timeline-element--education .vertical-timeline-element-icon {
+  box-shadow: 0 0 0 4px #c2185b, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
+}
 `;
 
 export default GlobalStyle;

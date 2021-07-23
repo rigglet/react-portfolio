@@ -16,6 +16,7 @@ import {
   containerSlideInOutLeft,
 } from "../styles/animations";
 import useScroll from "../components/useScroll";
+import { GiPurpleTentacle } from "react-icons/gi";
 
 const Experience = () => {
   const [element, controls] = useScroll();
@@ -44,7 +45,7 @@ const Experience = () => {
           <p>Freecode Camp</p>
           <p>Others - DevEd - Udemy</p> */}
 
-          <VerticalTimeline>
+          <VerticalTimeline className="vertical-timeline vertical-timeline-custom-line">
             <VerticalTimelineElement
               className="vertical-timeline-element--work"
               contentStyle={{
@@ -84,7 +85,7 @@ const Experience = () => {
                 borderRight: "20px solid #c6c6c6",
               }}
               date="2017 - 2020"
-              iconStyle={{ background: "#689ed0" }}
+              iconStyle={{ background: "#689ed0", color: "#689ed0" }}
               icon={
                 <Icon
                   icon="MdWork"
@@ -106,6 +107,7 @@ const Experience = () => {
 
           <HashLink smooth to="/home#contact">
             <motion.button
+              className="light-btn"
               variants={buttonVariants}
               initial="initial"
               animate="animate"

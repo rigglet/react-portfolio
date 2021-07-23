@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import StyledLine from "../styles/styledLine";
+import { buttonVariants } from "../styles/animations";
 //email
 import emailjs from "emailjs-com";
 //message components
@@ -153,8 +154,18 @@ const Contact = () => {
                   onChange={handleChange}
                 />
               </div>
+
               <div className="button">
-                <input type="submit" value="Send Message" />
+                <motion.input
+                  className="dark-btn"
+                  type="submit"
+                  value="Send Message"
+                  variants={buttonVariants}
+                  initial="initial"
+                  animate="animate"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                />
               </div>
             </form>
 

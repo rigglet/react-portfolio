@@ -1,17 +1,12 @@
-//import { Link } from "react-router-dom";
 //framer motion and styled components
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { HashLink } from "react-router-hash-link";
 //images
-//import splashImage from "../img/me-bw-blue-tie.png";
 import codingImage from "../img/coding_screens.svg";
-//import codingImage from "./coding_screens.js";
-//components
-//import ContactIconBar from "../components/ContactIconBar";
+import useScroll from "../components/useScroll";
 //animations
 import {
-  homeVariants,
   headerVariants,
   subheaderVariants,
   buttonVariants,
@@ -19,14 +14,16 @@ import {
 } from "../styles/animations";
 
 const Home = () => {
+  const [element, controls] = useScroll();
   return (
     <HomeSection
       id="home"
       className="section-dark fullheight"
-      variants={homeVariants}
-      initial="initial"
-      animate="animate"
+      // variants={homeVariants}
+      // initial="initial"
+      // animate="animate"
       //exit="exit"
+      ref={element}
     >
       <div className="container-dark">
         <div className="content">
@@ -34,7 +31,8 @@ const Home = () => {
             <StyledHeader
               variants={headerVariants}
               initial="initial"
-              animate="animate"
+              //animate="animate"
+              animate={controls}
             >
               <h2 className="lighter">I am a</h2>
               <h2>Front End</h2>
@@ -45,7 +43,8 @@ const Home = () => {
             <StyledSubHeader
               variants={subheaderVariants}
               initial="initial"
-              animate="animate"
+              //animate="animate"
+              animate={controls}
             >
               <h2>Passionate about web development</h2>
               <h2>With a focus on React</h2>
@@ -53,9 +52,11 @@ const Home = () => {
             </StyledSubHeader>
             <HashLink smooth to="/home#portfolio">
               <motion.button
+                className="dark-btn"
                 variants={buttonVariants}
                 initial="initial"
-                animate="animate"
+                //animate="animate"
+                animate={controls}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -67,7 +68,8 @@ const Home = () => {
           <StyledImage
             variants={imageVariants}
             initial="initial"
-            animate="animate"
+            //animate="animate"
+            animate={controls}
             exit="exit"
           >
             <img src={codingImage} alt="Coding" />

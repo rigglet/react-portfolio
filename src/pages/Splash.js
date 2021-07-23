@@ -21,25 +21,18 @@ const Splash = () => {
   }, [finished]);
 
   return (
-    <AnimatePresence exitBeforeEnter>
-      <SplashLayout variants={splashVariants} exit="exit">
-        {finished ? (
-          <motion.div
-          // variants={splashVariants}
-          // initial="initial"
-          // animate="animate"
-          // exit="exit"
-          >
-            <Redirect to="/home" />
-          </motion.div>
-        ) : (
-          <>
-            <Name />
-            <Tagline />
-          </>
-        )}
-      </SplashLayout>
-    </AnimatePresence>
+    <SplashLayout variants={splashVariants} initial="initial" exit="exit">
+      {finished ? (
+        <div>
+          <Redirect to="/home" />
+        </div>
+      ) : (
+        <>
+          <Name />
+          <Tagline />
+        </>
+      )}
+    </SplashLayout>
   );
 };
 

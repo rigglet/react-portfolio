@@ -1,37 +1,83 @@
 //GLOBAL VARIANTS
+export const rotateInOut = {
+  initial: {
+    //x: "-100vw",
+    //scale: 1,
+    rotate: -360,
+
+    transition: {
+      delay: 0,
+      duration: 1,
+    },
+  },
+  animate: {
+    //x: "0vw",
+    //scale: 1,
+    rotate: 0,
+    transition: {
+      delay: 0,
+      duration: 1,
+    },
+  },
+};
 export const fadeInOut = {
   initial: {
     opacity: 0,
     transition: {
-      delay: 0.75,
-      duration: 0.75,
+      delay: 1,
+      duration: 1,
     },
   },
   animate: {
     opacity: 1,
     transition: {
-      delay: 0.75,
-      duration: 0.75,
+      delay: 1,
+      duration: 1,
     },
   },
 };
 
 export const elementSlideInOut = {
   initial: {
-    x: "-60vw",
+    x: "-100vw",
     transition: {
-      delay: 0.75,
+      delay: 1,
       duration: 1,
     },
   },
   animate: {
     x: "0vw",
     transition: {
-      delay: 0.75,
+      delay: 1,
       duration: 1,
     },
   },
 };
+
+export const detailPopUp = {
+  initial: {
+    opacity: 0,
+    scale: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+  animate: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+    },
+  },
+  exit: {
+    opacity: 0,
+    scale: 0.5,
+    transition: {
+      duration: 0.75,
+    },
+  },
+};
+
 export const containerSlideInOutLeft = {
   initial: {
     x: "-100vw",
@@ -46,6 +92,7 @@ export const containerSlideInOutLeft = {
     },
   },
 };
+
 export const containerSlideInOutRight = {
   initial: {
     x: "100vw",
@@ -75,7 +122,7 @@ export const navVariants = {
 
 //SPLASH PAGE VARIANTS
 export const splashVariants = {
-  // initial: { opacity: 1 },
+  initial: { opacity: 1 },
   // animate: {
   //   opacity: 1,
   //   transition: {
@@ -93,25 +140,36 @@ export const splashVariants = {
 
 //HOME PAGE VARIANTS
 export const homeVariants = {
-  initial: { opacity: 1 },
+  initial: {
+    opacity: 1,
+    transition: {
+      duration: 1,
+    },
+  },
   animate: {
     opacity: 1,
     transition: {
-      duration: 0.5,
+      duration: 1,
     },
   },
-  // exit: {
-  //   opacity: 1,
-  //   scale: 3,
-  //   transition: {
-  //     delay: 0.5,
-  //     duration: 2,
-  //   },
-  // },
+  exit: {
+    opacity: 1,
+    scale: 3,
+    transition: {
+      delay: 0.5,
+      duration: 2,
+    },
+  },
 };
 
 export const headerVariants = {
-  initial: { x: "-50vw", opacity: 0 },
+  initial: {
+    x: "-50vw",
+    opacity: 0,
+    transition: {
+      duration: 1,
+    },
+  },
   animate: {
     x: 0,
     opacity: 1,
@@ -123,7 +181,13 @@ export const headerVariants = {
 };
 
 export const subheaderVariants = {
-  initial: { x: "-100vw", opacity: 0 },
+  initial: {
+    x: "-100vw",
+    opacity: 0,
+    transition: {
+      duration: 1,
+    },
+  },
   animate: {
     x: 0,
     opacity: 1,
@@ -135,7 +199,13 @@ export const subheaderVariants = {
 };
 
 export const imageVariants = {
-  initial: { x: "50vh", opacity: 0 },
+  initial: {
+    x: "50vh",
+    opacity: 0,
+    transition: {
+      duration: 1,
+    },
+  },
   animate: {
     x: 0,
     opacity: 1,
@@ -155,12 +225,17 @@ export const imageVariants = {
 };
 
 export const buttonVariants = {
-  initial: { opacity: 0 },
+  initial: {
+    opacity: 0,
+    transition: {
+      duration: 1,
+    },
+  },
   animate: {
     opacity: 1,
     transition: {
-      delay: 3.5,
-      duration: 2,
+      delay: 2.5,
+      duration: 1.5,
     },
   },
 };

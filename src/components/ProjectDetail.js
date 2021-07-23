@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 //framer motion and styled components
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import { detailPopUp } from "../styles/animations";
 import { getDocumentById } from "../api/api";
 import Icon from "./Icon";
 //uuid
@@ -52,7 +53,12 @@ const ProjectDetails = ({
 
   return (
     <StyledDetail>
-      <StyledCard>
+      <StyledCard
+        variants={detailPopUp}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+      >
         <CloseButton closeFunction={projectClose} />
         {/* <p>{project._id}</p>
         <p>{project.projectName}</p>

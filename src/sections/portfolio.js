@@ -4,6 +4,12 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import StyledLine from "../styles/styledLine";
+// import {
+//   fadeInOut,
+//   elementSlideInOut,
+//   projectsSlideInOutLeft,
+// } from "../styles/animations";
+// import useScroll from "../components/useScroll";
 
 //components
 import Projects from "../components/Projects";
@@ -13,6 +19,7 @@ import { getCollection } from "../api/api";
 import { buttonVariants } from "../styles/animations";
 
 const Portfolio = () => {
+  //const [element, controls] = useScroll();
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -25,8 +32,10 @@ const Portfolio = () => {
       .then((results) => {
         if (results.status === 200) {
           setProjects(results.data);
-          setLoading(false);
         }
+      })
+      .then(() => {
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -38,7 +47,11 @@ const Portfolio = () => {
   });
 
   return (
-    <PortfolioSection className="section-dark fullheight" id="portfolio">
+    <PortfolioSection
+      className="section-dark autoheight"
+      id="portfolio"
+      //ref={element}
+    >
       <div className="container-dark">
         <div className="content">
           <div className="header">
@@ -57,6 +70,7 @@ const Portfolio = () => {
             </div>
           )}
           <motion.button
+            className="dark-btn"
             variants={buttonVariants}
             initial="initial"
             animate="animate"

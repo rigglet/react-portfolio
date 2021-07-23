@@ -15,9 +15,9 @@ const ProjectCard = ({ project, handleProjectClick }) => {
 
   return (
     <StyledCard
-      initial={{ scale: 0.8 }}
-      animate={{ scale: 1 }}
-      transition={{ duration: 0.5 }}
+    // initial={{ scale: 0.6 }}
+    // animate={{ scale: 1 }}
+    // transition={{ duration: 0.5 }}
     >
       <div className="image-container">
         <div
@@ -25,24 +25,14 @@ const ProjectCard = ({ project, handleProjectClick }) => {
           onClick={() => handleProjectClick(project._id)}
         >
           {/* <h2>More details...</h2> */}
-          <h2>Click for details...</h2>
-          <Icon
-            key={uuidv4()}
-            icon="MdUnfoldMore"
-            color="white"
-            size="100px"
-            className="cs"
-          />
+          <h2>project details</h2>
+          <Icon key={uuidv4()} icon="MdUnfoldMore" color="white" size="50px" />
         </div>
-
-        <Link to={`/portfolio/${project._id}`}>
-          <img
-            src={`${serverBaseURL()}/images/${
-              project.screenshots[0]?.fileName
-            }`}
-            alt="project"
-          />
-        </Link>
+        <img
+          src={`${serverBaseURL()}/images/${project.screenshots[0]?.fileName}`}
+          alt="project"
+        />
+        {/* <Link to={`/portfolio/${project._id}`}> </Link> */}
       </div>
 
       <div className="links">
@@ -53,13 +43,16 @@ const ProjectCard = ({ project, handleProjectClick }) => {
             target="_blank"
             rel="noreferrer"
           >
-            <Icon
-              key={uuidv4()}
-              icon="FaGithubSquare"
-              color="#65617d"
-              size="30px"
-              className="cs"
-            />
+            <button className="project-card-link-btn">
+              <Icon
+                key={uuidv4()}
+                icon="FaGithubSquare"
+                color="#689ed0"
+                size="25px"
+                title="Open project in github"
+              />
+              View code
+            </button>
           </a>
         </div>
         <div className="icon">
@@ -69,22 +62,26 @@ const ProjectCard = ({ project, handleProjectClick }) => {
             target="_blank"
             rel="noreferrer"
           >
-            <Icon
-              key={uuidv4()}
-              icon="HiLink"
-              color="rgb(101, 97, 125)"
-              size="30px"
-            />
+            <button className="project-card-link-btn">
+              <Icon
+                key={uuidv4()}
+                icon="HiLink"
+                color="689ed0"
+                size="25px"
+                title="Open live project website"
+              />
+              View live
+            </button>
           </a>
         </div>
       </div>
 
       <div className="information">
         <h4 className="project-name">{project.projectName}</h4>
-        <p className="project-description">{project.shortDescription}</p>
+        <h5 className="project-description">{project.shortDescription}</h5>
       </div>
 
-      <Line />
+      {/* <Line /> */}
 
       <StyledIcons>
         {project.technologies.map((tech) => (
@@ -98,7 +95,7 @@ const ProjectCard = ({ project, handleProjectClick }) => {
               key={uuidv4()}
               icon={tech.icon}
               color={tech.color}
-              size="25px"
+              size="30px"
             />
           </a>
         ))}
@@ -108,19 +105,22 @@ const ProjectCard = ({ project, handleProjectClick }) => {
 };
 
 const StyledCard = styled(motion.div)`
-  max-width: 400px;
-  margin: 2rem;
+  max-width: 300px;
+  //margin: 2rem;
   background-color: whitesmoke;
-  border-radius: 0 0 8px 8px;
+  background-color: transparent;
+  border-radius: 10px;
   //box-shadow: 0px 5px 20px rgba(101, 97, 125, 1);
   //box-shadow: 0px 0px 150px rgba(101, 97, 125, 1);
+  border-bottom: 1px solid #689ed0;
 
   .image-container {
-    border-radius: 8px 8px 0 0;
+    border-radius: 10px;
+    min-height: 175px;
     position: relative;
-    max-height: 100%;
+
     .overlay {
-      border-radius: 8px 8px 0 0;
+      border-radius: 10px;
       z-index: 1;
       position: absolute;
       top: 0;
@@ -142,7 +142,7 @@ const StyledCard = styled(motion.div)`
     }
 
     img {
-      border-radius: 8px 8px 0 0;
+      border-radius: 10px;
       cursor: pointer;
       width: 100%;
       //min-height: 25vh;
@@ -155,19 +155,43 @@ const StyledCard = styled(motion.div)`
     background-color: #313131;
     background: #65617d;
     background: whitesmoke;
+    background: transparent;
     display: flex;
-    border-bottom: 1px solid #313131;
-    border-top: 1px solid #313131;
-    border-bottom: 1px solid whitesmoke;
-    border-top: 1px solid whitesmoke;
+    //border-bottom: 1px solid #313131;
+    //border-top: 1px solid #313131;
+    //border-bottom: 1px solid #689ed0;
+    //border-radius: 10px;
+    //border-top: 1px solid whitesmoke;
     align-items: center;
     justify-content: space-evenly;
+
+    .project-card-link-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      column-gap: 1rem;
+      max-width: 200px;
+      background: transparent;
+      border-width: 1px;
+      padding: 0.5rem;
+      font-weight: 100;
+      font-size: 10pt;
+      text-transform: none;
+      &:hover {
+        box-shadow: none;
+        color: black;
+        background: #689ed0;
+      }
+    }
 
     .icon {
       display: flex;
       align-items: center;
       cursor: pointer;
       padding: 0.25rem;
+      a {
+        text-decoration: none;
+      }
     }
     .icon:hover {
       color: #666666;
@@ -185,23 +209,18 @@ const StyledCard = styled(motion.div)`
     color: #313131;
 
     .project-name {
+      margin-top: 1rem;
       padding: 0.5rem;
+      color: whitesmoke;
       font-size: 14pt;
       font-weight: 500;
-      //text-decoration: none;
-      /* &:visited,
-      &:active {
-        text-decoration: none;
-      } */
     }
+
     .project-description {
       padding: 1rem;
-      /* min-height: 20vh; */
-      text-decoration: none;
-      /* &:visited,
-      &:active {
-        text-decoration: none;
-      } */
+      color: whitesmoke;
+      font-size: 12pt;
+      font-weight: 300;
     }
   }
 `;
@@ -216,7 +235,8 @@ const StyledIcons = styled(motion.div)`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  padding: 1rem;
+  gap: 0.5rem;
+  padding: 1rem 0.5rem;
 `;
 
 export default ProjectCard;
