@@ -24,7 +24,7 @@ const Splash = () => {
     <SplashLayout variants={splashVariants} initial="initial" exit="exit">
       {finished ? (
         <div>
-          <Redirect to="/home" />
+          <Redirect to="/" />
         </div>
       ) : (
         <>

@@ -27,12 +27,12 @@ const Skills = () => {
     getTechnologies()
       .then((results) => {
         if (results.status === 200) {
-          console.log(results.status);
+          //console.log(results.status);
           setTechnologies(results.data);
         }
       })
       .catch((err) => {
-        console.log(err);
+        console.log("Skills: get Technologies error: ", err);
       });
 
     getTools()
@@ -75,15 +75,28 @@ const Skills = () => {
       >
         <div className="gradientRight" />
         <div className="inner-container">
-          <div className="header">
-            <h1 className="section-heading heading-dark">Technical Skills</h1>
+          <div className="section-header">
+            <div className="section-title-content">
+              <Icon
+                icon="HiCode"
+                size="30px"
+                color="#313131"
+                title="Skills icon"
+              />
+              <h1 className="section-heading heading-dark">Technical Skills</h1>
+            </div>
             <StyledLine height="6px" width="100%" bgColor="#f5f5f5" />
           </div>
+
           <div className="content">
             {frontend.length > 0 && (
               <section>
-                <div className="header">
-                  <h2 className="section-subheading heading-dark">Frontend</h2>
+                <div className="section-header">
+                  <div className="section-title-content">
+                    <h2 className="section-subheading heading-dark">
+                      Frontend
+                    </h2>
+                  </div>
                   <StyledLine height="4px" width="100%" bgColor="#f5f5f5" />
                 </div>
                 <div className="selection">
@@ -111,8 +124,10 @@ const Skills = () => {
             )}
             {backend.length > 0 && (
               <section>
-                <div className="header">
-                  <h2 className="section-subheading heading-dark">Backend</h2>
+                <div className="section-header">
+                  <div className="section-title-content">
+                    <h2 className="section-subheading heading-dark">Backend</h2>
+                  </div>
                   <StyledLine height="4px" width="100%" bgColor="#f5f5f5" />
                 </div>
                 <div className="selection">
@@ -140,8 +155,12 @@ const Skills = () => {
             )}
             {database.length > 0 && (
               <section>
-                <div className="header">
-                  <h2 className="section-subheading heading-dark">Database</h2>
+                <div className="section-header">
+                  <div className="section-title-content">
+                    <h2 className="section-subheading heading-dark">
+                      Database
+                    </h2>
+                  </div>
                   <StyledLine height="4px" width="100%" bgColor="#f5f5f5" />
                 </div>
                 <div className="selection">
@@ -169,10 +188,12 @@ const Skills = () => {
             )}
             {infrastructure.length > 0 && (
               <section>
-                <div className="header">
-                  <h2 className="section-subheading heading-dark">
-                    Infrastructure
-                  </h2>
+                <div className="section-header">
+                  <div className="section-title-content">
+                    <h2 className="section-subheading heading-dark">
+                      Infrastructure
+                    </h2>
+                  </div>
                   <StyledLine height="4px" width="100%" bgColor="#f5f5f5" />
                 </div>
                 <div className="selection">
@@ -200,8 +221,10 @@ const Skills = () => {
             )}
             {other.length > 0 && (
               <section>
-                <div className="header">
-                  <h2 className="section-subheading heading-dark">Other</h2>
+                <div className="section-header">
+                  <div className="section-title-content">
+                    <h2 className="section-subheading heading-dark">Other</h2>
+                  </div>
                   <StyledLine height="4px" width="100%" bgColor="#f5f5f5" />
                 </div>
                 <div className="selection">
@@ -229,8 +252,10 @@ const Skills = () => {
             )}
             {tools.length > 0 && (
               <section>
-                <div className="header">
-                  <h2 className="section-subheading heading-dark">Tools</h2>
+                <div className="section-header">
+                  <div className="section-title-content">
+                    <h2 className="section-subheading heading-dark">Tools</h2>
+                  </div>
                   <StyledLine height="4px" width="100%" bgColor="#f5f5f5" />
                 </div>
                 <div className="selection">
@@ -258,10 +283,19 @@ const Skills = () => {
             )}
           </div>
 
-          <div className="header">
-            <h1 className="section-heading heading-dark">Soft Skills</h1>
+          <div className="section-header">
+            <div className="section-title-content">
+              <Icon
+                icon="BsPersonFill"
+                size="30px"
+                color="#313131"
+                title="Skills icon"
+              />
+              <h1 className="section-heading heading-dark">Soft Skills</h1>
+            </div>
             <StyledLine height="6px" width="100%" bgColor="#f5f5f5" />
           </div>
+
           <div className="content">Effective communicator</div>
         </div>
       </motion.div>
@@ -300,8 +334,7 @@ const SkillsSection = styled(motion.div)`
       align-items: center;
       gap: 0.5rem;
       //border: 1px solid red;
-      h3 {
-      }
+
       .selection {
         display: flex;
         flex-wrap: wrap;

@@ -17,9 +17,9 @@ const ContactIconBar = ({ size, color }) => {
     }
 
     getLinks().then((results) => {
-      //console.log(results);
       if (results.status === 200) {
         setLinks(results.data);
+        console.log(results.data);
       }
     });
   }, []);
@@ -29,6 +29,7 @@ const ContactIconBar = ({ size, color }) => {
       {links.map((link) => (
         <a key={uuidv4()} target="_blank" rel="noreferrer" href={link.address}>
           <Icon icon={link.icon} color={color} size={size} />
+          {/* <Icon icon="FaDAndD" color={color} size={size} /> */}
         </a>
       ))}
     </StyledBar>

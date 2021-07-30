@@ -1,5 +1,5 @@
 import axios from "axios";
-import { productionBaseURL as serverBaseURL } from "../config/config";
+import { serverBaseURL } from "../config/config";
 
 export const getUserData = async (auth) => {
   //const baseUrl = baseURL;

@@ -14,6 +14,7 @@ import StyledLine from "../styles/styledLine";
 //components
 import Projects from "../components/Projects";
 import Loader from "../components/Loader";
+import Icon from "../components/Icon";
 //data
 import { getCollection } from "../api/api";
 import { buttonVariants } from "../styles/animations";
@@ -54,10 +55,21 @@ const Portfolio = () => {
     >
       <div className="container-dark">
         <div className="content">
-          <div className="header">
-            <h1 className="section-heading heading-light">Featured Projects</h1>
+          <div className="section-header">
+            <div className="section-title-content">
+              <Icon
+                icon="MdWeb"
+                size="30px"
+                color="whitesmoke"
+                title="Projects icon"
+              />
+              <h1 className="section-heading heading-light">
+                Featured Projects
+              </h1>
+            </div>
             <StyledLine height="6px" width="100%" bgColor="#111111" />
           </div>
+
           {loading ? (
             <Loader />
           ) : (
@@ -70,7 +82,7 @@ const Portfolio = () => {
             </div>
           )}
           <motion.button
-            className="dark-btn"
+            className="page-btn dark-btn"
             variants={buttonVariants}
             initial="initial"
             animate="animate"

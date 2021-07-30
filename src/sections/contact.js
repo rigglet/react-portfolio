@@ -12,14 +12,20 @@ import { ToastContainer, toast, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 //components
 import ContactIconBar from "../components/ContactIconBar";
+import Icon from "../components/Icon";
 //icon
-import { FaWindowClose } from "react-icons/fa";
+//import { FaWindowClose } from "react-icons/fa";
 //SVGs
 import Plane from "../img/plane";
 import Trail from "../img/trail";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    user_name: "",
+    user_email: "",
+    user_subject: "",
+    message: "",
+  });
 
   const notify = (type) => {
     const toastStyle = {
@@ -73,7 +79,14 @@ const Contact = () => {
   };
 
   const CloseButton = ({ closeToast }) => (
-    <FaWindowClose className="toastClose" onClick={closeToast} />
+    //<FaWindowClose className="toastClose" onClick={closeToast} />
+    <Icon
+      icon="FaWindowClose"
+      color="#689ed0"
+      size=""
+      title="Close message"
+      onClick={closeToast}
+    />
   );
 
   const handleChange = (e) => {
@@ -102,8 +115,16 @@ const Contact = () => {
 
       <div className="container-dark">
         <div className="content">
-          <div className="header">
-            <h1 className="section-heading heading-light">Contact Me</h1>
+          <div className="section-header">
+            <div className="section-title-content">
+              <Icon
+                icon="BiMessageRounded"
+                size="30px"
+                color="whitesmoke"
+                title="Contact icon"
+              />
+              <h1 className="section-heading heading-light">Contact me</h1>
+            </div>
             <StyledLine height="6px" width="100%" bgColor="#111111" />
           </div>
 
@@ -157,7 +178,7 @@ const Contact = () => {
 
               <div className="button">
                 <motion.input
-                  className="dark-btn"
+                  className="page-btn dark-btn"
                   type="submit"
                   value="Send Message"
                   variants={buttonVariants}

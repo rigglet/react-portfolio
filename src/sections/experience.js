@@ -35,10 +35,23 @@ const Experience = () => {
       >
         <div className="gradientLeft" />
         <div className="content">
-          <div className="header">
-            <h1 className="section-heading heading-dark">Experience</h1>
-            <StyledLine height="6px" width="100%" bgColor="#f5f5f5" />
+          <div className="section-header">
+            <div className="section-title-content">
+              <Icon
+                icon="FaUserTie"
+                size="30px"
+                color="var(--header-color-dark)"
+                title="Projects icon"
+              />
+              <h1 className="section-heading heading-dark">Experience</h1>
+            </div>
+            <StyledLine
+              height="6px"
+              width="100%"
+              bgColor="var(--color-light-background)"
+            />
           </div>
+
           {/* <article>Code Challenges</article>
           <p>Codewars API</p>
           <p>Hacker Rank</p>
@@ -105,9 +118,9 @@ const Experience = () => {
             </VerticalTimelineElement>
           </VerticalTimeline>
 
-          <HashLink smooth to="/home#contact">
+          <HashLink smooth to="/#contact">
             <motion.button
-              className="light-btn"
+              className="page-btn light-btn"
               variants={buttonVariants}
               initial="initial"
               animate="animate"

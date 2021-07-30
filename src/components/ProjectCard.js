@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 //functions
 import Icon from "./Icon";
-import { productionBaseURL as serverBaseURL } from "../config/config";
+import { serverBaseURL } from "../config/config";
 
 const ProjectCard = ({ project, handleProjectClick }) => {
   //console.log(project);
@@ -43,7 +43,7 @@ const ProjectCard = ({ project, handleProjectClick }) => {
             target="_blank"
             rel="noreferrer"
           >
-            <button className="project-card-link-btn">
+            <button className="page-btn project-card-link-btn">
               <Icon
                 key={uuidv4()}
                 icon="FaGithubSquare"
@@ -62,7 +62,7 @@ const ProjectCard = ({ project, handleProjectClick }) => {
             target="_blank"
             rel="noreferrer"
           >
-            <button className="project-card-link-btn">
+            <button className="page-btn project-card-link-btn">
               <Icon
                 key={uuidv4()}
                 icon="HiLink"
@@ -118,6 +118,7 @@ const StyledCard = styled(motion.div)`
     border-radius: 10px;
     min-height: 175px;
     position: relative;
+    margin-bottom: 1rem;
 
     .overlay {
       border-radius: 10px;

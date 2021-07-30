@@ -50,9 +50,9 @@ const Home = () => {
               <h2>With a focus on React</h2>
               <h2>Hire me today</h2>
             </StyledSubHeader>
-            <HashLink smooth to="/home#portfolio">
+            <HashLink smooth to="/#portfolio">
               <motion.button
-                className="dark-btn"
+                className="page-btn dark-btn"
                 variants={buttonVariants}
                 initial="initial"
                 //animate="animate"

@@ -35,7 +35,7 @@ const Projects = ({ projects }) => {
 
   const projectClose = () => {
     //document.body.style.overflowY = "auto";
-    history.push("/home#portfolio");
+    history.push("/#portfolio");
   };
 
   const skipProject = (direction) => {

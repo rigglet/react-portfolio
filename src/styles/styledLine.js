@@ -6,6 +6,7 @@ export default function styledLine({ height, width, bgColor }) {
 
 const StyledLine = styled.div`
   //background: #689ed0;
+  border-radius: 1rem;
   background: linear-gradient(
     90deg,
     #1c3b57 0%,

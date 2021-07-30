@@ -151,19 +151,27 @@ body{
     background: var(--gradient-rtl)
   }
 
-//h1 heading on some sections
-.section-heading {
-  font-weight: 300;
-  font-size: 20pt;
-  cursor: default;
-  padding: 0 1rem;
-}
-//h2 sub-heading on some sections
-.section-subheading {
-  font-weight: 300;
-  font-size: 15pt;
-  cursor: default;
-  padding: 0 1rem;
+.section-header{
+  .section-title-content{
+    display: flex;
+    align-items: center;
+
+    //h1 heading on some sections
+    .section-heading {
+      font-weight: 300;
+      font-size: 20pt;
+      cursor: default;
+      padding: 0 1rem;
+    }
+    //h2 sub-heading on some sections
+    .section-subheading {
+      font-weight: 300;
+      font-size: 15pt;
+      cursor: default;
+      padding: 0 1rem;
+    }
+  }
+
 }
 
 
@@ -205,7 +213,8 @@ body{
   border: 1px solid white;
 }
 
-button, input[type='submit']{
+//button, input[type='submit']{
+.page-btn{
     font-weight: bold;
     font-family: 'Inter', sans-serif;
     font-size: 1.0rem;

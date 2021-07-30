@@ -13,7 +13,7 @@ const Nav = () => {
     /* Optional options */
     threshold: 0,
   });
-  console.log(entry);
+  //console.log(entry);
   return (
     <StyledNav
       variants={navVariants}
@@ -22,7 +22,7 @@ const Nav = () => {
       ref={ref}
     >
       <h2>{`Header inside viewport ${inView}.`}</h2>
-      <Link to="/">
+      <Link to="/splash">
         <h1 className="logo">Neil Rigg</h1>
       </Link>
       <div className="menu">

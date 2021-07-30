@@ -7,11 +7,14 @@ import { getDocumentById } from "../api/api";
 import Icon from "./Icon";
 //uuid
 import { v4 as uuidv4 } from "uuid";
-import { productionBaseURL as serverBaseURL } from "../config/config";
+import { serverBaseURL } from "../config/config";
 //functions
 import CloseButton from "./closeButton";
 //dates
 import { DateTime } from "luxon";
+//image gallery
+import ImageGallery from "react-image-gallery";
+import "react-image-gallery/styles/css/image-gallery.css";
 //icons
 import { FaGithub } from "react-icons/fa";
 import { BsCardText } from "react-icons/bs";
@@ -34,26 +37,49 @@ const ProjectDetails = ({
 }) => {
   //const project = getProject(projectId);
   const [project, setProject] = useState({});
+  let [imageArray, setImageArray] = useState([]);
+  let [mainImage, setMainImage] = useState({});
 
   useEffect(() => {
     async function getProject() {
       return await getDocumentById("projects", projectId);
     }
 
-    getProject().then((results) => {
-      console.log(results.data);
-      if (results.status === 200) {
-        setProject(results.data);
-        // currentImage = results.data.screenshots.filter(
-        //   (image) => image._id === results.data.mainImage
-        // )[0];
-      }
-    });
+    getProject()
+      .then((results) => {
+        console.log(results.data);
+        if (results.status === 200) {
+          setProject(results.data);
+          // currentImage = results.data.screenshots.filter(
+          //   (image) => image._id === results.data.mainImage
+          // )[0];
+        }
+        return results;
+      })
+      .then((results) => {
+        setImageArray(
+          results.data?.screenshots?.map((image) => {
+            return {
+              original: `${serverBaseURL()}/images/${image.fileName}`,
+              thumbnail: `${serverBaseURL()}/images/${image.fileName}`,
+            };
+          })
+        );
+        setMainImage(
+          results.data?.screenshots?.filter((image) => {
+            console.log("image._id: ", typeof image._id);
+            console.log("mainImage: ", typeof results.data?.mainImage);
+            return image._id === results.data?.mainImage;
+          })[0]
+        );
+      });
   }, []);
 
+  console.log(imageArray);
+
   return (
-    <StyledDetail>
-      <StyledCard
+    <StyledOuterContainer>
+      <StyledInnerContainer
         variants={detailPopUp}
         initial="initial"
         animate="animate"
@@ -70,13 +96,13 @@ const ProjectDetails = ({
         <p>{project.included}</p>
         <p>{project.website}</p>
         <p>{project.githubLink}</p>
-        <p>{project.mainImage}</p> */}
+      <p>{project.mainImage}</p> */}
         {/*screenshots: [{…}]
         highlights: (2) ["AWS S3 bucket image storage and handling", "Express server backend with MongoDB"]
         features: (3) ["AWS S3 bucket image storage and handling", "Express server backend with MongoDB", "Built with React"]
         packages: (5) [{…}, {…}, {…}, {…}, {…}]
         libraries: []
-        technologies: (8) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]*/}
+      technologies: (8) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]*/}
 
         {/* <p>{project.startedDate}</p>
                 <p>{project.completedDate}</p>
@@ -84,7 +110,7 @@ const ProjectDetails = ({
 
         <div className="titleHeader">
           <MdWeb className="titleIcon" />
-          <h1>{project?.projectName}</h1>
+          <h1>Project details</h1>
           {/* <h5>{project?._id}</h5> */}
         </div>
 
@@ -93,73 +119,147 @@ const ProjectDetails = ({
             <legend>
               Overview <BsCardText />
             </legend>
-            <div className="subsection">
-              <div className="input-item">
-                <label htmlFor="projectName">Project name:</label>
-                <p>{project?.projectName}</p>
-              </div>
-              <div className="input-item">
-                <label htmlFor="version">Version:</label>
-                <p>{project?.version}</p>
-              </div>
-              <div className="input-item">
-                <label htmlFor="author">Author:</label>
-                <p>{project?.author}</p>
-              </div>
+            <h1>{project?.projectName}</h1>
+            <p>{project?.projectDescription}</p>
+            <div className="input-item">
+              <label htmlFor="version">Version:</label>
+              <p>{project?.version}</p>
             </div>
-            <div className="subsection">
-              {/* <div className="input-item">
-                <label htmlFor="featured">Featured:</label>
-                <input
-                  disabled={true}
-                  checked={project?.featured}
-                  type="checkbox"
-                  name="featured"
-                  id="featured"
-                />
-              </div>
-              <div className="input-item">
-                <label htmlFor="included">Included:</label>
-                <input
-                  disabled={true}
-                  checked={project?.included}
-                  type="checkbox"
-                  name="included"
-                  id="included"
-                />
-              </div> */}
-              <div className="input-item">
-                <label htmlFor="short">Short description:</label>
-                <p>{project?.shortDescription}</p>
-              </div>
-              <div className="input-item">
-                <label htmlFor="description">Description:</label>
-                <p>{project?.projectDescription}</p>
-              </div>
-            </div>
-          </fieldset>
-
-          <fieldset className="addresses">
-            <legend>
-              Addresses
-              <HiLink />
-            </legend>
             <div className="address-item">
               <label htmlFor="github">Github:</label>
-              <div className="address">
-                <FaGithub className="address-icon" />
-                <p>{project?.githubLink}</p>
-              </div>
+              <a href={project?.githubLink}>
+                <Icon
+                  icon="FaGithub"
+                  color="black"
+                  size="50px"
+                  title="Github link"
+                />
+              </a>
             </div>
             <div className="address-item">
-              <label htmlFor="website">Website:</label>
-              <div className="address">
-                <CgWebsite className="address-icon" />
-                <p>{project?.website}</p>
-              </div>
+              <label htmlFor="website">Live site:</label>
+              <a href={project?.website}>
+                <Icon
+                  icon="CgWebsite"
+                  color="black"
+                  size="50px"
+                  title="Live site link"
+                />
+              </a>
             </div>
           </fieldset>
 
+          {imageArray.length > 1 ? (
+            <fieldset>
+              <legend>
+                Screenshots <ImImages />
+              </legend>
+              <ImageGallery
+                items={imageArray}
+                showPlayButton={false}
+                //thumbnailPosition={"bottom"}
+                //showIndex={true}
+                autoPlay={true}
+                showThumbnails={false}
+                showBullets={false}
+                showNav={true}
+              />
+            </fieldset>
+          ) : (
+            <img
+              className="main-image"
+              src={`${serverBaseURL()}/images/${mainImage.fileName}`}
+              alt={mainImage.description}
+            />
+          )}
+
+          <fieldset className="libraries">
+            <legend>
+              Libraries
+              <Icon
+                icon="IoLibraryOutline"
+                color="#313131"
+                size="14pt"
+                title="library icon"
+              />
+            </legend>
+            <StyledIcons>
+              {project?.libraries?.map((library) => (
+                <a
+                  key={uuidv4()}
+                  href={library.address}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <h4>{library.name}</h4>
+                  <Icon
+                    icon={library.icon}
+                    color={library.color}
+                    size="75px"
+                    title={`${library.name} library`}
+                  />
+                </a>
+              ))}
+            </StyledIcons>
+          </fieldset>
+          <fieldset className="packages">
+            <legend>
+              Packages
+              <Icon
+                icon="GoPackage"
+                color="#313131"
+                size="14pt"
+                title="package icon"
+              />
+            </legend>
+            <StyledIcons>
+              {project?.packages?.map((pack) => (
+                <a
+                  key={uuidv4()}
+                  href={pack.npmaddress}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <h4>{pack.name}</h4>
+                  <Icon
+                    key={uuidv4()}
+                    icon={pack.icon}
+                    color={pack.color}
+                    size="75px"
+                  />
+                </a>
+              ))}
+            </StyledIcons>
+          </fieldset>
+          <fieldset className="technologies">
+            <legend>
+              Technologies
+              <Icon
+                icon="HiCode"
+                color="#313131"
+                size="14pt"
+                title="package icon"
+              />
+            </legend>
+            <StyledIcons>
+              {project?.technologies?.map((tech) => (
+                <a
+                  key={uuidv4()}
+                  href={tech.address}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <h4>{tech.name}</h4>
+                  <Icon
+                    key={uuidv4()}
+                    icon={tech.icon}
+                    color={tech.color}
+                    size="75px"
+                  />
+                </a>
+              ))}
+            </StyledIcons>
+          </fieldset>
           <fieldset className="dates">
             <legend>
               Dates <AiOutlineCalendar />
@@ -195,176 +295,13 @@ const ProjectDetails = ({
               </p>
             </div>
           </fieldset>
-          {/* <fieldset className="descriptions">
-            <legend>
-              Descriptions
-              <BiMessageSquareDetail />
-            </legend>
-            <div className="input-item">
-              <label htmlFor="short">Short description:</label>
-              <p>{project?.shortDescription}</p>
-            </div>
-            <div className="input-item">
-              <label htmlFor="description">Description:</label>
-              <p>{project?.projectDescription}</p>
-            </div>
-          </fieldset> */}
-          <fieldset className="libraries">
-            <legend>
-              Libraries <IoLibraryOutline />
-            </legend>
-            <ul>
-              {project?.libraries?.map((lib) => (
-                <li key={uuidv4()}>{lib.name}</li>
-              ))}
-            </ul>
-          </fieldset>
-          <fieldset className="packages">
-            <legend>
-              Packages <GoPackage />
-            </legend>
-            <ul>
-              {project?.packages?.map((p) => (
-                <li key={uuidv4()}>{p.name}</li>
-              ))}
-            </ul>
-          </fieldset>
-          <fieldset className="technologies">
-            <legend>
-              Technologies <HiCode />
-            </legend>
-            <ul>
-              {project?.technologies?.map((t) => (
-                <li key={uuidv4()}>{t.name}</li>
-              ))}
-            </ul>
-          </fieldset>
-          <fieldset>
-            <legend>
-              Screenshots <ImImages />
-            </legend>
-            <div className="scroller">
-              {project?.screenshots?.map((s) => (
-                <img
-                  key={uuidv4()}
-                  src={`${serverBaseURL()}/images/${s.fileName}`}
-                  alt={s.description}
-                />
-              ))}
-            </div>
-          </fieldset>
         </div>
-
-        {/* <StyledHeaderSection>
-          <h2>{project.projectName}</h2>
-          <StyledHeaderIcons>
-            <StyledLinks>
-              <a href={project.website} target="_blank" rel="noreferrer">
-                {
-                  <Icon
-                    key={uuidv4()}
-                    icon="HiLink"
-                    color="#313131"
-                    size="25px"
-                  />
-                }
-              </a>
-              <a href={project.githubLink} target="_blank" rel="noreferrer">
-                {
-                  <Icon
-                    key={uuidv4()}
-                    icon="FaGithubSquare"
-                    color="#313131"
-                    size="25px"
-                  />
-                }
-              </a>
-            </StyledLinks>
-            {project.featured ? (
-              <Icon key={uuidv4()} icon="FaStar" color="#313131" size="25px" />
-            ) : (
-              <Icon
-                key={uuidv4()}
-                icon="FaRegStar"
-                color="#313131"
-                size="25px"
-              />
-            )}
-          </StyledHeaderIcons>
-        </StyledHeaderSection> */}
-
-        {/* <StyledMain>
-          <div className="left">
-            <p>{project.projectDescription}</p>
-
-            <StyledIcons>
-              {project.technologies?.map((tech) => (
-                <Icon
-                  key={uuidv4()}
-                  icon={tech.icon}
-                  color={tech.color}
-                  size="25px"
-                />
-              ))}
-            </StyledIcons>
-          </div>
-
-          <div className="middle">
-            {project.screenshots?.map((shot) => (
-              <img
-                key={uuidv4()}
-                src={`${serverBaseURL()}/images/${shot.fileName}`}
-                alt={shot.description}
-                onClick={() => handleImageChange(shot.fileName)}
-              />
-            ))}
-          </div>
-
-          <div className="right">
-            {project?.mainImage && (
-              <img
-                src={`${serverBaseURL()}/images/${project?.mainImage}`}
-                alt="project"
-              />
-            )} 
-          </div>
-        </StyledMain> */}
-
-        {/* <StyledLeftSection>
-          {arrSize > 1 && (
-            <Icon
-              key={uuidv4()}
-              icon="FaAngleLeft"
-              color="#313131"
-              size="25px"
-              className="arrow"
-              onClick={() => {
-                skipProject("BACK");
-              }}
-            />
-          )}
-        </StyledLeftSection>
-
-        <StyledRightSection>
-          {arrSize > 1 && (
-            <Icon
-              key={uuidv4()}
-              icon="FaAngleRight"
-              color="#313131"
-              size="25px"
-              className="arrow"
-              onClick={() => {
-                skipProject("FORWARD");
-              }}
-            />
-          )}
-        </StyledRightSection> */}
-      </StyledCard>
-    </StyledDetail>
+      </StyledInnerContainer>
+    </StyledOuterContainer>
   );
 };
 
-const StyledDetail = styled(motion.div)`
+const StyledOuterContainer = styled(motion.div)`
   z-index: 12;
   position: fixed;
   top: 0;
@@ -379,13 +316,11 @@ const StyledDetail = styled(motion.div)`
   padding: 5vh 0;
 `;
 
-const StyledCard = styled(motion.div)`
+const StyledInnerContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-items: flex-start;
-  //flex-wrap: wrap;
   padding: 2rem 4rem;
-  //margin: 5vh 0;
   box-shadow: 0 0 10px 5px #689ed0;
   position: relative;
   z-index: 10;
@@ -421,13 +356,16 @@ const StyledCard = styled(motion.div)`
     height: auto;
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem;
+    row-gap: 2rem;
+    column-gap: 2rem;
     .details {
       display: flex;
-      width: 100%;
+      flex-direction: column;
+      width: 45%;
       height: auto;
       padding: 1rem;
       gap: 1rem;
+      flex-wrap: wrap;
       .subsection {
         display: flex;
         flex-direction: column;
@@ -440,21 +378,11 @@ const StyledCard = styled(motion.div)`
         }
       }
     }
-    .addresses {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      //height: auto;
-      padding: 1rem;
-      row-gap: 0.5rem;
+    .main-image {
+      width: 50%;
+      object-fit: scale-down;
     }
-    /* .descriptions {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      height: auto;
-      padding: 1rem;
-    } */
+
     .dates {
       display: flex;
       flex-direction: column;
@@ -464,23 +392,7 @@ const StyledCard = styled(motion.div)`
       padding: 1rem;
       gap: 1rem;
     }
-    .scroller {
-      padding: 1rem;
-      width: 84vw;
-      min-width: 100%;
-      overflow-x: scroll;
-      display: flex;
-      column-gap: 0.5rem;
-      img {
-        cursor: default;
-        height: auto;
-        width: 425px;
-        object-fit: contain;
-        object-position: center center;
-        border-radius: 4px;
-        border: 1px solid #689ed0;
-      }
-    }
+
     .libraries,
     .technologies,
     .packages {
@@ -547,222 +459,53 @@ const StyledCard = styled(motion.div)`
       margin-bottom: 0.5rem;
     }
   }
-`;
 
-const StyledHeaderSection = styled(motion.div)`
-  grid-area: header;
-  padding: 1rem;
-  color: #313131;
-`;
-
-const StyledMain = styled(motion.div)`
-  grid-area: main;
-  display: flex;
-  .left {
-    color: #313131;
-    border: 1px solid black;
-    padding: 0rem 1rem 1rem 1rem;
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  .image-gallery {
+    height: 70vh;
+    width: auto;
   }
-  .middle {
-    color: #313131;
-    border: 1px solid black;
-    flex: 1;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    img {
-      min-width: 10vw;
-      max-height: 12vh;
-      object-fit: cover;
-      object-position: top;
-      padding: 0rem 1rem 1rem 1rem;
-      cursor: pointer;
-    }
+  .image-gallery-thumbnails-container {
+    max-width: 65vw;
   }
-  .right {
-    color: #313131;
-    border: 1px solid black;
-    padding: 1rem;
-    flex: 4;
-    img {
-      width: 100%;
-      max-height: 60vh;
-      object-fit: scale-down;
-      object-position: top;
-      padding: 0rem 1rem 1rem 1rem;
-    }
+  .image-gallery-thumbnails-container img {
+    height: 100px;
+    object-fit: scale-down;
+  }
+  .image-gallery-slide {
+    height: 55vh;
+    //background: white;
+  }
+  .image-gallery-slide img {
+    height: 400px;
+    object-fit: scale-down;
+    object-position: center center;
+  }
+  //fullscreen view
+  .fullscreen .image-gallery-slide {
+    height: 80vh;
+  }
+  .fullscreen .image-gallery-slide img {
+    height: 80vh;
   }
 `;
 
-const StyledHeaderIcons = styled(motion.div)`
-  display: flex;
-  justify-content: space-between;
-  .icon {
-    height: 30px;
-    width: 30px;
-  }
-`;
 const StyledIcons = styled(motion.div)`
   display: flex;
   flex-wrap: wrap;
-`;
-
-const StyledLinks = styled(motion.div)`
-  display: flex;
-  //align-items: center;
-
+  justify-content: space-evenly;
+  gap: 0.5rem;
+  padding: 1rem 0.5rem;
   a {
-    padding-right: 1rem;
-    color: white;
     text-decoration: none;
-    &:visited {
-      color: white;
-      text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    column-gap: 3rem;
+    h4 {
+      color: #1c3b57;
     }
   }
 `;
-
-const StyledLeftSection = styled(motion.div)`
-  grid-area: left-side;
-  display: flex;
-  align-items: center;
-`;
-
-const StyledRightSection = styled(motion.div)`
-  grid-area: right-side;
-  justify-self: end;
-  display: flex;
-  align-items: center;
-`;
-// const StyledCard = styled(motion.div)`
-//   display: grid;
-//   grid-template-columns: 5% auto 5%;
-//   grid-template-rows: 20% 5% auto;
-//   grid-template-areas:
-//     "left-side header right-side"
-//     "left-side line right-side"
-//     "left-side main right-side";
-
-//   //box-shadow: 0px 5px 20px rgba(255, 255, 255, 0.2);
-//   position: relative;
-//   z-index: 10;
-//   width: 95vw;
-//   min-height: 95vh;
-//   height: auto;
-//   border: 0.05rem #689ed0 solid;
-//   border-radius: 4px;
-//   background-color: var(--color-light-background);
-//   overflow-y: scroll;
-//   overflow-x: hidden;
-//   //border: 1px solid red;
-
-//   h2 {
-//     color: #313131;
-//     margin-bottom: 1rem;
-//     font-weight: lighter;
-//   }
-//   .arrow {
-//     color: #313131;
-//     height: 40px;
-//     width: 40px;
-//     cursor: pointer;
-//   }
-// `;
-
-// const StyledHeaderSection = styled(motion.div)`
-//   grid-area: header;
-//   padding: 1rem;
-//   color: #313131;
-// `;
-
-// const StyledMain = styled(motion.div)`
-//   grid-area: main;
-//   display: flex;
-//   .left {
-//     color: #313131;
-//     border: 1px solid black;
-//     padding: 0rem 1rem 1rem 1rem;
-//     flex: 2;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: space-between;
-//   }
-//   .middle {
-//     color: #313131;
-//     border: 1px solid black;
-//     flex: 1;
-//     padding: 1rem;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: flex-start;
-//     img {
-//       min-width: 10vw;
-//       max-height: 12vh;
-//       object-fit: cover;
-//       object-position: top;
-//       padding: 0rem 1rem 1rem 1rem;
-//       cursor: pointer;
-//     }
-//   }
-//   .right {
-//     color: #313131;
-//     border: 1px solid black;
-//     padding: 1rem;
-//     flex: 4;
-//     img {
-//       width: 100%;
-//       max-height: 60vh;
-//       object-fit: scale-down;
-//       object-position: top;
-//       padding: 0rem 1rem 1rem 1rem;
-//     }
-//   }
-// `;
-
-// const StyledHeaderIcons = styled(motion.div)`
-//   display: flex;
-//   justify-content: space-between;
-//   .icon {
-//     height: 30px;
-//     width: 30px;
-//   }
-// `;
-// const StyledIcons = styled(motion.div)`
-//   display: flex;
-//   flex-wrap: wrap;
-// `;
-
-// const StyledLinks = styled(motion.div)`
-//   display: flex;
-//   //align-items: center;
-
-//   a {
-//     padding-right: 1rem;
-//     color: white;
-//     text-decoration: none;
-//     &:visited {
-//       color: white;
-//       text-decoration: none;
-//     }
-//   }
-// `;
-
-// const StyledLeftSection = styled(motion.div)`
-//   grid-area: left-side;
-//   display: flex;
-//   align-items: center;
-// `;
-
-// const StyledRightSection = styled(motion.div)`
-//   grid-area: right-side;
-//   justify-self: end;
-//   display: flex;
-//   align-items: center;
-// `;
 
 export default ProjectDetails;
