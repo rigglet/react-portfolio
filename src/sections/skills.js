@@ -11,7 +11,7 @@ import { containerSlideInOutRight } from "../styles/animations";
 //data
 import { getCollection } from "../api/api";
 
-const Skills = () => {
+const Skills = ({ skillsRef }) => {
   const [technologies, setTechnologies] = useState([]);
   const [tools, setTools] = useState([]);
   const [element, controls] = useScroll();
@@ -74,7 +74,7 @@ const Skills = () => {
         animate={controls}
       >
         <div className="gradientRight" />
-        <div className="inner-container">
+        <div className="inner-container" ref={skillsRef}>
           <div className="section-header">
             <div className="section-title-content">
               <Icon

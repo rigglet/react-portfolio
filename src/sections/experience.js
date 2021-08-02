@@ -11,14 +11,14 @@ import {
 import "react-vertical-timeline-component/style.min.css";
 import Icon from "../components/Icon";
 import {
-  fadeInOut,
-  elementSlideInOut,
+  //fadeInOut,
+  //elementSlideInOut,
   containerSlideInOutLeft,
 } from "../styles/animations";
 import useScroll from "../components/useScroll";
-import { GiPurpleTentacle } from "react-icons/gi";
+//import { GiPurpleTentacle } from "react-icons/gi";
 
-const Experience = () => {
+const Experience = ({ experienceRef }) => {
   const [element, controls] = useScroll();
 
   return (
@@ -34,7 +34,7 @@ const Experience = () => {
         animate={controls}
       >
         <div className="gradientLeft" />
-        <div className="content">
+        <div className="content" ref={experienceRef}>
           <div className="section-header">
             <div className="section-title-content">
               <Icon

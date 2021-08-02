@@ -19,7 +19,7 @@ import Icon from "../components/Icon";
 import Plane from "../img/plane";
 import Trail from "../img/trail";
 
-const Contact = () => {
+const Contact = ({ contactRef }) => {
   const [formData, setFormData] = useState({
     user_name: "",
     user_email: "",
@@ -113,7 +113,7 @@ const Contact = () => {
         pauseOnHover
       />
 
-      <div className="container-dark">
+      <div className="container-dark" ref={contactRef}>
         <div className="content">
           <div className="section-header">
             <div className="section-title-content">

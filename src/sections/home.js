@@ -13,7 +13,7 @@ import {
   imageVariants,
 } from "../styles/animations";
 
-const Home = () => {
+const Home = ({ homeRef }) => {
   const [element, controls] = useScroll();
   return (
     <HomeSection
@@ -26,7 +26,7 @@ const Home = () => {
       ref={element}
     >
       <div className="container-dark">
-        <div className="content">
+        <div className="content" ref={homeRef}>
           <StyledInfo>
             <StyledHeader
               variants={headerVariants}

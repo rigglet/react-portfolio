@@ -2,13 +2,13 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import StyledLine from "../styles/styledLine";
-import Loader from "../components/Loader";
+//import Loader from "../components/Loader";
 import Icon from "../components/Icon";
 
-const Education = () => {
+const Education = ({ educationRef }) => {
   return (
     <EducationSection className="section-dark fullheight" id="education">
-      <div className="container-dark">
+      <div className="container-dark" ref={educationRef}>
         <div className="inner-container">
           <div className="section-header">
             <div className="section-title-content">

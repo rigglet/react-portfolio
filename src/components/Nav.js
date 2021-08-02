@@ -1,72 +1,128 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import StyledLine from "../styles/styledLine";
 import { Link, useLocation } from "react-router-dom";
 import { navVariants } from "../styles/animations";
 import { HashLink } from "react-router-hash-link";
-import { useInView } from "react-intersection-observer";
 
-const Nav = () => {
-  const location = useLocation();
-  //console.log(location);
-  const { ref, inView, entry } = useInView({
-    /* Optional options */
-    threshold: 0,
-  });
-  //console.log(entry);
+const Nav = ({
+  homeInView,
+  aboutInView,
+  portfolioInView,
+  skillsInView,
+  educationInView,
+  experienceInView,
+  contactInView,
+}) => {
   return (
     <StyledNav
-      variants={navVariants}
-      initial={location.hash === "" ? "initial" : false}
-      animate={location.hash === "" ? "animate" : false}
-      ref={ref}
+    // variants={navVariants}
+    // initial={location.hash === "" ? "initial" : false}
+    // animate={location.hash === "" ? "animate" : false}
     >
-      <h2>{`Header inside viewport ${inView}.`}</h2>
       <Link to="/splash">
         <h1 className="logo">Neil Rigg</h1>
       </Link>
       <div className="menu">
         <HashLink smooth to="/#home">
           <h1>Home</h1>
-          {(location.hash === "#home" || location.hash === "") && (
-            <StyledLine height="4px" width="100%" bgColor="#313131" />
-          )}
+          <NavLine
+            height="4px"
+            bgColor="#313131"
+            initial={{
+              width: "0%",
+            }}
+            animate={{
+              width:
+                //(path === "#home" || path === "") &&
+                homeInView ? "100%" : "0%",
+            }}
+            transition={{ duration: 0.75 }}
+          />
         </HashLink>
         <HashLink smooth to="/#about">
           <h1>About</h1>
-          {location.hash === "#about" && (
-            <StyledLine height="4px" width="100%" bgColor="#313131" />
-          )}
+          <NavLine
+            height="4px"
+            bgColor="#313131"
+            initial={{ width: "0%" }}
+            animate={{
+              width:
+                //path === "#about" ||
+                aboutInView ? "100%" : "0%",
+            }}
+            transition={{ duration: 0.75 }}
+          />
         </HashLink>
         <HashLink smooth to="/#portfolio">
           <h1>Portfolio</h1>
-          {location.hash === "#portfolio" && (
-            <StyledLine height="4px" width="100%" bgColor="#313131" />
-          )}
+          <NavLine
+            height="4px"
+            bgColor="#313131"
+            initial={{ width: "0%" }}
+            animate={{
+              width:
+                //path === "#portfolio" ||
+                portfolioInView ? "100%" : "0%",
+            }}
+            transition={{ duration: 0.75 }}
+          />
         </HashLink>
         <HashLink smooth to="/#skills">
           <h1>Skills</h1>
-          {location.hash === "#skills" && (
-            <StyledLine height="4px" width="100%" bgColor="#313131" />
-          )}
+          <NavLine
+            height="4px"
+            bgColor="#313131"
+            initial={{ width: "0%" }}
+            animate={{
+              width:
+                //path === "#skills" ||
+                skillsInView ? "100%" : "0%",
+            }}
+            transition={{ duration: 0.75 }}
+          />
         </HashLink>
         <HashLink smooth to="/#education">
           <h1>Education</h1>
-          {location.hash === "#education" && (
-            <StyledLine height="4px" width="100%" bgColor="#313131" />
-          )}
+          <NavLine
+            height="4px"
+            bgColor="#313131"
+            initial={{ width: "0%" }}
+            animate={{
+              width:
+                //path === "#education" ||
+                educationInView ? "100%" : "0%",
+            }}
+            transition={{ duration: 0.75 }}
+          />
         </HashLink>
         <HashLink smooth to="/#experience">
           <h1>Experience</h1>
-          {location.hash === "#experience" && (
-            <StyledLine height="4px" width="100%" bgColor="#313131" />
-          )}
+          <NavLine
+            height="4px"
+            bgColor="#313131"
+            initial={{ width: "0%" }}
+            animate={{
+              width:
+                //path === "#experience" ||
+                experienceInView ? "100%" : "0%",
+            }}
+            transition={{ duration: 0.75 }}
+          />
         </HashLink>
         <HashLink smooth to="/#contact">
           <h1>Contact</h1>
-          {location.hash === "#contact" && (
-            <StyledLine height="4px" width="100%" bgColor="#313131" />
-          )}
+          <NavLine
+            height="4px"
+            bgColor="#313131"
+            initial={{ width: "0%" }}
+            animate={{
+              width:
+                //path === "#contact" ||
+                contactInView ? "100%" : "0%",
+            }}
+            transition={{ duration: 0.75 }}
+          />
         </HashLink>
       </div>
     </StyledNav>
@@ -75,14 +131,14 @@ const Nav = () => {
 
 const StyledNav = styled(motion.nav)`
   position: fixed;
-  z-index: 11;
+  z-index: 1000;
   width: 100vw;
   height: 7vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: var(--color-nav-background);
-  border-bottom: solid 1px var(--color-nav-hover);
+  border-bottom: solid 2px var(--color-nav-hover);
 
   a {
     text-decoration: none;
@@ -158,6 +214,20 @@ const StyledNav = styled(motion.nav)`
   //1501px and more —  Extra large screens, TV
   @media screen and (min-width: 1921px) and (orientation: landscape) {
   }
+`;
+
+const NavLine = styled(motion.div)`
+  border-radius: 1rem;
+  background: linear-gradient(
+    90deg,
+    #1c3b57 0%,
+    #65617d 25%,
+    #689ed0 50%,
+    #c6c6c6 75%,
+    ${({ bgColor }) => (bgColor ? bgColor : "#f5f5f5")} 100%
+  );
+  background: #689ed0;
+  height: ${({ height }) => (height ? height : "6px")};
 `;
 
 export default Nav;

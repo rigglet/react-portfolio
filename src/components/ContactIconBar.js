@@ -19,7 +19,7 @@ const ContactIconBar = ({ size, color }) => {
     getLinks().then((results) => {
       if (results.status === 200) {
         setLinks(results.data);
-        console.log(results.data);
+        //console.log(results.data);
       }
     });
   }, []);

@@ -19,7 +19,7 @@ import Icon from "../components/Icon";
 import { getCollection } from "../api/api";
 import { buttonVariants } from "../styles/animations";
 
-const Portfolio = () => {
+const Portfolio = ({ portfolioRef }) => {
   //const [element, controls] = useScroll();
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -53,7 +53,7 @@ const Portfolio = () => {
       id="portfolio"
       //ref={element}
     >
-      <div className="container-dark">
+      <div className="container-dark" ref={portfolioRef}>
         <div className="content">
           <div className="section-header">
             <div className="section-title-content">
