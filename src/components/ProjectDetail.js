@@ -16,12 +16,6 @@ import { DateTime } from "luxon";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 //icons
-//import { FaGithub } from "react-icons/fa";
-//import { CgWebsite } from "react-icons/cg";
-//import { HiCode, HiLink } from "react-icons/hi";
-//import { IoLibraryOutline } from "react-icons/io5";
-//import { GoPackage } from "react-icons/go";
-//import { BiMessageSquareDetail } from "react-icons/bi";
 import { BsCardText } from "react-icons/bs";
 import { ImImages } from "react-icons/im";
 import { MdWeb } from "react-icons/md";
@@ -67,15 +61,15 @@ const ProjectDetails = ({
         );
         setMainImage(
           results.data?.screenshots?.filter((image) => {
-            console.log("image._id: ", typeof image._id);
-            console.log("mainImage: ", typeof results.data?.mainImage);
+            //console.log("image._id: ", typeof image._id);
+            //console.log("mainImage: ", typeof results.data?.mainImage);
             return image._id === results.data?.mainImage;
           })[0]
         );
       });
   }, []);
 
-  console.log(imageArray);
+  console.log(project);
 
   return (
     <StyledOuterContainer>
@@ -111,7 +105,6 @@ const ProjectDetails = ({
         <div className="titleHeader">
           <MdWeb className="titleIcon" />
           <h1>Project details</h1>
-          {/* <h5>{project?._id}</h5> */}
         </div>
 
         <div className="form-information">
@@ -164,7 +157,7 @@ const ProjectDetails = ({
             </fieldset>
 
             {imageArray.length > 1 ? (
-              <fieldset>
+              <fieldset className="images">
                 <legend>
                   Screenshots <ImImages />
                 </legend>
@@ -173,7 +166,7 @@ const ProjectDetails = ({
                   showPlayButton={false}
                   //thumbnailPosition={"bottom"}
                   //showIndex={true}
-                  autoPlay={true}
+                  autoPlay={false}
                   showThumbnails={false}
                   showBullets={false}
                   showNav={true}
@@ -198,76 +191,50 @@ const ProjectDetails = ({
                 title="Features icon"
               />
             </legend>
+            {project?.features?.map((feature) => (
+              <div className="feature-item">
+                <Icon
+                  icon="GoArrowSmallRight"
+                  color="#494949"
+                  size="2rem"
+                  title="Highlights icon"
+                />
+                <h4
+                //key={uuidv4()}
+                >
+                  {feature}
+                </h4>
+              </div>
+            ))}
           </fieldset>
+
           <fieldset className="highlights">
             <legend>
               Highlights
               <Icon
-                icon="BsStarFill"
-                color="gold"
+                icon="FaStar"
+                color="#313131"
                 size="14pt"
                 title="Highlights icon"
               />
             </legend>
-          </fieldset>
-          <fieldset className="libraries">
-            <legend>
-              Libraries
-              <Icon
-                icon="IoLibraryOutline"
-                color="#313131"
-                size="14pt"
-                title="library icon"
-              />
-            </legend>
-            <StyledIcons>
-              {project?.libraries?.map((library) => (
-                <a
-                  key={uuidv4()}
-                  href={library.npmaddress}
-                  target="_blank"
-                  rel="noreferrer"
+            {project?.highlights?.map((highlight) => (
+              <div className="highlight-item">
+                <Icon
+                  icon="GoArrowSmallRight"
+                  color="#313131"
+                  size="2rem"
+                  title="Highlights icon"
+                />
+                <h4
+                //key={uuidv4()}
                 >
-                  <h4>{library.name}</h4>
-                  <Icon
-                    icon={library.icon}
-                    color={library.color}
-                    size="75px"
-                    title={`${library.name} library`}
-                  />
-                </a>
-              ))}
-            </StyledIcons>
+                  {highlight}
+                </h4>
+              </div>
+            ))}
           </fieldset>
-          <fieldset className="packages">
-            <legend>
-              Packages
-              <Icon
-                icon="GoPackage"
-                color="#313131"
-                size="14pt"
-                title="package icon"
-              />
-            </legend>
-            <StyledIcons>
-              {project?.packages?.map((pack) => (
-                <a
-                  key={uuidv4()}
-                  href={pack.npmaddress}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <h4>{pack.name}</h4>
-                  <Icon
-                    key={uuidv4()}
-                    icon={pack.icon}
-                    color={pack.color}
-                    size="75px"
-                  />
-                </a>
-              ))}
-            </StyledIcons>
-          </fieldset>
+
           <fieldset className="technologies">
             <legend>
               Technologies
@@ -297,6 +264,67 @@ const ProjectDetails = ({
               ))}
             </StyledIcons>
           </fieldset>
+
+          <fieldset className="packages">
+            <legend>
+              Packages
+              <Icon
+                icon="GoPackage"
+                color="#313131"
+                size="14pt"
+                title="package icon"
+              />
+            </legend>
+            <StyledIcons>
+              {project?.packages?.map((pack) => (
+                <a
+                  key={uuidv4()}
+                  href={pack.npmaddress}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <h4>{pack.name}</h4>
+                  <Icon
+                    key={uuidv4()}
+                    icon={pack.icon}
+                    color={pack.color}
+                    size="75px"
+                  />
+                </a>
+              ))}
+            </StyledIcons>
+          </fieldset>
+
+          <fieldset className="libraries">
+            <legend>
+              Libraries
+              <Icon
+                icon="IoLibraryOutline"
+                color="#313131"
+                size="14pt"
+                title="library icon"
+              />
+            </legend>
+            <StyledIcons>
+              {project?.libraries?.map((library) => (
+                <a
+                  key={uuidv4()}
+                  href={library.npmaddress}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <h4>{library.name}</h4>
+                  <Icon
+                    icon={library.icon}
+                    color={library.color}
+                    size="75px"
+                    title={`${library.name} library`}
+                  />
+                </a>
+              ))}
+            </StyledIcons>
+          </fieldset>
+
           <fieldset className="dates">
             <legend>
               Dates <AiOutlineCalendar />
@@ -339,7 +367,7 @@ const ProjectDetails = ({
 };
 
 const StyledOuterContainer = styled(motion.div)`
-  z-index: 12;
+  z-index: 1001;
   position: fixed;
   top: 0;
   left: 0;
@@ -372,11 +400,6 @@ const StyledInnerContainer = styled(motion.div)`
   overflow-y: scroll;
   //overflow-x: scroll;
 
-  p {
-    color: #313131;
-    font-size: 10pt;
-  }
-
   h2 {
     margin-bottom: 1rem;
     font-weight: lighter;
@@ -393,7 +416,7 @@ const StyledInnerContainer = styled(motion.div)`
     height: auto;
     display: flex;
     //flex-direction: column;
-    flex-grow: 1;
+    //flex-grow: 1;
     flex-wrap: wrap;
     row-gap: 2rem;
     column-gap: 2rem;
@@ -401,37 +424,59 @@ const StyledInnerContainer = styled(motion.div)`
     .top-section {
       display: flex;
       align-items: center;
-      //justify-content: center;
-      flex-grow: 1;
       gap: 1rem;
+      //justify-content: center;
+      //flex-grow: 1;
       //flex-wrap: wrap;
       //border: 1px solid red;
-    }
-
-    .details {
-      display: flex;
-      flex-direction: column;
-      max-width: 50%;
-      flex-grow: 1;
-      height: 100%;
-      padding: 1rem;
-      gap: 1rem;
-      flex-wrap: wrap;
-      .addresses {
+      .images {
         display: flex;
-        justify-content: space-evenly;
-        //gap: 1rem;
-        .address-item {
+        flex-basis: 50%;
+        flex-grow: 1;
+        //flex-shrink: 0;
+        padding: 1rem;
+        box-shadow: 0px 0px 10px rgba(101, 97, 125, 1);
+      }
+      .details {
+        display: flex;
+        //flex-shrink: 0;
+        //flex-shrink: 0;
+        flex-direction: column;
+        flex-basis: 50%;
+        flex-grow: 1;
+        //height: 100%;
+        padding: 1rem;
+        gap: 1rem;
+        //flex-wrap: wrap;
+        box-shadow: 0px 0px 10px rgba(101, 97, 125, 1);
+        p {
+          color: whitesmoke;
+          color: rgb(49, 49, 49);
+          //color: black;
+          font-size: 12pt;
+          background: rgba(104, 158, 208, 10%);
+          background: rgba(49, 49, 49, 25%);
+          border-radius: 10px;
+          padding: 0.5rem;
+        }
+        .addresses {
           display: flex;
-          flex-direction: column;
-          align-items: center;
+          justify-content: space-evenly;
+          //gap: 1rem;
+          .address-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
         }
       }
     }
+
     .main-image {
       display: flex;
-      flex-grow: 1;
-      max-width: 50%;
+      //flex-grow: 1;
+      flex-shrink: 0;
+      flex-basis: 50%;
       //min-width: 45%;
       border-radius: 10px;
       object-fit: scale-down;
@@ -439,20 +484,31 @@ const StyledInnerContainer = styled(motion.div)`
 
     .dates {
       display: flex;
-      flex-direction: column;
-      width: auto;
+      //flex-direction: column;
       width: 100%;
       height: auto;
       padding: 1rem;
-      gap: 1rem;
+      //gap: 1rem;
+      justify-content: space-evenly;
+      align-items: center;
+      flex-grow: 1;
     }
 
     .features,
     .highlights {
       display: flex;
+      flex-direction: column;
+      //align-items: center;
       flex-grow: 1;
       padding: 1rem;
       //width: 100%;
+      box-shadow: 0px 0px 10px rgba(101, 97, 125, 1);
+      .feature-item,
+      .highlight-item {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
     }
 
     .libraries,
@@ -460,6 +516,7 @@ const StyledInnerContainer = styled(motion.div)`
     .packages {
       padding: 1rem;
       width: 100%;
+      box-shadow: 0px 0px 10px rgba(101, 97, 125, 1);
       ul {
         list-style-type: none;
         li {
@@ -475,40 +532,28 @@ const StyledInnerContainer = styled(motion.div)`
         }
       }
     }
-    p {
-      width: 100%;
-      background-color: rgba(131, 169, 204, 0.5);
-      border-radius: 4px;
-      padding: 0.25rem;
-      font-family: "Poppins", sans-serif;
-      font-weight: 300;
-      font-size: 10pt;
-    }
-    /* .address-item {
-      display: flex;
-      flex-direction: column;
-      .address {
-        display: flex;
-        align-items: center;
-        column-gap: 0.5rem;
-        .address-icon {
-          width: 1.5rem;
-          height: 1.5rem;
-        }
-      }
-    } */
 
     fieldset {
       border-radius: 10px;
+      border: 2px solid #313131;
+      z-index: 2;
     }
     legend {
+      z-index: 1;
+      //background: rgb(104, 158, 208, 50%);
+      border-top: 2px solid #313131;
+      border-left: 2px solid #313131;
+      border-right: 2px solid #313131;
+      box-shadow: 0px 0px 10px rgba(101, 97, 125, 1);
+      background: whitesmoke;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       text-align: center;
       gap: 0.5rem;
-      padding: 0 0.5rem;
+      padding: 0 1rem;
       font-weight: bold;
-      font-size: 14pt;
+      font-size: 16pt;
       font-variant-caps: all-small-caps;
     }
     .input-item {
@@ -517,9 +562,9 @@ const StyledInnerContainer = styled(motion.div)`
     }
     label {
       font-weight: bold;
-      font-size: 12pt;
+      font-size: 14pt;
       font-variant-caps: all-small-caps;
-      margin-bottom: 0.5rem;
+      //margin-bottom: 0.5rem;
     }
   }
 

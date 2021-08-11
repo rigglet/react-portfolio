@@ -4,7 +4,15 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import StyledLine from "../styles/styledLine";
-import { buttonVariants } from "../styles/animations";
+import {
+  buttonVariants,
+  flyIn,
+  planeVariants,
+  trailVariants,
+  slideRight,
+  slideDown,
+  slideUp,
+} from "../styles/animations";
 //email
 import emailjs from "emailjs-com";
 //message components
@@ -12,14 +20,16 @@ import { ToastContainer, toast, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 //components
 import ContactIconBar from "../components/ContactIconBar";
-import Icon from "../components/Icon";
+import useScroll from "../components/useScroll";
 //icon
-//import { FaWindowClose } from "react-icons/fa";
+import Icon from "../components/Icon";
 //SVGs
 import Plane from "../img/plane";
 import Trail from "../img/trail";
 
 const Contact = ({ contactRef }) => {
+  const [element, controls] = useScroll();
+
   const [formData, setFormData] = useState({
     user_name: "",
     user_email: "",
@@ -97,7 +107,11 @@ const Contact = ({ contactRef }) => {
   };
 
   return (
-    <ContactSection className="section-dark fullheight" id="contact">
+    <ContactSection
+      className="section-dark fullheight"
+      id="contact"
+      ref={element}
+    >
       <ToastContainer
         closeButton={CloseButton}
         // closeButton={false}
@@ -113,129 +127,162 @@ const Contact = ({ contactRef }) => {
         pauseOnHover
       />
 
-      <div className="container-dark" ref={contactRef}>
-        <div className="content">
-          <div className="section-header">
-            <div className="section-title-content">
-              <Icon
-                icon="BiMessageRounded"
-                size="30px"
-                color="whitesmoke"
-                title="Contact icon"
+      <div className="container container-dark" ref={contactRef}>
+        <motion.div
+          initial="initial"
+          variants={slideDown}
+          animate={controls}
+          className="section-header"
+        >
+          <div className="section-title-content">
+            <Icon
+              icon="BiMessageRounded"
+              size="30px"
+              color="whitesmoke"
+              title="Contact icon"
+            />
+            <h1 className="section-heading heading-light">Contact me</h1>
+          </div>
+          <StyledLine height="6px" width="100%" bgColor="#111111" />
+        </motion.div>
+
+        <ContactInfo>
+          <motion.form
+            autoComplete="off"
+            onSubmit={handleFormSubmit}
+            initial="initial"
+            variants={slideRight}
+            animate={controls}
+          >
+            <div className="formItem">
+              <label>Name:</label>
+              <input
+                id="name"
+                autoComplete="off"
+                name="user_name"
+                type="text"
+                value={formData.user_name}
+                onChange={handleChange}
               />
-              <h1 className="section-heading heading-light">Contact me</h1>
             </div>
-            <StyledLine height="6px" width="100%" bgColor="#111111" />
-          </div>
+            <div className="formItem">
+              <label>Subject:</label>
+              <input
+                id="subject"
+                autoComplete="off"
+                name="user_subject"
+                type="text"
+                value={formData.user_subject}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="formItem">
+              <label>Email:</label>
+              <input
+                id="email"
+                autoComplete="off"
+                name="user_email"
+                type="email"
+                value={formData.user_email}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="formItem">
+              <label htmlFor="message">Message:</label>
+              <textarea
+                id="msg"
+                name="message"
+                autoComplete="off"
+                cols="15"
+                rows="3"
+                value={formData.message}
+                onChange={handleChange}
+              />
+            </div>
 
-          <ContactInfo>
-            <form autoComplete="off" onSubmit={handleFormSubmit}>
-              <div className="formitem">
-                <label>Name:</label>
-                <input
-                  id="name"
-                  autoComplete="off"
-                  name="user_name"
-                  type="text"
-                  value={formData.user_name}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="formitem">
-                <label>Subject:</label>
-                <input
-                  id="subject"
-                  autoComplete="off"
-                  name="user_subject"
-                  type="text"
-                  value={formData.user_subject}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="formitem">
-                <label>Email:</label>
-                <input
-                  id="email"
-                  autoComplete="off"
-                  name="user_email"
-                  type="email"
-                  value={formData.user_email}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="formitem">
-                <label htmlFor="message">Message:</label>
-                <textarea
-                  id="msg"
-                  name="message"
-                  autoComplete="off"
-                  cols="15"
-                  rows="3"
-                  value={formData.message}
-                  onChange={handleChange}
-                />
-              </div>
+            <div className="button">
+              <motion.input
+                className="page-btn dark-btn"
+                type="submit"
+                value="Send Message"
+                variants={buttonVariants}
+                initial="initial"
+                animate="animate"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              />
+            </div>
+          </motion.form>
 
-              <div className="button">
-                <motion.input
-                  className="page-btn dark-btn"
-                  type="submit"
-                  value="Send Message"
-                  variants={buttonVariants}
-                  initial="initial"
-                  animate="animate"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                />
-              </div>
-            </form>
-
-            <div className="contact-images">
+          <div className="contact-images">
+            <motion.div
+              className="trail"
+              initial="initial"
+              variants={trailVariants}
+              animate={controls}
+            >
               <Trail />
-              <Plane />
-            </div>
-          </ContactInfo>
-          <div className="contactBar">
-            <ContactIconBar className="cib" size="40px" color="whitesmoke" />
+            </motion.div>
+            <motion.div
+              className="outer-plane"
+              initial="initial"
+              variants={flyIn}
+              animate={controls}
+            >
+              <motion.div
+                className="plane"
+                variants={planeVariants}
+                animate="animate"
+                //animate={controls}
+              >
+                <Plane />
+              </motion.div>
+            </motion.div>
+
+            <motion.div
+              className="contactBar"
+              initial="initial"
+              variants={slideUp}
+              animate={controls}
+            >
+              <ContactIconBar size="40px" color="whitesmoke" />
+            </motion.div>
           </div>
-        </div>
+        </ContactInfo>
       </div>
     </ContactSection>
   );
 };
 
 const ContactSection = styled(motion.div)`
-  .content {
+  .container {
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-  }
-  .header {
-    align-self: flex-start;
-    margin-left: 5%;
-  }
-  .contactBar {
-    width: 90%;
-    display: flex;
-    justify-content: flex-end;
+    justify-content: center;
   }
 `;
 
 const ContactInfo = styled(motion.div)`
   display: flex;
-  justify-content: space-around;
   width: 100%;
-  height: 60vh;
+  height: 100%;
+  padding: 2rem;
+
   form {
     display: flex;
     flex-direction: column;
+    flex-basis: 40%;
+    flex-grow: 1;
     justify-content: space-between;
-    width: 40%;
+    background: #1f2525;
+    padding: 2rem;
+    border-radius: 10px;
+    height: 100%;
 
-    .formitem {
+    .formItem {
       display: flex;
       flex-direction: column;
       row-gap: 0.25rem;
@@ -264,10 +311,30 @@ const ContactInfo = styled(motion.div)`
       }
     }
   }
+
   .contact-images {
-    width: 40%;
+    position: relative;
+    flex-basis: 40%;
     display: flex;
+    flex-grow: 1;
     align-items: center;
+    justify-content: space-evenly;
+
+    .outer-plane {
+      display: flex;
+      align-self: flex-start;
+      justify-self: flex-end;
+      .plane {
+        display: flex;
+        align-self: flex-start;
+        justify-self: flex-end;
+      }
+    }
+    .contactBar {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
   }
 `;
 

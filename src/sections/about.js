@@ -3,13 +3,14 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 //import Loader from "../components/Loader";
 import profile from "../img/profile.png";
-import Icon from "../components/Icon";
+//import Icon from "../components/Icon";
 import StyledLine from "../styles/styledLine";
 
 import {
   fadeInOut,
   elementSlideInOut,
   containerSlideInOutLeft,
+  aboutVariants,
 } from "../styles/animations";
 import useScroll from "../components/useScroll";
 
@@ -17,18 +18,10 @@ const About = ({ aboutRef }) => {
   const [element, controls] = useScroll();
 
   return (
-    <AboutSection
-      className="section-light fullheight"
-      id="about"
-      ref={element}
-      // variants={aboutVariants}
-      // initial="initial"
-      // animate={controls}
-      // animate="animate"
-    >
+    <AboutSection className="section-light fullheight" id="about" ref={element}>
       <motion.div
         className="container container-light container-left"
-        //variants={containerSlideInOutLeft}
+        variants={containerSlideInOutLeft}
         initial="initial"
         animate={controls}
       >
@@ -36,12 +29,12 @@ const About = ({ aboutRef }) => {
         <div className="inner-container" ref={aboutRef}>
           <div className="section-header">
             <div className="section-title-content">
-              <Icon
+              {/* <Icon
                 icon="FaRegUserCircle"
                 size="30px"
                 color="#313131"
                 title="About icon"
-              />
+              /> */}
               <h1 className="section-heading heading-dark">About me</h1>
             </div>
             <StyledLine height="6px" width="100%" bgColor="#f5f5f5" />
@@ -68,7 +61,7 @@ const About = ({ aboutRef }) => {
               // initial="initial"
               // animate={controls}
               >
-                <p>Hi, I'm</p>
+                <p id="hi">Hi, I'm</p>
                 <p>
                   <span id="first">Neil </span>
                 </p>
@@ -111,6 +104,7 @@ const AboutSection = styled(motion.div)`
   align-items: center;
   //edit justify content if switching sides
   justify-content: flex-start;
+
   .inner-container {
     display: flex;
     flex-direction: column;
@@ -129,80 +123,68 @@ const AboutSection = styled(motion.div)`
     align-items: center;
     //justify-content: space-between;
     column-gap: 2rem;
+
     .copy {
       height: 100%;
       width: 100%;
-      //display: flex;
-      //flex-direction: column;
-      //align-items: flex-start;
-      //justify-content: space-around;
+      display: flex;
+      align-items: center;
+      column-gap: 2rem;
+
+      article {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        //width: 100%;
+        padding: 0.5rem;
+        font-weight: 200;
+        text-align: justify;
+        font-size: 1.5rem;
+
+        &:first-of-type {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          justify-content: center;
+          row-gap: 1rem;
+        }
+
+        .highlight {
+          font-weight: 600;
+          color: #689ed0;
+        }
+      }
+
       #first {
         display: inline-block;
         font-size: 4rem;
         color: #689ed0;
         color: #313131;
         font-weight: 700;
-        //text-align: center;
         width: 100%;
-        border: 1px solid red;
-        line-height: 50px;
+        line-height: 70px;
       }
       #last {
-        //display: inline-block;
         font-size: 6rem;
         color: #313131;
         color: #689ed0;
         font-weight: 700;
-        //justify-self: center;
-        //text-align: right;
         width: 100%;
-        line-height: normal;
+        line-height: 70px;
       }
       #dot {
-        //display: inline;
         font-size: 6rem;
-        color: #689ed0;
         color: #313131;
         font-weight: 700;
-        //justify-self: center;
-        text-align: right;
+        //text-align: right;
         width: 100%;
         line-height: 0;
       }
-      article {
-        //display: flex;
-        //flex-direction: column;
-        //flex-grow: 1;
-        width: 100%;
-        padding: 1rem;
-        font-weight: 200;
-        text-align: justify;
-        border: 1px solid red;
+      #hi {
         font-size: 2rem;
-        //line-height: 5rem;
-        //z-index: 100;
-        //font-style: italic;
-        //font-variant: normal;
-        //font-weight: lighter;
-        /* &:nth-of-type(2) {
-          line-height: 2rem;
-          text-indent: 2rem;
-          font-size: 1.5rem;
-        } */
-        .highlight {
-          font-weight: 600;
-          color: #65617d;
-        }
       }
     }
-    /* article:before,
-      article:after {
-        content: '"';
-        font-weight: bold;
-        font-size: 32pt;
-      font-style: italic;
-      font-family: monospace;
-    } */
+
     .profile {
       z-index: 10;
       min-width: 400px;

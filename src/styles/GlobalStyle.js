@@ -235,7 +235,7 @@ body{
       background-size: 300%;
       background-position: center;
       animation: gradient 1s linear infinite alternate;
-      box-shadow: 0px 0px 20px rgba(101, 97, 125, 1); 
+      //box-shadow: 0px 0px 20px rgba(101, 97, 125, 1); 
     }
     
     @keyframes gradient {

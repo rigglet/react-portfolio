@@ -20,6 +20,28 @@ export const rotateInOut = {
     },
   },
 };
+
+export const flyIn = {
+  initial: {
+    opacity: 1,
+    scale: 4,
+    x: "-100vw",
+    y: "60vh",
+    transition: {
+      duration: 2,
+    },
+  },
+  animate: {
+    opacity: 1,
+    scale: 1,
+    x: "0vw",
+    y: "0vh",
+    transition: {
+      duration: 2,
+    },
+  },
+};
+
 export const fadeInOut = {
   initial: {
     opacity: 0,
@@ -54,6 +76,86 @@ export const elementSlideInOut = {
   },
 };
 
+export const slideDown = {
+  initial: {
+    opacity: 0,
+    y: -100,
+    transition: {
+      duration: 0.5,
+    },
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      delay: 1,
+      type: "spring",
+      mass: 0.6,
+      damping: 5,
+    },
+  },
+};
+export const slideUp = {
+  initial: {
+    opacity: 0,
+    y: 100,
+    transition: {
+      duration: 0.5,
+    },
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      delay: 1,
+      type: "spring",
+      mass: 0.6,
+      damping: 5,
+    },
+  },
+};
+export const slideLeft = {
+  initial: {
+    opacity: 0,
+    x: 100,
+    transition: {
+      duration: 0.5,
+    },
+  },
+  animate: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.5,
+      delay: 1,
+      type: "spring",
+      mass: 0.6,
+      damping: 5,
+    },
+  },
+};
+export const slideRight = {
+  initial: {
+    opacity: 0,
+    x: -100,
+    transition: {
+      duration: 0.5,
+    },
+  },
+  animate: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.5,
+      delay: 1,
+      type: "spring",
+      mass: 0.6,
+      damping: 5,
+    },
+  },
+};
 export const detailPopUp = {
   initial: {
     opacity: 0,
@@ -279,46 +381,88 @@ export const experienceVariants = {
 };
 
 //CONTACT PAGE VARIANTS
-export const contactVariants = {
-  initial: { opacity: 1 },
-  animate: {
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-    },
-  },
-  exit: {
-    opacity: 1,
-    scale: 3,
-    transition: {
-      delay: 0.5,
-      duration: 2,
-    },
-  },
-};
+// export const contactVariants = {
+//   initial: { opacity: 1 },
+//   animate: {
+//     opacity: 1,
+//     transition: {
+//       duration: 0.5,
+//     },
+//   },
+//   exit: {
+//     opacity: 1,
+//     scale: 3,
+//     transition: {
+//       delay: 0.5,
+//       duration: 2,
+//     },
+//   },
+// };
 
 export const planeVariants = {
-  initial: { opacity: 0 },
+  initial: { opacity: 1, x: "-50px", y: "-50px" },
   animate: {
     opacity: 1,
+    x: [null, -30, 0, 25, 0],
+    y: [null, -30, 0, 25, 0],
+    rotateZ: [null, 10, 0, -10, 0],
     transition: {
-      duration: 2,
-      //repeat: Infinity,
+      duration: 3,
+      //times: [0, 0.5, 1],
+      repeat: Infinity,
+      ease: "linear",
+    },
+  },
+
+  animationOne: {
+    opacity: 1,
+    x: [-100, 0],
+    y: [-100, 0],
+    transition: {
+      x: {
+        duration: 0.75,
+        repeat: Infinity,
+        ease: "easeOut",
+      },
+      y: {
+        duration: 0.75,
+        repeat: Infinity,
+        ease: "easeOut",
+      },
+    },
+  },
+  animationTwo: {
+    opacity: 1,
+    x: [-500, 0],
+    y: [-500, 0],
+    transition: {
+      x: {
+        duration: 2,
+        repeat: Infinity,
+        ease: "easeOut",
+      },
+      y: {
+        duration: 2,
+        repeat: Infinity,
+        ease: "easeOut",
+      },
     },
   },
 };
 
 export const trailVariants = {
   initial: {
-    pathLength: 0,
-    pathOffset: 1,
+    opacity: 0,
+    transition: {
+      delay: 2,
+      duration: 1.5,
+    },
   },
   animate: {
-    pathLength: 1,
-    pathOffset: 0,
+    opacity: 1,
     transition: {
-      delay: 5,
-      duration: 2,
+      delay: 2,
+      duration: 1.5,
     },
   },
 };

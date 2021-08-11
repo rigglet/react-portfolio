@@ -38,10 +38,16 @@ const ContactIconBar = ({ size, color }) => {
 
 const StyledBar = styled(motion.div)`
   display: flex;
+  align-items: center;
   column-gap: 1rem;
+  border-radius: 10px;
+  background: #1f2525;
+  padding: 0.5rem;
 
   a {
     text-decoration: none;
+    display: flex;
+    align-items: center;
   }
 `;
 

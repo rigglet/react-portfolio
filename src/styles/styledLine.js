@@ -1,10 +1,20 @@
 import styled from "styled-components";
-
+import { motion } from "framer-motion";
 export default function styledLine({ height, width, bgColor }) {
-  return <StyledLine height={height} width={width} bgColor={bgColor} />;
+  return (
+    <StyledLine
+      height={height}
+      width={width}
+      bgColor={bgColor}
+      initial={{ width: "0%" }}
+      animate={{
+        width: "100%",
+      }}
+    />
+  );
 }
 
-const StyledLine = styled.div`
+const StyledLine = styled(motion.div)`
   //background: #689ed0;
   border-radius: 1rem;
   background: linear-gradient(

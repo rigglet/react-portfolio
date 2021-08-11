@@ -7,7 +7,13 @@ import styled from "styled-components";
 import StyledLine from "../styles/styledLine";
 import Icon from "../components/Icon";
 import useScroll from "../components/useScroll";
-import { containerSlideInOutRight } from "../styles/animations";
+import {
+  containerSlideInOutRight,
+  slideUp,
+  slideDown,
+  slideLeft,
+  slideRight,
+} from "../styles/animations";
 //data
 import { getCollection } from "../api/api";
 
@@ -93,16 +99,34 @@ const Skills = ({ skillsRef }) => {
               <section>
                 <div className="section-header">
                   <div className="section-title-content">
-                    <h2 className="section-subheading heading-dark">
+                    <motion.h2
+                      variants={slideDown}
+                      initial="initial"
+                      animate="animate"
+                      className="section-subheading heading-dark"
+                    >
                       Frontend
-                    </h2>
+                    </motion.h2>
                   </div>
-                  <StyledLine height="4px" width="100%" bgColor="#f5f5f5" />
+                  <StyledLine
+                    variants={slideDown}
+                    initial="initial"
+                    animate="animate"
+                    height="4px"
+                    width="100%"
+                    bgColor="#f5f5f5"
+                  />
                 </div>
                 <div className="selection">
                   {frontend.map((technology) => {
                     return (
-                      <div className="skill-item" key={uuidv4()}>
+                      <motion.div
+                        className="skill-item"
+                        key={uuidv4()}
+                        variants={slideUp}
+                        initial="initial"
+                        animate="animate"
+                      >
                         <a
                           key={uuidv4()}
                           href={technology.address}
@@ -116,7 +140,7 @@ const Skills = ({ skillsRef }) => {
                             size="70px"
                           />
                         </a>
-                      </div>
+                      </motion.div>
                     );
                   })}
                 </div>
@@ -191,7 +215,7 @@ const Skills = ({ skillsRef }) => {
                 <div className="section-header">
                   <div className="section-title-content">
                     <h2 className="section-subheading heading-dark">
-                      Infrastructure
+                      Deployment
                     </h2>
                   </div>
                   <StyledLine height="4px" width="100%" bgColor="#f5f5f5" />

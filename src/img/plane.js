@@ -6,12 +6,9 @@ import { planeVariants } from "../styles/animations";
 export default function plane() {
   return (
     <StyledSVG
-      //TODO: throw the plane easter egg?
-      //   drag
-      //   dragConstraints={{ left: -500, right: 50, top: -200, bottom: 400 }}
-      variants={planeVariants}
-      initial="initial"
-      animate="animate"
+      // variants={planeVariants}
+      // initial="initial"
+      // animate="animationTwo"
       id="plane"
       width="157"
       height="127"
@@ -51,8 +48,8 @@ export default function plane() {
 }
 
 const StyledSVG = styled(motion.svg)`
-  align-self: flex-start;
-  justify-self: flex-end;
-  width: 10vw;
+  /* align-self: flex-start;
+  justify-self: flex-end; */
+  width: 7vw;
   height: auto;
 `;
