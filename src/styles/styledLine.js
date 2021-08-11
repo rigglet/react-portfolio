@@ -1,15 +1,30 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-export default function styledLine({ height, width, bgColor }) {
+
+export default function styledLine({
+  height,
+  width,
+  bgColor,
+  initial,
+  animate,
+  transition,
+}) {
+  const i = { width: "0%", ...initial };
+  const a = {
+    width: "100%",
+    ...animate,
+    transition: {
+      ...transition,
+    },
+  };
+
   return (
     <StyledLine
       height={height}
       width={width}
       bgColor={bgColor}
-      initial={{ width: "0%" }}
-      animate={{
-        width: "100%",
-      }}
+      initial={i}
+      animate={a}
     />
   );
 }

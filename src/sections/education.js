@@ -20,7 +20,17 @@ const Education = ({ educationRef }) => {
               />
               <h1 className="section-heading heading-light">Education</h1>
             </div>
-            <StyledLine height="6px" width="100%" bgColor="#111111" />
+            <StyledLine
+              //initial={{ x: 100, y: 500 }}
+              //animate={{ x: 0, y: 0 }}
+              // transition={{
+              //   delay: 1,
+              //   duration: 1,
+              // }}
+              height="6px"
+              width="100%"
+              bgColor="#111111"
+            />
           </div>
 
           <div className="content">

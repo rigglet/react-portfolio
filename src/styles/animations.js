@@ -21,40 +21,19 @@ export const rotateInOut = {
   },
 };
 
-export const flyIn = {
-  initial: {
-    opacity: 1,
-    scale: 4,
-    x: "-100vw",
-    y: "60vh",
-    transition: {
-      duration: 2,
-    },
-  },
-  animate: {
-    opacity: 1,
-    scale: 1,
-    x: "0vw",
-    y: "0vh",
-    transition: {
-      duration: 2,
-    },
-  },
-};
-
 export const fadeInOut = {
   initial: {
     opacity: 0,
     transition: {
-      delay: 1,
       duration: 1,
+      delay: 1,
     },
   },
   animate: {
     opacity: 1,
     transition: {
-      delay: 1,
       duration: 1,
+      delay: 1,
     },
   },
 };
@@ -63,20 +42,37 @@ export const elementSlideInOut = {
   initial: {
     x: "-100vw",
     transition: {
-      delay: 1,
       duration: 1,
+      delay: 1,
     },
   },
   animate: {
     x: "0vw",
     transition: {
-      delay: 1,
       duration: 1,
+      delay: 1,
     },
   },
 };
 
 export const slideDown = {
+  initial: {
+    opacity: 0,
+    y: -100,
+    transition: {
+      duration: 0.5,
+    },
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      delay: 1,
+    },
+  },
+};
+export const bounceDown = {
   initial: {
     opacity: 0,
     y: -100,
@@ -96,7 +92,7 @@ export const slideDown = {
     },
   },
 };
-export const slideUp = {
+export const bounceUp = {
   initial: {
     opacity: 0,
     y: 100,
@@ -111,11 +107,29 @@ export const slideUp = {
       duration: 0.5,
       delay: 1,
       type: "spring",
-      mass: 0.6,
+      mass: 0.5,
       damping: 5,
     },
   },
 };
+export const slideUp = {
+  initial: {
+    opacity: 0,
+    y: 100,
+    transition: {
+      duration: 0.5,
+    },
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      delay: 1,
+    },
+  },
+};
+
 export const slideLeft = {
   initial: {
     opacity: 0,
@@ -185,12 +199,14 @@ export const containerSlideInOutLeft = {
     x: "-100vw",
     transition: {
       duration: 0.75,
+      when: "beforeChildren",
     },
   },
   animate: {
     x: "0vw",
     transition: {
       duration: 0.75,
+      when: "beforeChildren",
     },
   },
 };
@@ -206,6 +222,7 @@ export const containerSlideInOutRight = {
     x: "0vw",
     transition: {
       duration: 0.75,
+      when: "beforeChildren",
     },
   },
 };
@@ -381,24 +398,6 @@ export const experienceVariants = {
 };
 
 //CONTACT PAGE VARIANTS
-// export const contactVariants = {
-//   initial: { opacity: 1 },
-//   animate: {
-//     opacity: 1,
-//     transition: {
-//       duration: 0.5,
-//     },
-//   },
-//   exit: {
-//     opacity: 1,
-//     scale: 3,
-//     transition: {
-//       delay: 0.5,
-//       duration: 2,
-//     },
-//   },
-// };
-
 export const planeVariants = {
   initial: { opacity: 1, x: "-50px", y: "-50px" },
   animate: {
@@ -446,6 +445,27 @@ export const planeVariants = {
         repeat: Infinity,
         ease: "easeOut",
       },
+    },
+  },
+};
+
+export const flyIn = {
+  initial: {
+    opacity: 1,
+    scale: 4,
+    x: "-100vw",
+    y: "60vh",
+    transition: {
+      duration: 2,
+    },
+  },
+  animate: {
+    opacity: 1,
+    scale: 1,
+    x: "0vw",
+    y: "0vh",
+    transition: {
+      duration: 2,
     },
   },
 };
