@@ -13,23 +13,24 @@ import {
   slideDown,
   slideUp,
 } from "../styles/animations";
+
 //email
 import emailjs from "emailjs-com";
+
 //message components
 import { ToastContainer, toast, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 //components
 import ContactIconBar from "../components/ContactIconBar";
-import useScroll from "../components/useScroll";
+
 //icon
 import Icon from "../components/Icon";
 //SVGs
 import Plane from "../img/plane";
 import Trail from "../img/trail";
 
-const Contact = ({ contactRef }) => {
-  const [element, controls] = useScroll();
-
+const Contact = ({ contactRef, contactControls }) => {
   const [formData, setFormData] = useState({
     user_name: "",
     user_email: "",
@@ -72,7 +73,6 @@ const Contact = ({ contactRef }) => {
       .then((result) => {
         if (result.status === 200) {
           //sent message
-          //console.log("Message sent");
           setFormData({
             user_name: "",
             user_email: "",
@@ -108,9 +108,9 @@ const Contact = ({ contactRef }) => {
 
   return (
     <ContactSection
-      className="section-dark fullheight"
+      className="section-dark autoheight"
       id="contact"
-      ref={element}
+      ref={contactRef}
     >
       <ToastContainer
         closeButton={CloseButton}
@@ -127,11 +127,11 @@ const Contact = ({ contactRef }) => {
         pauseOnHover
       />
 
-      <div className="container container-dark" ref={contactRef}>
+      <div className="container container-dark">
         <motion.div
           initial="initial"
           variants={slideDown}
-          animate={controls}
+          animate={contactControls}
           className="section-header"
         >
           <div className="section-title-content">
@@ -152,7 +152,7 @@ const Contact = ({ contactRef }) => {
             onSubmit={handleFormSubmit}
             initial="initial"
             variants={slideRight}
-            animate={controls}
+            animate={contactControls}
           >
             <div className="formItem">
               <label>Name:</label>
@@ -219,7 +219,7 @@ const Contact = ({ contactRef }) => {
               className="trail"
               initial="initial"
               variants={trailVariants}
-              animate={controls}
+              animate={contactControls}
             >
               <Trail />
             </motion.div>
@@ -227,7 +227,7 @@ const Contact = ({ contactRef }) => {
               className="outer-plane"
               initial="initial"
               variants={flyIn}
-              animate={controls}
+              animate={contactControls}
             >
               <motion.div
                 className="plane"
@@ -243,7 +243,7 @@ const Contact = ({ contactRef }) => {
               className="contactBar"
               initial="initial"
               variants={slideUp}
-              animate={controls}
+              animate={contactControls}
             >
               <ContactIconBar size="40px" color="whitesmoke" />
             </motion.div>
@@ -255,20 +255,23 @@ const Contact = ({ contactRef }) => {
 };
 
 const ContactSection = styled(motion.div)`
+  min-height: 93vh;
   .container {
-    height: 100%;
+    min-height: 93vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    //border: 1px solid gold;
   }
 `;
 
 const ContactInfo = styled(motion.div)`
   display: flex;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
+  flex-grow: 1;
   padding: 2rem;
 
   form {
@@ -280,7 +283,7 @@ const ContactInfo = styled(motion.div)`
     background: #1f2525;
     padding: 2rem;
     border-radius: 10px;
-    height: 100%;
+    min-height: 100%;
 
     .formItem {
       display: flex;

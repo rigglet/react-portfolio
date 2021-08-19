@@ -6,23 +6,23 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 import StyledLine from "../styles/styledLine";
 import Icon from "../components/Icon";
-import useScroll from "../components/useScroll";
 import {
-  containerSlideInOutRight,
-  slideUp,
+  // containerSlideInOutRight,
+  // slideUp,
+  // bounceDown,
+  // slideRight,
+  // slideLeft,
+  selection,
   slideDown,
-  bounceDown,
   bounceUp,
-  slideLeft,
-  slideRight,
 } from "../styles/animations";
+
 //data
 import { getCollection } from "../api/api";
 
-const Skills = ({ skillsRef }) => {
+const Skills = ({ skillsRef, skillsControls }) => {
   const [technologies, setTechnologies] = useState([]);
   const [tools, setTools] = useState([]);
-  const [element, controls] = useScroll();
 
   useEffect(() => {
     async function getTechnologies() {
@@ -71,23 +71,24 @@ const Skills = ({ skillsRef }) => {
 
   return (
     <SkillsSection
-      className="section-light fullheight"
+      className="section-light autoheight"
       id="skills"
-      ref={element}
+      ref={skillsRef}
     >
       <motion.div
         className="container container-light container-right"
-        variants={containerSlideInOutRight}
+        //variants={containerSlideInOutRight}
         initial="initial"
-        animate={controls}
+        animate={skillsControls}
       >
         <div className="gradientRight" />
-        <div className="inner-container" ref={skillsRef}>
+        <div className="inner-container">
           <div className="section-header">
             <motion.div
               variants={slideDown}
               initial="initial"
-              animate="animate"
+              //animate="animate"
+              animate={skillsControls}
               className="section-title-content"
             >
               <Icon
@@ -117,7 +118,8 @@ const Skills = ({ skillsRef }) => {
                     <motion.h2
                       variants={slideDown}
                       initial="initial"
-                      animate="animate"
+                      //animate="animate"
+                      animate={skillsControls}
                       className="section-subheading heading-dark"
                     >
                       Frontend
@@ -141,7 +143,8 @@ const Skills = ({ skillsRef }) => {
                         key={uuidv4()}
                         variants={bounceUp}
                         initial="initial"
-                        animate="animate"
+                        //animate="animate"
+                        animate={skillsControls}
                       >
                         <a
                           key={uuidv4()}
@@ -169,7 +172,8 @@ const Skills = ({ skillsRef }) => {
                     <motion.h2
                       variants={slideDown}
                       initial="initial"
-                      animate="animate"
+                      //animate="animate"
+                      animate={skillsControls}
                       className="section-subheading heading-dark"
                     >
                       Backend
@@ -191,7 +195,8 @@ const Skills = ({ skillsRef }) => {
                       <motion.div
                         variants={bounceUp}
                         initial="initial"
-                        animate="animate"
+                        //animate="animate"
+                        animate={skillsControls}
                         className="skill-item"
                         key={uuidv4()}
                       >
@@ -221,7 +226,8 @@ const Skills = ({ skillsRef }) => {
                     <motion.h2
                       variants={slideDown}
                       initial="initial"
-                      animate="animate"
+                      //animate="animate"
+                      animate={skillsControls}
                       className="section-subheading heading-dark"
                     >
                       Database
@@ -243,7 +249,8 @@ const Skills = ({ skillsRef }) => {
                       <motion.div
                         variants={bounceUp}
                         initial="initial"
-                        animate="animate"
+                        //animate="animate"
+                        animate={skillsControls}
                         className="skill-item"
                         key={uuidv4()}
                       >
@@ -273,7 +280,8 @@ const Skills = ({ skillsRef }) => {
                     <motion.h2
                       variants={slideDown}
                       initial="initial"
-                      animate="animate"
+                      //animate="animate"
+                      animate={skillsControls}
                       className="section-subheading heading-dark"
                     >
                       Deployment
@@ -295,7 +303,8 @@ const Skills = ({ skillsRef }) => {
                       <motion.div
                         variants={bounceUp}
                         initial="initial"
-                        animate="animate"
+                        //animate="animate"
+                        animate={skillsControls}
                         className="skill-item"
                         key={uuidv4()}
                       >
@@ -325,7 +334,8 @@ const Skills = ({ skillsRef }) => {
                     <motion.h2
                       variants={slideDown}
                       initial="initial"
-                      animate="animate"
+                      //animate="animate"
+                      animate={skillsControls}
                       className="section-subheading heading-dark"
                     >
                       Other
@@ -347,7 +357,8 @@ const Skills = ({ skillsRef }) => {
                       <motion.div
                         variants={bounceUp}
                         initial="initial"
-                        animate="animate"
+                        //animate="animate"
+                        animate={skillsControls}
                         className="skill-item"
                         key={uuidv4()}
                       >
@@ -377,7 +388,8 @@ const Skills = ({ skillsRef }) => {
                     <motion.h2
                       variants={slideDown}
                       initial="initial"
-                      animate="animate"
+                      //animate="animate"
+                      animate={skillsControls}
                       className="section-subheading heading-dark"
                     >
                       Tools
@@ -393,13 +405,20 @@ const Skills = ({ skillsRef }) => {
                     bgColor="#f5f5f5"
                   />
                 </div>
-                <div className="selection">
+                <motion.div
+                  className="selection"
+                  variants={selection}
+                  initial="initial"
+                  //animate="animate"
+                  animate={skillsControls}
+                >
                   {tools?.map((tool) => {
                     return (
                       <motion.div
                         variants={bounceUp}
-                        initial="initial"
-                        animate="animate"
+                        //initial="initial"
+                        //animate="animate"
+                        //animate={skillsControls}
                         className="skill-item"
                         key={uuidv4()}
                       >
@@ -419,7 +438,7 @@ const Skills = ({ skillsRef }) => {
                       </motion.div>
                     );
                   })}
-                </div>
+                </motion.div>
               </section>
             )}
           </div>
@@ -429,7 +448,8 @@ const Skills = ({ skillsRef }) => {
               className="section-title-content"
               variants={slideDown}
               initial="initial"
-              animate="animate"
+              //animate="animate"
+              animate={skillsControls}
             >
               <Icon
                 icon="BsPersonFill"

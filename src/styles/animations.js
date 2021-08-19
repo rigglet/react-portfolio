@@ -1,4 +1,38 @@
 //GLOBAL VARIANTS
+
+export const containerSlideInOutLeft = {
+  initial: {
+    x: "-100vw",
+    transition: {
+      duration: 0.75,
+    },
+  },
+  animate: {
+    x: "0vw",
+    transition: {
+      duration: 0.75,
+      //when: "beforeChildren",
+    },
+  },
+};
+
+export const containerSlideInOutRight = {
+  initial: {
+    x: "100vw",
+    transition: {
+      duration: 0.75,
+    },
+  },
+  animate: {
+    x: "0vw",
+    transition: {
+      duration: 0.75,
+      //when: "beforeChildren",
+      //staggerChildren: 1,
+    },
+  },
+};
+
 export const rotateInOut = {
   initial: {
     //x: "-100vw",
@@ -89,6 +123,32 @@ export const bounceDown = {
       type: "spring",
       mass: 0.6,
       damping: 5,
+    },
+  },
+};
+
+export const selection = {
+  initial: {
+    opacity: 0,
+    y: 100,
+    transition: {
+      duration: 0.5,
+      type: "spring",
+      mass: 0.5,
+      damping: 5,
+      staggerChildren: 1,
+    },
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      delay: 1,
+      type: "spring",
+      mass: 0.5,
+      damping: 5,
+      staggerChildren: 1,
     },
   },
 };
@@ -190,39 +250,6 @@ export const detailPopUp = {
     scale: 0.5,
     transition: {
       duration: 0.75,
-    },
-  },
-};
-
-export const containerSlideInOutLeft = {
-  initial: {
-    x: "-100vw",
-    transition: {
-      duration: 0.75,
-      when: "beforeChildren",
-    },
-  },
-  animate: {
-    x: "0vw",
-    transition: {
-      duration: 0.75,
-      when: "beforeChildren",
-    },
-  },
-};
-
-export const containerSlideInOutRight = {
-  initial: {
-    x: "100vw",
-    transition: {
-      duration: 0.75,
-    },
-  },
-  animate: {
-    x: "0vw",
-    transition: {
-      duration: 0.75,
-      when: "beforeChildren",
     },
   },
 };
@@ -453,7 +480,7 @@ export const flyIn = {
   initial: {
     opacity: 1,
     scale: 4,
-    x: "-100vw",
+    x: "-110vw",
     y: "60vh",
     transition: {
       duration: 2,

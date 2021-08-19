@@ -4,10 +4,11 @@ import styled from "styled-components";
 import StyledLine from "../styles/styledLine";
 //import Loader from "../components/Loader";
 import Icon from "../components/Icon";
+import { fadeInOut } from "../styles/animations";
 
-const Education = ({ educationRef }) => {
+const Education = ({ educationRef, educationControls }) => {
   return (
-    <EducationSection className="section-dark fullheight" id="education">
+    <EducationSection className="section-dark autoheight" id="education">
       <div className="container-dark" ref={educationRef}>
         <div className="inner-container">
           <div className="section-header">
@@ -21,12 +22,10 @@ const Education = ({ educationRef }) => {
               <h1 className="section-heading heading-light">Education</h1>
             </div>
             <StyledLine
-              //initial={{ x: 100, y: 500 }}
-              //animate={{ x: 0, y: 0 }}
-              // transition={{
-              //   delay: 1,
-              //   duration: 1,
-              // }}
+              transition={{
+                delay: 1,
+                duration: 1,
+              }}
               height="6px"
               width="100%"
               bgColor="#111111"

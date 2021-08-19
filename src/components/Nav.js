@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { Link, useLocation } from "react-router-dom";
-import { navVariants } from "../styles/animations";
+import { Link } from "react-router-dom";
+//import { navVariants } from "../styles/animations";
 import { HashLink } from "react-router-hash-link";
 
 const Nav = ({
@@ -14,6 +13,7 @@ const Nav = ({
   experienceInView,
   contactInView,
 }) => {
+  console.log(portfolioInView);
   return (
     <StyledNav
     // variants={navVariants}
@@ -131,7 +131,9 @@ const Nav = ({
 
 const StyledNav = styled(motion.nav)`
   position: fixed;
-  z-index: 1000;
+  top: 0;
+  left: 0;
+  z-index: 10;
   width: 100vw;
   height: 7vh;
   display: flex;

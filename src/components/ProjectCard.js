@@ -20,10 +20,7 @@ const ProjectCard = ({ project, handleProjectClick }) => {
     // transition={{ duration: 0.5 }}
     >
       <div className="image-container">
-        <div
-          className="overlay"
-          onClick={() => handleProjectClick(project._id)}
-        >
+        <div className="overlay" onClick={() => handleProjectClick(project)}>
           {/* <h2>More details...</h2> */}
           <h2>project details</h2>
           <Icon key={uuidv4()} icon="MdUnfoldMore" color="white" size="50px" />

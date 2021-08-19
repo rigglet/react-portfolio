@@ -37,60 +37,47 @@ html{
     #f5f5f5 100%
     );
     
-    --gradient-rtl: linear-gradient(
-      90deg,
-      #f5f5f5 0%,
-      #c6c6c6 25%,
-      #689ed0 50%,
-      #65617d 75%,
-      #1c3b57 100%
-      );
-        
-      scroll-behavior: smooth;
-}
-      
-body{
-  //color: whitesmoke;
-  background: #111111;
-  //font-family: 'Inter', sans-serif;
-  font-family: 'Poppins', sans-serif;
-}
-
-.app{
-  scroll-snap-type: y proximity;
-  //scroll-padding: 200px;
-  overflow-y: scroll;
-  height: 100vh;
-  overflow-x: hidden;
+  --gradient-rtl: linear-gradient(
+    90deg,
+    #f5f5f5 0%,
+    #c6c6c6 25%,
+    #689ed0 50%,
+    #65617d 75%,
+    #1c3b57 100%
+    );
+    
+  }
+  
+  body{
+    background: #111111;
+    font-family: 'Poppins', sans-serif;
+    //color: whitesmoke;
+    //font-family: 'Inter', sans-serif;
+    //overflow-x: hidden;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scroll-snap-type: y proximity;
+    //7vh offset for height of NAV
+    scroll-padding: 7vh;
 }
 
 //section
 .section-light {
-  scroll-snap-align: end;
+  scroll-snap-align: start;
   display: flex;
   align-items: center;
+  //border: 2px solid green;
 }
 .section-dark {
-  scroll-snap-align: end;
+  scroll-snap-align: start;
+  //border: 2px solid red;
 }
 
 .autoheight{
   min-height: 93vh;
-  height: auto;
-  margin-top: 7vh;
-}
-.fullheight{
-  height: 93vh;
-  margin-top: 7vh;
-}
-.halfheight{
-  height: 50vh;
-  scroll-snap-align: center;
-}
-.twothirdsheight{
-  height: 66vh;
-  scroll-snap-align: center;
-  padding: 0;
+  max-height: auto;
+  padding-top: 7vh;
 }
 
 .container-dark {
@@ -113,23 +100,26 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  min-height: auto;
   //height: auto;
   border: 6px;
+  border: 0.3rem;
   border-color: var(--section-light-border);
   padding: 1rem 5rem;
 }
 
 .container-left {
-  border-style: solid solid solid none;
-  border-radius: 0 100px 100px 0;
+  border-style: solid none;
+  //border-style: solid solid solid none;
+  //border-radius: 0 100px 100px 0;
   justify-self: flex-start;
 }
 
 .container-right {
-  border-radius: 100px 0 0 100px;
-  border-style: solid none solid solid;
+  border-style: solid none;
+  //border-radius: 100px 0 0 100px;
+  //border-style: solid none solid solid;
   justify-self: flex-end;
 }
 

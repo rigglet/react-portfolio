@@ -11,7 +11,7 @@ import { serverBaseURL } from "../config/config";
 //functions
 import CloseButton from "./closeButton";
 //dates
-import { DateTime } from "luxon";
+//import { DateTime } from "luxon";
 //image gallery
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
@@ -19,57 +19,29 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import { BsCardText } from "react-icons/bs";
 import { ImImages } from "react-icons/im";
 import { MdWeb } from "react-icons/md";
-import { AiOutlineCalendar } from "react-icons/ai";
+//import { AiOutlineCalendar } from "react-icons/ai";
 
-const ProjectDetails = ({
-  projectClose,
-  skipProject,
-  arrSize,
-  handleImageChange,
-  currentImage,
-  projectId,
-}) => {
-  //const project = getProject(projectId);
-  const [project, setProject] = useState({});
+const ProjectDetails = ({ projectClose, project }) => {
   let [imageArray, setImageArray] = useState([]);
   let [mainImage, setMainImage] = useState({});
 
   useEffect(() => {
-    async function getProject() {
-      return await getDocumentById("projects", projectId);
-    }
-
-    getProject()
-      .then((results) => {
-        console.log(results.data);
-        if (results.status === 200) {
-          setProject(results.data);
-          // currentImage = results.data.screenshots.filter(
-          //   (image) => image._id === results.data.mainImage
-          // )[0];
-        }
-        return results;
+    setImageArray(
+      project.screenshots?.map((image) => {
+        return {
+          original: `${serverBaseURL()}/images/${image.fileName}`,
+          thumbnail: `${serverBaseURL()}/images/${image.fileName}`,
+        };
       })
-      .then((results) => {
-        setImageArray(
-          results.data?.screenshots?.map((image) => {
-            return {
-              original: `${serverBaseURL()}/images/${image.fileName}`,
-              thumbnail: `${serverBaseURL()}/images/${image.fileName}`,
-            };
-          })
-        );
-        setMainImage(
-          results.data?.screenshots?.filter((image) => {
-            //console.log("image._id: ", typeof image._id);
-            //console.log("mainImage: ", typeof results.data?.mainImage);
-            return image._id === results.data?.mainImage;
-          })[0]
-        );
-      });
+    );
+    setMainImage(
+      project.screenshots?.filter((image) => {
+        return image._id === project?.mainImage;
+      })[0]
+    );
   }, []);
 
-  console.log(project);
+  //console.log(project);
 
   return (
     <StyledOuterContainer>
@@ -80,27 +52,6 @@ const ProjectDetails = ({
         exit="exit"
       >
         <CloseButton closeFunction={projectClose} />
-        {/* <p>{project._id}</p>
-        <p>{project.projectName}</p>
-        <p>{project.shortDescription}</p>
-        <p>{project.projectDescription}</p>
-        <p>{project.author}</p>
-        <p>{project.version}</p>
-        <p>{project.featured}</p>
-        <p>{project.included}</p>
-        <p>{project.website}</p>
-        <p>{project.githubLink}</p>
-      <p>{project.mainImage}</p> */}
-        {/*screenshots: [{…}]
-        highlights: (2) ["AWS S3 bucket image storage and handling", "Express server backend with MongoDB"]
-        features: (3) ["AWS S3 bucket image storage and handling", "Express server backend with MongoDB", "Built with React"]
-        packages: (5) [{…}, {…}, {…}, {…}, {…}]
-        libraries: []
-      technologies: (8) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]*/}
-
-        {/* <p>{project.startedDate}</p>
-                <p>{project.completedDate}</p>
-                <p>{project.addedDate}</p> */}
 
         <div className="titleHeader">
           <MdWeb className="titleIcon" />
@@ -113,12 +64,15 @@ const ProjectDetails = ({
               <legend>
                 Overview <BsCardText />
               </legend>
+
               <h1>{project?.projectName}</h1>
               <p>{project?.projectDescription}</p>
+
               <div className="input-item">
                 <label htmlFor="version">Version:</label>
                 <p>{project?.version}</p>
               </div>
+
               <div className="addresses">
                 <div className="address-item">
                   <label htmlFor="github">Github:</label>
@@ -131,6 +85,7 @@ const ProjectDetails = ({
                     />
                   </a>
                 </div>
+
                 <div className="address-item">
                   <label>Live site:</label>
                   <a href={project?.website}>
@@ -142,6 +97,7 @@ const ProjectDetails = ({
                     />
                   </a>
                 </div>
+
                 <div className="address-item">
                   <label>Walkthough video:</label>
                   <a href={project?.walkthroughVideo}>
@@ -192,7 +148,7 @@ const ProjectDetails = ({
               />
             </legend>
             {project?.features?.map((feature) => (
-              <div className="feature-item">
+              <div className="feature-item" key={uuidv4()}>
                 <Icon
                   icon="GoArrowSmallRight"
                   color="#494949"
@@ -219,7 +175,7 @@ const ProjectDetails = ({
               />
             </legend>
             {project?.highlights?.map((highlight) => (
-              <div className="highlight-item">
+              <div className="highlight-item" key={uuidv4()}>
                 <Icon
                   icon="GoArrowSmallRight"
                   color="#313131"
@@ -235,97 +191,103 @@ const ProjectDetails = ({
             ))}
           </fieldset>
 
-          <fieldset className="technologies">
-            <legend>
-              Technologies
-              <Icon
-                icon="HiCode"
-                color="#313131"
-                size="14pt"
-                title="package icon"
-              />
-            </legend>
-            <StyledIcons>
-              {project?.technologies?.map((tech) => (
-                <a
-                  key={uuidv4()}
-                  href={tech.address}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <h4>{tech.name}</h4>
-                  <Icon
+          {project?.technologies?.length > 0 && (
+            <fieldset className="technologies">
+              <legend>
+                Technologies
+                <Icon
+                  icon="HiCode"
+                  color="#313131"
+                  size="14pt"
+                  title="package icon"
+                />
+              </legend>
+              <StyledIcons>
+                {project?.technologies?.map((tech) => (
+                  <a
                     key={uuidv4()}
-                    icon={tech.icon}
-                    color={tech.color}
-                    size="75px"
-                  />
-                </a>
-              ))}
-            </StyledIcons>
-          </fieldset>
+                    href={tech.address}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <h4>{tech.name}</h4>
+                    <Icon
+                      key={uuidv4()}
+                      icon={tech.icon}
+                      color={tech.color}
+                      size="75px"
+                    />
+                  </a>
+                ))}
+              </StyledIcons>
+            </fieldset>
+          )}
 
-          <fieldset className="packages">
-            <legend>
-              Packages
-              <Icon
-                icon="GoPackage"
-                color="#313131"
-                size="14pt"
-                title="package icon"
-              />
-            </legend>
-            <StyledIcons>
-              {project?.packages?.map((pack) => (
-                <a
-                  key={uuidv4()}
-                  href={pack.npmaddress}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <h4>{pack.name}</h4>
-                  <Icon
+          {project?.packages?.length > 0 && (
+            <fieldset className="packages">
+              <legend>
+                Packages
+                <Icon
+                  icon="GoPackage"
+                  color="#313131"
+                  size="14pt"
+                  title="package icon"
+                />
+              </legend>
+              <StyledIcons>
+                {project?.packages?.map((pack) => (
+                  <a
                     key={uuidv4()}
-                    icon={pack.icon}
-                    color={pack.color}
-                    size="75px"
-                  />
-                </a>
-              ))}
-            </StyledIcons>
-          </fieldset>
+                    href={pack.npmaddress}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <h4>{pack.name}</h4>
+                    <Icon
+                      key={uuidv4()}
+                      icon={pack.icon}
+                      color={pack.color}
+                      size="75px"
+                    />
+                  </a>
+                ))}
+              </StyledIcons>
+            </fieldset>
+          )}
 
-          <fieldset className="libraries">
-            <legend>
-              Libraries
-              <Icon
-                icon="IoLibraryOutline"
-                color="#313131"
-                size="14pt"
-                title="library icon"
-              />
-            </legend>
-            <StyledIcons>
-              {project?.libraries?.map((library) => (
-                <a
-                  key={uuidv4()}
-                  href={library.npmaddress}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <h4>{library.name}</h4>
-                  <Icon
-                    icon={library.icon}
-                    color={library.color}
-                    size="75px"
-                    title={`${library.name} library`}
-                  />
-                </a>
-              ))}
-            </StyledIcons>
-          </fieldset>
+          {project?.libraries?.length > 0 && (
+            <fieldset className="libraries">
+              <legend>
+                Libraries
+                <Icon
+                  icon="IoLibraryOutline"
+                  color="#313131"
+                  size="14pt"
+                  title="library icon"
+                />
+              </legend>
+              <StyledIcons>
+                {project?.libraries?.map((library) => (
+                  <a
+                    key={uuidv4()}
+                    href={library.npmaddress}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <h4>{library.name}</h4>
+                    <Icon
+                      icon={library.icon}
+                      color={library.color}
+                      size="75px"
+                      title={`${library.name} library`}
+                    />
+                  </a>
+                ))}
+              </StyledIcons>
+            </fieldset>
+          )}
 
-          <fieldset className="dates">
+          {/* <fieldset className="dates">
             <legend>
               Dates <AiOutlineCalendar />
             </legend>
@@ -359,7 +321,7 @@ const ProjectDetails = ({
                   })}
               </p>
             </div>
-          </fieldset>
+          </fieldset> */}
         </div>
       </StyledInnerContainer>
     </StyledOuterContainer>
@@ -433,9 +395,19 @@ const StyledInnerContainer = styled(motion.div)`
         display: flex;
         flex-basis: 50%;
         flex-grow: 1;
-        //flex-shrink: 0;
+        flex-shrink: 1;
         padding: 1rem;
         box-shadow: 0px 0px 10px rgba(101, 97, 125, 1);
+      }
+      .main-image {
+        display: flex;
+        flex-grow: 1;
+        flex-shrink: 2;
+        flex-basis: 45%;
+        max-width: 50%;
+        border-radius: 10px;
+        object-fit: scale-down;
+        border: 2px solid red;
       }
       .details {
         display: flex;
@@ -470,16 +442,6 @@ const StyledInnerContainer = styled(motion.div)`
           }
         }
       }
-    }
-
-    .main-image {
-      display: flex;
-      //flex-grow: 1;
-      flex-shrink: 0;
-      flex-basis: 50%;
-      //min-width: 45%;
-      border-radius: 10px;
-      object-fit: scale-down;
     }
 
     .dates {

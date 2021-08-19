@@ -4,12 +4,11 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import StyledLine from "../styles/styledLine";
-// import {
-//   fadeInOut,
-//   elementSlideInOut,
-//   projectsSlideInOutLeft,
-// } from "../styles/animations";
-// import useScroll from "../components/useScroll";
+import {
+  fadeInOut,
+  elementSlideInOut,
+  projectsSlideInOutLeft,
+} from "../styles/animations";
 
 //components
 import Projects from "../components/Projects";
@@ -19,8 +18,7 @@ import Icon from "../components/Icon";
 import { getCollection } from "../api/api";
 import { buttonVariants } from "../styles/animations";
 
-const Portfolio = ({ portfolioRef }) => {
-  //const [element, controls] = useScroll();
+const Portfolio = ({ portfolioRef, portfolioControls }) => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -49,48 +47,49 @@ const Portfolio = ({ portfolioRef }) => {
 
   return (
     <PortfolioSection
-      className="section-dark autoheight"
+      ref={portfolioRef}
       id="portfolio"
-      //ref={element}
+      className="section-dark autoheight"
     >
-      <div className="container-dark" ref={portfolioRef}>
-        <div className="content">
-          <div className="section-header">
-            <div className="section-title-content">
-              <Icon
-                icon="MdWeb"
-                size="30px"
-                color="whitesmoke"
-                title="Projects icon"
-              />
-              <h1 className="section-heading heading-light">
-                Featured Projects
-              </h1>
-            </div>
-            <StyledLine height="6px" width="100%" bgColor="#111111" />
+      <div className="inner-container container-dark">
+        <div className="section-header">
+          <div className="section-title-content">
+            <Icon
+              icon="MdWeb"
+              size="30px"
+              color="whitesmoke"
+              title="Projects icon"
+            />
+            <h1 className="section-heading heading-light">Featured Projects</h1>
           </div>
-
+          <StyledLine height="6px" width="100%" bgColor="#111111" />
+        </div>
+        <div className="content">
           {loading ? (
-            <Loader />
-          ) : (
-            <div className="projects">
-              {filteredProjects.length > 0 ? (
-                <Projects projects={filteredProjects} />
-              ) : (
-                <h1 className="noresult">No projects to show.</h1>
-              )}
+            <div className="loading">
+              <Loader />
             </div>
+          ) : (
+            <>
+              <div className="projects">
+                {filteredProjects.length > 0 ? (
+                  <Projects projects={filteredProjects} />
+                ) : (
+                  <h1 className="noresult">No projects to show.</h1>
+                )}
+              </div>
+              <motion.button
+                className="page-btn dark-btn"
+                variants={buttonVariants}
+                initial="initial"
+                animate="animate"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Explore Full Portfolio
+              </motion.button>
+            </>
           )}
-          <motion.button
-            className="page-btn dark-btn"
-            variants={buttonVariants}
-            initial="initial"
-            animate="animate"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Explore Full Portfolio
-          </motion.button>
         </div>
       </div>
     </PortfolioSection>
@@ -98,20 +97,48 @@ const Portfolio = ({ portfolioRef }) => {
 };
 
 const PortfolioSection = styled(motion.div)`
-  .content {
-    height: 100%;
-    width: 100%;
+  z-index: 10000;
+  //padding-top: 7vh;
+  min-height: 93vh;
+  height: auto;
+  width: 100%;
+  overflow-y: unset;
+  //border: 1px solid teal;
+  .inner-container {
+    min-height: 100vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-  }
-  .projects {
-    width: 100%;
-  }
-  .noresult {
-    text-align: center;
-    font-weight: lighter;
+    justify-content: flex-start;
+    flex-grow: 1;
+    .content {
+      height: 100%;
+      min-height: 85vh;
+      max-height: auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      //border: 1px solid blue;
+    }
+    .loading {
+      min-height: 93vh;
+      max-height: auto;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid red;
+    }
+    .projects {
+      width: 100%;
+    }
+    .noresult {
+      text-align: center;
+      font-weight: lighter;
+    }
   }
 `;
 

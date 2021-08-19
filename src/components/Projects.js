@@ -9,67 +9,45 @@ import { v4 as uuidv4 } from "uuid";
 //components
 import ProjectCard from "./ProjectCard";
 import ProjectDetail from "./ProjectDetail";
-import { useLocation, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Projects = ({ projects }) => {
   const [element, controls] = useScroll();
-  //const location = useLocation();
-  //let pathId = location.pathname.split("/")[2];
   const history = useHistory();
 
   //state
-  const [currentImage, setCurrentImage] = useState(null);
+  const [currentProject, setCurrentProject] = useState({});
   const [showProjectDetails, setShowProjectDetails] = useState(false);
-  const [projectId, setProjectId] = useState(null);
+  //const [currentImage, setCurrentImage] = useState(null);
 
-  const handleProjectClick = (projectId) => {
-    setProjectId(projectId);
+  const handleProjectClick = (project) => {
+    document.body.style.overflowY = "hidden";
     setShowProjectDetails(true);
-    //document.body.style.overflowY = "hidden";
+    setCurrentProject(project);
+    //console.log(project);
   };
 
-  const handleImageChange = (image) => {
-    console.log(image);
-    setCurrentImage(image);
-  };
+  // const handleImageChange = (image) => {
+  //   console.log(image);
+  //   setCurrentImage(image);
+  // };
 
   const projectClose = () => {
-    //document.body.style.overflowY = "auto";
+    document.body.style.overflowY = "auto";
     history.push("/#portfolio");
-  };
-
-  const skipProject = (direction) => {
-    // const pos = projects.findIndex((project) => String(project.id) === pathId);
-    // if (direction === "FORWARD") {
-    //   setCurrentImage(getImage(projects[(pos + 1) % projects.length].mainImg));
-    //   history.push(`/portfolio/${projects[(pos + 1) % projects.length].id}`);
-    // }
-    // if (direction === "BACK") {
-    //   if ((pos - 1) % projects.length === -1) {
-    //     setCurrentImage(getImage(projects[projects.length - 1].mainImg));
-    //     history.push(`/portfolio/${projects[projects.length - 1].id}`);
-    //     return;
-    //   }
-    //   setCurrentImage(getImage(projects[(pos - 1) % projects.length].mainImg));
-    //   history.push(`/portfolio/${projects[(pos - 1) % projects.length].id}`);
-    // }
   };
 
   return (
     <StyledProjects>
       {showProjectDetails && (
         <ProjectDetail
-          projectId={projectId}
+          project={currentProject}
           projectClose={projectClose}
-          skipProject={skipProject}
-          //pathId={pathId}
-          arrSize={projects.length}
-          currentImage={currentImage}
-          handleImageChange={handleImageChange}
-          setCurrentImage={setCurrentImage}
-          // variants={detailPopUp}
-          // initial="initial"
-          // animate="animate"
+          //skipProject={skipProject}
+          //arrSize={projects.length}
+          //currentImage={currentImage}
+          //handleImageChange={handleImageChange}
+          //setCurrentImage={setCurrentImage}
         />
       )}
 

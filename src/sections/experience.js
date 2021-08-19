@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import StyledLine from "../styles/styledLine";
-import { experienceVariants, buttonVariants } from "../styles/animations";
+import { buttonVariants } from "../styles/animations";
 import { HashLink } from "react-router-hash-link";
 import {
   VerticalTimeline,
@@ -15,26 +15,23 @@ import {
   //elementSlideInOut,
   containerSlideInOutLeft,
 } from "../styles/animations";
-import useScroll from "../components/useScroll";
 //import { GiPurpleTentacle } from "react-icons/gi";
 
-const Experience = ({ experienceRef }) => {
-  const [element, controls] = useScroll();
-
+const Experience = ({ experienceRef, experienceControls }) => {
   return (
     <ExperienceSection
-      className="section-light fullheight"
+      className="section-light autoheight"
       id="experience"
-      ref={element}
+      ref={experienceRef}
     >
       <motion.div
         className="container-light container-left"
         variants={containerSlideInOutLeft}
         initial="initial"
-        animate={controls}
+        animate={experienceControls}
       >
         <div className="gradientLeft" />
-        <div className="content" ref={experienceRef}>
+        <div className="content">
           <div className="section-header">
             <div className="section-title-content">
               <Icon

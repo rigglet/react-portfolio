@@ -5,28 +5,26 @@ import styled from "styled-components";
 import profile from "../img/profile.png";
 //import Icon from "../components/Icon";
 import StyledLine from "../styles/styledLine";
-
 import {
   fadeInOut,
   elementSlideInOut,
   containerSlideInOutLeft,
-  aboutVariants,
 } from "../styles/animations";
-import useScroll from "../components/useScroll";
-
-const About = ({ aboutRef }) => {
-  const [element, controls] = useScroll();
-
+const About = ({ aboutRef, aboutControls }) => {
   return (
-    <AboutSection className="section-light fullheight" id="about" ref={element}>
+    <AboutSection
+      id="about"
+      className="section-light autoheight"
+      ref={aboutRef}
+    >
       <motion.div
         className="container container-light container-left"
         variants={containerSlideInOutLeft}
         initial="initial"
-        animate={controls}
+        animate={aboutControls}
       >
         <div className="gradientLeft" />
-        <div className="inner-container" ref={aboutRef}>
+        <div className="inner-container">
           <div className="section-header">
             <div className="section-title-content">
               {/* <Icon
@@ -48,18 +46,18 @@ const About = ({ aboutRef }) => {
               variants={elementSlideInOut}
               //variants={fadeInOut}
               initial="initial"
-              animate={controls}
+              animate={aboutControls}
             />
             <motion.div
               variants={fadeInOut}
               initial="initial"
-              animate={controls}
+              animate={aboutControls}
               className="copy"
             >
               <motion.article
               // variants={fadeInOut}
               // initial="initial"
-              // animate={controls}
+              // animate={aboutControls}
               >
                 <p id="hi">Hi, I'm</p>
                 <p>
@@ -73,7 +71,7 @@ const About = ({ aboutRef }) => {
               <motion.article
               // variants={fadeInOut}
               // initial="initial"
-              // animate={controls}
+              // animate={aboutControls}
               >
                 <p>
                   I am a graduate with a&nbsp;
@@ -100,6 +98,7 @@ const About = ({ aboutRef }) => {
 };
 
 const AboutSection = styled(motion.div)`
+  min-height: 90%;
   display: flex;
   align-items: center;
   //edit justify content if switching sides
