@@ -47,19 +47,22 @@ html{
     );
     
   }
-  
-  body{
-    background: #111111;
-    font-family: 'Poppins', sans-serif;
-    //color: whitesmoke;
-    //font-family: 'Inter', sans-serif;
-    //overflow-x: hidden;
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    scroll-snap-type: y proximity;
-    //7vh offset for height of NAV
-    scroll-padding: 7vh;
+
+  .app{
+  //scroll-padding: 200px;
+  scroll-snap-type: y proximity;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+
+body{
+  //7vh offset for height of NAV
+  scroll-padding: 7vh;
+  background: #111111;
+  font-family: 'Poppins', sans-serif;
 }
 
 //section
@@ -70,11 +73,11 @@ html{
   //border: 2px solid green;
 }
 .section-dark {
-  scroll-snap-align: start;
   //border: 2px solid red;
 }
 
 .autoheight{
+  scroll-snap-align: start;
   min-height: 93vh;
   max-height: auto;
   padding-top: 7vh;
