@@ -12,13 +12,16 @@ const Nav = ({
   educationInView,
   experienceInView,
   contactInView,
+  showMenu,
 }) => {
-  console.log(portfolioInView);
+  //console.log(showMenu);
   return (
     <StyledNav
-    // variants={navVariants}
-    // initial={location.hash === "" ? "initial" : false}
-    // animate={location.hash === "" ? "animate" : false}
+      //showMenu={showMenu}
+      className={showMenu ? "showNav" : "hideNav"}
+      // variants={navVariants}
+      // initial={location.hash === "" ? "initial" : false}
+      // animate={location.hash === "" ? "animate" : false}
     >
       <Link to="/splash">
         <h1 className="logo">Neil Rigg</h1>
@@ -131,16 +134,18 @@ const Nav = ({
 
 const StyledNav = styled(motion.nav)`
   position: fixed;
+  //position: ${({ showMenu }) => (showMenu ? "fixed" : "static")};
   top: 0;
   left: 0;
   z-index: 10;
   width: 100vw;
-  height: 7vh;
+  //height: 7vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: var(--color-nav-background);
   border-bottom: solid 2px var(--color-nav-hover);
+  transition: ease-out 0.3s all;
 
   a {
     text-decoration: none;

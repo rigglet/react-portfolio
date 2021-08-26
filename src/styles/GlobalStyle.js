@@ -65,6 +65,15 @@ body{
   font-family: 'Poppins', sans-serif;
 }
 
+//Sticky NAV on scroll up
+.showNav {
+    transform: translateY(-9vh);
+  }
+
+  .hideNav {
+    transform: translateY(0vh);
+  }
+
 //section
 .section-light {
   scroll-snap-align: start;

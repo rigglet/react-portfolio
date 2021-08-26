@@ -1,9 +1,11 @@
+import { useRef, useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import Splash from "./pages/Splash";
 import Nav from "./components/Nav";
 import Main from "./pages/Main";
 import { Switch, Route } from "react-router-dom";
 import useScroll from "./components/useScroll";
+import useHideNav from "./components/useHideNav";
 
 function App() {
   const [homeRef, homeControls, homeInView] = useScroll();
@@ -14,8 +16,30 @@ function App() {
   const [experienceRef, experienceControls, experienceInView] = useScroll();
   const [contactRef, contactControls, contactInView] = useScroll();
 
+  //const [elementRef, scrollFnc, hideNav] = useHideNav();
+
+  const elementRef = useRef();
+  const [scrollTop, setScrollTop] = useState(window.pageYOffset);
+  const [showMenu, setShowMenu] = useState(true);
+
+  //console.log(window.pageYOffset);
+
+  const scrollFnc = () => {
+    //const scrollHeight = appRef.current?.scrollHeight;
+    const st = elementRef?.current?.scrollTop;
+    st > scrollTop ? setShowMenu(true) : setShowMenu(false);
+    setScrollTop((prev) => {
+      if (prev !== st) return st;
+    });
+    //console.log(st, scrollTop, showMenu);
+    //console.log(showMenu);
+  };
+  useEffect(() => {
+    scrollFnc();
+  }, []);
+
   return (
-    <div className="app">
+    <div className="app" onScroll={() => scrollFnc()} ref={elementRef}>
       <AnimatePresence initial={false} exitBeforeEnter>
         <Switch>
           <Route exact path="/splash">
@@ -23,6 +47,7 @@ function App() {
           </Route>
           <Route exact path="/">
             <Nav
+              showMenu={showMenu}
               homeInView={homeInView}
               aboutInView={aboutInView}
               portfolioInView={portfolioInView}

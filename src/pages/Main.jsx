@@ -43,14 +43,12 @@ const Main = ({
         experienceControls={experienceControls}
       />
       <Contact contactRef={contactRef} contactControls={contactControls} />
-      {/*
-       */}
     </MainPage>
   );
 };
 
 const MainPage = styled(motion.div)`
-  //position: relative;
+  //
 `;
 
 export default Main;
