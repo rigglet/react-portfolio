@@ -17,7 +17,6 @@ const Nav = ({
   //console.log(showMenu);
   return (
     <StyledNav
-      //showMenu={showMenu}
       className={showMenu ? "showNav" : "hideNav"}
       // variants={navVariants}
       // initial={location.hash === "" ? "initial" : false}

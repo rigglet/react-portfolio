@@ -112,6 +112,7 @@ export const bounceDown = {
     y: -100,
     transition: {
       duration: 0.5,
+      delay: 1,
     },
   },
   animate: {
@@ -132,6 +133,7 @@ export const selection = {
     opacity: 0,
     y: 100,
     transition: {
+      //delay: 2,
       duration: 0.5,
       type: "spring",
       mass: 0.5,
@@ -144,7 +146,7 @@ export const selection = {
     y: 0,
     transition: {
       duration: 0.5,
-      delay: 1,
+      //delay: 1,
       type: "spring",
       mass: 0.5,
       damping: 5,

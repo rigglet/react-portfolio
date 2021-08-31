@@ -8,8 +8,12 @@ import { fadeInOut } from "../styles/animations";
 
 const Education = ({ educationRef, educationControls }) => {
   return (
-    <EducationSection className="section-dark autoheight" id="education">
-      <div className="container-dark" ref={educationRef}>
+    <EducationSection
+      ref={educationRef}
+      sclassName="section-dark autoheight"
+      id="education"
+    >
+      <div className="container-dark">
         <div className="inner-container">
           <div className="section-header">
             <div className="section-title-content">

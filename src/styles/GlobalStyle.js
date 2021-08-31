@@ -68,6 +68,7 @@ body{
 //Sticky NAV on scroll up
 .showNav {
     transform: translateY(-9vh);
+    
   }
 
   .hideNav {
@@ -91,6 +92,15 @@ body{
   max-height: auto;
   padding-top: 7vh;
 }
+
+/* .autoheightmenu{
+  scroll-snap-align: start;
+  min-height: 100vh;
+  max-height: auto;
+  padding-top: 0vh;
+} */
+
+
 
 .container-dark {
   background-color: var(--color-dark-background);

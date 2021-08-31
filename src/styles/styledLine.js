@@ -17,7 +17,6 @@ export default function styledLine({
       ...transition,
     },
   };
-
   return (
     <StyledLine
       height={height}

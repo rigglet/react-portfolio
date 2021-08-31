@@ -7,7 +7,7 @@ import styled from "styled-components";
 import StyledLine from "../styles/styledLine";
 import Icon from "../components/Icon";
 import {
-  // containerSlideInOutRight,
+  containerSlideInOutRight,
   // slideUp,
   // bounceDown,
   // slideRight,
@@ -77,7 +77,7 @@ const Skills = ({ skillsRef, skillsControls }) => {
     >
       <motion.div
         className="container container-light container-right"
-        //variants={containerSlideInOutRight}
+        variants={containerSlideInOutRight}
         initial="initial"
         animate={skillsControls}
       >
@@ -99,15 +99,21 @@ const Skills = ({ skillsRef, skillsControls }) => {
               />
               <h1 className="section-heading heading-dark">Technical Skills</h1>
             </motion.div>
-            <StyledLine
-              transition={{
-                delay: 1,
-                duration: 1,
-              }}
-              height="6px"
-              width="100%"
-              bgColor="#f5f5f5"
-            />
+            <motion.div
+              variants={slideDown}
+              initial="initial"
+              animate={skillsControls}
+            >
+              <StyledLine
+                transition={{
+                  delay: 1,
+                  duration: 1,
+                }}
+                height="6px"
+                width="100%"
+                bgColor="#f5f5f5"
+              />
+            </motion.div>
           </div>
 
           <div className="content">
@@ -125,27 +131,31 @@ const Skills = ({ skillsRef, skillsControls }) => {
                       Frontend
                     </motion.h2>
                   </div>
-                  <StyledLine
-                    transition={{
-                      delay: 1,
-                      duration: 1,
-                    }}
-                    height="4px"
-                    width="100%"
-                    bgColor="#f5f5f5"
-                  />
+                  <motion.div
+                    variants={slideDown}
+                    initial="initial"
+                    animate={skillsControls}
+                  >
+                    <StyledLine
+                      transition={{
+                        delay: 3,
+                        duration: 1,
+                      }}
+                      height="4px"
+                      width="100%"
+                      bgColor="#f5f5f5"
+                    />
+                  </motion.div>
                 </div>
-                <div className="selection">
+                <motion.div
+                  className="selection"
+                  variants={bounceUp}
+                  initial="initial"
+                  animate={skillsControls}
+                >
                   {frontend.map((technology) => {
                     return (
-                      <motion.div
-                        className="skill-item"
-                        key={uuidv4()}
-                        variants={bounceUp}
-                        initial="initial"
-                        //animate="animate"
-                        animate={skillsControls}
-                      >
+                      <motion.div className="skill-item" key={uuidv4()}>
                         <a
                           key={uuidv4()}
                           href={technology.address}
@@ -162,7 +172,7 @@ const Skills = ({ skillsRef, skillsControls }) => {
                       </motion.div>
                     );
                   })}
-                </div>
+                </motion.div>
               </section>
             )}
             {backend.length > 0 && (
@@ -179,27 +189,31 @@ const Skills = ({ skillsRef, skillsControls }) => {
                       Backend
                     </motion.h2>
                   </div>
-                  <StyledLine
-                    transition={{
-                      delay: 1,
-                      duration: 1,
-                    }}
-                    height="4px"
-                    width="100%"
-                    bgColor="#f5f5f5"
-                  />
+                  <motion.div
+                    variants={slideDown}
+                    initial="initial"
+                    animate={skillsControls}
+                  >
+                    <StyledLine
+                      transition={{
+                        delay: 1,
+                        duration: 1,
+                      }}
+                      height="4px"
+                      width="100%"
+                      bgColor="#f5f5f5"
+                    />
+                  </motion.div>
                 </div>
-                <div className="selection">
+                <motion.div
+                  className="selection"
+                  variants={bounceUp}
+                  initial="initial"
+                  animate={skillsControls}
+                >
                   {backend.map((technology) => {
                     return (
-                      <motion.div
-                        variants={bounceUp}
-                        initial="initial"
-                        //animate="animate"
-                        animate={skillsControls}
-                        className="skill-item"
-                        key={uuidv4()}
-                      >
+                      <motion.div className="skill-item" key={uuidv4()}>
                         <a
                           key={uuidv4()}
                           href={technology.address}
@@ -216,7 +230,7 @@ const Skills = ({ skillsRef, skillsControls }) => {
                       </motion.div>
                     );
                   })}
-                </div>
+                </motion.div>
               </section>
             )}
             {database.length > 0 && (
@@ -233,27 +247,31 @@ const Skills = ({ skillsRef, skillsControls }) => {
                       Database
                     </motion.h2>
                   </div>
-                  <StyledLine
-                    transition={{
-                      delay: 1,
-                      duration: 1,
-                    }}
-                    height="4px"
-                    width="100%"
-                    bgColor="#f5f5f5"
-                  />
+                  <motion.div
+                    variants={slideDown}
+                    initial="initial"
+                    animate={skillsControls}
+                  >
+                    <StyledLine
+                      transition={{
+                        delay: 1,
+                        duration: 1,
+                      }}
+                      height="4px"
+                      width="100%"
+                      bgColor="#f5f5f5"
+                    />
+                  </motion.div>
                 </div>
-                <div className="selection">
+                <motion.div
+                  className="selection"
+                  variants={bounceUp}
+                  initial="initial"
+                  animate={skillsControls}
+                >
                   {database.map((technology) => {
                     return (
-                      <motion.div
-                        variants={bounceUp}
-                        initial="initial"
-                        //animate="animate"
-                        animate={skillsControls}
-                        className="skill-item"
-                        key={uuidv4()}
-                      >
+                      <motion.div className="skill-item" key={uuidv4()}>
                         <a
                           key={uuidv4()}
                           href={technology.address}
@@ -270,7 +288,7 @@ const Skills = ({ skillsRef, skillsControls }) => {
                       </motion.div>
                     );
                   })}
-                </div>
+                </motion.div>
               </section>
             )}
             {infrastructure.length > 0 && (
@@ -287,27 +305,31 @@ const Skills = ({ skillsRef, skillsControls }) => {
                       Deployment
                     </motion.h2>
                   </div>
-                  <StyledLine
-                    transition={{
-                      delay: 1,
-                      duration: 1,
-                    }}
-                    height="4px"
-                    width="100%"
-                    bgColor="#f5f5f5"
-                  />
+                  <motion.div
+                    variants={slideDown}
+                    initial="initial"
+                    animate={skillsControls}
+                  >
+                    <StyledLine
+                      transition={{
+                        delay: 1,
+                        duration: 1,
+                      }}
+                      height="4px"
+                      width="100%"
+                      bgColor="#f5f5f5"
+                    />
+                  </motion.div>
                 </div>
-                <div className="selection">
+                <motion.div
+                  className="selection"
+                  variants={bounceUp}
+                  initial="initial"
+                  animate={skillsControls}
+                >
                   {infrastructure.map((technology) => {
                     return (
-                      <motion.div
-                        variants={bounceUp}
-                        initial="initial"
-                        //animate="animate"
-                        animate={skillsControls}
-                        className="skill-item"
-                        key={uuidv4()}
-                      >
+                      <motion.div className="skill-item" key={uuidv4()}>
                         <a
                           key={uuidv4()}
                           href={technology.address}
@@ -324,7 +346,7 @@ const Skills = ({ skillsRef, skillsControls }) => {
                       </motion.div>
                     );
                   })}
-                </div>
+                </motion.div>
               </section>
             )}
             {other.length > 0 && (
@@ -341,27 +363,31 @@ const Skills = ({ skillsRef, skillsControls }) => {
                       Other
                     </motion.h2>
                   </div>
-                  <StyledLine
-                    transition={{
-                      delay: 1,
-                      duration: 1,
-                    }}
-                    height="4px"
-                    width="100%"
-                    bgColor="#f5f5f5"
-                  />
+                  <motion.div
+                    variants={slideDown}
+                    initial="initial"
+                    animate={skillsControls}
+                  >
+                    <StyledLine
+                      transition={{
+                        delay: 1,
+                        duration: 1,
+                      }}
+                      height="4px"
+                      width="100%"
+                      bgColor="#f5f5f5"
+                    />
+                  </motion.div>
                 </div>
-                <div className="selection">
+                <motion.div
+                  className="selection"
+                  variants={selection}
+                  initial="initial"
+                  animate={skillsControls}
+                >
                   {other.map((technology) => {
                     return (
-                      <motion.div
-                        variants={bounceUp}
-                        initial="initial"
-                        //animate="animate"
-                        animate={skillsControls}
-                        className="skill-item"
-                        key={uuidv4()}
-                      >
+                      <motion.div className="skill-item" key={uuidv4()}>
                         <a
                           key={uuidv4()}
                           href={technology.address}
@@ -378,7 +404,7 @@ const Skills = ({ skillsRef, skillsControls }) => {
                       </motion.div>
                     );
                   })}
-                </div>
+                </motion.div>
               </section>
             )}
             {tools.length > 0 && (
@@ -395,33 +421,31 @@ const Skills = ({ skillsRef, skillsControls }) => {
                       Tools
                     </motion.h2>
                   </div>
-                  <StyledLine
-                    transition={{
-                      delay: 1,
-                      duration: 1,
-                    }}
-                    height="4px"
-                    width="100%"
-                    bgColor="#f5f5f5"
-                  />
+                  <motion.div
+                    variants={slideDown}
+                    initial="initial"
+                    animate={skillsControls}
+                  >
+                    <StyledLine
+                      transition={{
+                        delay: 1,
+                        duration: 1,
+                      }}
+                      height="4px"
+                      width="100%"
+                      bgColor="#f5f5f5"
+                    />
+                  </motion.div>
                 </div>
                 <motion.div
                   className="selection"
-                  variants={selection}
+                  variants={bounceUp}
                   initial="initial"
-                  //animate="animate"
                   animate={skillsControls}
                 >
                   {tools?.map((tool) => {
                     return (
-                      <motion.div
-                        variants={bounceUp}
-                        //initial="initial"
-                        //animate="animate"
-                        //animate={skillsControls}
-                        className="skill-item"
-                        key={uuidv4()}
-                      >
+                      <motion.div className="skill-item" key={uuidv4()}>
                         <a
                           key={uuidv4()}
                           href={tool.address}
@@ -459,18 +483,31 @@ const Skills = ({ skillsRef, skillsControls }) => {
               />
               <h1 className="section-heading heading-dark">Soft Skills</h1>
             </motion.div>
-            <StyledLine
-              transition={{
-                delay: 1,
-                duration: 1,
-              }}
-              height="6px"
-              width="100%"
-              bgColor="#f5f5f5"
-            />
+            <motion.div
+              variants={slideDown}
+              initial="initial"
+              animate={skillsControls}
+            >
+              <StyledLine
+                transition={{
+                  delay: 1,
+                  duration: 1,
+                }}
+                height="6px"
+                width="100%"
+                bgColor="#f5f5f5"
+              />
+            </motion.div>
           </div>
 
-          <div className="content">Effective communicator</div>
+          <motion.div
+            className="content"
+            variants={slideDown}
+            initial="initial"
+            animate={skillsControls}
+          >
+            Effective communicator
+          </motion.div>
         </div>
       </motion.div>
     </SkillsSection>

@@ -30,7 +30,7 @@ import Icon from "../components/Icon";
 import Plane from "../img/plane";
 import Trail from "../img/trail";
 
-const Contact = ({ contactRef, contactControls }) => {
+const Contact = ({ contactRef, contactControls, showMenu }) => {
   const [formData, setFormData] = useState({
     user_name: "",
     user_email: "",
@@ -109,6 +109,9 @@ const Contact = ({ contactRef, contactControls }) => {
   return (
     <ContactSection
       className="section-dark autoheight"
+      // className={
+      //   showMenu ? "section-dark autoheight" : "section-dark autoheightmenu"
+      // }
       id="contact"
       ref={contactRef}
     >
@@ -256,8 +259,19 @@ const Contact = ({ contactRef, contactControls }) => {
 
 const ContactSection = styled(motion.div)`
   min-height: 93vh;
-  .container {
+  height: 100vh;
+  //border: 1px solid red;
+
+  .showNav {
     min-height: 93vh;
+  }
+
+  .hideNav {
+    min-height: 93vh;
+  }
+
+  .container {
+    //min-height: 93vh;
     width: 100%;
     display: flex;
     flex-direction: column;

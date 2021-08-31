@@ -15,20 +15,19 @@ import {
   //elementSlideInOut,
   containerSlideInOutLeft,
 } from "../styles/animations";
-//import { GiPurpleTentacle } from "react-icons/gi";
 
 const Experience = ({ experienceRef, experienceControls }) => {
   return (
     <ExperienceSection
+      ref={experienceRef}
       className="section-light autoheight"
       id="experience"
-      ref={experienceRef}
     >
       <motion.div
         className="container-light container-left"
         variants={containerSlideInOutLeft}
         initial="initial"
-        animate={experienceControls}
+        //animate={experienceControls}
       >
         <div className="gradientLeft" />
         <div className="content">

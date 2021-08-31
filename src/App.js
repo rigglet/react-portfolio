@@ -57,6 +57,7 @@ function App() {
               contactInView={contactInView}
             />
             <Main
+              showMenu={showMenu}
               homeRef={homeRef}
               homeControls={homeControls}
               aboutRef={aboutRef}
