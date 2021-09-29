@@ -164,9 +164,13 @@ body{
   }
 
 .section-header{
+  /* display: flex;
+  justify-content: center;
+   */
   .section-title-content{
     display: flex;
     align-items: center;
+    justify-content: center;
 
     //h1 heading on some sections
     .section-heading {

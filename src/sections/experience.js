@@ -25,9 +25,9 @@ const Experience = ({ experienceRef, experienceControls }) => {
     >
       <motion.div
         className="container-light container-left"
-        variants={containerSlideInOutLeft}
-        initial="initial"
-        //animate={experienceControls}
+        // variants={containerSlideInOutLeft}
+        // initial="initial"
+        // animate={experienceControls}
       >
         <div className="gradientLeft" />
         <div className="content">

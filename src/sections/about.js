@@ -11,8 +11,6 @@ import {
   containerSlideInOutLeft,
 } from "../styles/animations";
 const About = ({ aboutRef, aboutControls }) => {
-  console.log(aboutControls);
-
   return (
     <AboutSection
       id="about"

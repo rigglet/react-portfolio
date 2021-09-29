@@ -228,15 +228,17 @@ const Contact = ({ contactRef, contactControls, showMenu }) => {
             </motion.div>
             <motion.div
               className="outer-plane"
-              initial="initial"
               variants={flyIn}
+              initial="initial"
+              //animate="animate"
               animate={contactControls}
             >
               <motion.div
                 className="plane"
                 variants={planeVariants}
-                animate="animate"
-                //animate={controls}
+                initial="planeinitial"
+                //animate="planeanimate"
+                animate={contactControls}
               >
                 <Plane />
               </motion.div>

@@ -10,7 +10,7 @@ const Education = ({ educationRef, educationControls }) => {
   return (
     <EducationSection
       ref={educationRef}
-      sclassName="section-dark autoheight"
+      className="section-dark autoheight"
       id="education"
     >
       <div className="container-dark">

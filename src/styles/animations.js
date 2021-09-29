@@ -257,13 +257,20 @@ export const detailPopUp = {
 };
 
 export const navVariants = {
-  initial: { y: "-10vw", opacity: 0 },
-  animate: {
+  visible: {
+    y: "-10vw",
+    opacity: 0,
+    transition: {
+      delay: 0,
+      duration: 0.5,
+    },
+  },
+  hidden: {
     y: 0,
     opacity: 1,
     transition: {
-      delay: 4,
-      duration: 1.5,
+      delay: 0,
+      duration: 0.5,
     },
   },
 };
@@ -428,8 +435,8 @@ export const experienceVariants = {
 
 //CONTACT PAGE VARIANTS
 export const planeVariants = {
-  initial: { opacity: 1, x: "-50px", y: "-50px" },
-  animate: {
+  planeinitial: { opacity: 1, x: "-50px", y: "-50px" },
+  planeanimate: {
     opacity: 1,
     x: [null, -30, 0, 25, 0],
     y: [null, -30, 0, 25, 0],

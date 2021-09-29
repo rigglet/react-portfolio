@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-//import { navVariants } from "../styles/animations";
+import { navVariants } from "../styles/animations";
 import { HashLink } from "react-router-hash-link";
 
 const Nav = ({
@@ -17,9 +17,9 @@ const Nav = ({
   //console.log(showMenu);
   return (
     <StyledNav
-      className={showMenu ? "showNav" : "hideNav"}
-      // variants={navVariants}
-      // initial={location.hash === "" ? "initial" : false}
+      variants={navVariants}
+      initial="initial"
+      animate={showMenu ? "visible" : "hidden"}
       // animate={location.hash === "" ? "animate" : false}
     >
       <Link to="/splash">

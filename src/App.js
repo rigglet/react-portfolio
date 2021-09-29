@@ -5,7 +5,7 @@ import Nav from "./components/Nav";
 import Main from "./pages/Main";
 import { Switch, Route } from "react-router-dom";
 import useScroll from "./components/useScroll";
-import useHideNav from "./components/useHideNav";
+//import useHideNav from "./components/useHideNav";
 
 function App() {
   const [homeRef, homeControls, homeInView] = useScroll();
