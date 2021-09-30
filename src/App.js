@@ -1,8 +1,17 @@
+import Section from "./components/section";
+import Container from "./components/container";
+import Home from "./sections/home";
+import About from "./sections/about";
+import Education from "./sections/education";
+import Experience from "./sections/experience";
+import Contact from "./sections/contact";
+import Portfolio from "./sections/portfolio";
+import Skills from "./sections/skills";
+
 import { useRef, useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import Splash from "./pages/Splash";
 import Nav from "./components/Nav";
-import Main from "./pages/Main";
 import { Switch, Route } from "react-router-dom";
 import useScroll from "./components/useScroll";
 //import useHideNav from "./components/useHideNav";
@@ -34,19 +43,21 @@ function App() {
     //console.log(st, scrollTop, showMenu);
     //console.log(showMenu);
   };
+
   useEffect(() => {
     scrollFnc();
   }, []);
 
   return (
-    <div className="app" onScroll={() => scrollFnc()} ref={elementRef}>
+    // <div className="app" onScroll={() => scrollFnc()} ref={elementRef}>
+    <div className="app">
       <AnimatePresence initial={false} exitBeforeEnter>
         <Switch>
           <Route exact path="/splash">
             <Splash />
           </Route>
           <Route exact path="/">
-            <Nav
+            {/* <Nav
               showMenu={showMenu}
               homeInView={homeInView}
               aboutInView={aboutInView}
@@ -55,24 +66,72 @@ function App() {
               educationInView={educationInView}
               experienceInView={experienceInView}
               contactInView={contactInView}
-            />
-            <Main
-              showMenu={showMenu}
+            /> */}
+
+            <Section>
+              <Container full dark>
+                <Home
+                  homeRef={homeRef}
+                  homeControls={homeControls}
+                  showMenu={showMenu}
+                />
+              </Container>
+            </Section>
+            <Section>
+              <Container half light>
+                <About
+                  aboutRef={aboutRef}
+                  aboutControls={aboutControls}
+                  showMenu={showMenu}
+                />
+              </Container>
+            </Section>
+            <Section left>
+              <Container half light left>
+                <h1>About</h1>
+              </Container>
+            </Section>
+            <Section>
+              <Container light>
+                <h1>NEW</h1>
+              </Container>
+            </Section>
+
+            <Home
               homeRef={homeRef}
               homeControls={homeControls}
+              showMenu={showMenu}
+            />
+            <About
               aboutRef={aboutRef}
               aboutControls={aboutControls}
+              showMenu={showMenu}
+            />
+            <Portfolio
               portfolioRef={portfolioRef}
               portfolioControls={portfolioControls}
+              showMenu={showMenu}
+            />
+            <Skills
               skillsRef={skillsRef}
               skillsControls={skillsControls}
+              showMenu={showMenu}
+            />
+            <Education
               educationRef={educationRef}
               educationControls={educationControls}
+              showMenu={showMenu}
+            />
+            <Experience
               experienceRef={experienceRef}
               experienceControls={experienceControls}
+              showMenu={showMenu}
+            />
+            <Contact
               contactRef={contactRef}
               contactControls={contactControls}
-            ></Main>
+              showMenu={showMenu}
+            />
           </Route>
         </Switch>
       </AnimatePresence>

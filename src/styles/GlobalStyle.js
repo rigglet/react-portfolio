@@ -24,6 +24,7 @@ html{
   --color-nav-hover: #689ed0;
   
   --section-light-border: #689ed0;
+  --container-light-border: #689ed0;
   
   --header-color-light: #f5f5f5;
   --header-color-dark: #313131;
