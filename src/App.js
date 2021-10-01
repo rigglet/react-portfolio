@@ -49,15 +49,15 @@ function App() {
   }, []);
 
   return (
-    // <div className="app" onScroll={() => scrollFnc()} ref={elementRef}>
-    <div className="app">
+    <div className="app" onScroll={() => scrollFnc()} ref={elementRef}>
+      {/* <div className="app"> */}
       <AnimatePresence initial={false} exitBeforeEnter>
         <Switch>
           <Route exact path="/splash">
             <Splash />
           </Route>
           <Route exact path="/">
-            {/* <Nav
+            <Nav
               showMenu={showMenu}
               homeInView={homeInView}
               aboutInView={aboutInView}
@@ -66,9 +66,9 @@ function App() {
               educationInView={educationInView}
               experienceInView={experienceInView}
               contactInView={contactInView}
-            /> */}
+            />
 
-            <Section>
+            <Section id="home">
               <Container full dark>
                 <Home
                   homeRef={homeRef}
@@ -77,7 +77,7 @@ function App() {
                 />
               </Container>
             </Section>
-            <Section>
+            <Section id="about">
               <Container half light>
                 <About
                   aboutRef={aboutRef}
@@ -86,52 +86,51 @@ function App() {
                 />
               </Container>
             </Section>
-            <Section left>
-              <Container half light left>
-                <h1>About</h1>
+            <Section id="portfolio">
+              <Container dark>
+                <Portfolio
+                  portfolioRef={portfolioRef}
+                  portfolioControls={portfolioControls}
+                  showMenu={showMenu}
+                />
               </Container>
             </Section>
-            <Section>
+            <Section id="skills">
+              <Container full light>
+                <Skills
+                  skillsRef={skillsRef}
+                  skillsControls={skillsControls}
+                  showMenu={showMenu}
+                />
+              </Container>
+            </Section>
+            <Section id="education">
+              <Container full dark>
+                <Education
+                  educationRef={educationRef}
+                  educationControls={educationControls}
+                  showMenu={showMenu}
+                />
+              </Container>
+            </Section>
+            <Section id="experience">
               <Container light>
-                <h1>NEW</h1>
+                <Experience
+                  experienceRef={experienceRef}
+                  experienceControls={experienceControls}
+                  showMenu={showMenu}
+                />
               </Container>
             </Section>
-
-            <Home
-              homeRef={homeRef}
-              homeControls={homeControls}
-              showMenu={showMenu}
-            />
-            <About
-              aboutRef={aboutRef}
-              aboutControls={aboutControls}
-              showMenu={showMenu}
-            />
-            <Portfolio
-              portfolioRef={portfolioRef}
-              portfolioControls={portfolioControls}
-              showMenu={showMenu}
-            />
-            <Skills
-              skillsRef={skillsRef}
-              skillsControls={skillsControls}
-              showMenu={showMenu}
-            />
-            <Education
-              educationRef={educationRef}
-              educationControls={educationControls}
-              showMenu={showMenu}
-            />
-            <Experience
-              experienceRef={experienceRef}
-              experienceControls={experienceControls}
-              showMenu={showMenu}
-            />
-            <Contact
-              contactRef={contactRef}
-              contactControls={contactControls}
-              showMenu={showMenu}
-            />
+            <Section id="contact">
+              <Container full dark>
+                <Contact
+                  contactRef={contactRef}
+                  contactControls={contactControls}
+                  showMenu={showMenu}
+                />
+              </Container>
+            </Section>
           </Route>
         </Switch>
       </AnimatePresence>

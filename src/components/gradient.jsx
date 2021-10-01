@@ -10,12 +10,16 @@ const StyledGradient = styled(motion.div)`
 
   position: absolute;
   top: 0;
-  left: ${({ left }) => (left ? "0" : "")};
+  left: ${({ left }) => (left ? "0" : "0")};
   right: ${({ right }) => (right ? "0" : "")};
   height: 100%;
   width: 20%;
   background: ${({ left, right }) =>
-    left ? "var(--gradient-ltr)" : right ? "var(--gradient-rtl)" : ""};
+    left
+      ? "var(--gradient-ltr)"
+      : right
+      ? "var(--gradient-rtl)"
+      : "var(--gradient-ltr)"};
 `;
 
 export default gradient;

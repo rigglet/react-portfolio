@@ -136,7 +136,7 @@ const StyledNav = styled(motion.nav)`
   //position: ${({ showMenu }) => (showMenu ? "fixed" : "static")};
   top: 0;
   left: 0;
-  z-index: 10;
+  z-index: 100;
   width: 100vw;
   //height: 7vh;
   display: flex;

@@ -46,99 +46,85 @@ const Portfolio = ({ portfolioRef, portfolioControls }) => {
   });
 
   return (
-    <PortfolioSection
-      ref={portfolioRef}
-      id="portfolio"
-      className="section-dark autoheight"
-    >
-      <div className="inner-container container-dark">
-        <div className="section-header">
-          <div className="section-title-content">
-            <Icon
-              icon="MdWeb"
-              size="30px"
-              color="whitesmoke"
-              title="Projects icon"
-            />
-            <h1 className="section-heading heading-light">Featured Projects</h1>
+    <PortfolioSection ref={portfolioRef}>
+      <div className="section-header">
+        <div className="section-title-content">
+          <Icon
+            icon="MdWeb"
+            size="30px"
+            color="whitesmoke"
+            title="Projects icon"
+          />
+          <h1 className="section-heading heading-light">Featured Projects</h1>
+        </div>
+        <StyledLine height="6px" width="100%" bgColor="#111111" />
+      </div>
+      <div className="content">
+        {loading ? (
+          <div className="loading">
+            <Loader />
           </div>
-          <StyledLine height="6px" width="100%" bgColor="#111111" />
-        </div>
-        <div className="content">
-          {loading ? (
-            <div className="loading">
-              <Loader />
+        ) : (
+          <>
+            <div className="projects">
+              {filteredProjects.length > 0 ? (
+                <Projects projects={filteredProjects} />
+              ) : (
+                <h1 className="noresult">No projects to show.</h1>
+              )}
             </div>
-          ) : (
-            <>
-              <div className="projects">
-                {filteredProjects.length > 0 ? (
-                  <Projects projects={filteredProjects} />
-                ) : (
-                  <h1 className="noresult">No projects to show.</h1>
-                )}
-              </div>
-              <motion.button
-                className="page-btn dark-btn"
-                variants={buttonVariants}
-                initial="initial"
-                animate="animate"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Explore Full Portfolio
-              </motion.button>
-            </>
-          )}
-        </div>
+            <motion.button
+              className="page-btn dark-btn"
+              variants={buttonVariants}
+              initial="initial"
+              animate="animate"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Explore Full Portfolio
+            </motion.button>
+          </>
+        )}
       </div>
     </PortfolioSection>
   );
 };
 
 const PortfolioSection = styled(motion.div)`
-  z-index: 10000;
+  z-index: 10;
   //padding-top: 7vh;
   min-height: 93vh;
   height: auto;
   width: 100%;
   overflow-y: unset;
   //border: 1px solid teal;
-  .inner-container {
-    min-height: 100vh;
-    height: auto;
+
+  .content {
+    height: 100%;
+    min-height: 85vh;
+    max-height: auto;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    flex-grow: 1;
-    .content {
-      height: 100%;
-      min-height: 85vh;
-      max-height: auto;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      //border: 1px solid blue;
-    }
-    .loading {
-      min-height: 93vh;
-      max-height: auto;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid red;
-    }
-    .projects {
-      width: 100%;
-    }
-    .noresult {
-      text-align: center;
-      font-weight: lighter;
-    }
+    justify-content: space-between;
+    //border: 1px solid blue;
+  }
+  .loading {
+    min-height: 93vh;
+    max-height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid red;
+  }
+  .projects {
+    width: 100%;
+  }
+  .noresult {
+    text-align: center;
+    font-weight: lighter;
   }
 `;
 

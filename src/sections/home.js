@@ -14,59 +14,57 @@ import {
 
 const Home = ({ homeRef, homeControls }) => {
   return (
-    <HomeSection id="home" className="section-dark autoheight" ref={homeRef}>
-      <div className="container-dark">
-        <div className="content">
-          <StyledInfo>
-            <motion.div
-              className="homeHeader"
-              variants={headerVariants}
-              initial="initial"
-              //animate="animate"
-              animate={homeControls}
-            >
-              <h2 className="lighter">I am a</h2>
-              <h2>Front End</h2>
-              <h1>
-                Web <span>Developer</span>
-              </h1>
-            </motion.div>
-            <motion.div
-              className="homeSubHeader"
-              variants={subheaderVariants}
-              initial="initial"
-              //animate="animate"
-              animate={homeControls}
-            >
-              <h2>Passionate about web development</h2>
-              <h2>With a focus on React</h2>
-              <h2>Hire me today</h2>
-            </motion.div>
-            <HashLink smooth to="/#portfolio">
-              <motion.button
-                className="page-btn dark-btn"
-                variants={buttonVariants}
-                initial="initial"
-                //animate="animate"
-                animate={homeControls}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                View Portfolio
-              </motion.button>
-            </HashLink>
-            {/* <Link to="/home#portfolio"></Link> */}
-          </StyledInfo>
-          <StyledImage
-            variants={imageVariants}
+    <HomeSection ref={homeRef}>
+      <div className="content">
+        <StyledInfo>
+          <motion.div
+            className="homeHeader"
+            variants={headerVariants}
             initial="initial"
             //animate="animate"
             animate={homeControls}
-            exit="exit"
           >
-            <img src={codingImage} alt="Coding" />
-          </StyledImage>
-        </div>
+            <h2 className="lighter">I am a</h2>
+            <h2>Front End</h2>
+            <h1>
+              Web <span>Developer</span>
+            </h1>
+          </motion.div>
+          <motion.div
+            className="homeSubHeader"
+            variants={subheaderVariants}
+            initial="initial"
+            //animate="animate"
+            animate={homeControls}
+          >
+            <h2>Passionate about web development</h2>
+            <h2>With a focus on React</h2>
+            <h2>Hire me today</h2>
+          </motion.div>
+          <HashLink smooth to="/#portfolio">
+            <motion.button
+              className="page-btn dark-btn"
+              variants={buttonVariants}
+              initial="initial"
+              //animate="animate"
+              animate={homeControls}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              View Portfolio
+            </motion.button>
+          </HashLink>
+          {/* <Link to="/home#portfolio"></Link> */}
+        </StyledInfo>
+        <StyledImage
+          variants={imageVariants}
+          initial="initial"
+          //animate="animate"
+          animate={homeControls}
+          exit="exit"
+        >
+          <img src={codingImage} alt="Coding" />
+        </StyledImage>
       </div>
     </HomeSection>
   );

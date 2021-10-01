@@ -107,14 +107,7 @@ const Contact = ({ contactRef, contactControls, showMenu }) => {
   };
 
   return (
-    <ContactSection
-      className="section-dark autoheight"
-      // className={
-      //   showMenu ? "section-dark autoheight" : "section-dark autoheightmenu"
-      // }
-      id="contact"
-      ref={contactRef}
-    >
+    <ContactSection ref={contactRef}>
       <ToastContainer
         closeButton={CloseButton}
         // closeButton={false}
@@ -130,156 +123,144 @@ const Contact = ({ contactRef, contactControls, showMenu }) => {
         pauseOnHover
       />
 
-      <div className="container container-dark">
-        <motion.div
-          initial="initial"
-          variants={slideDown}
-          animate={contactControls}
-          className="section-header"
-        >
-          <div className="section-title-content">
-            <Icon
-              icon="BiMessageRounded"
-              size="30px"
-              color="whitesmoke"
-              title="Contact icon"
-            />
-            <h1 className="section-heading heading-light">Contact me</h1>
-          </div>
-          <StyledLine height="6px" width="100%" bgColor="#111111" />
-        </motion.div>
+      <motion.div
+        initial="initial"
+        variants={slideDown}
+        animate={contactControls}
+        className="section-header"
+      >
+        <div className="section-title-content">
+          <Icon
+            icon="BiMessageRounded"
+            size="30px"
+            color="whitesmoke"
+            title="Contact icon"
+          />
+          <h1 className="section-heading heading-light">Contact me</h1>
+        </div>
+        <StyledLine height="6px" width="100%" bgColor="#111111" />
+      </motion.div>
 
-        <ContactInfo>
-          <motion.form
-            autoComplete="off"
-            onSubmit={handleFormSubmit}
+      <ContactInfo>
+        <motion.form
+          autoComplete="off"
+          onSubmit={handleFormSubmit}
+          initial="initial"
+          variants={slideRight}
+          animate={contactControls}
+        >
+          <div className="formItem">
+            <label>Name:</label>
+            <input
+              id="name"
+              autoComplete="off"
+              name="user_name"
+              type="text"
+              value={formData.user_name}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="formItem">
+            <label>Subject:</label>
+            <input
+              id="subject"
+              autoComplete="off"
+              name="user_subject"
+              type="text"
+              value={formData.user_subject}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="formItem">
+            <label>Email:</label>
+            <input
+              id="email"
+              autoComplete="off"
+              name="user_email"
+              type="email"
+              value={formData.user_email}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="formItem">
+            <label htmlFor="message">Message:</label>
+            <textarea
+              id="msg"
+              name="message"
+              autoComplete="off"
+              cols="15"
+              rows="3"
+              value={formData.message}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="button">
+            <motion.input
+              className="page-btn dark-btn"
+              type="submit"
+              value="Send Message"
+              variants={buttonVariants}
+              initial="initial"
+              animate="animate"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            />
+          </div>
+        </motion.form>
+
+        <div className="contact-images">
+          <motion.div
+            className="trail"
             initial="initial"
-            variants={slideRight}
+            variants={trailVariants}
             animate={contactControls}
           >
-            <div className="formItem">
-              <label>Name:</label>
-              <input
-                id="name"
-                autoComplete="off"
-                name="user_name"
-                type="text"
-                value={formData.user_name}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="formItem">
-              <label>Subject:</label>
-              <input
-                id="subject"
-                autoComplete="off"
-                name="user_subject"
-                type="text"
-                value={formData.user_subject}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="formItem">
-              <label>Email:</label>
-              <input
-                id="email"
-                autoComplete="off"
-                name="user_email"
-                type="email"
-                value={formData.user_email}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="formItem">
-              <label htmlFor="message">Message:</label>
-              <textarea
-                id="msg"
-                name="message"
-                autoComplete="off"
-                cols="15"
-                rows="3"
-                value={formData.message}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="button">
-              <motion.input
-                className="page-btn dark-btn"
-                type="submit"
-                value="Send Message"
-                variants={buttonVariants}
-                initial="initial"
-                animate="animate"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              />
-            </div>
-          </motion.form>
-
-          <div className="contact-images">
+            <Trail />
+          </motion.div>
+          <motion.div
+            className="outer-plane"
+            variants={flyIn}
+            initial="initial"
+            //animate="animate"
+            animate={contactControls}
+          >
             <motion.div
-              className="trail"
-              initial="initial"
-              variants={trailVariants}
+              className="plane"
+              variants={planeVariants}
+              initial="planeinitial"
+              //animate="planeanimate"
               animate={contactControls}
             >
-              <Trail />
+              <Plane />
             </motion.div>
-            <motion.div
-              className="outer-plane"
-              variants={flyIn}
-              initial="initial"
-              //animate="animate"
-              animate={contactControls}
-            >
-              <motion.div
-                className="plane"
-                variants={planeVariants}
-                initial="planeinitial"
-                //animate="planeanimate"
-                animate={contactControls}
-              >
-                <Plane />
-              </motion.div>
-            </motion.div>
+          </motion.div>
 
-            <motion.div
-              className="contactBar"
-              initial="initial"
-              variants={slideUp}
-              animate={contactControls}
-            >
-              <ContactIconBar size="40px" color="whitesmoke" />
-            </motion.div>
-          </div>
-        </ContactInfo>
-      </div>
+          <motion.div
+            className="contactBar"
+            initial="initial"
+            variants={slideUp}
+            animate={contactControls}
+          >
+            <ContactIconBar size="40px" color="whitesmoke" />
+          </motion.div>
+        </div>
+      </ContactInfo>
     </ContactSection>
   );
 };
 
 const ContactSection = styled(motion.div)`
-  min-height: 93vh;
-  height: 100vh;
+  //min-height: 93vh;
+  //height: 100vh;
   //border: 1px solid red;
 
   .showNav {
-    min-height: 93vh;
+    //min-height: 93vh;
   }
 
   .hideNav {
-    min-height: 93vh;
-  }
-
-  .container {
     //min-height: 93vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    //border: 1px solid gold;
   }
 `;
 

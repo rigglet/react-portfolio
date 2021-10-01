@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 
 function section({
+  id,
   full = false,
   half = false,
   light = false,
@@ -12,6 +13,7 @@ function section({
 }) {
   return (
     <StyledSection
+      id={id}
       full={full}
       half={half}
       light={light}
@@ -25,7 +27,8 @@ function section({
 }
 
 const StyledSection = styled(motion.section)`
-  border: none;
+  //border: 1px solid red;
+  //padding: 2rem;
   background-color: var(--color-dark-background);
   display: flex;
   flex-direction: column;

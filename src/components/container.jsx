@@ -20,7 +20,7 @@ function container({
       left={left}
       right={right}
     >
-      <Gradient left={left} right={right} />
+      {light && <Gradient left={left} right={right} />}
       {children}
     </StyledContainer>
   );
@@ -33,6 +33,7 @@ const StyledContainer = styled(motion.div)`
   align-items: center;
   justify-content: center;
 
+  border: 1px solid red;
   height: ${({ full, half }) => (full ? "100vh" : half ? "70vh" : "auto")};
   width: ${({ left, right }) => (left || right ? "90vw" : "100vw")};
 
