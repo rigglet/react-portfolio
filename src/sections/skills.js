@@ -71,457 +71,442 @@ const Skills = ({ skillsRef, skillsControls }) => {
 
   return (
     <SkillsSection
-      className="section-light autoheight"
-      id="skills"
       ref={skillsRef}
+      className="container container-light container-right"
+      // variants={containerSlideInOutRight}
+      // initial="initial"
+      // animate={skillsControls}
     >
-      <motion.div
-        className="container container-light container-right"
-        variants={containerSlideInOutRight}
-        initial="initial"
-        animate={skillsControls}
-      >
-        <div className="gradientRight" />
-        <div className="inner-container">
-          <section className="skill-section">
-            <div className="section-header">
-              <motion.div
-                variants={slideDown}
-                initial="initial"
-                //animate="animate"
-                animate={skillsControls}
-                className="section-title-content"
-              >
-                <Icon
-                  icon="HiCode"
-                  size="30px"
-                  color="#313131"
-                  title="Skills icon"
-                />
-                <h1 className="section-heading heading-dark">
-                  Technical Skills
-                </h1>
-              </motion.div>
-              <motion.div
-                variants={slideDown}
-                initial="initial"
-                animate={skillsControls}
-              >
-                <StyledLine
-                  transition={{
-                    delay: 1,
-                    duration: 1,
-                  }}
-                  height="6px"
-                  width="100%"
-                  bgColor="#f5f5f5"
-                />
-              </motion.div>
-            </div>
-
-            <div className="content">
-              {frontend.length > 0 && (
-                <section>
-                  <div className="section-header">
-                    <div className="section-title-content">
-                      <motion.h2
-                        variants={slideDown}
-                        initial="initial"
-                        //animate="animate"
-                        animate={skillsControls}
-                        className="section-subheading heading-dark"
-                      >
-                        Frontend
-                      </motion.h2>
-                    </div>
-                    <motion.div
-                      variants={slideDown}
-                      initial="initial"
-                      animate={skillsControls}
-                    >
-                      <StyledLine
-                        transition={{
-                          delay: 3,
-                          duration: 1,
-                        }}
-                        height="4px"
-                        width="100%"
-                        bgColor="#f5f5f5"
-                      />
-                    </motion.div>
-                  </div>
-                  <motion.div
-                    className="selection"
-                    variants={bounceUp}
-                    initial="initial"
-                    animate={skillsControls}
-                  >
-                    {frontend.map((technology) => {
-                      return (
-                        <motion.div className="skill-item" key={uuidv4()}>
-                          <a
-                            key={uuidv4()}
-                            href={technology.address}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            <h4>{technology.name}</h4>
-                            <Icon
-                              icon={technology.icon}
-                              color={technology.color}
-                              size="70px"
-                            />
-                          </a>
-                        </motion.div>
-                      );
-                    })}
-                  </motion.div>
-                </section>
-              )}
-              {backend.length > 0 && (
-                <section>
-                  <div className="section-header">
-                    <div className="section-title-content">
-                      <motion.h2
-                        variants={slideDown}
-                        initial="initial"
-                        //animate="animate"
-                        animate={skillsControls}
-                        className="section-subheading heading-dark"
-                      >
-                        Backend
-                      </motion.h2>
-                    </div>
-                    <motion.div
-                      variants={slideDown}
-                      initial="initial"
-                      animate={skillsControls}
-                    >
-                      <StyledLine
-                        transition={{
-                          delay: 1,
-                          duration: 1,
-                        }}
-                        height="4px"
-                        width="100%"
-                        bgColor="#f5f5f5"
-                      />
-                    </motion.div>
-                  </div>
-                  <motion.div
-                    className="selection"
-                    variants={bounceUp}
-                    initial="initial"
-                    animate={skillsControls}
-                  >
-                    {backend.map((technology) => {
-                      return (
-                        <motion.div className="skill-item" key={uuidv4()}>
-                          <a
-                            key={uuidv4()}
-                            href={technology.address}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            <h4>{technology.name}</h4>
-                            <Icon
-                              icon={technology.icon}
-                              color={technology.color}
-                              size="70px"
-                            />
-                          </a>
-                        </motion.div>
-                      );
-                    })}
-                  </motion.div>
-                </section>
-              )}
-              {database.length > 0 && (
-                <section>
-                  <div className="section-header">
-                    <div className="section-title-content">
-                      <motion.h2
-                        variants={slideDown}
-                        initial="initial"
-                        //animate="animate"
-                        animate={skillsControls}
-                        className="section-subheading heading-dark"
-                      >
-                        Database
-                      </motion.h2>
-                    </div>
-                    <motion.div
-                      variants={slideDown}
-                      initial="initial"
-                      animate={skillsControls}
-                    >
-                      <StyledLine
-                        transition={{
-                          delay: 1,
-                          duration: 1,
-                        }}
-                        height="4px"
-                        width="100%"
-                        bgColor="#f5f5f5"
-                      />
-                    </motion.div>
-                  </div>
-                  <motion.div
-                    className="selection"
-                    variants={bounceUp}
-                    initial="initial"
-                    animate={skillsControls}
-                  >
-                    {database.map((technology) => {
-                      return (
-                        <motion.div className="skill-item" key={uuidv4()}>
-                          <a
-                            key={uuidv4()}
-                            href={technology.address}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            <h4>{technology.name}</h4>
-                            <Icon
-                              icon={technology.icon}
-                              color={technology.color}
-                              size="70px"
-                            />
-                          </a>
-                        </motion.div>
-                      );
-                    })}
-                  </motion.div>
-                </section>
-              )}
-              {infrastructure.length > 0 && (
-                <section>
-                  <div className="section-header">
-                    <div className="section-title-content">
-                      <motion.h2
-                        variants={slideDown}
-                        initial="initial"
-                        //animate="animate"
-                        animate={skillsControls}
-                        className="section-subheading heading-dark"
-                      >
-                        Deployment
-                      </motion.h2>
-                    </div>
-                    <motion.div
-                      variants={slideDown}
-                      initial="initial"
-                      animate={skillsControls}
-                    >
-                      <StyledLine
-                        transition={{
-                          delay: 1,
-                          duration: 1,
-                        }}
-                        height="4px"
-                        width="100%"
-                        bgColor="#f5f5f5"
-                      />
-                    </motion.div>
-                  </div>
-                  <motion.div
-                    className="selection"
-                    variants={bounceUp}
-                    initial="initial"
-                    animate={skillsControls}
-                  >
-                    {infrastructure.map((technology) => {
-                      return (
-                        <motion.div className="skill-item" key={uuidv4()}>
-                          <a
-                            key={uuidv4()}
-                            href={technology.address}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            <h4>{technology.name}</h4>
-                            <Icon
-                              icon={technology.icon}
-                              color={technology.color}
-                              size="70px"
-                            />
-                          </a>
-                        </motion.div>
-                      );
-                    })}
-                  </motion.div>
-                </section>
-              )}
-              {other.length > 0 && (
-                <section>
-                  <div className="section-header">
-                    <div className="section-title-content">
-                      <motion.h2
-                        variants={slideDown}
-                        initial="initial"
-                        //animate="animate"
-                        animate={skillsControls}
-                        className="section-subheading heading-dark"
-                      >
-                        Other
-                      </motion.h2>
-                    </div>
-                    <motion.div
-                      variants={slideDown}
-                      initial="initial"
-                      animate={skillsControls}
-                    >
-                      <StyledLine
-                        transition={{
-                          delay: 1,
-                          duration: 1,
-                        }}
-                        height="4px"
-                        width="100%"
-                        bgColor="#f5f5f5"
-                      />
-                    </motion.div>
-                  </div>
-                  <motion.div
-                    className="selection"
-                    variants={selection}
-                    initial="initial"
-                    animate={skillsControls}
-                  >
-                    {other.map((technology) => {
-                      return (
-                        <motion.div className="skill-item" key={uuidv4()}>
-                          <a
-                            key={uuidv4()}
-                            href={technology.address}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            <h4>{technology.name}</h4>
-                            <Icon
-                              icon={technology.icon}
-                              color={technology.color}
-                              size="70px"
-                            />
-                          </a>
-                        </motion.div>
-                      );
-                    })}
-                  </motion.div>
-                </section>
-              )}
-              {tools.length > 0 && (
-                <section>
-                  <div className="section-header">
-                    <div className="section-title-content">
-                      <motion.h2
-                        variants={slideDown}
-                        initial="initial"
-                        //animate="animate"
-                        animate={skillsControls}
-                        className="section-subheading heading-dark"
-                      >
-                        Tools
-                      </motion.h2>
-                    </div>
-                    <motion.div
-                      variants={slideDown}
-                      initial="initial"
-                      animate={skillsControls}
-                    >
-                      <StyledLine
-                        transition={{
-                          delay: 1,
-                          duration: 1,
-                        }}
-                        height="4px"
-                        width="100%"
-                        bgColor="#f5f5f5"
-                      />
-                    </motion.div>
-                  </div>
-                  <motion.div
-                    className="selection"
-                    variants={bounceUp}
-                    initial="initial"
-                    animate={skillsControls}
-                  >
-                    {tools?.map((tool) => {
-                      return (
-                        <motion.div className="skill-item" key={uuidv4()}>
-                          <a
-                            key={uuidv4()}
-                            href={tool.address}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            <h4>{tool.name}</h4>
-                            <Icon
-                              icon={tool.icon}
-                              color={tool.color}
-                              size="70px"
-                            />
-                          </a>
-                        </motion.div>
-                      );
-                    })}
-                  </motion.div>
-                </section>
-              )}
-            </div>
-          </section>
-
-          <section className="skill-section">
-            <div className="section-header">
-              <motion.div
-                className="section-title-content"
-                variants={slideDown}
-                initial="initial"
-                //animate="animate"
-                animate={skillsControls}
-              >
-                <Icon
-                  icon="BsPersonFill"
-                  size="30px"
-                  color="#313131"
-                  title="Skills icon"
-                />
-                <h1 className="section-heading heading-dark">Soft Skills</h1>
-              </motion.div>
-              <motion.div
-                variants={slideDown}
-                initial="initial"
-                animate={skillsControls}
-              >
-                <StyledLine
-                  transition={{
-                    delay: 1,
-                    duration: 1,
-                  }}
-                  height="6px"
-                  width="100%"
-                  bgColor="#f5f5f5"
-                />
-              </motion.div>
-            </div>
-
-            <motion.div
-              className="soft-content"
-              variants={slideDown}
-              initial="initial"
-              animate={skillsControls}
-            >
-              <p>Effective communicator</p>
-              <p>Pramatic approach</p>
-              <p>
-                Organised. Able to plan time and work autonomously to achieve
-                goals.
-              </p>
-              <p>All round good egg</p>
-            </motion.div>
-          </section>
+      <section className="skill-section">
+        <div className="section-header">
+          <motion.div
+            variants={slideDown}
+            initial="initial"
+            //animate="animate"
+            animate={skillsControls}
+            className="section-title-content"
+          >
+            <Icon
+              icon="HiCode"
+              size="30px"
+              color="#313131"
+              title="Skills icon"
+            />
+            <h1 className="section-heading heading-dark">Technical Skills</h1>
+          </motion.div>
+          <motion.div
+            variants={slideDown}
+            initial="initial"
+            animate={skillsControls}
+          >
+            <StyledLine
+              transition={{
+                delay: 1,
+                duration: 1,
+              }}
+              height="6px"
+              width="100%"
+              bgColor="#f5f5f5"
+            />
+          </motion.div>
         </div>
-      </motion.div>
+
+        <div className="content">
+          {frontend.length > 0 && (
+            <section>
+              <div className="section-header">
+                <div className="section-title-content">
+                  <motion.h2
+                    variants={slideDown}
+                    initial="initial"
+                    //animate="animate"
+                    animate={skillsControls}
+                    className="section-subheading heading-dark"
+                  >
+                    Frontend
+                  </motion.h2>
+                </div>
+                <motion.div
+                  variants={slideDown}
+                  initial="initial"
+                  animate={skillsControls}
+                >
+                  <StyledLine
+                    transition={{
+                      delay: 3,
+                      duration: 1,
+                    }}
+                    height="4px"
+                    width="100%"
+                    bgColor="#f5f5f5"
+                  />
+                </motion.div>
+              </div>
+              <motion.div
+                className="selection"
+                variants={bounceUp}
+                initial="initial"
+                animate={skillsControls}
+              >
+                {frontend.map((technology) => {
+                  return (
+                    <motion.div className="skill-item" key={uuidv4()}>
+                      <a
+                        key={uuidv4()}
+                        href={technology.address}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <h4>{technology.name}</h4>
+                        <Icon
+                          icon={technology.icon}
+                          color={technology.color}
+                          size="70px"
+                        />
+                      </a>
+                    </motion.div>
+                  );
+                })}
+              </motion.div>
+            </section>
+          )}
+          {backend.length > 0 && (
+            <section>
+              <div className="section-header">
+                <div className="section-title-content">
+                  <motion.h2
+                    variants={slideDown}
+                    initial="initial"
+                    //animate="animate"
+                    animate={skillsControls}
+                    className="section-subheading heading-dark"
+                  >
+                    Backend
+                  </motion.h2>
+                </div>
+                <motion.div
+                  variants={slideDown}
+                  initial="initial"
+                  animate={skillsControls}
+                >
+                  <StyledLine
+                    transition={{
+                      delay: 1,
+                      duration: 1,
+                    }}
+                    height="4px"
+                    width="100%"
+                    bgColor="#f5f5f5"
+                  />
+                </motion.div>
+              </div>
+              <motion.div
+                className="selection"
+                variants={bounceUp}
+                initial="initial"
+                animate={skillsControls}
+              >
+                {backend.map((technology) => {
+                  return (
+                    <motion.div className="skill-item" key={uuidv4()}>
+                      <a
+                        key={uuidv4()}
+                        href={technology.address}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <h4>{technology.name}</h4>
+                        <Icon
+                          icon={technology.icon}
+                          color={technology.color}
+                          size="70px"
+                        />
+                      </a>
+                    </motion.div>
+                  );
+                })}
+              </motion.div>
+            </section>
+          )}
+          {database.length > 0 && (
+            <section>
+              <div className="section-header">
+                <div className="section-title-content">
+                  <motion.h2
+                    variants={slideDown}
+                    initial="initial"
+                    //animate="animate"
+                    animate={skillsControls}
+                    className="section-subheading heading-dark"
+                  >
+                    Database
+                  </motion.h2>
+                </div>
+                <motion.div
+                  variants={slideDown}
+                  initial="initial"
+                  animate={skillsControls}
+                >
+                  <StyledLine
+                    transition={{
+                      delay: 1,
+                      duration: 1,
+                    }}
+                    height="4px"
+                    width="100%"
+                    bgColor="#f5f5f5"
+                  />
+                </motion.div>
+              </div>
+              <motion.div
+                className="selection"
+                variants={bounceUp}
+                initial="initial"
+                animate={skillsControls}
+              >
+                {database.map((technology) => {
+                  return (
+                    <motion.div className="skill-item" key={uuidv4()}>
+                      <a
+                        key={uuidv4()}
+                        href={technology.address}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <h4>{technology.name}</h4>
+                        <Icon
+                          icon={technology.icon}
+                          color={technology.color}
+                          size="70px"
+                        />
+                      </a>
+                    </motion.div>
+                  );
+                })}
+              </motion.div>
+            </section>
+          )}
+          {infrastructure.length > 0 && (
+            <section>
+              <div className="section-header">
+                <div className="section-title-content">
+                  <motion.h2
+                    variants={slideDown}
+                    initial="initial"
+                    //animate="animate"
+                    animate={skillsControls}
+                    className="section-subheading heading-dark"
+                  >
+                    Deployment
+                  </motion.h2>
+                </div>
+                <motion.div
+                  variants={slideDown}
+                  initial="initial"
+                  animate={skillsControls}
+                >
+                  <StyledLine
+                    transition={{
+                      delay: 1,
+                      duration: 1,
+                    }}
+                    height="4px"
+                    width="100%"
+                    bgColor="#f5f5f5"
+                  />
+                </motion.div>
+              </div>
+              <motion.div
+                className="selection"
+                variants={bounceUp}
+                initial="initial"
+                animate={skillsControls}
+              >
+                {infrastructure.map((technology) => {
+                  return (
+                    <motion.div className="skill-item" key={uuidv4()}>
+                      <a
+                        key={uuidv4()}
+                        href={technology.address}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <h4>{technology.name}</h4>
+                        <Icon
+                          icon={technology.icon}
+                          color={technology.color}
+                          size="70px"
+                        />
+                      </a>
+                    </motion.div>
+                  );
+                })}
+              </motion.div>
+            </section>
+          )}
+          {other.length > 0 && (
+            <section>
+              <div className="section-header">
+                <div className="section-title-content">
+                  <motion.h2
+                    variants={slideDown}
+                    initial="initial"
+                    //animate="animate"
+                    animate={skillsControls}
+                    className="section-subheading heading-dark"
+                  >
+                    Other
+                  </motion.h2>
+                </div>
+                <motion.div
+                  variants={slideDown}
+                  initial="initial"
+                  animate={skillsControls}
+                >
+                  <StyledLine
+                    transition={{
+                      delay: 1,
+                      duration: 1,
+                    }}
+                    height="4px"
+                    width="100%"
+                    bgColor="#f5f5f5"
+                  />
+                </motion.div>
+              </div>
+              <motion.div
+                className="selection"
+                variants={selection}
+                initial="initial"
+                animate={skillsControls}
+              >
+                {other.map((technology) => {
+                  return (
+                    <motion.div className="skill-item" key={uuidv4()}>
+                      <a
+                        key={uuidv4()}
+                        href={technology.address}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <h4>{technology.name}</h4>
+                        <Icon
+                          icon={technology.icon}
+                          color={technology.color}
+                          size="70px"
+                        />
+                      </a>
+                    </motion.div>
+                  );
+                })}
+              </motion.div>
+            </section>
+          )}
+          {tools.length > 0 && (
+            <section>
+              <div className="section-header">
+                <div className="section-title-content">
+                  <motion.h2
+                    variants={slideDown}
+                    initial="initial"
+                    //animate="animate"
+                    animate={skillsControls}
+                    className="section-subheading heading-dark"
+                  >
+                    Tools
+                  </motion.h2>
+                </div>
+                <motion.div
+                  variants={slideDown}
+                  initial="initial"
+                  animate={skillsControls}
+                >
+                  <StyledLine
+                    transition={{
+                      delay: 1,
+                      duration: 1,
+                    }}
+                    height="4px"
+                    width="100%"
+                    bgColor="#f5f5f5"
+                  />
+                </motion.div>
+              </div>
+              <motion.div
+                className="selection"
+                variants={bounceUp}
+                initial="initial"
+                animate={skillsControls}
+              >
+                {tools?.map((tool) => {
+                  return (
+                    <motion.div className="skill-item" key={uuidv4()}>
+                      <a
+                        key={uuidv4()}
+                        href={tool.address}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <h4>{tool.name}</h4>
+                        <Icon icon={tool.icon} color={tool.color} size="70px" />
+                      </a>
+                    </motion.div>
+                  );
+                })}
+              </motion.div>
+            </section>
+          )}
+        </div>
+      </section>
+
+      <section className="skill-section">
+        <div className="section-header">
+          <motion.div
+            className="section-title-content"
+            variants={slideDown}
+            initial="initial"
+            //animate="animate"
+            animate={skillsControls}
+          >
+            <Icon
+              icon="BsPersonFill"
+              size="30px"
+              color="#313131"
+              title="Skills icon"
+            />
+            <h1 className="section-heading heading-dark">Soft Skills</h1>
+          </motion.div>
+          <motion.div
+            variants={slideDown}
+            initial="initial"
+            animate={skillsControls}
+          >
+            <StyledLine
+              transition={{
+                delay: 1,
+                duration: 1,
+              }}
+              height="6px"
+              width="100%"
+              bgColor="#f5f5f5"
+            />
+          </motion.div>
+        </div>
+
+        <motion.div
+          className="soft-content"
+          variants={slideDown}
+          initial="initial"
+          animate={skillsControls}
+        >
+          <p>Effective communicator</p>
+          <p>Pramatic approach</p>
+          <p>
+            Organised. Able to plan time and work autonomously to achieve goals.
+          </p>
+          <p>All round good egg</p>
+        </motion.div>
+      </section>
     </SkillsSection>
   );
 };

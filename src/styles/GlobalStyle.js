@@ -51,7 +51,8 @@ html{
 
   .app{
   //scroll-padding: 200px;
-  scroll-snap-type: y proximity;
+  //scroll-snap-type: y proximity;
+  //scroll-snap-type: y mandatory;
   height: 100vh;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -63,18 +64,18 @@ body{
   //7vh offset for height of NAV
   scroll-padding: 7vh;
   background: #111111;
+  background: white;
   font-family: 'Poppins', sans-serif;
 }
 
 //Sticky NAV on scroll up
-.showNav {
-    transform: translateY(-9vh);
-    
+/* .showNav {
+    transform: translateY(-9vh); 
   }
 
-  .hideNav {
-    transform: translateY(0vh);
-  }
+.hideNav {
+  transform: translateY(0vh);
+} */
 
 .section-header{
   /* display: flex;
@@ -356,3 +357,34 @@ input:checked + .slider:before {
 `;
 
 export default GlobalStyle;
+
+//#### RESPONSIVE SECTION ####
+//320px — 480px: Mobile devices
+//@media screen and (max-width: 480px) and (orientation: portrait) {
+//}
+//320px — 480px: Mobile devices
+//@media screen and (max-width: 850px) and (orientation: landscape) {
+//}
+//481px — 768px: iPads, Tablets
+//@media screen and (min-width: 481px) and (max-width: 769px) and (orientation: portrait) {
+//}
+//481px — 768px: iPads, Tablets
+//@media screen and (min-width: 481px) and (max-width: 769px) and (orientation: landscape) {}
+//769px — 1024px: Small screens, laptops
+//@media screen and (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {}
+//769px — 1024px: Small screens, laptops
+//@media screen and (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {}
+//1025px — 1200px: Desktops, large screens
+//@media screen and (min-width: 1024px) and (max-width: 1200px) and (orientation: portrait) {
+//}
+//1025px — 1200px: Desktops, large screens
+//@media screen and (min-width: 1024px) and (max-width: 1200px) and (orientation: landscape) {}
+//1201px and more —  Extra large screens, TV
+//@media screen and (min-width: 1201px) and (max-width: 1500px) and (orientation: portrait) {}
+//1201px and more —  Extra large screens, TV
+//@media screen and (min-width: 1201px) and (max-width: 1500px) and (orientation: landscape) {}
+//1501px and more —  Extra large screens, TV
+//@media screen and (min-width: 1501px) and (orientation: portrait) {}
+//1501px and more —  Extra large screens, TV
+//@media screen and (min-width: 1921px) and (orientation: landscape) {
+//}

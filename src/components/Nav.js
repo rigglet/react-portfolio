@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { navVariants } from "../styles/animations";
+import { navVariants, fadeInOut } from "../styles/animations";
 import { HashLink } from "react-router-hash-link";
+import Icon from "../components/Icon";
 
 const Nav = ({
   homeInView,
@@ -15,18 +17,33 @@ const Nav = ({
   showMenu,
 }) => {
   //console.log(showMenu);
+
+  const [showDropMenu, setShowMenu] = useState(false);
+
   return (
     <StyledNav
-      variants={navVariants}
-      initial="initial"
-      animate={showMenu ? "visible" : "hidden"}
-      // animate={location.hash === "" ? "animate" : false}
+    //variants={navVariants}
+    //initial="initial"
+    //animate={showMenu ? "visible" : "hidden"}
     >
       <Link to="/splash">
         <h1 className="logo">Neil Rigg</h1>
       </Link>
-      <div className="menu">
-        <HashLink smooth to="/#home">
+
+      <motion.div
+        className={showDropMenu ? "menu" : "menu mob-menu-hide"}
+        // variants={fadeInOut}
+        // initial="initial"
+        // animate={showDropMenu ? "animate" : false}
+      >
+        <HashLink
+          smooth
+          to="/#home"
+          scroll={(el) =>
+            el.scrollIntoView({ behavior: "smooth", block: "start" })
+          }
+          onClick={() => setShowMenu(false)}
+        >
           <h1>Home</h1>
           <NavLine
             height="4px"
@@ -42,7 +59,14 @@ const Nav = ({
             transition={{ duration: 0.75 }}
           />
         </HashLink>
-        <HashLink smooth to="/#about">
+        <HashLink
+          //smooth
+          scroll={(el) =>
+            el.scrollIntoView({ behavior: "smooth", block: "start" })
+          }
+          to="/#about"
+          onClick={() => setShowMenu(false)}
+        >
           <h1>About</h1>
           <NavLine
             height="4px"
@@ -56,7 +80,13 @@ const Nav = ({
             transition={{ duration: 0.75 }}
           />
         </HashLink>
-        <HashLink smooth to="/#portfolio">
+        <HashLink
+          scroll={(el) =>
+            el.scrollIntoView({ behavior: "smooth", block: "start" })
+          }
+          to="/#portfolio"
+          onClick={() => setShowMenu(false)}
+        >
           <h1>Portfolio</h1>
           <NavLine
             height="4px"
@@ -70,7 +100,13 @@ const Nav = ({
             transition={{ duration: 0.75 }}
           />
         </HashLink>
-        <HashLink smooth to="/#skills">
+        <HashLink
+          scroll={(el) =>
+            el.scrollIntoView({ behavior: "smooth", block: "start" })
+          }
+          to="/#skills"
+          onClick={() => setShowMenu(false)}
+        >
           <h1>Skills</h1>
           <NavLine
             height="4px"
@@ -84,7 +120,13 @@ const Nav = ({
             transition={{ duration: 0.75 }}
           />
         </HashLink>
-        <HashLink smooth to="/#education">
+        <HashLink
+          scroll={(el) =>
+            el.scrollIntoView({ behavior: "smooth", block: "start" })
+          }
+          to="/#education"
+          onClick={() => setShowMenu(false)}
+        >
           <h1>Education</h1>
           <NavLine
             height="4px"
@@ -98,7 +140,13 @@ const Nav = ({
             transition={{ duration: 0.75 }}
           />
         </HashLink>
-        <HashLink smooth to="/#experience">
+        <HashLink
+          scroll={(el) =>
+            el.scrollIntoView({ behavior: "smooth", block: "start" })
+          }
+          to="/#experience"
+          onClick={() => setShowMenu(false)}
+        >
           <h1>Experience</h1>
           <NavLine
             height="4px"
@@ -112,7 +160,13 @@ const Nav = ({
             transition={{ duration: 0.75 }}
           />
         </HashLink>
-        <HashLink smooth to="/#contact">
+        <HashLink
+          scroll={(el) =>
+            el.scrollIntoView({ behavior: "smooth", block: "start" })
+          }
+          to="/#contact"
+          onClick={() => setShowMenu(false)}
+        >
           <h1>Contact</h1>
           <NavLine
             height="4px"
@@ -126,7 +180,29 @@ const Nav = ({
             transition={{ duration: 0.75 }}
           />
         </HashLink>
-      </div>
+      </motion.div>
+
+      {showDropMenu ? (
+        <Icon
+          icon="CgClose"
+          color="white"
+          size="30px"
+          title="Close"
+          className="toggle-button"
+          func={setShowMenu}
+          showDropMenu={showDropMenu}
+        />
+      ) : (
+        <Icon
+          icon="FaHamburger"
+          color="white"
+          size="30px"
+          title="Menu"
+          className="toggle-button"
+          func={setShowMenu}
+          showDropMenu={showDropMenu}
+        />
+      )}
     </StyledNav>
   );
 };
@@ -139,12 +215,18 @@ const StyledNav = styled(motion.nav)`
   z-index: 100;
   width: 100vw;
   //height: 7vh;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: var(--color-nav-background);
   border-bottom: solid 2px var(--color-nav-hover);
   transition: ease-out 0.3s all;
+  flex-wrap: wrap;
+
+  .toggle-button {
+    display: none;
+  }
 
   a {
     text-decoration: none;
@@ -163,6 +245,7 @@ const StyledNav = styled(motion.nav)`
     display: flex;
     justify-content: space-between;
     margin-right: 2rem;
+    flex-wrap: wrap;
 
     h1 {
       color: whitesmoke;
@@ -183,18 +266,60 @@ const StyledNav = styled(motion.nav)`
   //#### RESPONSIVE SECTION ####
   //320px — 480px: Mobile PORTRAIT
   @media screen and (max-width: 480px) and (orientation: portrait) {
-    position: static;
+    position: fixed;
     padding: 0.5rem;
-    display: flex;
-    width: 100vw;
+    height: auto;
+    flex-direction: column;
+
+    .logo {
+      padding: 0.5rem 0rem;
+      font-size: 1.8rem;
+    }
+
+    .menu {
+      flex-direction: column;
+      margin-right: 0rem;
+    }
+    .menu.mob-menu-hide {
+      display: none;
+    }
+
+    .toggle-button {
+      display: inline-block;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      cursor: pointer;
+    }
   }
 
   //320px — 480px: Mobile LANDSCAPE
   @media screen and (max-width: 850px) and (orientation: landscape) {
-    position: static;
+    position: fixed;
     padding: 0.5rem;
-    display: flex;
-    width: 100vw;
+    height: auto;
+    flex-direction: column;
+
+    .logo {
+      padding: 0.5rem 0rem;
+      font-size: 1.8rem;
+    }
+
+    .menu {
+      flex-direction: column;
+      margin-right: 0rem;
+    }
+    .menu.mob-menu-hide {
+      display: none;
+    }
+
+    .toggle-button {
+      display: inline-block;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      cursor: pointer;
+    }
   }
 
   //481px — 768px: iPads, Tablets

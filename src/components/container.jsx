@@ -32,9 +32,8 @@ const StyledContainer = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  border: 1px solid red;
-  height: ${({ full, half }) => (full ? "100vh" : half ? "70vh" : "auto")};
+  padding: 1rem 0;
+  height: ${({ full, half }) => (full ? "93vh" : half ? "70vh" : "auto")};
   width: ${({ left, right }) => (left || right ? "90vw" : "100vw")};
 
   background-color: ${({ light, dark }) =>
@@ -57,6 +56,48 @@ const StyledContainer = styled(motion.div)`
 
   border-radius: ${({ left, right }) =>
     left ? "0 100px 100px 0;" : right ? "100px 0 0 100px;" : "0"};
+
+  //320px — 480px: Mobile devices
+  @media screen and (max-width: 850px) and (orientation: portrait) {
+    height: auto;
+    //border: 1px solid yellow;
+    //height: ${({ full, half }) => (full ? "93vh" : half ? "70vh" : "auto")};
+  }
+  //320px — 480px: Mobile devices
+  @media screen and (max-width: 850px) and (orientation: landscape) {
+    height: "auto";
+  }
+
+  //481px — 768px: iPads, Tablets
+  @media screen and (min-width: 481px) and (max-width: 769px) and (orientation: portrait) {
+    height: "auto";
+  }
+  //481px — 768px: iPads, Tablets
+  @media screen and (min-width: 481px) and (max-width: 769px) and (orientation: landscape) {
+    height: "auto";
+  }
+
+  //769px — 1024px: Small screens, laptops
+  //@media screen and (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {}
+  //769px — 1024px: Small screens, laptops
+  //@media screen and (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {}
+
+  //1025px — 1200px: Desktops, large screens
+  @media screen and (min-width: 1024px) and (max-width: 1200px) and (orientation: portrait) {
+  }
+  //1025px — 1200px: Desktops, large screens
+  //@media screen and (min-width: 1024px) and (max-width: 1200px) and (orientation: landscape) {}
+
+  //1201px and more —  Extra large screens, TV
+  //@media screen and (min-width: 1201px) and (max-width: 1500px) and (orientation: portrait) {}
+  //1201px and more —  Extra large screens, TV
+  //@media screen and (min-width: 1201px) and (max-width: 1500px) and (orientation: landscape) {}
+
+  //1501px and more —  Extra large screens, TV
+  //@media screen and (min-width: 1501px) and (orientation: portrait) {}
+  //1501px and more —  Extra large screens, TV
+  @media screen and (min-width: 1921px) and (orientation: landscape) {
+  }
 `;
 
 export default container;

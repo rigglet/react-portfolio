@@ -49,8 +49,11 @@ function App() {
   }, []);
 
   return (
-    <div className="app" onScroll={() => scrollFnc()} ref={elementRef}>
-      {/* <div className="app"> */}
+    <div
+      className="app"
+      //onScroll={() => scrollFnc()}
+      ref={elementRef}
+    >
       <AnimatePresence initial={false} exitBeforeEnter>
         <Switch>
           <Route exact path="/splash">
@@ -68,7 +71,7 @@ function App() {
               contactInView={contactInView}
             />
 
-            <Section id="home">
+            <Section id="home" snap="start">
               <Container full dark>
                 <Home
                   homeRef={homeRef}
@@ -77,7 +80,7 @@ function App() {
                 />
               </Container>
             </Section>
-            <Section id="about">
+            {/* <Section id="about" snap="start">
               <Container half light>
                 <About
                   aboutRef={aboutRef}
@@ -85,8 +88,9 @@ function App() {
                   showMenu={showMenu}
                 />
               </Container>
-            </Section>
-            <Section id="portfolio">
+            </Section> */}
+            {/*
+            <Section id="portfolio" snap="start">
               <Container dark>
                 <Portfolio
                   portfolioRef={portfolioRef}
@@ -95,7 +99,7 @@ function App() {
                 />
               </Container>
             </Section>
-            <Section id="skills">
+            <Section id="skills" snap="start">
               <Container full light>
                 <Skills
                   skillsRef={skillsRef}
@@ -104,7 +108,7 @@ function App() {
                 />
               </Container>
             </Section>
-            <Section id="education">
+            <Section id="education" snap="start">
               <Container full dark>
                 <Education
                   educationRef={educationRef}
@@ -113,8 +117,8 @@ function App() {
                 />
               </Container>
             </Section>
-            <Section id="experience">
-              <Container light>
+            <Section id="experience" snap="start">
+              <Container full light>
                 <Experience
                   experienceRef={experienceRef}
                   experienceControls={experienceControls}
@@ -122,7 +126,7 @@ function App() {
                 />
               </Container>
             </Section>
-            <Section id="contact">
+            <Section id="contact" snap="start">
               <Container full dark>
                 <Contact
                   contactRef={contactRef}
@@ -130,7 +134,7 @@ function App() {
                   showMenu={showMenu}
                 />
               </Container>
-            </Section>
+            </Section> */}
           </Route>
         </Switch>
       </AnimatePresence>

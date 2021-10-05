@@ -15,123 +15,104 @@ import {
 const Home = ({ homeRef, homeControls }) => {
   return (
     <HomeSection ref={homeRef}>
-      <div className="content">
-        <StyledInfo>
-          <motion.div
-            className="homeHeader"
-            variants={headerVariants}
-            initial="initial"
-            //animate="animate"
-            animate={homeControls}
-          >
-            <h2 className="lighter">I am a</h2>
-            <h2>Front End</h2>
-            <h1>
-              Web <span>Developer</span>
-            </h1>
-          </motion.div>
-          <motion.div
-            className="homeSubHeader"
-            variants={subheaderVariants}
-            initial="initial"
-            //animate="animate"
-            animate={homeControls}
-          >
-            <h2>Passionate about web development</h2>
-            <h2>With a focus on React</h2>
-            <h2>Hire me today</h2>
-          </motion.div>
-          <HashLink smooth to="/#portfolio">
-            <motion.button
-              className="page-btn dark-btn"
-              variants={buttonVariants}
-              initial="initial"
-              //animate="animate"
-              animate={homeControls}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              View Portfolio
-            </motion.button>
-          </HashLink>
-          {/* <Link to="/home#portfolio"></Link> */}
-        </StyledInfo>
-        <StyledImage
-          variants={imageVariants}
+      <div className="info">
+        <motion.div
+          className="home-header"
+          variants={headerVariants}
           initial="initial"
           //animate="animate"
           animate={homeControls}
-          exit="exit"
         >
-          <img src={codingImage} alt="Coding" />
-        </StyledImage>
+          <h2 className="lighter">I am a</h2>
+          <h2>Front End</h2>
+          <h1>
+            Web <span>Developer</span>
+          </h1>
+        </motion.div>
+        <motion.div
+          className="home-sub-header"
+          variants={subheaderVariants}
+          initial="initial"
+          //animate="animate"
+          animate={homeControls}
+        >
+          <h2>Passionate about web development</h2>
+          <h2>With a focus on React</h2>
+          <h2>Hire me today</h2>
+        </motion.div>
+        <HashLink smooth to="/#portfolio">
+          <motion.button
+            className="page-btn dark-btn"
+            variants={buttonVariants}
+            initial="initial"
+            //animate="animate"
+            animate={homeControls}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            View Portfolio
+          </motion.button>
+        </HashLink>
       </div>
+      <motion.div
+        className="image"
+        variants={imageVariants}
+        initial="initial"
+        //animate="animate"
+        animate={homeControls}
+        exit="exit"
+      >
+        <img src={codingImage} alt="Coding" />
+      </motion.div>
     </HomeSection>
   );
 };
 
 const HomeSection = styled(motion.div)`
-  //margin-top pushes home screen under nav
-  padding-top: 7vh;
-  .content {
-    display: flex;
-    justify-content: space-between;
-    min-height: 90vh;
-    width: 100%;
-    padding: 4rem;
-  }
+  display: flex;
+  justify-content: space-between;
+  min-height: 100vh;
+  width: 100%;
+  padding: 4rem;
 
-  .homeHeader {
+  .info {
     display: flex;
     flex-direction: column;
-    align-content: center;
-    h1 {
-      font-size: 3rem;
-      color: #c6c6c6;
+    justify-content: space-between;
+
+    .home-header {
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      h1 {
+        font-size: 3rem;
+        color: #c6c6c6;
+      }
+      h2 {
+        font-size: 2.5rem;
+        color: #c6c6c6;
+      }
+      .lighter {
+        font-size: 2rem;
+        color: #c6c6c6;
+        font-weight: lighter;
+        line-height: 3rem;
+      }
+      span {
+        color: #689ed0;
+      }
     }
-    h2 {
-      font-size: 2.5rem;
-      color: #c6c6c6;
-    }
-    .lighter {
-      font-size: 2rem;
-      color: #c6c6c6;
-      font-weight: lighter;
-      line-height: 3rem;
-    }
-    span {
-      color: #689ed0;
+    .home-sub-header {
+      h2 {
+        font-size: 2rem;
+        color: #c6c6c6;
+        font-weight: lighter;
+        line-height: 3rem;
+      }
     }
   }
-  .homeSubHeader {
-    h2 {
-      font-size: 2rem;
-      color: #c6c6c6;
-      font-weight: lighter;
-      line-height: 3rem;
-    }
-  }
-`;
 
-const StyledInfo = styled(motion.div)`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`;
-
-const StyledImage = styled(motion.div)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  img {
-    width: 50vw;
-    height: auto;
-  }
-
-  //#### RESPONSIVE SECTION ####
-  //320px — 480px: Mobile devices
-  @media screen and (max-width: 480px) and (orientation: portrait) {
+  .image {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -141,9 +122,76 @@ const StyledImage = styled(motion.div)`
       height: auto;
     }
   }
+
+  //#### RESPONSIVE SECTION ####
+  //320px — 480px: Mobile devices
+  @media screen and (max-width: 480px) and (orientation: portrait) {
+    min-height: 0;
+    height: 100vh;
+    padding: 20vh 2rem 2rem 2rem;
+    overflow-y: hidden;
+
+    .info {
+      .home-header {
+        h1 {
+          font-size: 3rem;
+        }
+        h2 {
+          font-size: 2.5rem;
+        }
+        .lighter {
+          font-size: 2rem;
+          font-weight: lighter;
+          line-height: 3rem;
+        }
+      }
+      .home-sub-header {
+        h2 {
+          font-size: 1.6rem;
+          line-height: 2rem;
+        }
+      }
+    }
+
+    .image {
+      display: none;
+    }
+  }
   //320px — 480px: Mobile devices
   @media screen and (max-width: 850px) and (orientation: landscape) {
+    min-height: 0;
+    height: 100vh;
+    height: auto;
+    padding: 20vh 2rem 2rem 2rem;
+    //overflow-y: hidden;
+
+    .info {
+      .home-header {
+        h1 {
+          font-size: 3rem;
+        }
+        h2 {
+          font-size: 2.5rem;
+        }
+        .lighter {
+          font-size: 2rem;
+          font-weight: lighter;
+          line-height: 3rem;
+        }
+      }
+      .home-sub-header {
+        h2 {
+          font-size: 1.6rem;
+          line-height: 2rem;
+        }
+      }
+    }
+
+    .image {
+      display: none;
+    }
   }
+
   //481px — 768px: iPads, Tablets
   @media screen and (min-width: 481px) and (max-width: 769px) and (orientation: portrait) {
   }

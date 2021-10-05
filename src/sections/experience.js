@@ -48,7 +48,10 @@ const Experience = ({ experienceRef, experienceControls }) => {
           <p>Freecode Camp</p>
           <p>Others - DevEd - Udemy</p> */}
 
-        <VerticalTimeline className="vertical-timeline vertical-timeline-custom-line">
+        <VerticalTimeline
+          className="vertical-timeline vertical-timeline-custom-line"
+          animate={false}
+        >
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
             contentStyle={{
