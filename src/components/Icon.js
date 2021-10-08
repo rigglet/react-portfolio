@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 //icons
 import { IconContext } from "react-icons";
 import * as allIcons from "react-icons/all";
-import { bounceDown } from "../styles/animations";
 
 const Icon = ({ icon, color, size, title, className, func, showDropMenu }) => {
   //icons
@@ -12,12 +11,7 @@ const Icon = ({ icon, color, size, title, className, func, showDropMenu }) => {
       value={{ color, size, title, className, func, showDropMenu }}
     >
       {DynamicIcon !== undefined && (
-        <DynamicIcon
-          onClick={() => func(!showDropMenu)}
-          // variants={bounceDown}
-          // initial="initial"
-          // animate="visible"
-        />
+        <DynamicIcon onClick={() => func(!showDropMenu)} />
       )}
     </IconContext.Provider>
   );

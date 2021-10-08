@@ -80,7 +80,7 @@ function App() {
                 />
               </Container>
             </Section>
-            {/* <Section id="about" snap="start">
+            <Section id="about" snap="start">
               <Container half light>
                 <About
                   aboutRef={aboutRef}
@@ -88,7 +88,7 @@ function App() {
                   showMenu={showMenu}
                 />
               </Container>
-            </Section> */}
+            </Section>
             {/*
             <Section id="portfolio" snap="start">
               <Container dark>

@@ -257,7 +257,7 @@ export const detailPopUp = {
 };
 
 export const navVariants = {
-  visible: {
+  hidden: {
     y: "-10vw",
     opacity: 0,
     transition: {
@@ -265,7 +265,7 @@ export const navVariants = {
       duration: 0.5,
     },
   },
-  hidden: {
+  visible: {
     y: 0,
     opacity: 1,
     transition: {
