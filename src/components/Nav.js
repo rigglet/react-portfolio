@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { fadeInOut, navVariants } from "../styles/animations";
 import { HashLink } from "react-router-hash-link";
-import Icon from "../components/Icon";
+import NavbarIcon from "../components/NavbarIcon";
 
 const Nav = ({
   homeInView,
@@ -207,7 +207,7 @@ const Nav = ({
         //   animate={showDropMenu ? "animate" : "initial"}
         //   >
         //   </motion.div>
-        <Icon
+        <NavbarIcon
           icon="CgClose"
           color="white"
           size="30px"
@@ -217,7 +217,7 @@ const Nav = ({
           showDropMenu={showDropMenu}
         />
       ) : (
-        <Icon
+        <NavbarIcon
           icon="FaHamburger"
           color="white"
           size="30px"
@@ -374,7 +374,7 @@ const StyledNav = styled(motion.nav)`
       flex-direction: column;
       flex-wrap: nowrap;
       margin-right: 0rem;
-      height: 35vh;
+      height: auto;
       transition: all 0.3s ease-in-out;
       overflow: hidden;
       h1 {
@@ -495,7 +495,7 @@ const StyledNav = styled(motion.nav)`
       flex-direction: column;
       flex-wrap: nowrap;
       margin-right: 0rem;
-      height: 35vh;
+      height: auto;
       transition: all 0.3s ease-in-out;
       overflow: hidden;
       h1 {

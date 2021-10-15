@@ -70,19 +70,12 @@ const Skills = ({ skillsRef, skillsControls }) => {
   );
 
   return (
-    <SkillsSection
-      ref={skillsRef}
-      className="container container-light container-right"
-      // variants={containerSlideInOutRight}
-      // initial="initial"
-      // animate={skillsControls}
-    >
+    <SkillsSection ref={skillsRef}>
       <section className="skill-section">
         <div className="section-header">
           <motion.div
             variants={slideDown}
             initial="initial"
-            //animate="animate"
             animate={skillsControls}
             className="section-title-content"
           >
@@ -98,6 +91,7 @@ const Skills = ({ skillsRef, skillsControls }) => {
             variants={slideDown}
             initial="initial"
             animate={skillsControls}
+            className="wrapper"
           >
             <StyledLine
               transition={{
@@ -119,7 +113,6 @@ const Skills = ({ skillsRef, skillsControls }) => {
                   <motion.h2
                     variants={slideDown}
                     initial="initial"
-                    //animate="animate"
                     animate={skillsControls}
                     className="section-subheading heading-dark"
                   >
@@ -130,6 +123,7 @@ const Skills = ({ skillsRef, skillsControls }) => {
                   variants={slideDown}
                   initial="initial"
                   animate={skillsControls}
+                  className="wrapper"
                 >
                   <StyledLine
                     transition={{
@@ -177,7 +171,6 @@ const Skills = ({ skillsRef, skillsControls }) => {
                   <motion.h2
                     variants={slideDown}
                     initial="initial"
-                    //animate="animate"
                     animate={skillsControls}
                     className="section-subheading heading-dark"
                   >
@@ -188,6 +181,7 @@ const Skills = ({ skillsRef, skillsControls }) => {
                   variants={slideDown}
                   initial="initial"
                   animate={skillsControls}
+                  className="wrapper"
                 >
                   <StyledLine
                     transition={{
@@ -235,7 +229,6 @@ const Skills = ({ skillsRef, skillsControls }) => {
                   <motion.h2
                     variants={slideDown}
                     initial="initial"
-                    //animate="animate"
                     animate={skillsControls}
                     className="section-subheading heading-dark"
                   >
@@ -246,6 +239,7 @@ const Skills = ({ skillsRef, skillsControls }) => {
                   variants={slideDown}
                   initial="initial"
                   animate={skillsControls}
+                  className="wrapper"
                 >
                   <StyledLine
                     transition={{
@@ -293,7 +287,6 @@ const Skills = ({ skillsRef, skillsControls }) => {
                   <motion.h2
                     variants={slideDown}
                     initial="initial"
-                    //animate="animate"
                     animate={skillsControls}
                     className="section-subheading heading-dark"
                   >
@@ -304,6 +297,7 @@ const Skills = ({ skillsRef, skillsControls }) => {
                   variants={slideDown}
                   initial="initial"
                   animate={skillsControls}
+                  className="wrapper"
                 >
                   <StyledLine
                     transition={{
@@ -351,7 +345,6 @@ const Skills = ({ skillsRef, skillsControls }) => {
                   <motion.h2
                     variants={slideDown}
                     initial="initial"
-                    //animate="animate"
                     animate={skillsControls}
                     className="section-subheading heading-dark"
                   >
@@ -362,6 +355,7 @@ const Skills = ({ skillsRef, skillsControls }) => {
                   variants={slideDown}
                   initial="initial"
                   animate={skillsControls}
+                  className="wrapper"
                 >
                   <StyledLine
                     transition={{
@@ -409,7 +403,6 @@ const Skills = ({ skillsRef, skillsControls }) => {
                   <motion.h2
                     variants={slideDown}
                     initial="initial"
-                    //animate="animate"
                     animate={skillsControls}
                     className="section-subheading heading-dark"
                   >
@@ -420,6 +413,7 @@ const Skills = ({ skillsRef, skillsControls }) => {
                   variants={slideDown}
                   initial="initial"
                   animate={skillsControls}
+                  className="wrapper"
                 >
                   <StyledLine
                     transition={{
@@ -465,7 +459,6 @@ const Skills = ({ skillsRef, skillsControls }) => {
             className="section-title-content"
             variants={slideDown}
             initial="initial"
-            //animate="animate"
             animate={skillsControls}
           >
             <Icon
@@ -480,6 +473,7 @@ const Skills = ({ skillsRef, skillsControls }) => {
             variants={slideDown}
             initial="initial"
             animate={skillsControls}
+            className="wrapper"
           >
             <StyledLine
               transition={{
@@ -513,18 +507,23 @@ const Skills = ({ skillsRef, skillsControls }) => {
 
 const SkillsSection = styled(motion.div)`
   //edit justify content if switching sides
-  justify-content: flex-end;
+  //justify-content: flex-end;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  height: auto;
+  width: 100%;
+  z-index: 2;
+  padding: 4rem 2rem 2rem 2rem;
 
-  .inner-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    height: 100%;
+  .wrapper {
     width: 100%;
-    row-gap: 2rem;
+    height: auto;
   }
   .skill-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     z-index: 1;
 
@@ -550,6 +549,9 @@ const SkillsSection = styled(motion.div)`
           display: flex;
           flex-wrap: wrap;
           column-gap: 2rem;
+          row-gap: 2rem;
+          //align-items: space-between;
+          justify-content: center;
 
           .skill-item {
             a {

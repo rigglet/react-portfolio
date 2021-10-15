@@ -251,17 +251,13 @@ const Contact = ({ contactRef, contactControls, showMenu }) => {
 };
 
 const ContactSection = styled(motion.div)`
-  //min-height: 93vh;
-  //height: 100vh;
-  //border: 1px solid red;
-
-  .showNav {
-    //min-height: 93vh;
-  }
-
-  .hideNav {
-    //min-height: 93vh;
-  }
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 4rem;
 `;
 
 const ContactInfo = styled(motion.div)`
@@ -269,7 +265,8 @@ const ContactInfo = styled(motion.div)`
   width: 100%;
   min-height: 100%;
   flex-grow: 1;
-  padding: 2rem;
+  padding: 1rem;
+  border: 1px solid red;
 
   form {
     display: flex;
@@ -290,6 +287,9 @@ const ContactInfo = styled(motion.div)`
     .button {
       display: flex;
       justify-content: center;
+    }
+    label {
+      color: var(--color-light-text);
     }
 
     input[type="text"],

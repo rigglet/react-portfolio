@@ -78,9 +78,13 @@ body{
 } */
 
 .section-header{
-  /* display: flex;
+  //border: 1px solid red;
+  //width: auto;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-   */
+  align-items: center;
+   
   .section-title-content{
     display: flex;
     align-items: center;
@@ -89,21 +93,36 @@ body{
     //h1 heading on some sections
     .section-heading {
       font-weight: 300;
-      font-size: 20pt;
+      font-size: 1.5rem;
       cursor: default;
       padding: 0 1rem;
     }
     //h2 sub-heading on some sections
     .section-subheading {
       font-weight: 300;
-      font-size: 15pt;
+      font-size: 1.2rem;
       cursor: default;
       padding: 0 1rem;
     }
   }
-
 }
-
+//#### RESPONSIVE SECTION ####
+  //320px — 480px: Mobile devices
+  @media screen and (max-width: 480px) and (orientation: portrait) {
+    .section-header{
+    .section-title-content{
+    
+    //h1 heading on some sections
+    .section-heading {
+      font-size: 1.6rem;
+    }
+    //h2 sub-heading on some sections
+    .section-subheading {
+      font-size: 1.4rem;
+    }
+  }
+}
+  }
 
 .heading-light{
   color: var(--header-color-light);
@@ -155,7 +174,7 @@ body{
     background: transparent;
     //transition: all 0.5s ease;
     border-radius: 20px;
-    text-transform: uppercase;    
+    text-transform: uppercase;
 
     &:hover{
       background: #689ed0;

@@ -71,7 +71,7 @@ function App() {
               contactInView={contactInView}
             />
 
-            <Section id="home" snap="start">
+            <Section id="home" full snap="start">
               <Container full dark>
                 <Home
                   homeRef={homeRef}
@@ -80,8 +80,8 @@ function App() {
                 />
               </Container>
             </Section>
-            <Section id="about" snap="start">
-              <Container half light>
+            <Section id="about" full snap="start">
+              <Container light>
                 <About
                   aboutRef={aboutRef}
                   aboutControls={aboutControls}
@@ -89,7 +89,6 @@ function App() {
                 />
               </Container>
             </Section>
-            {/*
             <Section id="portfolio" snap="start">
               <Container dark>
                 <Portfolio
@@ -100,7 +99,7 @@ function App() {
               </Container>
             </Section>
             <Section id="skills" snap="start">
-              <Container full light>
+              <Container light>
                 <Skills
                   skillsRef={skillsRef}
                   skillsControls={skillsControls}
@@ -109,7 +108,7 @@ function App() {
               </Container>
             </Section>
             <Section id="education" snap="start">
-              <Container full dark>
+              <Container dark>
                 <Education
                   educationRef={educationRef}
                   educationControls={educationControls}
@@ -117,7 +116,7 @@ function App() {
                 />
               </Container>
             </Section>
-            <Section id="experience" snap="start">
+            <Section id="experience" full snap="start">
               <Container full light>
                 <Experience
                   experienceRef={experienceRef}
@@ -126,7 +125,7 @@ function App() {
                 />
               </Container>
             </Section>
-            <Section id="contact" snap="start">
+            <Section id="contact" full snap="start">
               <Container full dark>
                 <Contact
                   contactRef={contactRef}
@@ -134,7 +133,9 @@ function App() {
                   showMenu={showMenu}
                 />
               </Container>
-            </Section> */}
+            </Section>
+            {/*
+             */}
           </Route>
         </Switch>
       </AnimatePresence>

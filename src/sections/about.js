@@ -5,20 +5,11 @@ import styled from "styled-components";
 import profile from "../img/profile.png";
 //import Icon from "../components/Icon";
 import StyledLine from "../styles/styledLine";
-import {
-  fadeInOut,
-  elementSlideInOut,
-  containerSlideInOutLeft,
-} from "../styles/animations";
+import { fadeInOut, elementSlideInOut } from "../styles/animations";
 
 const About = ({ aboutRef, aboutControls }) => {
   return (
-    <AboutSection
-      ref={aboutRef}
-      //variants={containerSlideInOutLeft}
-      //initial="initial"
-      //animate={aboutControls}
-    >
+    <AboutSection ref={aboutRef}>
       <div className="section-header">
         <div className="section-title-content">
           {/* <Icon
@@ -103,7 +94,7 @@ const AboutSection = styled(motion.div)`
     width: 100%;
     height: 100%;
     align-items: center;
-    column-gap: 2rem;
+    column-gap: 1rem;
 
     .copy {
       height: 100%;
@@ -183,7 +174,7 @@ const AboutSection = styled(motion.div)`
   //#### RESPONSIVE SECTION ####
   //320px — 480px: Mobile devices
   @media screen and (max-width: 480px) and (orientation: portrait) {
-    padding: 0 2.5rem;
+    padding: 2rem 2.5rem;
     z-index: 20;
 
     .content {

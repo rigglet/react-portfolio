@@ -57,13 +57,13 @@ const Portfolio = ({ portfolioRef, portfolioControls }) => {
           />
           <h1 className="section-heading heading-light">Featured Projects</h1>
         </div>
-        <StyledLine height="6px" width="100%" bgColor="#111111" />
+        <StyledLine height="6px" width="25%" bgColor="#111111" />
       </div>
       <div className="content">
         {loading ? (
-          <div className="loading">
+          <>
             <Loader />
-          </div>
+          </>
         ) : (
           <>
             <div className="projects">
@@ -91,40 +91,98 @@ const Portfolio = ({ portfolioRef, portfolioControls }) => {
 };
 
 const PortfolioSection = styled(motion.div)`
-  z-index: 10;
-  //padding-top: 7vh;
+  //added to center styledLine
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  //added to center styledLine
+
+  padding: 4rem 4rem 4rem 4rem;
   min-height: 93vh;
   height: auto;
   width: 100%;
-  overflow-y: unset;
-  //border: 1px solid teal;
 
   .content {
     height: 100%;
-    min-height: 85vh;
-    max-height: auto;
+    height: auto;
+    min-height: 80vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    //border: 1px solid blue;
-  }
-  .loading {
-    min-height: 93vh;
-    max-height: auto;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid red;
   }
   .projects {
     width: 100%;
   }
   .noresult {
+    padding-top: 1rem;
+    color: var(--color-light-text);
     text-align: center;
     font-weight: lighter;
+  }
+
+  //#### RESPONSIVE SECTION ####
+  //320px — 480px: Mobile devices
+  @media screen and (max-width: 480px) and (orientation: portrait) {
+    /* //added to center styledLine
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    //added to center styledLine
+
+    padding: 4rem 4rem 4rem 4rem;
+    min-height: 93vh;
+    height: auto;
+    width: 100%;
+
+    .content {
+      height: 100%;
+      height: auto;
+      min-height: 80vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .projects {
+      width: 100%;
+    }
+    .noresult {
+      padding-top: 1rem;
+      color: var(--color-light-text);
+      text-align: center;
+      font-weight: lighter;
+    } */
+  }
+  //320px — 480px: Mobile devices
+  @media screen and (max-width: 850px) and (orientation: landscape) {
+  }
+  //481px — 768px: iPads, Tablets
+  @media screen and (min-width: 481px) and (max-width: 769px) and (orientation: portrait) {
+  }
+  //481px — 768px: iPads, Tablets
+  //@media screen and (min-width: 481px) and (max-width: 769px) and (orientation: landscape) {}
+  //769px — 1024px: Small screens, laptops
+  //@media screen and (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {}
+  //769px — 1024px: Small screens, laptops
+  //@media screen and (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {}
+  //1025px — 1200px: Desktops, large screens
+  @media screen and (min-width: 1024px) and (max-width: 1200px) and (orientation: portrait) {
+  }
+  //1025px — 1200px: Desktops, large screens
+  //@media screen and (min-width: 1024px) and (max-width: 1200px) and (orientation: landscape) {}
+  //1201px and more —  Extra large screens, TV
+  //@media screen and (min-width: 1201px) and (max-width: 1500px) and (orientation: portrait) {}
+  //1201px and more —  Extra large screens, TV
+  //@media screen and (min-width: 1201px) and (max-width: 1500px) and (orientation: landscape) {}
+  //1501px and more —  Extra large screens, TV
+  //@media screen and (min-width: 1501px) and (orientation: portrait) {}
+  //1501px and more —  Extra large screens, TV
+  @media screen and (min-width: 1921px) and (orientation: landscape) {
   }
 `;
 

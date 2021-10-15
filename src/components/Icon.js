@@ -3,16 +3,13 @@ import PropTypes from "prop-types";
 import { IconContext } from "react-icons";
 import * as allIcons from "react-icons/all";
 
-const Icon = ({ icon, color, size, title, className, func, showDropMenu }) => {
+const Icon = ({ icon, color, size, title, className }) => {
   //icons
   let DynamicIcon = allIcons[icon];
+
   return (
-    <IconContext.Provider
-      value={{ color, size, title, className, func, showDropMenu }}
-    >
-      {DynamicIcon !== undefined && (
-        <DynamicIcon onClick={() => func(!showDropMenu)} />
-      )}
+    <IconContext.Provider value={{ color, size, title, className }}>
+      {DynamicIcon !== undefined && <DynamicIcon />}
     </IconContext.Provider>
   );
 };

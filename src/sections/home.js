@@ -40,7 +40,7 @@ const Home = ({ homeRef, homeControls }) => {
           <h2>With a focus on React</h2>
           <h2>Hire me today</h2>
         </motion.div>
-        <HashLink smooth to="/#portfolio">
+        <HashLink smooth to="/#portfolio" className="home-button">
           <motion.button
             className="page-btn dark-btn"
             variants={buttonVariants}
@@ -70,23 +70,27 @@ const Home = ({ homeRef, homeControls }) => {
 
 const HomeSection = styled(motion.div)`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: space-around;
   min-height: 100vh;
   width: 100%;
-  padding: 4rem;
+  padding: 6rem 4rem 4rem 4rem;
+  overflow-x: hidden;
 
   .info {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-
+    justify-content: space-around;
     .home-header {
       display: flex;
       flex-direction: column;
-      align-content: center;
+      //align-content: center;
       h1 {
+        display: flex;
+        column-gap: 1rem;
         font-size: 3rem;
         color: #c6c6c6;
+        display: flex;
       }
       h2 {
         font-size: 2.5rem;
@@ -126,15 +130,23 @@ const HomeSection = styled(motion.div)`
   //#### RESPONSIVE SECTION ####
   //320px — 480px: Mobile devices
   @media screen and (max-width: 480px) and (orientation: portrait) {
-    min-height: 0;
     height: 100vh;
-    padding: 20vh 2rem 2rem 2rem;
+    padding: 15vh 2rem 5rem 2rem;
     overflow-y: hidden;
-
+    justify-content: center;
+    //align-items: space-around;
+    .home-button {
+      display: flex;
+      justify-content: center;
+      text-decoration: none;
+    }
     .info {
       .home-header {
+        align-items: center;
         h1 {
           font-size: 3rem;
+          flex-direction: column;
+          align-items: center;
         }
         h2 {
           font-size: 2.5rem;
@@ -146,7 +158,13 @@ const HomeSection = styled(motion.div)`
         }
       }
       .home-sub-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 25vh;
         h2 {
+          text-align: center;
           font-size: 1.6rem;
           line-height: 2rem;
         }
@@ -159,30 +177,50 @@ const HomeSection = styled(motion.div)`
   }
   //320px — 480px: Mobile devices
   @media screen and (max-width: 850px) and (orientation: landscape) {
-    min-height: 0;
-    height: 100vh;
-    height: auto;
-    padding: 20vh 2rem 2rem 2rem;
-    //overflow-y: hidden;
-
+    height: 100%;
+    width: 100vw;
+    border: 1px solid green;
+    padding: 3rem 1rem 1rem 1rem;
+    //overflow-y: scroll;
+    justify-content: center;
+    //align-items: space-around;
+    .home-button {
+      display: flex;
+      justify-content: center;
+      text-decoration: none;
+    }
     .info {
       .home-header {
+        //border: 1px solid red;
+        width: 100vw;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        column-gap: 2rem;
         h1 {
-          font-size: 3rem;
+          font-size: 2rem;
+          //flex-direction: column;
+          align-items: center;
         }
         h2 {
-          font-size: 2.5rem;
+          font-size: 2rem;
         }
         .lighter {
-          font-size: 2rem;
+          font-size: 1.5rem;
           font-weight: lighter;
           line-height: 3rem;
         }
       }
       .home-sub-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 25vh;
         h2 {
+          text-align: center;
           font-size: 1.6rem;
-          line-height: 2rem;
+          line-height: 1rem;
         }
       }
     }
@@ -191,7 +229,6 @@ const HomeSection = styled(motion.div)`
       display: none;
     }
   }
-
   //481px — 768px: iPads, Tablets
   @media screen and (min-width: 481px) and (max-width: 769px) and (orientation: portrait) {
   }

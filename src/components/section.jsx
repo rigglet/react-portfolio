@@ -27,11 +27,11 @@ function section({
 }
 
 const StyledSection = styled(motion.section)`
-  border: 1px solid red;
+  //border: 1px solid red;
   //scroll-snap-align: start;
   //border-top: 7vh solid var(--container-light-border);
-
   background-color: var(--color-dark-background);
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -39,22 +39,27 @@ const StyledSection = styled(motion.section)`
     left ? "flex-start" : right ? "flex-end" : "center"};
 
   width: "100vw";
-  /* height: ${({ full, half }) => (full ? "100vh" : half ? "50vh" : "auto")};
-min-height: ${({ full, half }) =>
-    full ? "100vh" : half ? "100vh" : "100vh"}; */
-  height: auto;
+  height: ${({ full, half }) => (full ? "100vh" : half ? "50vh" : "auto")};
+  min-height: ${({ full, half }) => (full ? "100vh" : half ? "100vh" : "auto")};
+
+  //height: auto;
   min-height: 100vh;
 
   //#### RESPONSIVE SECTION ####
   //320px — 480px: Mobile devices
   @media screen and (max-width: 480px) and (orientation: portrait) {
-    //height: auto;
-    min-height: 0vh;
-    max-height: 100vh;
+    //margin: 1rem;
+    //border: 2px solid red;
+    min-height: 100vh;
+    height: auto;
+    //max-height: 100vh;
   }
   //320px — 480px: Mobile devices
   @media screen and (max-width: 850px) and (orientation: landscape) {
+    min-height: 100vh;
     height: auto;
+    width: 100vw;
+    //padding: 0;
   }
   //481px — 768px: iPads, Tablets
   //@media screen and (min-width: 481px) and (max-width: 769px) and (orientation: portrait) {

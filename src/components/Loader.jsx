@@ -87,7 +87,6 @@ const dotVariants = {
 export default function Loader() {
   return (
     <StyledLoader variants={loaderVariants} initial="hidden" animate="show">
-      {/* <StyledName>Loading</StyledName> */}
       <StyledDot variants={dotVariants}>l</StyledDot>
       <StyledDot variants={dotVariants}>o</StyledDot>
       <StyledDot variants={dotVariants}>a</StyledDot>
@@ -104,6 +103,7 @@ const StyledLoader = styled(motion.div)`
   justify-content: space-evenly;
   align-items: center;
   width: 20vw;
+  min-height: 30vh;
 `;
 
 const StyledName = styled(motion.h1)`

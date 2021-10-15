@@ -118,6 +118,7 @@ const StyledCard = styled(motion.div)`
     margin-bottom: 1rem;
 
     .overlay {
+      color: var(--color-light-text);
       border-radius: 10px;
       z-index: 1;
       position: absolute;

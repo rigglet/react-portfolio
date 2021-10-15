@@ -7,7 +7,7 @@ import { useInView } from "react-intersection-observer";
 //These 2 are used to trigger animation in each section on scroll
 export default function useScroll() {
   const [element, view] = useInView({
-    threshold: 0.5,
+    threshold: [0.2, 0.5],
     //triggerOnce: true,
   });
   const controls = useAnimation();

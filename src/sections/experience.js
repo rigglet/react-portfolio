@@ -123,14 +123,28 @@ const Experience = ({ experienceRef, experienceControls }) => {
   );
 };
 const ExperienceSection = styled(motion.div)`
+  //added to center styledLine
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  //added to center styledLine
+
+  padding: 4rem 0rem 0rem 0rem;
+  //min-height: 93vh;
+  height: auto;
+  width: 100%;
+
   .content {
-    border: 1px solid green;
-    width: 100vw;
-    height: 100%;
-    //display: flex;
-    //flex-direction: column;
-    //align-items: center;
-    //justify-content: space-between;
+    //color: var(--color-dark-text);
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    row-gap: 2rem;
+    padding: 2rem;
   }
 `;
 
