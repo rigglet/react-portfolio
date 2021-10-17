@@ -4,14 +4,15 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import StyledLine from "../styles/styledLine";
-import {
-  fadeInOut,
-  elementSlideInOut,
-  projectsSlideInOutLeft,
-} from "../styles/animations";
+// import {
+//   fadeInOut,
+//   elementSlideInOut,
+//   projectsSlideInOutLeft,
+// } from "../styles/animations";
 
 //components
 import Projects from "../components/Projects";
+import PortfolioExplorer from "../components/PortfolioExplorer";
 import Loader from "../components/Loader";
 import Icon from "../components/Icon";
 //data
@@ -21,6 +22,7 @@ import { buttonVariants } from "../styles/animations";
 const Portfolio = ({ portfolioRef, portfolioControls }) => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showFull, setShowFull] = useState(false);
 
   useEffect(() => {
     async function getProjects() {
@@ -45,6 +47,11 @@ const Portfolio = ({ portfolioRef, portfolioControls }) => {
     return project.featured === true && project.included === true;
   });
 
+  const handleExploreClick = () => {
+    console.log("Click");
+    setShowFull(true);
+  };
+
   return (
     <PortfolioSection ref={portfolioRef}>
       <div className="section-header">
@@ -68,11 +75,13 @@ const Portfolio = ({ portfolioRef, portfolioControls }) => {
           <>
             <div className="projects">
               {filteredProjects.length > 0 ? (
+                // <Projects projects={filteredProjects} />
                 <Projects projects={filteredProjects} />
               ) : (
                 <h1 className="noresult">No projects to show.</h1>
               )}
             </div>
+
             <motion.button
               className="page-btn dark-btn"
               variants={buttonVariants}
@@ -80,11 +89,13 @@ const Portfolio = ({ portfolioRef, portfolioControls }) => {
               animate="animate"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={handleExploreClick}
             >
               Explore Full Portfolio
             </motion.button>
           </>
         )}
+        {showFull && <PortfolioExplorer />}
       </div>
     </PortfolioSection>
   );
@@ -103,6 +114,10 @@ const PortfolioSection = styled(motion.div)`
   height: auto;
   width: 100%;
 
+  .hi {
+    font-size: 5rem;
+    color: white;
+  }
   .content {
     height: 100%;
     height: auto;

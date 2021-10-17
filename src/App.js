@@ -59,6 +59,9 @@ function App() {
           <Route exact path="/splash">
             <Splash />
           </Route>
+          <Route exact path="/explore">
+            <h1>Hi</h1>
+          </Route>
           <Route exact path="/">
             <Nav
               showMenu={showMenu}

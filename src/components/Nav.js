@@ -246,7 +246,8 @@ const StyledNav = styled(motion.nav)`
   background-color: var(--color-nav-background);
   border-bottom: solid 2px var(--color-nav-hover);
   flex-wrap: wrap;
-  transition: all 1s ease-in-out;
+  //transition: all 1s ease-in-out;
+  //border: 1px solid red;
 
   .toggle-button {
     display: none;

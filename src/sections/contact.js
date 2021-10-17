@@ -228,9 +228,9 @@ const Contact = ({ contactRef, contactControls, showMenu }) => {
             <motion.div
               className="plane"
               variants={planeVariants}
-              initial="planeinitial"
-              //animate="planeanimate"
-              animate={contactControls}
+              //initial="planeinitial"
+              animate="planeanimate"
+              //animate={contactControls}
             >
               <Plane />
             </motion.div>
@@ -266,7 +266,6 @@ const ContactInfo = styled(motion.div)`
   min-height: 100%;
   flex-grow: 1;
   padding: 1rem;
-  border: 1px solid red;
 
   form {
     display: flex;

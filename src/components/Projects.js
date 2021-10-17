@@ -24,7 +24,6 @@ const Projects = ({ projects }) => {
     document.body.style.overflowY = "hidden";
     setShowProjectDetails(true);
     setCurrentProject(project);
-    //console.log(project);
   };
 
   // const handleImageChange = (image) => {
@@ -35,20 +34,13 @@ const Projects = ({ projects }) => {
   const projectClose = () => {
     document.body.style.overflowY = "auto";
     history.push("/#portfolio");
+    setShowProjectDetails(false);
   };
 
   return (
     <StyledProjects>
       {showProjectDetails && (
-        <ProjectDetail
-          project={currentProject}
-          projectClose={projectClose}
-          //skipProject={skipProject}
-          //arrSize={projects.length}
-          //currentImage={currentImage}
-          //handleImageChange={handleImageChange}
-          //setCurrentImage={setCurrentImage}
-        />
+        <ProjectDetail project={currentProject} projectClose={projectClose} />
       )}
 
       {projects.map((project) => (

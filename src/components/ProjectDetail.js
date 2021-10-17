@@ -42,7 +42,7 @@ const ProjectDetails = ({ projectClose, project }) => {
   }, []);
 
   //console.log(project);
-
+  console.log(projectClose);
   return (
     <StyledOuterContainer>
       <StyledInnerContainer
