@@ -21,7 +21,7 @@ import { ImImages } from "react-icons/im";
 import { MdWeb } from "react-icons/md";
 //import { AiOutlineCalendar } from "react-icons/ai";
 
-const ProjectDetails = ({ projectClose, project }) => {
+const ProjectDetails = ({ project, projectClose }) => {
   let [imageArray, setImageArray] = useState([]);
   let [mainImage, setMainImage] = useState({});
 
@@ -41,8 +41,6 @@ const ProjectDetails = ({ projectClose, project }) => {
     );
   }, []);
 
-  //console.log(project);
-  console.log(projectClose);
   return (
     <StyledOuterContainer>
       <StyledInnerContainer

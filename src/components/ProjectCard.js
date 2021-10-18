@@ -10,93 +10,198 @@ import { Link } from "react-router-dom";
 import Icon from "./Icon";
 import { serverBaseURL } from "../config/config";
 
-const ProjectCard = ({ project, handleProjectClick }) => {
-  //console.log(project);
-
+const ProjectCard = ({ project, handleProjectClick, view }) => {
   return (
     <StyledCard
     // initial={{ scale: 0.6 }}
     // animate={{ scale: 1 }}
     // transition={{ duration: 0.5 }}
     >
-      <div className="image-container">
-        <div className="overlay" onClick={() => handleProjectClick(project)}>
-          {/* <h2>More details...</h2> */}
-          <h2>project details</h2>
-          <Icon key={uuidv4()} icon="MdUnfoldMore" color="white" size="50px" />
-        </div>
-        <img
-          src={`${serverBaseURL()}/images/${project.screenshots[0]?.fileName}`}
-          alt="project"
-        />
-        {/* <Link to={`/portfolio/${project._id}`}> </Link> */}
-      </div>
-
-      <div className="links">
-        <div className="icon">
-          <a
-            key={uuidv4()}
-            href={project.githubLink}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <button className="page-btn project-card-link-btn">
+      {view === "portfolio" && (
+        <>
+          <div className="image-container">
+            <div
+              className="overlay"
+              onClick={() => handleProjectClick(project)}
+            >
+              {/* <h2>More details...</h2> */}
+              <h2>project details</h2>
               <Icon
                 key={uuidv4()}
-                icon="FaGithubSquare"
-                color="#689ed0"
-                size="25px"
-                title="Open project in github"
+                icon="MdUnfoldMore"
+                color="white"
+                size="50px"
               />
-              View code
-            </button>
-          </a>
-        </div>
-        <div className="icon">
-          <a
-            key={uuidv4()}
-            href={project.website}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <button className="page-btn project-card-link-btn">
-              <Icon
-                key={uuidv4()}
-                icon="HiLink"
-                color="689ed0"
-                size="25px"
-                title="Open live project website"
-              />
-              View live
-            </button>
-          </a>
-        </div>
-      </div>
-
-      <div className="information">
-        <h4 className="project-name">{project.projectName}</h4>
-        <h5 className="project-description">{project.shortDescription}</h5>
-      </div>
-
-      {/* <Line /> */}
-
-      <StyledIcons>
-        {project.technologies.map((tech) => (
-          <a
-            key={uuidv4()}
-            href={tech.address}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Icon
-              key={uuidv4()}
-              icon={tech.icon}
-              color={tech.color}
-              size="30px"
+            </div>
+            <img
+              src={`${serverBaseURL()}/images/${
+                project.screenshots[0]?.fileName
+              }`}
+              alt="project"
             />
-          </a>
-        ))}
-      </StyledIcons>
+            {/* <Link to={`/portfolio/${project._id}`}> </Link> */}
+          </div>
+
+          <div className="links">
+            <div className="icon">
+              <a
+                key={uuidv4()}
+                href={project.githubLink}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <button className="page-btn project-card-link-btn">
+                  <Icon
+                    key={uuidv4()}
+                    icon="FaGithubSquare"
+                    color="#689ed0"
+                    size="25px"
+                    title="Open project in github"
+                  />
+                  View code
+                </button>
+              </a>
+            </div>
+            <div className="icon">
+              <a
+                key={uuidv4()}
+                href={project.website}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <button className="page-btn project-card-link-btn">
+                  <Icon
+                    key={uuidv4()}
+                    icon="HiLink"
+                    color="689ed0"
+                    size="25px"
+                    title="Open live project website"
+                  />
+                  View live
+                </button>
+              </a>
+            </div>
+          </div>
+
+          <div className="information">
+            <h4 className="project-name">{project.projectName}</h4>
+            <h5 className="project-description">{project.shortDescription}</h5>
+          </div>
+
+          {/* <Line /> */}
+
+          <StyledIcons>
+            {project.technologies.map((tech) => (
+              <a
+                key={uuidv4()}
+                href={tech.address}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Icon
+                  key={uuidv4()}
+                  icon={tech.icon}
+                  color={tech.color}
+                  size="30px"
+                />
+              </a>
+            ))}
+          </StyledIcons>
+        </>
+      )}
+
+      {view === "explorer" && (
+        <>
+          <div className="image-container">
+            <div
+              className="overlay"
+              onClick={() => handleProjectClick(project)}
+            >
+              {/* <h2>More details...</h2> */}
+              <h2>project details</h2>
+              <Icon
+                key={uuidv4()}
+                icon="MdUnfoldMore"
+                color="white"
+                size="50px"
+              />
+            </div>
+            <img
+              src={`${serverBaseURL()}/images/${
+                project.screenshots[0]?.fileName
+              }`}
+              alt="project"
+            />
+            {/* <Link to={`/portfolio/${project._id}`}> </Link> */}
+          </div>
+
+          {/* <div className="links">
+            <div className="icon">
+              <a
+                key={uuidv4()}
+                href={project.githubLink}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <button className="page-btn project-card-link-btn">
+                  <Icon
+                    key={uuidv4()}
+                    icon="FaGithubSquare"
+                    color="#689ed0"
+                    size="25px"
+                    title="Open project in github"
+                  />
+                  View code
+                </button>
+              </a>
+            </div>
+            <div className="icon">
+              <a
+                key={uuidv4()}
+                href={project.website}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <button className="page-btn project-card-link-btn">
+                  <Icon
+                    key={uuidv4()}
+                    icon="HiLink"
+                    color="689ed0"
+                    size="25px"
+                    title="Open live project website"
+                  />
+                  View live
+                </button>
+              </a>
+            </div>
+          </div> */}
+
+          <div className="information">
+            <h4 className="project-name">{project.projectName}</h4>
+            <h5 className="project-description">{project.shortDescription}</h5>
+          </div>
+
+          {/* <Line /> */}
+
+          {/* <StyledIcons>
+            {project.technologies.map((tech) => (
+              <a
+                key={uuidv4()}
+                href={tech.address}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Icon
+                  key={uuidv4()}
+                  icon={tech.icon}
+                  color={tech.color}
+                  size="30px"
+                />
+              </a>
+            ))}
+          </StyledIcons> */}
+        </>
+      )}
     </StyledCard>
   );
 };

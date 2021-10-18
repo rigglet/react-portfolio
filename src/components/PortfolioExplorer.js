@@ -1,61 +1,87 @@
+//react
 import { useEffect, useState } from "react";
+
 //framer motion and styled components
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import StyledLine from "../styles/styledLine";
 import { detailPopUp } from "../styles/animations";
-// import { getDocumentById } from "../api/api";
-import Icon from "./Icon";
 import Loader from "../components/Loader";
 import Projects from "../components/Projects";
+
 //data
 import { getCollection } from "../api/api";
+
 //uuid
 import { v4 as uuidv4 } from "uuid";
 import { serverBaseURL } from "../config/config";
-//functions
+
+//components
 import CloseButton from "./closeButton";
+
 //dates
 //import { DateTime } from "luxon";
+
 //image gallery
-import ImageGallery from "react-image-gallery";
+//import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
+
 //icons
-//import { BsCardText } from "react-icons/bs";
-//import { ImImages } from "react-icons/im";
-import { MdWeb } from "react-icons/md";
-//import { AiOutlineCalendar } from "react-icons/ai";
+import Icon from "./Icon";
 
-const PortfolioExplorer = ({ projectClose, project }) => {
-  let [imageArray, setImageArray] = useState([]);
-  let [mainImage, setMainImage] = useState({});
-  let [projects, setProjects] = useState([]);
+const PortfolioExplorer = ({ view, setShowFull }) => {
+  const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  // useEffect(() => {
-  //   setImageArray(
-  //     project.screenshots?.map((image) => {
-  //       return {
-  //         original: `${serverBaseURL()}/images/${image.fileName}`,
-  //         thumbnail: `${serverBaseURL()}/images/${image.fileName}`,
-  //       };
-  //     })
-  //   );
-  //   setMainImage(
-  //     project.screenshots?.filter((image) => {
-  //       return image._id === project?.mainImage;
-  //     })[0]
-  //   );
-  // }, []);
+  const [type, setType] = useState("all");
+  const [tech, setTech] = useState("all");
+  const [library, setLibrary] = useState("all");
+  const [name, setName] = useState("all");
+  const [technologies, setTechnologies] = useState([]);
+  const [libraries, setLibraries] = useState([]);
 
   useEffect(() => {
     async function getProjects() {
       return await getCollection("projects");
     }
+    async function getTechnologies() {
+      return await getCollection("technologies");
+    }
+    async function getLibraries() {
+      return await getCollection("libraries");
+    }
 
     getProjects()
       .then((results) => {
         if (results.status === 200) {
-          setProjects(results.data);
+          setProjects(
+            results.data.filter((project) => project.included === true)
+          );
+        }
+      })
+      .then(() => {
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    getTechnologies()
+      .then((results) => {
+        if (results.status === 200) {
+          setTechnologies(results.data);
+        }
+      })
+      .then(() => {
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    getLibraries()
+      .then((results) => {
+        if (results.status === 200) {
+          setLibraries(results.data);
         }
       })
       .then(() => {
@@ -66,9 +92,61 @@ const PortfolioExplorer = ({ projectClose, project }) => {
       });
   }, []);
 
-  const filteredProjects = projects?.filter((project) => {
-    return project.featured === true && project.included === true;
-  });
+  const handleTypeChange = (e) => {
+    setType(e.target.value);
+  };
+  const handleTechChange = (e) => {
+    setTech(e.target.value);
+    setLibrary("all");
+    setName("all");
+  };
+  const handleLibraryChange = (e) => {
+    setLibrary(e.target.value);
+    setTech("all");
+    setName("all");
+  };
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+    setTech("all");
+    setLibrary("all");
+  };
+
+  const filterByType = () => {
+    switch (type) {
+      case "featured":
+        return projects.filter((project) => project.featured === true);
+      case "all":
+        return [...projects];
+      default:
+        return [...projects];
+    }
+  };
+
+  const filterProjects = () => {
+    const filteredProjects = filterByType();
+
+    //filter projects by technology
+    //map over technology names for each project then check if resulting array includes the currently selected technology
+    //if so return as part of the filtered array
+    if (tech !== "all") {
+      return filteredProjects.filter((proj) => {
+        return proj.technologies.map((t) => t.name).includes(tech);
+      });
+    } else if (library !== "all") {
+      return filteredProjects.filter((proj) => {
+        return proj.libraries.map((l) => l.name).includes(library);
+      });
+    } else if (name !== "all") {
+      return filteredProjects.filter((proj) => proj.projectName === name);
+    }
+    {
+      return [...filteredProjects];
+    }
+  };
+
+  const projectClose = () => {
+    setShowFull(false);
+  };
 
   return (
     <StyledOuterContainer>
@@ -81,7 +159,12 @@ const PortfolioExplorer = ({ projectClose, project }) => {
         <CloseButton closeFunction={projectClose} />
 
         <div className="titleHeader">
-          <MdWeb className="titleIcon" />
+          <Icon
+            icon="MdWeb"
+            color="#313131"
+            size="50px"
+            className="titleIcon"
+          />
           <h1>Explore Projects</h1>
         </div>
 
@@ -92,10 +175,94 @@ const PortfolioExplorer = ({ projectClose, project }) => {
             </>
           ) : (
             <>
-              <h1>Filter</h1>
+              <div className="options">
+                <div className="filters">
+                  <Icon
+                    icon="FiFilter"
+                    color="#313131"
+                    size="30px"
+                    className="titleIcon"
+                  />
+                  <div className="filter">
+                    <label htmlFor="type">Type:</label>
+                    <select
+                      name="type"
+                      onChange={handleTypeChange}
+                      value={type}
+                    >
+                      <option key="all" value="all">
+                        All
+                      </option>
+                      <option key="featured" value="featured">
+                        Featured
+                      </option>
+                    </select>
+                  </div>
+                  <h5>- AND -</h5>
+                  <div className="filter">
+                    <label htmlFor="name">Name:</label>
+                    <select
+                      name="name"
+                      onChange={handleNameChange}
+                      value={name}
+                    >
+                      <option value="all">All</option>
+                      {projects.map((project) => (
+                        <option
+                          value={project.projectName}
+                          key={project.projectName}
+                        >
+                          {project.projectName}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <h5>- OR -</h5>
+                  <div className="filter">
+                    <label htmlFor="technology">Technology:</label>
+                    <select
+                      name="technology"
+                      onChange={handleTechChange}
+                      value={tech}
+                    >
+                      <option value="all">All</option>
+                      {technologies.map((tech) => (
+                        <option value={tech.name} key={tech.name}>
+                          {tech.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <h5>- OR -</h5>
+
+                  <div className="filter">
+                    <label htmlFor="library">Library:</label>
+                    <select
+                      name="library"
+                      onChange={handleLibraryChange}
+                      value={library}
+                    >
+                      <option value="all">All</option>
+                      {libraries.map((library) => (
+                        <option value={library.name} key={library.name}>
+                          {library.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+                <h4>
+                  No. of projects:{" "}
+                  <span className="projectNumber">
+                    {filterProjects().length}
+                  </span>
+                </h4>
+              </div>
+              {/* <StyledLine /> */}
+
               <div className="projects">
-                {filteredProjects.length > 0 ? (
-                  <Projects projects={filteredProjects} />
+                {filterProjects().length > 0 ? (
+                  <Projects projects={filterProjects()} view={view} />
                 ) : (
                   <h1 className="noresult">No projects to show.</h1>
                 )}
@@ -127,21 +294,62 @@ const StyledInnerContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-items: flex-start;
-  padding: 2rem 4rem;
+  padding: 2rem;
   box-shadow: 0 0 10px 5px #689ed0;
   position: relative;
   z-index: 10;
   width: 95vw;
   //min-height: 95vh;
-  height: 95vh;
-  height: 100%;
+  height: 90vh;
   border: 0.05rem #689ed0 solid;
   border-radius: 4px;
   background-color: var(--color-light-background);
   color: #313131;
   overflow-y: scroll;
-  //overflow-x: scroll;
 
+  .projects {
+    //border: 1px solid red;
+  }
+  .options {
+    width: 100%;
+    //background: #c6c6c6;
+    border: 2px solid #65617d;
+    border-radius: 4px;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 1rem;
+    select {
+      background-color: #313131;
+      border-radius: 4px;
+    }
+    h4 {
+      font-weight: 500;
+      .projectNumber {
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+    }
+  }
+  .filters {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    h5 {
+      color: #313131;
+    }
+    .filter {
+      width: auto;
+      display: flex;
+      label {
+        color: #313131;
+        font-weight: 600;
+      }
+    }
+  }
   h2 {
     margin-bottom: 1rem;
     font-weight: lighter;

@@ -11,9 +11,9 @@ import ProjectCard from "./ProjectCard";
 import ProjectDetail from "./ProjectDetail";
 import { useHistory } from "react-router-dom";
 
-const Projects = ({ projects }) => {
+const Projects = ({ projects, view }) => {
   const [element, controls] = useScroll();
-  const history = useHistory();
+  //const history = useHistory();
 
   //state
   const [currentProject, setCurrentProject] = useState({});
@@ -33,7 +33,7 @@ const Projects = ({ projects }) => {
 
   const projectClose = () => {
     document.body.style.overflowY = "auto";
-    history.push("/#portfolio");
+    //history.push("/#portfolio");
     setShowProjectDetails(false);
   };
 
@@ -48,6 +48,7 @@ const Projects = ({ projects }) => {
           key={uuidv4()}
           project={project}
           handleProjectClick={handleProjectClick}
+          view={view}
         />
       ))}
     </StyledProjects>
@@ -64,6 +65,7 @@ const StyledProjects = styled(motion.div)`
   //gap: 10rem;
   flex-wrap: wrap;
   //overflow-x: scroll;
+  color: black;
 `;
 
 export default Projects;

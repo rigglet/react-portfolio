@@ -48,7 +48,6 @@ const Portfolio = ({ portfolioRef, portfolioControls }) => {
   });
 
   const handleExploreClick = () => {
-    console.log("Click");
     setShowFull(true);
   };
 
@@ -75,8 +74,7 @@ const Portfolio = ({ portfolioRef, portfolioControls }) => {
           <>
             <div className="projects">
               {filteredProjects.length > 0 ? (
-                // <Projects projects={filteredProjects} />
-                <Projects projects={filteredProjects} />
+                <Projects projects={filteredProjects} view="portfolio" />
               ) : (
                 <h1 className="noresult">No projects to show.</h1>
               )}
@@ -95,7 +93,9 @@ const Portfolio = ({ portfolioRef, portfolioControls }) => {
             </motion.button>
           </>
         )}
-        {showFull && <PortfolioExplorer />}
+        {showFull && (
+          <PortfolioExplorer view="explorer" setShowFull={setShowFull} />
+        )}
       </div>
     </PortfolioSection>
   );
