@@ -74,7 +74,7 @@ const Portfolio = ({ portfolioRef, portfolioControls }) => {
           <>
             <div className="projects">
               {filteredProjects.length > 0 ? (
-                <Projects projects={filteredProjects} view="portfolio" />
+                <Projects projects={filteredProjects} portfolio={true} />
               ) : (
                 <h1 className="noresult">No projects to show.</h1>
               )}
@@ -94,7 +94,7 @@ const Portfolio = ({ portfolioRef, portfolioControls }) => {
           </>
         )}
         {showFull && (
-          <PortfolioExplorer view="explorer" setShowFull={setShowFull} />
+          <PortfolioExplorer explorer={true} setShowFull={setShowFull} />
         )}
       </div>
     </PortfolioSection>

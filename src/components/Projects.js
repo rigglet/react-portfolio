@@ -11,7 +11,7 @@ import ProjectCard from "./ProjectCard";
 import ProjectDetail from "./ProjectDetail";
 import { useHistory } from "react-router-dom";
 
-const Projects = ({ projects, view }) => {
+const Projects = ({ projects, explorer = false, portfolio = false }) => {
   const [element, controls] = useScroll();
   //const history = useHistory();
 
@@ -48,7 +48,8 @@ const Projects = ({ projects, view }) => {
           key={uuidv4()}
           project={project}
           handleProjectClick={handleProjectClick}
-          view={view}
+          portfolio={portfolio}
+          explorer={explorer}
         />
       ))}
     </StyledProjects>

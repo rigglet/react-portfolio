@@ -8,7 +8,7 @@ import StyledLine from "../styles/styledLine";
 import { detailPopUp } from "../styles/animations";
 import Loader from "../components/Loader";
 import Projects from "../components/Projects";
-
+import { FaStar } from "react-icons/fa";
 //data
 import { getCollection } from "../api/api";
 
@@ -29,7 +29,11 @@ import "react-image-gallery/styles/css/image-gallery.css";
 //icons
 import Icon from "./Icon";
 
-const PortfolioExplorer = ({ view, setShowFull }) => {
+const PortfolioExplorer = ({
+  portfolio = false,
+  explorer = false,
+  setShowFull,
+}) => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [type, setType] = useState("all");
@@ -148,6 +152,19 @@ const PortfolioExplorer = ({ view, setShowFull }) => {
     setShowFull(false);
   };
 
+  const IconOption = () => {
+    return (
+      <option>
+        <Icon
+          key={uuidv4()}
+          icon="FaStar"
+          color="gold"
+          size="30px"
+          className="featured"
+        />
+      </option>
+    );
+  };
   return (
     <StyledOuterContainer>
       <StyledInnerContainer
@@ -196,6 +213,7 @@ const PortfolioExplorer = ({ view, setShowFull }) => {
                       <option key="featured" value="featured">
                         Featured
                       </option>
+                      <IconOption />
                     </select>
                   </div>
                   <h5>- AND -</h5>
@@ -262,7 +280,7 @@ const PortfolioExplorer = ({ view, setShowFull }) => {
 
               <div className="projects">
                 {filterProjects().length > 0 ? (
-                  <Projects projects={filterProjects()} view={view} />
+                  <Projects projects={filterProjects()} explorer={true} />
                 ) : (
                   <h1 className="noresult">No projects to show.</h1>
                 )}
@@ -307,6 +325,17 @@ const StyledInnerContainer = styled(motion.div)`
   color: #313131;
   overflow-y: scroll;
 
+  .featured {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    padding: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .projects {
     //border: 1px solid red;
   }
@@ -336,8 +365,11 @@ const StyledInnerContainer = styled(motion.div)`
   .filters {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
-    align-items: center;
+    align-items: stretch;
+    row-gap: 0.5rem;
+    column-gap: 0.5rem;
     h5 {
       color: #313131;
     }

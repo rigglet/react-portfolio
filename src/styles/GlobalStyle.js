@@ -67,6 +67,11 @@ body{
   background: white;
   font-family: 'Poppins', sans-serif;
 }
+/* .project-card-link-btn-icon {
+  &:hover {
+    color: #65617d;
+  }
+} */
 
 //Sticky NAV on scroll up
 /* .showNav {
@@ -172,7 +177,6 @@ body{
     border: 2px solid #689ed0;
     color: #689ed0;
     background: transparent;
-    //transition: all 0.5s ease;
     border-radius: 20px;
     text-transform: uppercase;
 
