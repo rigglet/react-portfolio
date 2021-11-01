@@ -2,7 +2,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { fadeInOut, navVariants } from "../styles/animations";
 import { HashLink } from "react-router-hash-link";
 import NavbarIcon from "../components/NavbarIcon";
 
@@ -14,47 +13,12 @@ const Nav = ({
   educationInView,
   experienceInView,
   contactInView,
-  showMenu,
 }) => {
   //showDropMenu manages state of mobile dropdown menu
   const [showDropMenu, setShowMenu] = useState(false);
-  const navMenuButton = {
-    initial: {
-      rotate: [0, 0, 0, 0],
-      transition: {
-        duration: 0.75,
-      },
-    },
-    // animate: {
-    //   x: "0vw",
-    //   transition: {
-    //     duration: 0.75,
-    //   },
-    // },
-    animate: {
-      //scale: [1, 1, 1, 1, 1],
-      rotate: [90, 90, 90, 90],
-      //borderRadius: ["20%", "20%", "50%", "50%", "20%"],
 
-      transition: {
-        duration: 0.5,
-        //delay: 1,
-        type: "spring",
-        mass: 0.5,
-        damping: 5,
-        //repeat: Infinity,
-      },
-    },
-    hover: {
-      //scale: 1.1,
-    },
-  };
   return (
-    <StyledNav
-      variants={navVariants}
-      initial="hidden"
-      animate={showMenu ? "visible" : false}
-    >
+    <StyledNav>
       <Link to="/splash">
         <h1 className="logo">Neil Rigg</h1>
       </Link>

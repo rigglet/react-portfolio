@@ -1,14 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { planeVariants } from "../styles/animations";
 
 export default function plane() {
   return (
     <StyledSVG
-      // variants={planeVariants}
-      // initial="initial"
-      // animate="animationTwo"
       id="plane"
       width="157"
       height="127"
@@ -48,8 +44,6 @@ export default function plane() {
 }
 
 const StyledSVG = styled(motion.svg)`
-  /* align-self: flex-start;
-  justify-self: flex-end; */
-  width: 7vw;
+  width: 10vw;
   height: auto;
 `;

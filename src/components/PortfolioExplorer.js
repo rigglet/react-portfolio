@@ -4,17 +4,19 @@ import { useEffect, useState } from "react";
 //framer motion and styled components
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import StyledLine from "../styles/styledLine";
+//import StyledLine from "../styles/styledLine";
 import { detailPopUp } from "../styles/animations";
 import Loader from "../components/Loader";
 import Projects from "../components/Projects";
-import { FaStar } from "react-icons/fa";
+//import { FaStar } from "react-icons/fa";
+import { MdWeb } from "react-icons/md";
+//import Select, { components } from "react-select";
 //data
 import { getCollection } from "../api/api";
 
 //uuid
-import { v4 as uuidv4 } from "uuid";
-import { serverBaseURL } from "../config/config";
+//import { v4 as uuidv4 } from "uuid";
+//import { serverBaseURL } from "../config/config";
 
 //components
 import CloseButton from "./closeButton";
@@ -142,8 +144,7 @@ const PortfolioExplorer = ({
       });
     } else if (name !== "all") {
       return filteredProjects.filter((proj) => proj.projectName === name);
-    }
-    {
+    } else {
       return [...filteredProjects];
     }
   };
@@ -152,19 +153,6 @@ const PortfolioExplorer = ({
     setShowFull(false);
   };
 
-  const IconOption = () => {
-    return (
-      <option>
-        <Icon
-          key={uuidv4()}
-          icon="FaStar"
-          color="gold"
-          size="30px"
-          className="featured"
-        />
-      </option>
-    );
-  };
   return (
     <StyledOuterContainer>
       <StyledInnerContainer
@@ -174,14 +162,14 @@ const PortfolioExplorer = ({
         exit="exit"
       >
         <CloseButton closeFunction={projectClose} />
-
-        <div className="titleHeader">
-          <Icon
+        <div className="title-header">
+          <MdWeb className="title-icon" />
+          {/* <Icon
             icon="MdWeb"
             color="#313131"
             size="50px"
-            className="titleIcon"
-          />
+            className="title-icon"
+          /> */}
           <h1>Explore Projects</h1>
         </div>
 
@@ -213,7 +201,6 @@ const PortfolioExplorer = ({
                       <option key="featured" value="featured">
                         Featured
                       </option>
-                      <IconOption />
                     </select>
                   </div>
                   <h5>- AND -</h5>
@@ -280,7 +267,11 @@ const PortfolioExplorer = ({
 
               <div className="projects">
                 {filterProjects().length > 0 ? (
-                  <Projects projects={filterProjects()} explorer={true} />
+                  <Projects
+                    projects={filterProjects()}
+                    explorer={true}
+                    showStar={true}
+                  />
                 ) : (
                   <h1 className="noresult">No projects to show.</h1>
                 )}
@@ -576,25 +567,6 @@ const StyledInnerContainer = styled(motion.div)`
   }
   .fullscreen .image-gallery-slide img {
     height: 80vh;
-  }
-`;
-
-const StyledIcons = styled(motion.div)`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  gap: 0.5rem;
-  padding: 1rem 0.5rem;
-  a {
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    column-gap: 3rem;
-    h4 {
-      color: #1c3b57;
-    }
   }
 `;
 

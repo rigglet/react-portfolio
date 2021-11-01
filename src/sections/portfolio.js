@@ -74,7 +74,11 @@ const Portfolio = ({ portfolioRef, portfolioControls }) => {
           <>
             <div className="projects">
               {filteredProjects.length > 0 ? (
-                <Projects projects={filteredProjects} portfolio={true} />
+                <Projects
+                  projects={filteredProjects}
+                  portfolio={true}
+                  showStar={false}
+                />
               ) : (
                 <h1 className="noresult">No projects to show.</h1>
               )}

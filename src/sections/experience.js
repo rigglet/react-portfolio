@@ -10,11 +10,11 @@ import {
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 import Icon from "../components/Icon";
-import {
-  //fadeInOut,
-  //elementSlideInOut,
-  containerSlideInOutLeft,
-} from "../styles/animations";
+// import {
+//   //fadeInOut,
+//   //elementSlideInOut,
+//   //containerSlideInOutLeft,
+// } from "../styles/animations";
 
 const Experience = ({ experienceRef, experienceControls }) => {
   return (

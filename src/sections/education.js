@@ -4,8 +4,8 @@ import styled from "styled-components";
 import StyledLine from "../styles/styledLine";
 //import Loader from "../components/Loader";
 import Icon from "../components/Icon";
-import motarImage from "../img/motarboard.svg";
-import { fadeInOut } from "../styles/animations";
+import mortarImage from "../img/mortarboard.svg";
+//import { fadeInOut } from "../styles/animations";
 
 const Education = ({ educationRef, educationControls }) => {
   return (
@@ -33,7 +33,7 @@ const Education = ({ educationRef, educationControls }) => {
 
       <div className="content">
         <div className="card">
-          <img className="card-image" src={motarImage} />
+          <img className="card-image" src={mortarImage} alt="Motarboard cap" />
           <div className="card-text">
             <span className="place">High School</span>
             <h2>GCSEs</h2>
@@ -48,7 +48,7 @@ const Education = ({ educationRef, educationControls }) => {
         </div>
 
         <div className="card">
-          <img className="card-image" src={motarImage} />
+          <img className="card-image" src={mortarImage} alt="Motarboard cap" />
           <div className="card-text">
             <span className="place">College</span>
             <h2>A-Levels</h2>
@@ -86,7 +86,7 @@ const Education = ({ educationRef, educationControls }) => {
         </div> */}
 
         <div className="card">
-          <img className="card-image" src={motarImage} />
+          <img className="card-image" src={mortarImage} alt="Motarboard cap" />
           <div className="card-text">
             <span className="place">University</span>
             <h2>Degree</h2>

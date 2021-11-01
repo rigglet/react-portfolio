@@ -2,18 +2,23 @@ import { useState } from "react";
 //framer motion and styled components
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { detailPopUp } from "../styles/animations";
-import useScroll from "../components/useScroll";
+//import { detailPopUp } from "../styles/animations";
+//import useScroll from "../components/useScroll";
+
 //uuid
 import { v4 as uuidv4 } from "uuid";
+
 //components
 import ProjectCard from "./ProjectCard";
 import ProjectDetail from "./ProjectDetail";
-import { useHistory } from "react-router-dom";
 
-const Projects = ({ projects, explorer = false, portfolio = false }) => {
-  const [element, controls] = useScroll();
-  //const history = useHistory();
+const Projects = ({
+  projects,
+  explorer = false,
+  portfolio = false,
+  showStar = false,
+}) => {
+  //const [element, controls] = useScroll();
 
   //state
   const [currentProject, setCurrentProject] = useState({});
@@ -33,14 +38,17 @@ const Projects = ({ projects, explorer = false, portfolio = false }) => {
 
   const projectClose = () => {
     document.body.style.overflowY = "auto";
-    //history.push("/#portfolio");
     setShowProjectDetails(false);
   };
 
   return (
     <StyledProjects>
       {showProjectDetails && (
-        <ProjectDetail project={currentProject} projectClose={projectClose} />
+        <ProjectDetail
+          id={uuidv4()}
+          project={currentProject}
+          projectClose={projectClose}
+        />
       )}
 
       {projects.map((project) => (
@@ -50,6 +58,7 @@ const Projects = ({ projects, explorer = false, portfolio = false }) => {
           handleProjectClick={handleProjectClick}
           portfolio={portfolio}
           explorer={explorer}
+          showStar={showStar}
         />
       ))}
     </StyledProjects>

@@ -1,3 +1,7 @@
+/**
+ * Contact Section
+ */
+
 import { useState } from "react";
 
 //framer motion and styled components
@@ -89,7 +93,6 @@ const Contact = ({ contactRef, contactControls, showMenu }) => {
   };
 
   const CloseButton = ({ closeToast }) => (
-    //<FaWindowClose className="toastClose" onClick={closeToast} />
     <Icon
       icon="FaWindowClose"
       color="#689ed0"
@@ -149,7 +152,7 @@ const Contact = ({ contactRef, contactControls, showMenu }) => {
           variants={slideRight}
           animate={contactControls}
         >
-          <div className="formItem">
+          <div className="form-item">
             <label>Name:</label>
             <input
               id="name"
@@ -160,7 +163,7 @@ const Contact = ({ contactRef, contactControls, showMenu }) => {
               onChange={handleChange}
             />
           </div>
-          <div className="formItem">
+          <div className="form-item">
             <label>Subject:</label>
             <input
               id="subject"
@@ -171,7 +174,7 @@ const Contact = ({ contactRef, contactControls, showMenu }) => {
               onChange={handleChange}
             />
           </div>
-          <div className="formItem">
+          <div className="form-item">
             <label>Email:</label>
             <input
               id="email"
@@ -182,7 +185,7 @@ const Contact = ({ contactRef, contactControls, showMenu }) => {
               onChange={handleChange}
             />
           </div>
-          <div className="formItem">
+          <div className="form-item">
             <label htmlFor="message">Message:</label>
             <textarea
               id="msg"
@@ -237,12 +240,16 @@ const Contact = ({ contactRef, contactControls, showMenu }) => {
           </motion.div>
 
           <motion.div
-            className="contactBar"
+            className="contact-bar"
             initial="initial"
             variants={slideUp}
             animate={contactControls}
           >
-            <ContactIconBar size="40px" color="whitesmoke" />
+            <ContactIconBar
+              size="50px"
+              color="whitesmoke"
+              bgcolor="var(--highlight-dark)"
+            />
           </motion.div>
         </div>
       </ContactInfo>
@@ -278,7 +285,7 @@ const ContactInfo = styled(motion.div)`
     border-radius: 10px;
     min-height: 100%;
 
-    .formItem {
+    .form-item {
       display: flex;
       flex-direction: column;
       row-gap: 0.25rem;
@@ -329,7 +336,7 @@ const ContactInfo = styled(motion.div)`
         justify-self: flex-end;
       }
     }
-    .contactBar {
+    .contact-bar {
       position: absolute;
       bottom: 0;
       right: 0;

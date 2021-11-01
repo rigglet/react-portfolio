@@ -1,10 +1,15 @@
+/**
+ * @description Close button component, displays a close button, used to close modal popups
+ * @param {function} function called by the on-click event
+ * @returns jsx component
+ */
 import styled from "styled-components";
 import { AiFillCloseCircle } from "react-icons/ai";
 
 export default function closeButton({ closeFunction }) {
   return (
     <StyledClose onClick={() => closeFunction(false)}>
-      <AiFillCloseCircle className="closeButton" />
+      <AiFillCloseCircle className="close-button" />
     </StyledClose>
   );
 }
@@ -14,7 +19,7 @@ const StyledClose = styled.div`
   position: absolute;
   top: 1rem;
   right: 1rem;
-  .closeButton {
+  .close-button {
     cursor: pointer;
     width: 30px;
     height: 30px;

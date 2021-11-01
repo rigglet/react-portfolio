@@ -28,6 +28,8 @@ html{
   
   --header-color-light: #f5f5f5;
   --header-color-dark: #313131;
+
+  --highlight-dark: #1f2525;
   
   --gradient-ltr: linear-gradient(
     90deg,
@@ -161,8 +163,7 @@ body{
   background: transparent;
 }
 *::-webkit-scrollbar-thumb {
-  background-color: #689ed0;
-  background-color: black;
+  background-color: #65617d;
   border-radius: 20px;
   border: 1px solid white;
 }
@@ -331,7 +332,7 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-.titleHeader {
+.title-header {
   display: flex;
   column-gap: 1rem;
   margin-bottom: 1rem;
@@ -340,7 +341,7 @@ input:checked + .slider:before {
     font-weight: 600;
     //margin-bottom: 0.5rem;
   }
-  .titleIcon {
+  .title-icon {
     width: 30px;
     height: 30px;
   }

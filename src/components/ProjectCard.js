@@ -1,27 +1,34 @@
+import { useEffect, useState } from "react";
+import { serverBaseURL } from "../config/config";
+
 //framer motion and styled components
 import { motion } from "framer-motion";
 import styled from "styled-components";
 //uuid
 import { v4 as uuidv4 } from "uuid";
 //default image
-import defaultImage from "../img/coding_screens.svg";
+//import defaultImage from "../img/coding_screens.svg";
 //functions
 import Icon from "./Icon";
 import { HiLink } from "react-icons/hi";
 import { FaGithubSquare } from "react-icons/fa";
-import { serverBaseURL } from "../config/config";
 
 const ProjectCard = ({
   project,
   handleProjectClick,
   explorer = false,
   portfolio = false,
+  showStar = false,
 }) => {
-  //console.log("explorer", explorer);
-  //console.log("portfolio", portfolio);
-  // const imageError = () => {
+  let [mainImage, setMainImage] = useState({});
 
-  // }
+  useEffect(() => {
+    setMainImage(
+      project.screenshots?.filter((image) => {
+        return image._id === project?.mainImage;
+      })[0]
+    );
+  }, [project.mainImage, project.screenshots]);
 
   return (
     <StyledCard>
@@ -31,46 +38,50 @@ const ProjectCard = ({
           key={uuidv4()}
           icon="CgDetailsMore"
           color="whitesmoke"
-          size="50px"
+          size="100px"
         />
         <div className="links">
-          <a
-            key={uuidv4()}
-            href={project.githubLink}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <button className="project-card-link-btn">
-              <FaGithubSquare
-                title="Open project in github"
-                className="project-card-link-btn-icon"
-                size="25px"
-              />
-              View code
-            </button>
-          </a>
-          <a
-            key={uuidv4()}
-            href={project.website}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <button className="project-card-link-btn">
-              <HiLink
-                title="Open live project website"
-                className="project-card-link-btn-icon"
-                size="25px"
-              />
-              View live
-            </button>
-          </a>
+          {project.githubLink && (
+            <a
+              key={uuidv4()}
+              href={project.githubLink}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <button className="project-card-link-btn">
+                <FaGithubSquare
+                  title="Open project in github"
+                  className="project-card-link-btn-icon"
+                  size="25px"
+                />
+                View code
+              </button>
+            </a>
+          )}
+          {project.website && (
+            <a
+              key={uuidv4()}
+              href={project.website}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <button className="project-card-link-btn">
+                <HiLink
+                  title="Open live project website"
+                  className="project-card-link-btn-icon"
+                  size="25px"
+                />
+                View live
+              </button>
+            </a>
+          )}
         </div>
       </div>
       {/* END OF OVERLAY */}
 
       {/* START OF CARD */}
       <div className="image-container">
-        {project.featured && (
+        {project.featured && showStar && (
           <Icon
             icon="FaStar"
             color="gold"
@@ -79,12 +90,24 @@ const ProjectCard = ({
             className="featured"
           />
         )}
-
-        <img
-          src={`${serverBaseURL()}/images/${project.screenshots[0]?.fileName}`}
-          alt="project"
-          onError={(src) => (src = defaultImage)}
-        />
+        {/* {project.screenshots[0]?.fileName ? (
+          <img
+            src={`${serverBaseURL()}/images/${
+              project.screenshots[0]?.fileName
+            }`}
+            alt="project"
+          />
+        ) : (
+          <Icon icon="BsImageFill" color="#65617d" size="50%" title="project" />
+        )} */}
+        {mainImage ? (
+          <img
+            src={`${serverBaseURL()}/images/${mainImage?.fileName}`}
+            alt="project"
+          />
+        ) : (
+          <Icon icon="BsImageFill" color="#65617d" size="50%" title="project" />
+        )}
       </div>
       <div className="information">
         <h4
@@ -184,6 +207,9 @@ const StyledCard = styled(motion.div)`
   }
 
   .image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 10px;
     min-height: 175px;
     border: 0;
@@ -308,12 +334,6 @@ const StyledCard = styled(motion.div)`
       }
     }
   }
-`;
-
-const Line = styled(motion.div)`
-  width: 100%;
-  height: 1px;
-  background: #689ed0;
 `;
 
 const StyledIcons = styled(motion.div)`

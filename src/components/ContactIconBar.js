@@ -1,3 +1,11 @@
+/**
+ * Returns x raised to the n-th power.
+ *
+ * @param {number} x The number to raise.
+ * @param {number} n The power, must be a natural number.
+ * @return {number} x raised to the n-th power.
+ */
+
 import { useState, useEffect } from "react";
 //framer motion and styled components
 import { motion } from "framer-motion";
@@ -8,7 +16,14 @@ import Icon from "./Icon";
 //data
 import { getCollection } from "../api/api";
 
-const ContactIconBar = ({ size, color }) => {
+/**
+ * Returns x raised to the n-th power.
+ *
+ * @param {number} x The number to raise.
+ * @param {number} n The power, must be a natural number.
+ * @return {number} x raised to the n-th power.
+ */
+const ContactIconBar = ({ size, color, bgcolor }) => {
   const [links, setLinks] = useState([]);
 
   useEffect(() => {
@@ -25,11 +40,10 @@ const ContactIconBar = ({ size, color }) => {
   }, []);
 
   return (
-    <StyledBar>
+    <StyledBar bgcolor={bgcolor}>
       {links.map((link) => (
         <a key={uuidv4()} target="_blank" rel="noreferrer" href={link.address}>
           <Icon icon={link.icon} color={color} size={size} />
-          {/* <Icon icon="FaDAndD" color={color} size={size} /> */}
         </a>
       ))}
     </StyledBar>
@@ -41,7 +55,7 @@ const StyledBar = styled(motion.div)`
   align-items: center;
   column-gap: 1rem;
   border-radius: 10px;
-  background: #1f2525;
+  background: ${({ bgcolor }) => bgcolor};
   padding: 0.5rem;
 
   a {
@@ -51,7 +65,4 @@ const StyledBar = styled(motion.div)`
   }
 `;
 
-// const StyledLink = styled(Link)`
-//   text-decoration: none;
-// `;
 export default ContactIconBar;

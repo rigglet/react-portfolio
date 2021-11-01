@@ -168,6 +168,7 @@ const AboutSection = styled(motion.div)`
       overflow: hidden;
       object-fit: scale-down;
       object-position: center;
+      margin-bottom: 2rem;
     }
   }
 

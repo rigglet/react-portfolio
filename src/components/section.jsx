@@ -27,9 +27,6 @@ function section({
 }
 
 const StyledSection = styled(motion.section)`
-  //border: 1px solid red;
-  //scroll-snap-align: start;
-  //border-top: 7vh solid var(--container-light-border);
   background-color: var(--color-dark-background);
 
   display: flex;
@@ -42,17 +39,13 @@ const StyledSection = styled(motion.section)`
   height: ${({ full, half }) => (full ? "100vh" : half ? "50vh" : "auto")};
   min-height: ${({ full, half }) => (full ? "100vh" : half ? "100vh" : "auto")};
 
-  //height: auto;
   min-height: 100vh;
 
   //#### RESPONSIVE SECTION ####
   //320px — 480px: Mobile devices
   @media screen and (max-width: 480px) and (orientation: portrait) {
-    //margin: 1rem;
-    //border: 2px solid red;
     min-height: 100vh;
     height: auto;
-    //max-height: 100vh;
   }
   //320px — 480px: Mobile devices
   @media screen and (max-width: 850px) and (orientation: landscape) {

@@ -8,7 +8,7 @@ import Contact from "./sections/contact";
 import Portfolio from "./sections/portfolio";
 import Skills from "./sections/skills";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
 import { AnimatePresence } from "framer-motion";
 import Splash from "./pages/Splash";
 import Nav from "./components/Nav";
@@ -25,35 +25,10 @@ function App() {
   const [experienceRef, experienceControls, experienceInView] = useScroll();
   const [contactRef, contactControls, contactInView] = useScroll();
 
-  //const [elementRef, scrollFnc, hideNav] = useHideNav();
-
   const elementRef = useRef();
-  const [scrollTop, setScrollTop] = useState(window.pageYOffset);
-  const [showMenu, setShowMenu] = useState(true);
-
-  //console.log(window.pageYOffset);
-
-  const scrollFnc = () => {
-    //const scrollHeight = appRef.current?.scrollHeight;
-    const st = elementRef?.current?.scrollTop;
-    st > scrollTop ? setShowMenu(true) : setShowMenu(false);
-    setScrollTop((prev) => {
-      if (prev !== st) return st;
-    });
-    //console.log(st, scrollTop, showMenu);
-    //console.log(showMenu);
-  };
-
-  useEffect(() => {
-    scrollFnc();
-  }, []);
 
   return (
-    <div
-      className="app"
-      //onScroll={() => scrollFnc()}
-      ref={elementRef}
-    >
+    <div className="app" ref={elementRef}>
       <AnimatePresence initial={false} exitBeforeEnter>
         <Switch>
           <Route exact path="/splash">
@@ -64,7 +39,6 @@ function App() {
           </Route>
           <Route exact path="/">
             <Nav
-              showMenu={showMenu}
               homeInView={homeInView}
               aboutInView={aboutInView}
               portfolioInView={portfolioInView}
@@ -76,20 +50,12 @@ function App() {
 
             <Section id="home" full snap="start">
               <Container full dark>
-                <Home
-                  homeRef={homeRef}
-                  homeControls={homeControls}
-                  showMenu={showMenu}
-                />
+                <Home homeRef={homeRef} homeControls={homeControls} />
               </Container>
             </Section>
             <Section id="about" full snap="start">
               <Container light>
-                <About
-                  aboutRef={aboutRef}
-                  aboutControls={aboutControls}
-                  showMenu={showMenu}
-                />
+                <About aboutRef={aboutRef} aboutControls={aboutControls} />
               </Container>
             </Section>
             <Section id="portfolio" snap="start">
@@ -97,17 +63,12 @@ function App() {
                 <Portfolio
                   portfolioRef={portfolioRef}
                   portfolioControls={portfolioControls}
-                  showMenu={showMenu}
                 />
               </Container>
             </Section>
             <Section id="skills" snap="start">
               <Container light>
-                <Skills
-                  skillsRef={skillsRef}
-                  skillsControls={skillsControls}
-                  showMenu={showMenu}
-                />
+                <Skills skillsRef={skillsRef} skillsControls={skillsControls} />
               </Container>
             </Section>
             <Section id="education" snap="start">
@@ -115,7 +76,6 @@ function App() {
                 <Education
                   educationRef={educationRef}
                   educationControls={educationControls}
-                  showMenu={showMenu}
                 />
               </Container>
             </Section>
@@ -124,7 +84,6 @@ function App() {
                 <Experience
                   experienceRef={experienceRef}
                   experienceControls={experienceControls}
-                  showMenu={showMenu}
                 />
               </Container>
             </Section>
@@ -133,12 +92,9 @@ function App() {
                 <Contact
                   contactRef={contactRef}
                   contactControls={contactControls}
-                  showMenu={showMenu}
                 />
               </Container>
             </Section>
-            {/*
-             */}
           </Route>
         </Switch>
       </AnimatePresence>

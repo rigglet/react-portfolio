@@ -7,7 +7,7 @@ import styled from "styled-components";
 import StyledLine from "../styles/styledLine";
 import Icon from "../components/Icon";
 import {
-  containerSlideInOutRight,
+  //containerSlideInOutRight,
   // slideUp,
   // bounceDown,
   // slideRight,
