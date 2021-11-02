@@ -46,7 +46,6 @@ const Skills = ({ skillsRef, skillsControls }) => {
     getTools()
       .then((results) => {
         if (results.status === 200) {
-          //console.log(results.status);
           setTools(results.data);
         }
       })
