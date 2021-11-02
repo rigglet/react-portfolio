@@ -192,26 +192,47 @@ export const slideUp = {
   },
 };
 
-export const slideLeft = {
+export const scaleUpRight = {
   initial: {
     opacity: 0,
-    x: 100,
+    x: "-25vw",
+    scale: 0,
     transition: {
-      duration: 0.5,
+      duration: 1,
     },
   },
   animate: {
-    opacity: 1,
     x: 0,
+    opacity: 1,
+    scale: 1,
     transition: {
-      duration: 0.5,
+      duration: 2,
       delay: 1,
-      type: "spring",
-      mass: 0.6,
-      damping: 5,
     },
   },
 };
+
+export const slideLeft = {
+  initial: {
+    opacity: 0,
+    x: "50vw",
+    transition: {
+      duration: 1,
+    },
+  },
+  animate: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 2,
+      delay: 1,
+      // type: "spring",
+      // mass: 0.6,
+      // damping: 5,
+    },
+  },
+};
+
 export const slideRight = {
   initial: {
     opacity: 0,
