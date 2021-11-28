@@ -29,13 +29,13 @@ function container({
 const StyledContainer = styled(motion.div)`
   position: relative;
   display: flex;
-  flex-direction: column;
+  //flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 1rem 0 0 0;
-  //height: ${({ full, half }) => (full ? "93vh" : half ? "50vh" : "auto")};
+  //height: ${({ full, half }) => (full ? "93%" : half ? "50%" : "auto")};
+  height: ${({ full, half }) => (full ? "100vh" : half ? "50vh" : "auto")};
   //width: ${({ left, right }) => (left || right ? "90vw" : "100vw")};
-  height: ${({ full, half }) => (full ? "93%" : half ? "50%" : "auto")};
   width: ${({ left, right }) => (left || right ? "90%" : "100%")};
   min-height: 50vh;
 

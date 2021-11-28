@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  //cursor: default;
 }
 
 
@@ -106,7 +107,7 @@ body{
     }
     //h2 sub-heading on some sections
     .section-subheading {
-      font-weight: 300;
+      font-weight: 400;
       font-size: 1.2rem;
       cursor: default;
       padding: 0 1rem;
@@ -151,7 +152,7 @@ body{
 /* The emerging W3C standard
    that is currently Firefox-only */
 * {
-  scrollbar-width: thin;
+  scrollbar-width: none;
   scrollbar-color: rgba(155, 155, 155, 0.7) transparent;
 }
 
@@ -373,7 +374,6 @@ input:checked + .slider:before {
 .vertical-timeline.vertical-timeline-custom-line .vertical-timeline-element--work .vertical-timeline-element-icon {
   box-shadow: 0 0 0 4px #65617d, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
 }
-
 
 .vertical-timeline.vertical-timeline-custom-line .vertical-timeline-element--education .vertical-timeline-element-icon {
   box-shadow: 0 0 0 4px #c2185b, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);

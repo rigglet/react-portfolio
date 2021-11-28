@@ -1,7 +1,7 @@
 //framer motion and styled components
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import profile from "../img/profile.png";
+import profileImage from "../img/profile.png";
 import StyledLine from "../styles/styledLine";
 //animations
 import {
@@ -34,8 +34,8 @@ const About = ({ aboutRef, aboutControls }) => {
           animate={aboutControls}
         >
           <motion.img
-            className="profile"
-            src={profile}
+            className="profile-image"
+            src={profileImage}
             alt="Author of portfolio"
           />
         </motion.div>
@@ -100,21 +100,23 @@ const AboutSection = styled(motion.div)`
     display: grid;
     grid-template-columns: 30% auto;
     grid-template-rows: 400px;
-    grid-column-gap: 1rem;
+    grid-column-gap: 3rem;
     padding: 1rem 0;
 
     .profile-container {
       grid-column: 1 / 1;
       grid-row: 1;
-      display: block;
       width: 400px;
       height: 400px;
       overflow: hidden;
       border-radius: 50%;
       border: 4px solid #313131;
       background: whitesmoke;
+      display: block;
+      align-self: center;
+      justify-self: center;
 
-      .profile {
+      .profile-image {
         width: 100%;
         max-height: 100%;
         border-radius: 50%;
@@ -149,7 +151,7 @@ const AboutSection = styled(motion.div)`
 
         .highlight {
           font-weight: 600;
-          color: #689ed0;
+          //color: #689ed0;
           color: #313131;
         }
         .hi {
@@ -248,11 +250,17 @@ const AboutSection = styled(motion.div)`
   @media screen and (max-width: 850px) and (orientation: landscape) {
     height: auto;
     padding: 0 2.5rem;
-    z-index: 20;
+    //z-index: 20;
 
     .content {
       margin-top: 1rem;
       row-gap: 1rem;
+
+      .profile-container {
+        display: block;
+        width: 300px;
+        height: 300px;
+      }
 
       .copy {
         flex-direction: column;
@@ -264,25 +272,20 @@ const AboutSection = styled(motion.div)`
 
           .highlight {
             font-weight: 600;
-            color: #689ed0;
+            //color: #689ed0;
           }
         }
 
-        #first {
+        .first {
           display: inline-block;
         }
-        #last,
-        #dot {
+        .last,
+        .dot {
           font-size: 3rem;
         }
-        #hi {
+        .hi {
           font-size: 1rem;
         }
-      }
-
-      .profile {
-        min-width: 200px;
-        height: 200px;
       }
     }
   }
@@ -291,11 +294,7 @@ const AboutSection = styled(motion.div)`
   @media screen and (min-width: 481px) and (max-width: 769px) and (orientation: portrait),
     screen and (min-width: 481px) and (max-width: 769px) and (orientation: landscape),
     screen and (min-width: 1024px) and (max-width: 1200px) and (orientation: portrait),
-    screen and (min-width: 1024px) and (max-width: 1200px) and (orientation: landscape),
-    screen and (min-width: 1201px) and (orientation: portrait),
-    screen and (min-width: 1201px) and (orientation: landscape),
-    screen and (min-width: 1921px) and (orientation: portrait),
-    screen and (min-width: 1921px) and (orientation: landscape) {
+    screen and (min-width: 1024px) and (max-width: 1200px) and (orientation: landscape) {
     padding: 0rem 1rem;
 
     .content {

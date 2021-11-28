@@ -509,32 +509,35 @@ const SkillsSection = styled(motion.div)`
   //justify-content: flex-end;
   display: flex;
   flex-direction: column;
-  row-gap: 2rem;
   height: auto;
   width: 100%;
   z-index: 2;
-  padding: 4rem 2rem 2rem 2rem;
+  padding: 4rem 4rem 4rem 4rem;
+  row-gap: 3rem;
 
+  //wrapper to animate styledLine
   .wrapper {
     width: 100%;
     height: auto;
   }
+
   .skill-section {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     z-index: 1;
+    row-gap: 1rem;
 
     .content {
       display: flex;
       flex-wrap: wrap;
-      //flex-direction: column;
       width: 100%;
       height: auto;
       align-items: flex-start;
       justify-content: space-evenly;
-      gap: 7rem;
+      row-gap: 3rem;
+      column-gap: 5rem;
       z-index: 1;
 
       section {
@@ -542,7 +545,6 @@ const SkillsSection = styled(motion.div)`
         flex-direction: column;
         align-items: center;
         gap: 0.5rem;
-        //border: 1px solid red;
 
         .selection {
           display: flex;

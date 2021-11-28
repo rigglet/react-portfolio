@@ -29,16 +29,21 @@ function section({
 const StyledSection = styled(motion.section)`
   background-color: var(--color-dark-background);
 
+  /* justify-content: ${({ full, half }) =>
+    full ? "flex-end" : half ? "center" : "center"}; */
+  //justify-content: center;
+  /* align-items: ${({ left, right }) =>
+    left ? "flex-start" : right ? "flex-end" : "center"}; */
+  /* min-height: ${({ full, half }) =>
+    full ? "100vh" : half ? "100vh" : "auto"}; */
+
   display: flex;
-  flex-direction: column;
+  //flex-direction: column;
+  align-items: center;
   justify-content: center;
-  align-items: ${({ left, right }) =>
-    left ? "flex-start" : right ? "flex-end" : "center"};
 
   width: "100vw";
   height: ${({ full, half }) => (full ? "100vh" : half ? "50vh" : "auto")};
-  min-height: ${({ full, half }) => (full ? "100vh" : half ? "100vh" : "auto")};
-
   min-height: 100vh;
 
   //#### RESPONSIVE SECTION ####

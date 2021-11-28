@@ -258,19 +258,35 @@ const Contact = ({ contactRef, contactControls, showMenu }) => {
 };
 
 const ContactSection = styled(motion.div)`
-  height: auto;
+  height: 100%;
   width: 100%;
+  padding: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
-  padding: 4rem;
+  justify-content: center;
+
+  //#### RESPONSIVE SECTION ####
+  //320px — 480px: Mobile devices
+  @media screen and (max-width: 480px) and (orientation: portrait) {
+  }
+
+  //320px — 480px: Mobile devices
+  @media screen and (max-width: 850px) and (orientation: landscape) {
+  }
+
+  //481px — 768px: iPads, Tablets
+  @media screen and (min-width: 481px) and (max-width: 769px) and (orientation: portrait),
+    screen and (min-width: 481px) and (max-width: 769px) and (orientation: landscape),
+    screen and (min-width: 1024px) and (max-width: 1200px) and (orientation: portrait),
+    screen and (min-width: 1024px) and (max-width: 1200px) and (orientation: landscape) {
+  }
 `;
 
 const ContactInfo = styled(motion.div)`
   display: flex;
   width: 100%;
-  min-height: 100%;
+  height: auto;
   flex-grow: 1;
   padding: 1rem;
 
@@ -283,7 +299,6 @@ const ContactInfo = styled(motion.div)`
     background: #1f2525;
     padding: 2rem;
     border-radius: 10px;
-    min-height: 100%;
 
     .form-item {
       display: flex;

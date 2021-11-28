@@ -19,8 +19,15 @@ const StyledClose = styled.div`
   position: absolute;
   top: 1rem;
   right: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  padding: 0.5rem;
+
   .close-button {
-    cursor: pointer;
+    border-radius: 50%;
+    pointer-events: none;
     width: 30px;
     height: 30px;
     background-color: whitesmoke;

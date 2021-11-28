@@ -48,17 +48,17 @@ function App() {
               contactInView={contactInView}
             />
 
-            <Section id="home" full snap="start">
+            <Section id="home" full>
               <Container full dark>
                 <Home homeRef={homeRef} homeControls={homeControls} />
               </Container>
             </Section>
-            <Section id="about" full snap="start">
+            <Section id="about" full>
               <Container light>
                 <About aboutRef={aboutRef} aboutControls={aboutControls} />
               </Container>
             </Section>
-            <Section id="portfolio" snap="start">
+            <Section id="portfolio">
               <Container dark>
                 <Portfolio
                   portfolioRef={portfolioRef}
@@ -66,12 +66,12 @@ function App() {
                 />
               </Container>
             </Section>
-            <Section id="skills" snap="start">
+            <Section id="skills">
               <Container light>
                 <Skills skillsRef={skillsRef} skillsControls={skillsControls} />
               </Container>
             </Section>
-            <Section id="education" snap="start">
+            <Section id="education">
               <Container dark>
                 <Education
                   educationRef={educationRef}
@@ -79,15 +79,15 @@ function App() {
                 />
               </Container>
             </Section>
-            <Section id="experience" full snap="start">
-              <Container full light>
+            <Section id="experience">
+              <Container light>
                 <Experience
                   experienceRef={experienceRef}
                   experienceControls={experienceControls}
                 />
               </Container>
             </Section>
-            <Section id="contact" full snap="start">
+            <Section id="contact" full>
               <Container full dark>
                 <Contact
                   contactRef={contactRef}

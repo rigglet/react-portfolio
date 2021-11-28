@@ -122,6 +122,7 @@ const Experience = ({ experienceRef, experienceControls }) => {
     </ExperienceSection>
   );
 };
+
 const ExperienceSection = styled(motion.div)`
   //added to center styledLine
   display: flex;
@@ -131,9 +132,13 @@ const ExperienceSection = styled(motion.div)`
   //added to center styledLine
 
   padding: 4rem 0rem 0rem 0rem;
+  padding: 4rem 0rem 4rem 0rem;
   //min-height: 93vh;
+  height: 100%;
   height: auto;
   width: 100%;
+  min-height: 100%;
+  border: 1px solid red;
 
   .content {
     //color: var(--color-dark-text);

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import NavbarIcon from "../components/NavbarIcon";
 
@@ -19,9 +18,7 @@ const Nav = ({
 
   return (
     <StyledNav>
-      <Link to="/splash">
-        <h1 className="logo">Neil Rigg</h1>
-      </Link>
+      <h1 className="logo">Neil Rigg</h1>
 
       <motion.div className={showDropMenu ? "menu" : "menu mob-menu-hide"}>
         <HashLink
@@ -164,13 +161,6 @@ const Nav = ({
       </motion.div>
 
       {showDropMenu ? (
-        // <motion.div
-        //   className="anim-button"
-        //   variants={navMenuButton}
-        //   initial="initial"
-        //   animate={showDropMenu ? "animate" : "initial"}
-        //   >
-        //   </motion.div>
         <NavbarIcon
           icon="CgClose"
           color="white"
@@ -202,14 +192,14 @@ const StyledNav = styled(motion.nav)`
   left: 0;
   z-index: 100;
   width: 100vw;
-  //height: 7vh;
+  height: 10vh;
   height: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: var(--color-nav-background);
   border-bottom: solid 2px var(--color-nav-hover);
-  flex-wrap: wrap;
+  //flex-wrap: wrap;
   //transition: all 1s ease-in-out;
   //border: 1px solid red;
 
@@ -233,8 +223,11 @@ const StyledNav = styled(motion.nav)`
   .menu {
     display: flex;
     justify-content: space-between;
-    margin-right: 2rem;
-    flex-wrap: wrap;
+    align-items: center;
+    //justify-self: flex-start;
+    //margin-right: 2rem;
+    //flex-wrap: wrap;
+    border: 1px solid red;
 
     h1 {
       color: whitesmoke;
@@ -248,6 +241,7 @@ const StyledNav = styled(motion.nav)`
 
       &:hover {
         color: #689ed0;
+        cursor: pointer;
       }
 
       will-change: transform;
@@ -261,6 +255,12 @@ const StyledNav = styled(motion.nav)`
       }
     }
   }
+  /* .menu.mob-menu-hide {
+    height: 0vh;
+    overflow: hidden;
+    //visibility: hidden;
+    display: none;
+  } */
 
   //#### RESPONSIVE SECTION ####
   //320px — 480px: Mobile PORTRAIT
@@ -503,24 +503,6 @@ const StyledNav = styled(motion.nav)`
         transform: translateY(1px);
       }
     }
-  }
-  //769px — 1024px: Small screens, laptops
-  //@media screen and (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {}
-  //769px — 1024px: Small screens, laptops
-  //@media screen and (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {}
-  //1025px — 1200px: Desktops, large screens
-  @media screen and (min-width: 1024px) and (max-width: 1200px) and (orientation: portrait) {
-  }
-  //1025px — 1200px: Desktops, large screens
-  //@media screen and (min-width: 1024px) and (max-width: 1200px) and (orientation: landscape) {}
-  //1201px and more —  Extra large screens, TV
-  //@media screen and (min-width: 1201px) and (max-width: 1500px) and (orientation: portrait) {}
-  //1201px and more —  Extra large screens, TV
-  //@media screen and (min-width: 1201px) and (max-width: 1500px) and (orientation: landscape) {}
-  //1501px and more —  Extra large screens, TV
-  //@media screen and (min-width: 1501px) and (orientation: portrait) {}
-  //1501px and more —  Extra large screens, TV
-  @media screen and (min-width: 1921px) and (orientation: landscape) {
   }
 `;
 
