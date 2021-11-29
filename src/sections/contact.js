@@ -269,10 +269,12 @@ const ContactSection = styled(motion.div)`
   //#### RESPONSIVE SECTION ####
   //320px — 480px: Mobile devices
   @media screen and (max-width: 480px) and (orientation: portrait) {
+    padding: 0;
   }
 
   //320px — 480px: Mobile devices
   @media screen and (max-width: 850px) and (orientation: landscape) {
+    padding: 0;
   }
 
   //481px — 768px: iPads, Tablets
@@ -280,6 +282,7 @@ const ContactSection = styled(motion.div)`
     screen and (min-width: 481px) and (max-width: 769px) and (orientation: landscape),
     screen and (min-width: 1024px) and (max-width: 1200px) and (orientation: portrait),
     screen and (min-width: 1024px) and (max-width: 1200px) and (orientation: landscape) {
+    padding: 0;
   }
 `;
 
@@ -355,6 +358,37 @@ const ContactInfo = styled(motion.div)`
       position: absolute;
       bottom: 0;
       right: 0;
+    }
+  }
+
+  //#### RESPONSIVE SECTION ####
+  //320px — 480px: Mobile devices
+  @media screen and (max-width: 480px) and (orientation: portrait) {
+    padding: 1rem;
+    align-items: unset;
+    .contact-images {
+      display: none;
+    }
+  }
+
+  //320px — 480px: Mobile devices
+  @media screen and (max-width: 850px) and (orientation: landscape) {
+    padding: 1rem;
+    align-items: unset;
+    .contact-images {
+      display: none;
+    }
+  }
+
+  //481px — 768px: iPads, Tablets
+  @media screen and (min-width: 481px) and (max-width: 769px) and (orientation: portrait),
+    screen and (min-width: 481px) and (max-width: 769px) and (orientation: landscape),
+    screen and (min-width: 1024px) and (max-width: 1200px) and (orientation: portrait),
+    screen and (min-width: 1024px) and (max-width: 1200px) and (orientation: landscape) {
+    padding: 1rem;
+    align-items: unset;
+    .contact-images {
+      display: none;
     }
   }
 `;
