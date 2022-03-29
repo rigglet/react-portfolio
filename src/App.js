@@ -88,7 +88,7 @@ function App() {
               </Container>
             </Section>
             <Section id="contact" full>
-              <Container full dark>
+              <Container dark>
                 <Contact
                   contactRef={contactRef}
                   contactControls={contactControls}

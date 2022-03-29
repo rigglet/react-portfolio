@@ -258,7 +258,7 @@ const Contact = ({ contactRef, contactControls, showMenu }) => {
 };
 
 const ContactSection = styled(motion.div)`
-  height: 100%;
+  height: auto;
   width: 100%;
   padding: 4rem;
   display: flex;
@@ -302,6 +302,7 @@ const ContactInfo = styled(motion.div)`
     background: #1f2525;
     padding: 2rem;
     border-radius: 10px;
+    gap: 1rem;
 
     .form-item {
       display: flex;
