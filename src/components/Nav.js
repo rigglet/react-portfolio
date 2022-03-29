@@ -172,7 +172,7 @@ const Nav = ({
         />
       ) : (
         <NavbarIcon
-          icon="FaHamburger"
+          icon="FiMenu"
           color="white"
           size="30px"
           title="Menu"
@@ -196,6 +196,7 @@ const StyledNav = styled(motion.nav)`
   height: auto;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   justify-content: space-between;
   background-color: var(--color-nav-background);
   border-bottom: solid 2px var(--color-nav-hover);
@@ -227,7 +228,7 @@ const StyledNav = styled(motion.nav)`
     //justify-self: flex-start;
     //margin-right: 2rem;
     //flex-wrap: wrap;
-    border: 1px solid red;
+    //border: 1px solid red;
 
     h1 {
       color: whitesmoke;

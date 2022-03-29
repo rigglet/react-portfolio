@@ -107,7 +107,7 @@ const Experience = ({ experienceRef, experienceControls }) => {
           </VerticalTimelineElement>
         </VerticalTimeline>
       </div>
-      <HashLink smooth to="/#contact">
+      <HashLink id="contact-btn" smooth to="/#contact">
         <motion.button
           className="page-btn light-btn"
           variants={buttonVariants}
@@ -138,7 +138,7 @@ const ExperienceSection = styled(motion.div)`
   height: auto;
   width: 100%;
   min-height: 100%;
-  border: 1px solid red;
+  //border: 1px solid red;
 
   .content {
     //color: var(--color-dark-text);
@@ -151,6 +151,12 @@ const ExperienceSection = styled(motion.div)`
     row-gap: 2rem;
     padding: 2rem;
   }
+
+  #contact-btn {
+    z-index: 1;
+  }
+
+  /* No addtional responsive stylinf required for mobile or tablet */
 `;
 
 export default Experience;
