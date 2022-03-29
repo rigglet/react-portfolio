@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 //framer motion and styled components
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import styled from "styled-components";
 import { splashVariants } from "../styles/animations";
 import Name from "../img/name";
